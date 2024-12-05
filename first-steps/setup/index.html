@@ -1,0 +1,1592 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Notizen und Dokumentation zu Meetings">
+      
+      
+        <meta name="author" content="3DCityDB Steering Group">
+      
+      
+        <link rel="canonical" href="https://3dcitydb.github.io/3dcitydb-mkdocs/first-steps/setup/">
+      
+      
+        <link rel="prev" href="../requirements/">
+      
+      
+        <link rel="next" href="../3dcitydb/">
+      
+      
+      <link rel="icon" href="../../assets/img/logos/3dcitydb-logo-transparent.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+    
+    
+      
+        <title>Setup - 3D City Database v5 documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#shell-scripts" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://github.com/3dcitydb/3dcitydb-mkdocs" title="3D City Database v5 documentation" class="md-header__button md-logo" aria-label="3D City Database v5 documentation" data-md-component="logo">
+      
+  <img src="../../assets/img/logos/3dcitydb-logo-transparent.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            3D City Database v5 documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Setup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/3dcitydb/3dcitydb-mkdocs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    3dcitydb/3dcitydb-mkdocs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+    
+  
+  Welcome
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../intro/" class="md-tabs__link">
+          
+  
+    
+  
+  First steps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../3dcitydb/Relational%20database%20schema/" class="md-tabs__link">
+          
+  
+    
+  
+  3D City Database
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../citydb-tool/db-connection/" class="md-tabs__link">
+          
+  
+    
+  
+  CityDB tool
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Partners/" class="md-tabs__link">
+          
+  
+    
+  
+  Partners
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://github.com/3dcitydb/3dcitydb-mkdocs" title="3D City Database v5 documentation" class="md-nav__button md-logo" aria-label="3D City Database v5 documentation" data-md-component="logo">
+      
+  <img src="../../assets/img/logos/3dcitydb-logo-transparent.png" alt="logo">
+
+    </a>
+    3D City Database v5 documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/3dcitydb/3dcitydb-mkdocs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    3dcitydb/3dcitydb-mkdocs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../.." class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    First steps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            First steps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intro
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--wip" title="Work in progress">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Requirements
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--wip" title="Work in progress">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Setup
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--wip" title="Work in progress">
+    </span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Setup
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--wip" title="Work in progress">
+    </span>
+  
+
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of content">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of content
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#shell-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell scripts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL scripts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker scripts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-create-a-3dcitydb-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to create a 3DCityDB instance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to create a 3DCityDB instance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-an-empty-postgresql-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1 - Create an empty PostgreSQL database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-add-the-postgis-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2 - Add the PostGIS extension
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-edit-the-connection-details-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3 - Edit the connection-details script
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-execute-the-create-db-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4 - Execute the create-db script
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-specify-the-coordinate-reference-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5 – Specify the coordinate reference system
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-create-changelog-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6 – Create changelog extension
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#search-path-and-template-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search path and template databases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#truncating-the-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Truncating the database
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dropping-a-3dcitydb-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dropping a 3DCityDB instance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Support
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1a-building-a-3dcitydb-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1a - Building a 3DCityDB Docker image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1b-load-a-pre-built-3dcitydb-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1b - Load a pre-built 3DCityDB Docker image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-start-a-3dcitydb-docker-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2 - Start a 3DCityDB Docker Container
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3dcitydb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3DCityDB
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--wip" title="Work in progress">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../citydb-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CityDB tools
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--wip" title="Work in progress">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1zm0-204.3h-66.1v60.7h66.1zm78.2 144.8H362v59.4h66.1zm-156.3-72.1h-66.1v60.1h66.1zm78.1 0h-66.1v60.1h66.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1zm78.1 0h-66.1v59.4h66.1zm-78.1-72.1h-66.1v60.1h66.1z"/></svg>
+  
+  <span class="md-ellipsis">
+    Docker
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--wip" title="Work in progress">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../3dcitydb/Relational%20database%20schema/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3D City Database
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../citydb-tool/db-connection/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    CityDB tool
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Partners/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Partners
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of content">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of content
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#shell-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell scripts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL scripts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker scripts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-create-a-3dcitydb-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to create a 3DCityDB instance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to create a 3DCityDB instance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-an-empty-postgresql-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1 - Create an empty PostgreSQL database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-add-the-postgis-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2 - Add the PostGIS extension
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-edit-the-connection-details-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3 - Edit the connection-details script
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-execute-the-create-db-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4 - Execute the create-db script
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-specify-the-coordinate-reference-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5 – Specify the coordinate reference system
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-create-changelog-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6 – Create changelog extension
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#search-path-and-template-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search path and template databases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#truncating-the-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Truncating the database
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dropping-a-3dcitydb-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dropping a 3DCityDB instance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Support
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1a-building-a-3dcitydb-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1a - Building a 3DCityDB Docker image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1b-load-a-pre-built-3dcitydb-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1b - Load a pre-built 3DCityDB Docker image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-start-a-3dcitydb-docker-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2 - Start a 3DCityDB Docker Container
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="../../tags/#docker" class="md-tag">docker</a>
+    
+  
+</nav>
+
+
+  
+  
+
+
+  <h1>Setup</h1>
+
+<p>The scripts required for setting up the 3D City Database (3DCityDB) are located in the subfolder 3dcitydb/postgresql/ within the installation directory of the CityDB-Tool.</p>
+<h2 id="shell-scripts">Shell scripts<a class="headerlink" href="#shell-scripts" title="Link to this headline for referencing">&para;</a></h2>
+<p>To set up a 3D City Database instance, a number of batch scripts (Windows) and shell scripts (UNIX/Linux/macOS) are available in the subfolders <strong>shell-scripts/windows</strong> and <strong>shell-scripts/unix</strong>, which query the required input from the user and then call the corresponding SQL scripts in the background. This separation makes it possible to use the SQL scripts in third-party software, automatic processes or continuous integration workflows.The following table provides an overview of the available shell scripts:</p>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>connection-details</td>
+<td>Stores the connection details for a 3DCityDB instance which are used by all other scripts</td>
+</tr>
+<tr>
+<td>create-db</td>
+<td>Creates a new 3DCityDB instance (relational schema including all database functions)</td>
+</tr>
+<tr>
+<td>create-schema</td>
+<td>Creates an additional data-schema (analogous to the schema 'citydb') with a user-defined name</td>
+</tr>
+<tr>
+<td>drop-db</td>
+<td>Drops a 3DCityDB instance (incl. all elements of the relational schema)</td>
+</tr>
+<tr>
+<td>drop-schema</td>
+<td>Drops a data-schema that has been created with create-schema</td>
+</tr>
+<tr>
+<td>grant-access</td>
+<td>Grants read-only or read-write access to a 3DCityDB instance</td>
+</tr>
+<tr>
+<td>revoke-access</td>
+<td>Revokes read-only or read-write access to a 3DCityDB instance, which has been granted with grant-access</td>
+</tr>
+<tr>
+<td>create-changelog</td>
+<td>Create the changelog extension for a 3DCityDB instance</td>
+</tr>
+<tr>
+<td>drop-changelog</td>
+<td>Remove the changelog extension from a 3DCityDB instance</td>
+</tr>
+</tbody>
+</table>
+<p>Prior to executing a shell script, please make sure to set the connection details for the 3DCityDB in the connection-details script. The shell scripts can be executed with a double click or from within a shell environment. Under UNIX/Linux, execution permissions for the shell script may have to be set beforehand:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>chmod<span class="w"> </span>u+x<span class="w"> </span>create-db.sh
+</span></code></pre></div>
+<p>Afterward, simply run the starter script by typing:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>./CREATE_DB.sh<span class="sb">`</span>
+</span></code></pre></div>
+<h2 id="sql-scripts">SQL scripts<a class="headerlink" href="#sql-scripts" title="Link to this headline for referencing">&para;</a></h2>
+<p>The sql-scripts subfolder contains the SQL scripts, that are invoked by the shell scripts and perform the actual changes at the database level. There are a number of additional SQL scripts, which are grouped into the following three subfolders:</p>
+<ul>
+<li>schema: Contains all SQL scripts required to set up the database schema.</li>
+<li>citydb-pkg: contains SQL scripts</li>
+</ul>
+<blockquote>
+<ul>
+<li>delete.sql facilitates to delete single and multiple city objects</li>
+<li>envelope.sql allow a user to calculate the maximum 3D bounding volume of a feature object identified by its ID</li>
+<li>srs.sql dealing with the coordinate reference system used for a 3DCityDB instance</li>
+<li>constrains.sql includes stored-procedures to define constraints or change their behavior</li>
+<li>util.sql can be seen as a container for various single utility functions.</li>
+</ul>
+</blockquote>
+<ul>
+<li>util contains the SQL scripts for utilizing those processes, that are executed through the above-mentioned shell scripts</li>
+</ul>
+<h2 id="docker-scripts">Docker scripts<a class="headerlink" href="#docker-scripts" title="Link to this headline for referencing">&para;</a></h2>
+<p>The subfolder docker-scripts contains a shell script, which can be invoked while starting a database Docker container to create an instance. A Dockerfile allows for automatically building a 3DCityDB Docker image. Prior to building a 3DCityDB Docker image, please make sure that a Docker Engine has been installed and is running on your host computer. A detailed description of how to install a Docker Engine can be found in the official Docker online documentation. In addition, Internet access is required for pulling the base database Docker image from the remote Docker registry during the image build process. More details about how to use the 3DCityDB Docker scripts can be found in the following subsections.</p>
+<h2 id="how-to-create-a-3dcitydb-instance">How to create a 3DCityDB instance<a class="headerlink" href="#how-to-create-a-3dcitydb-instance" title="Link to this headline for referencing">&para;</a></h2>
+<h3 id="step-1-create-an-empty-postgresql-database">Step 1 - Create an empty PostgreSQL database<a class="headerlink" href="#step-1-create-an-empty-postgresql-database" title="Link to this headline for referencing">&para;</a></h3>
+<p>Choose a superuser or a user with the CREATEDB privilege to create a new database on the PostgreSQL server. As owner of this new database, choose or create a user who will later set up the 3DCityDB instance. Otherwise, more permissions have to be granted. The following command shows, how to create a database for the user 'citydb_user'. An alternative way to create a new database is to use the graphical database client pgAdmin, which is shipped with PostgreSQL’s distribution package. Please check the pgAdmin documentation for more details.</p>
+<div class="language-SQL highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">citydb_v5</span><span class="w"> </span><span class="k">OWNER</span><span class="w"> </span><span class="n">citydb_user</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="step-2-add-the-postgis-extension">Step 2 - Add the PostGIS extension<a class="headerlink" href="#step-2-add-the-postgis-extension" title="Link to this headline for referencing">&para;</a></h3>
+<p>The 3D City Database requires the PostGIS extension to be added to the database. This can only be done as superuser. The extension can be added with the following command (or, alternatively, using pgAdmin):</p>
+<div class="language-SQL highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="n">postgis</span><span class="p">;</span>
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Hinweis</p>
+<p>If running PostGIS version 2.2 or higher you can optionally install the PostgreSQL extension postgis_sfcgal to enable advanced spatial 3D operations like extrusion, volume calculation or union/intersection/difference of solids (polyhedral surfaces).
+<div class="language-SQL highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="n">postgis_sfcgal</span><span class="p">;</span>
+</span></code></pre></div></p>
+</div>
+<h3 id="step-3-edit-the-connection-details-script">Step 3 - Edit the connection-details script<a class="headerlink" href="#step-3-edit-the-connection-details-script" title="Link to this headline for referencing">&para;</a></h3>
+<p>Go to the 3dcitydb/postgresql/shell-scripts directory and choose the subfolder matching your operating system. In this subfolder, open the connection-details file with a text editor of your choice, and enter the connection details to the database as well as the local path to the psql executable.Here is an example of how the connection-details can look like:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">PGBIN</span><span class="o">=</span>C:<span class="se">\P</span>ostgreSQL<span class="se">\1</span><span class="m">6</span><span class="se">\b</span>in
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">PGHOST</span><span class="o">=</span>localhost
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">PGPORT</span><span class="o">=</span><span class="m">5432</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nv">CITYDB</span><span class="o">=</span>citydb_v5
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nv">PGUSER</span><span class="o">=</span>citydb_user
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Hinweis</p>
+<p>If the psql binary is already registered in your system path, then you do not have to set the PGBIN parameter.</p>
+</div>
+<h3 id="step-4-execute-the-create-db-script">Step 4 - Execute the create-db script<a class="headerlink" href="#step-4-execute-the-create-db-script" title="Link to this headline for referencing">&para;</a></h3>
+<p>Once the connection details have been set in connection-details, launch the create-db script with a double click or from within a shell environment to start the setup process. The create-db script is located in the same folder as connection-details.
+It is also possible to apply another connection-details file located in a separate folder:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>./CREATE_DB.sh<span class="w"> </span>/path/to/connection-details.sh
+</span></code></pre></div>
+<p>After executing the script, a welcome message and usage hints are displayed on the console. The script requires user input on several parameters that are essential for setting up the 3DCityDB instance. This is explained in the following steps.</p>
+<h3 id="step-5-specify-the-coordinate-reference-system">Step 5 – Specify the coordinate reference system<a class="headerlink" href="#step-5-specify-the-coordinate-reference-system" title="Link to this headline for referencing">&para;</a></h3>
+<p>First, the user is prompted for the coordinate reference system (CRS) to be used for the 3DCityDB instance. The user needs to simply enter the PostGIS-specific SRID (spatial reference ID) of the CRS. In most cases, this value will be identical to the EPSG code of the CRS. There are three parameters in total that have to be provided in this step:</p>
+<ul>
+<li>The SRID to be used for the geometry columns of the database. Unlike previous versions, there is no default CRS anymore. So, this input is mandatory.</li>
+<li>The SRID of the height system. This information is considered metadata and does not affect the geometry columns in the database. If the above SRID already references a true 3D CRS or if the height system is unknown, enter "0" which means "not set". This is also the default value.</li>
+<li>The GML-compliant (URN) encoding of the CRS. This string representation is, for instance, written to CityGML files when exporting data from the database. The create-db script generates a proposal of the form </br><code>urn:ogc:def:crs,crs:EPSG::&lt;crs1&gt;[,crs:EPSG::&lt;crs2&gt;]</code></br> based on the first two inputs. Just press Enter to accept this value.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Hinweis</p>
+<p>The coordinate reference system specified during setup can be changed at any time using the database function citydb_pkg.change_schema_srid.</p>
+</div>
+<h3 id="step-6-create-changelog-extension">Step 6 – Create changelog extension<a class="headerlink" href="#step-6-create-changelog-extension" title="Link to this headline for referencing">&para;</a></h3>
+<p>In the last step, the user is asked whether the changelog extension should be created for the initial 'citydb' schema. Please enter yes or no. The default value no is confirmed by simply pressing Enter. Note that the created changelog extension may result in longer runtimes for insert, delete, and update operations.</p>
+<p>The following figure exemplifies the required user input for the <code>create-db</code> script.
+<a class="glightbox" href="../assets/image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="create-db script" src="../assets/image.png" /></a></p>
+<blockquote>
+<p>Figure 1. Example user input for the create-db script</p>
+</blockquote>
+<p>The setup process will terminate immediately on errors. Reasons might be:</p>
+<ul>
+<li>The user executing create-db is neither a superuser nor the owner of the specified database (nor owns the privileges to create objects in that database) or</li>
+<li>The PostGIS extension has not been installed or</li>
+<li>Parts of the 3DCityDB do already exists because of a previous setup attempt. Therefore, make sure that the schemas citydb, citydb_pkg do not exist in the database when setting up the 3DCityDB</li>
+</ul>
+<p>After a series of log messages reporting the creation of database objects, the chosen reference system is applied to the spatial columns. This takes some seconds and is finished when Done is displayed.</p>
+<h2 id="search-path-and-template-databases">Search path and template databases<a class="headerlink" href="#search-path-and-template-databases" title="Link to this headline for referencing">&para;</a></h2>
+<p>Usually different schemas have to be addressed in every query via dot notation, e.g.:</p>
+<div class="language-SQL highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">citydb</span><span class="p">.</span><span class="n">feature</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Fortunately, this can be avoided when the corresponding schemas are on the database search path. The search path is automatically adapted during the 3DCityDB setup.</br>
+Execute the command:</p>
+<div class="language-SQL highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">SHOW</span><span class="w"> </span><span class="n">search_path</span><span class="p">;</span>
+</span></code></pre></div>
+<p>to check if the schemas <code>citydb, citydb_pkg</code> and <code>public</code> are contained.</p>
+<div class="admonition info">
+<p class="admonition-title">Hinweis</p>
+<p>When using the created 3DCityDb as a template database for new databases, the search path information is not transferred and thus has to be set again, e.g.:
+<div class="language-SQL highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">ALTER</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">new_citydb_v5</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">search_path</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">citydb</span><span class="p">,</span><span class="w"> </span><span class="n">citydb_pkg</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="p">;</span>
+</span></code></pre></div></p>
+</div>
+<p>The search path will be updated upon the next login, not within the same session.</p>
+<h2 id="truncating-the-database">Truncating the database<a class="headerlink" href="#truncating-the-database" title="Link to this headline for referencing">&para;</a></h2>
+<p>PostgreSQL allows for deleting all entries in the database by using the TRUNCATE TABLE table_name CASCADE command. The following function covers all relevant tables and removes the content of a 3DCityDB within a few seconds, no matter how much data is stored in the database:</p>
+<div class="language-SQL highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">cleanup_schema</span><span class="p">();</span>
+</span></code></pre></div>
+<h2 id="dropping-a-3dcitydb-instance">Dropping a 3DCityDB instance<a class="headerlink" href="#dropping-a-3dcitydb-instance" title="Link to this headline for referencing">&para;</a></h2>
+<p>To drop a 3DCityDB instance with all data, execute the <code>drop-db</code> script in the same way as <code>create-db</code>. The connection parameters defined in <code>connection-details</code> are used to connect to the database.</p>
+<div class="admonition info">
+<p class="admonition-title">Hinweis</p>
+<p>The script removes all 3DCityDB schemas and the contained data. The PostgreSQL database itself is not dropped.</p>
+</div>
+<h2 id="docker-support">Docker Support<a class="headerlink" href="#docker-support" title="Link to this headline for referencing">&para;</a></h2>
+<p>The 3DCityDB can also be run in a PostgreSQL Docker container. You can either build your own Docker image based on scripts shipped with the 3DCityDB as described below in step 1a. Alternatively, you can also use a pre-built image available from the <a href="https://hub.docker.com/r/3dcitydb/3dcitydb-pg">3DCityDB DockerHub</a>. In this case, you first have to pull the pre-built image in your Docker environment as described in step 1b. Afterward, you can proceed with step 2 to run Docker containers using your images.</p>
+<div class="admonition info">
+<p class="admonition-title">Hinweis</p>
+<p>To run Docker containers or build your own images, you first have to install Docker on your system. How to set up such an environment is, however, outside the scope of this user manual. Downloads and detailed instructions for various operating systems can be found in the <a href="https://docs.docker.com/get-started/get-docker/">Docker homepage</a>. Please get in contact with our support team in case you need help or assistance.</p>
+</div>
+<h3 id="step-1a-building-a-3dcitydb-docker-image">Step 1a - Building a 3DCityDB Docker image<a class="headerlink" href="#step-1a-building-a-3dcitydb-docker-image" title="Link to this headline for referencing">&para;</a></h3>
+<p>The first step for running a 3DCityDB instance inside a Docker container is to build a 3DCityDB Docker image. This can be done by running the following command from the subfolder vcdb/postgresql</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>docker<span class="w"> </span>build<span class="w"> </span>--tag<span class="w"> </span>citydb-postgis-image<span class="w"> </span>.
+</span></code></pre></div>
+<p>After running the above command, a 3DCityDB docker image will be created based on the official PostgreSQL/PostGIS Docker image from the <a href="https://registry.hub.docker.com/r/postgis/postgis">Docker Hub</a>. If you want to use a specific PostgreSQL/PostGIS version, the command below should be used instead:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>docker<span class="w"> </span>build<span class="w"> </span>--tag<span class="w"> </span>citydb-postgis-image<span class="w"> </span>--build-arg<span class="w"> </span><span class="nv">BASEIMAGE_TAG</span><span class="o">={</span>version<span class="o">}</span>
+</span></code></pre></div>
+<p>Please replace the <code>{version}</code> token in the above command with your chosen version. You may also need to beforehand check that a PostgreSQL/PostGIS Docker image of the chosen version is available in the Docker Hub. Afterward, proceed with step 2.</p>
+<h3 id="step-1b-load-a-pre-built-3dcitydb-docker-image">Step 1b - Load a pre-built 3DCityDB Docker image<a class="headerlink" href="#step-1b-load-a-pre-built-3dcitydb-docker-image" title="Link to this headline for referencing">&para;</a></h3>
+<p>Loading a pre-built 3DCityDB Docker image can be done by simply running the command as shown below.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>3dcitydb/3dcitydb-pg-v5:<span class="o">{</span>version<span class="o">}</span>
+</span></code></pre></div>
+<h3 id="step-2-start-a-3dcitydb-docker-container">Step 2 - Start a 3DCityDB Docker Container<a class="headerlink" href="#step-2-start-a-3dcitydb-docker-container" title="Link to this headline for referencing">&para;</a></h3>
+<p>A 3DCityDB container is configured by settings environment variables inside the container. For instance, this can be done using the -e VARIABLE=VALUE flag of docker run. The 3DCityDB Docker images introduce a set of variables, whose behavior is described below.</p>
+<table>
+<thead>
+<tr>
+<th>Environment variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SRID</code></td>
+<td>EPSG code for the coordinate reference system (CRS) to be used for the 3DCityDB instance. If the <code>SRID</code> is not set, the 3DCityDB instance will not be created, and you will end up with a plain PostgreSQL/PostGIS Docker container.</td>
+</tr>
+<tr>
+<td><code>HEIGHT_EPSG</code></td>
+<td>EPSG code of the height system. You may omit it or use 0 (default value), if the value is unknown or the above <code>SRID</code> is already 3D.</td>
+</tr>
+<tr>
+<td><code>SRS_NAME</code></td>
+<td>The srsName to be used in CityGML exports. If this variable is not set, its value will be automatically created in the form <code>urn:ogc:def:crs,crs:EPSG::&lt;SRID&gt;[,crs:EPSG::&lt;HEIGHT_EPSG&gt;]</code> based on the values of the above <code>SRID</code> and <code>HEIGHT_EPSG</code> variables.</td>
+</tr>
+<tr>
+<td><code>CHANGELOG</code></td>
+<td><strong>yes</strong> or <strong>no</strong> (default value) to specify whether the changelog extension should be created in the 3DCityDB instance to be created.</td>
+</tr>
+<tr>
+<td><code>POSTGRES_USER</code></td>
+<td>The database username of the 3DCityDB instance to be created. The default value is <code>postgres</code>.</td>
+</tr>
+<tr>
+<td><code>POSTGRES_DB</code></td>
+<td>The database name of the 3DCityDB instance to be created. If not set, the database name is identical to the value of the above <code>POSTGRES_USER</code> variable.</td>
+</tr>
+<tr>
+<td><code>POSTGRES_PASSWORD</code></td>
+<td>The database password of the 3DCityDB instance to be created. Please note that this variable is <strong>mandatory</strong>.</td>
+</tr>
+<tr>
+<td><code>POSTGIS_SFCGAL</code></td>
+<td><strong>true</strong> or <strong>false</strong>(default) to enabled or disable the PostgreSQL extension <strong>postgis_sfcgal</strong>. Please note that the <strong>postgis_sfcgal</strong> extension is currently not supported in the Linux Alpine image variants, whose version names are typically suffixed with '-apline'. Thus, setting the variable to true on these kind of images will have no effect.</td>
+</tr>
+</tbody>
+</table>
+<p>There are more configuration parameters available for the PostgreSQL/PostGIS Docker container itself. Please refer to the websites PostgreSQL and PostGIS for more details. The following example shows how to set up and run a 3DCityDB Docker container based on the 3DCityDB Docker image:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </span>-t<span class="w"> </span>-p<span class="w"> </span><span class="m">5432</span>:5432<span class="w"> </span>--name<span class="w"> </span>citydb-postgis-container<span class="w"> </span>-e<span class="w"> </span><span class="nv">POSTGRES_DB</span><span class="o">=</span>citydb<span class="w"> </span>-e<span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>postgres<span class="w"> </span>-e<span class="w"> </span><span class="nv">SRID</span><span class="o">=</span><span class="m">25832</span><span class="w"> </span>-e
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nv">HEIGHT_EPSG</span><span class="o">=</span><span class="m">7837</span><span class="w"> </span>-e<span class="w"> </span><span class="nv">SRS_NAME</span><span class="o">=</span>EPSG:25832<span class="w"> </span>-e<span class="w"> </span><span class="nv">CHANGELOG</span><span class="o">=</span>yes<span class="w"> </span>citydb-postgis-image
+</span></code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../requirements/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Requirements">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Requirements
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../3dcitydb/" class="md-footer__link md-footer__link--next" aria-label="Next: 3DCityDB">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                3DCityDB
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      3DCityDB Steering Group, 2024
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.footer", "navigation.indexes", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.path", "navigation.prune", "navigation.expand", "navigation.top", "content.code.select", "content.code.copy", "content.code.annotate", "toc.follow", "search.suggest", "search.highlight", "search.share", "header.autohide"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../assets/javascripts/tablesort.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../assets/javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
