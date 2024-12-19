@@ -39,30 +39,7 @@ theme:
         icon: material/weather-sunny
         name: Switch to light mode
   features:
-    # Navigation
-    - navigation.instant
-    - navigation.instant.prefetch
-    - navigation.instant.progress
-    # - navigation.instant.preview
-    - navigation.footer
-    - navigation.indexes
-    - navigation.tracking
-    - navigation.path
-    - navigation.prune
-    - navigation.expand
-    - navigation.top
-    - navigation.tabs: false
-    # Code
-    - content.code.select
-    - content.code.copy
-    - content.code.annotate
-    - content.tooltips
-    - toc.follow
-    - search.suggest
-    - search.highlight
-    - search.share
-    # Header
-    - header.autohide
+    - content.footnote.tooltips
 
 # Plugins #####################################################################
 plugins:
@@ -133,8 +110,8 @@ nav:
       - CityDB tool: first-steps/citydb-tool.md
       - Docker: first-steps/docker.md
   - 3D City Database:
-      - Overview: 3dcitydb/overview.md
-      - Installation: 3dcitydb/installation.md
+      - Relational Database Schema: 3dcitydb/Relational database schema.md
+      - docker: 3dcitydb/docker.md
   - CityDB tool:
       - Database connection: citydb-tool/db-connection.md
       - Import: citydb-tool/import.md
@@ -144,3 +121,10 @@ nav:
           - CityJson Export: citydb-tool/export_cityjson.md
       - Delete: citydb-tool/delete.md
       - Indexing: citydb-tool/indexing.md
+  - Partners:
+      - Contributors: Partners/contributors.md
+      - Chair od Geoinformatics, TUM: Partners/tum-gis.md
+      - HFT Stuttgart: Partners/hft-stuttgart.md
+      - LIST Eco GmbH & Co. KG: Partners/list-eco.md
+      - M.O.S.S. Computer Grafik Systeme GmbH: Partners/moss.md
+      - Virtual City Systems: Partners/vcs.md
