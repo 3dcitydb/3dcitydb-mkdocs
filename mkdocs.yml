@@ -17,27 +17,27 @@ theme:
   logo: ./assets/img/logos/3dcitydb-logo-transparent.png
   favicon: ./assets/img/logos/3dcitydb-logo-transparent.png
   palette:
-  # font:
-  #   # text: IBM Plex Sans
-  #   text: Inter
-  #   # code: DM Mono
-  # Palette toggle for light mode
-  - scheme: default
-    primary: green
-    accent: cyan
-    media: "(prefers-color-scheme: light)"
-    toggle:
-      icon: material/weather-night
-      name: Switch to dark mode
+    # font:
+    #   # text: IBM Plex Sans
+    #   text: Inter
+    #   # code: DM Mono
+    # Palette toggle for light mode
+    - scheme: default
+      primary: green
+      accent: cyan
+      media: "(prefers-color-scheme: light)"
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
 
-  # Palette toggle for dark mode
-  - scheme: slate
-    primary: green
-    accent: cyan
-    media: "(prefers-color-scheme: dark)"
-    toggle:
-      icon: material/weather-sunny
-      name: Switch to light mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: green
+      accent: cyan
+      media: "(prefers-color-scheme: dark)"
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
   features:
     # Navigation
     - navigation.instant
@@ -47,12 +47,11 @@ theme:
     - navigation.footer
     - navigation.indexes
     - navigation.tracking
-    - navigation.tabs
-    - navigation.sections
     - navigation.path
     - navigation.prune
     - navigation.expand
     - navigation.top
+    - navigation.tabs: false
     # Code
     - content.code.select
     - content.code.copy
@@ -84,50 +83,26 @@ extra:
 # Markdown extensions #########################################################
 markdown_extensions:
   - admonition
-  - abbr
-  - attr_list
+  - footnotes
   - pymdownx.details
   - pymdownx.highlight:
       anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - toc:
-      permalink: true
-      title: Table of content
-      toc_depth: 4
-      permalink_title: Link to this headline for referencing
-  - md_in_html
-  - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
-      options:
-        custom_icons:
-          - overrides/.icons
-  - def_list
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.critic
-  - pymdownx.caret
-  - pymdownx.keys
-  - pymdownx.mark
-  - pymdownx.tilde
-  - pymdownx.arithmatex:
-      generic: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format:
-            !!python/name:pymdownx.superfences.fence_code_format
-  - tables
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.blocks.caption
-  - pymdownx.snippets:
-      auto_append:
-        - includes/abbreviations.md
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.tasklist:
+      custom_checkbox: false
+      clickable_checkbox: true
 
 # Extra js ####################################################################
 extra_javascript:
@@ -144,3 +119,28 @@ extra_css:
 
 watch:
   - includes
+
+nav:
+  - Welcome:
+      - index.md
+      - usage-contrib.md
+      - compatibility.md
+      - tags.md
+  - First Steps:
+      - Requirements: first-steps/requirements.md
+      - Setup: first-steps/setup.md
+      - 3D City Database: first-steps/3dcitydb.md
+      - CityDB tool: first-steps/citydb-tool.md
+      - Docker: first-steps/docker.md
+  - 3D City Database:
+      - Overview: 3dcitydb/overview.md
+      - Installation: 3dcitydb/installation.md
+  - CityDB tool:
+      - Database connection: citydb-tool/db-connection.md
+      - Import: citydb-tool/import.md
+      - Export:
+          - Shared Export Options: citydb-tool/export_shared_options.md
+          - CityGML Export: citydb-tool/export_citygml.md
+          - CityJson Export: citydb-tool/export_cityjson.md
+      - Delete: citydb-tool/delete.md
+      - Indexing: citydb-tool/indexing.md
