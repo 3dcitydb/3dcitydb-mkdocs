@@ -5,9 +5,9 @@ description: Managing Database Indexes in 3DCityDB
 status: wip
 ---
 
-# Index Command
+# Index command
 
-The **`index`** command in the **CityDB Tool** allows users to manage database indexes in **3DCityDB**.
+The **`index`** command in the **citydb-tool** allows users to manage database indexes in **3DCityDB**.
 Indexes are critical for optimizing query performance, especially for large datasets.
 The `index` command provides subcommands to check index statuses, create indexes, and drop indexes.
 
@@ -28,7 +28,7 @@ citydb index [OPTIONS] SUBCOMMAND
 | `create`         | Create indexes on the relevant database tables.                   |
 | `drop`           | Drop (remove) indexes from the relevant database tables.          |
 
-## General Options
+## General options
 
 | Option                               | Description                                                                 | Default Value |
 |--------------------------------------|-----------------------------------------------------------------------------|---------------|
@@ -42,20 +42,20 @@ citydb index [OPTIONS] SUBCOMMAND
 | `-h`, `--help`                       | Show help information for the command or subcommands.                       |               |
 | `-V`, `--version`                    | Print version information and exit.                                         |               |
 
-## Database Connection Options
+## Database connection options
 
-The CityDB Tool requires a connection to a 3DCityDB database for all operations, including the delete command.
+The citydb-tool requires a connection to a 3DCityDB database for all operations, including the delete command.
 Database connection details, such as host, port, schema, and credentials, must be provided to ensure the
 tool can interact with the database successfully.
 
-These options are shared across all commands in the CityDB Tool, as a connection is essential every time data
+These options are shared across all commands in the citydb-tool, as a connection is essential every time data
 is queried, deleted, imported, or exported.
 
 For details on how to configure database connections, including host, port, schema, and credentials,
 refer to the [Database Connection Options documentation](db-connection.md) This section provides a comprehensive explanation of
 all available connection parameters.
 
-## Check Index Status
+## Check index status
 
 The status subcommand of the index command provides an overview of the current indexes in the 3DCityDB
 database and their statuses. This command is useful for verifying whether indexes are active or missing and
@@ -67,7 +67,7 @@ ensures proper database optimization.
 citydb index status --log-level=debug
 ```
 
-## Create Indexes
+## Create indexes
 
 The create subcommand of the index command allows users to create indexes on the relevant database tables in 3DCityDB.
 Indexes are essential for improving query performance, especially when dealing with large datasets.
@@ -91,7 +91,7 @@ This command supports different indexing modes to accommodate various database c
 citydb index create --index-mode=full
 ```
 
-## Drop Indexes
+## Drop indexes
 
 The drop subcommand of the index command allows users to remove existing indexes from the relevant database tables
 in 3DCityDB. This operation can be useful for database maintenance, freeing up storage, or temporarily disabling

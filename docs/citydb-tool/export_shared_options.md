@@ -8,13 +8,13 @@ tags:
   - export
 ---
 
-Both **CityGML** and **CityJSON** exporters in the **3DCityDB Tool** share a common set of options.
+Both **CityGML** and **CityJSON** exporters in the **citydb-tool** share a common set of options.
 These options allow users to customize the export process, including output configuration, query and
 filter parameters, and tiling for large datasets.
 
 ---
 
-## General Options
+## General options
 
 | Option                        | Description                                              | Default Value |
 |-------------------------------|----------------------------------------------------------|---------------|
@@ -36,7 +36,7 @@ filter parameters, and tiling for large datasets.
 
 ---
 
-## Query and Filter Options
+## Query and filter options
 
 | Option                        | Description                                              | Default Value      |
 |-------------------------------|----------------------------------------------------------|--------------------|
@@ -54,7 +54,7 @@ filter parameters, and tiling for large datasets.
 
 ---
 
-## Tiling Options
+## Tiling options
 
 Tiling options allow users to divide the output data into smaller tiles for improved performance and scalability.
 
@@ -67,22 +67,22 @@ Tiling options allow users to divide the output data into smaller tiles for impr
 
 ---
 
-## Database Connection Options
+## Database connection options
 
-The CityDB Tool requires a connection to a 3DCityDB database for all operations, including the delete command.
+The citydb-tool requires a connection to a 3DCityDB database for all operations, including the delete command.
 Database connection details, such as host, port, schema, and credentials, must be provided to ensure the
 tool can interact with the database successfully.
 
-These options are shared across all commands in the CityDB Tool, as a connection is essential every time data
+These options are shared across all commands in the citydb-tool, as a connection is essential every time data
 is queried, deleted, imported, or exported.
 
 For details on how to configure database connections, including host, port, schema, and credentials,
-refer to the [Database Connection Options documentation](db-connection.md) This section provides a comprehensive explanation of
+refer to the [Database Connection Options](db-connection.md). This section provides a comprehensive explanation of
 all available connection parameters.
 
 ## Examples
 
-### Basic Export
+### Basic export
 
 Export using default settings and specifying an output file:
 
@@ -91,7 +91,7 @@ citydb export citygml -o output.gml
 citydb export cityjson -o output.json
 ```
 
-### Stop Execution on Errors (--fail-fast)
+### Stop execution on errors (--fail-fast)
 
 Stop the export process immediately upon encountering an error:
 
@@ -100,7 +100,7 @@ citydb export citygml -o output.gml --fail-fast
 citydb export cityjson -o output.json --fail-fast
 ```
 
-### Exporting with Custom Temporary Directory
+### Exporting with custom temporary directory
 
 Specify a custom directory for storing temporary files during the export:
 
@@ -109,7 +109,7 @@ citydb export citygml -o output.gml --temp-dir=/path/to/temp
 citydb export cityjson -o output.json --temp-dir=/path/to/temp
 ```
 
-### Export with custom CRS and CRS Name
+### Export with custom CRS and CRS name
 
 Export data using a custom CRS and include the CRS name in the output:
 
@@ -118,7 +118,7 @@ citydb export citygml -o output.gml --crs=4326 --crs-name=WGS84
 citydb export cityjson -o output.json --crs=4326 --crs-name=WGS84
 ```
 
-### Using Query and Filter Options
+### Using query and filter options
 
 Export only CityFurniture features with a limit of 5:
 
@@ -127,7 +127,7 @@ citydb export citygml -t CityFurniture --limit=5 -o filtered_output.gml
 citydb export cityjson -t CityFurniture --limit=5 -o filtered_output.json
 ```
 
-### Using Tiling Options
+### Using tiling options
 
 Export data into a 2x2 grid of tiles:
 
@@ -136,7 +136,7 @@ citydb export citygml --tile-matrix=2,2 -o tiled_output.gml
 citydb export cityjson --tile-matrix=2,2 -o tiled_output.json
 ```
 
-### Using Configuration Files
+### Using configuration files
 
 Store export options in a file and reference it in the command:
 

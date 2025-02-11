@@ -14,17 +14,17 @@ Before you begin, ensure you have the following:
 - The CityDB tool installed and configured.
 - CityGML files to import.
 
-## Step 1: Connecting to the Database
+## Step 1: Connecting to the database
 
 First, configure the database connection. You can specify the connection details directly in the command or use an options file.
 
-### Example: Command Line
+### Example: Command line
 
 ```bash
 citydb import citygml -H localhost -P 5432 -d 3dcitydb -S citydb -u admin -p password -o input.gml
 ```
 
-### Example: Options File
+### Example: Options file
 Create a file named db_options.txt with the following content:
 
 ```bash
@@ -42,11 +42,11 @@ Then reference the file in the command:
 citydb import citygml @db_options.txt -o input.gml
 ```
 
-## Step 2: Importing CityGML Data
+## Step 2: Importing CityGML data
 
 Use the import command to import CityGML files into the 3D City Database.
 
-### Example: Import Command
+### Example: Import command
 
 ```bash
 citydb import citygml -H localhost -P 5432 -d 3dcitydb -S citydb -u admin -p password input.gml
@@ -58,11 +58,11 @@ Or using the options file:
 citydb import citygml @db_options.txt input.gml
 ```
 
-## Step 3: Exporting CityGML Data
+## Step 3: Exporting CityGML data
 
 After importing the data, you can export it back to CityGML format.
 
-### Example: Export Command
+### Example: Export command
 
 ```bash
 citydb export citygml -H localhost -P 5432 -d 3dcitydb -S citydb -u admin -p password -o output.gml

@@ -10,13 +10,13 @@ tags:
   - export
 ---
 
-# CityGML-Specific Export Options
+# CityGML-Specific export options
 
-The **CityGML** exporter in the **3DCityDB Tool** provides options specific to exporting data in the **CityGML format**. These options allow users to customize version compatibility, apply transformations, and manage feature mappings.
+The **CityGML** exporter in the **citydb-tool** provides options specific to exporting data in the **CityGML format**. These options allow users to customize version compatibility, apply transformations, and manage feature mappings.
 
 ---
 
-## CityGML-Specific Options
+## CityGML-Specific options
 
 | Option                                | Description                                                                                          | Default Value |
 |---------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
@@ -28,13 +28,13 @@ The **CityGML** exporter in the **3DCityDB Tool** provides options specific to e
 
 ---
 
-## Examples for CityGML Export Options
+## Examples for CityGML export options
 
-Below are practical examples demonstrating how to use **CityGML-specific options** in the **3DCityDB Tool**.
+Below are practical examples demonstrating how to use **CityGML-specific options** in the **citydb-tool**.
 
 ---
 
-### 1. Export with a Specific CityGML Version
+### 1. Export with a specific CityGML version
 
 To export data in **CityGML version 2.0** format:
 
@@ -42,17 +42,26 @@ To export data in **CityGML version 2.0** format:
 citydb export citygml -o output_v2.gml --citygml-version=2.0
 ```
 
-### Apply XSLT Stylesheets for Transformation
+### Apply XSLT stylesheets for transformation
 
 To apply one or more XSLT stylesheets during the export process:
 
-```bash
-citydb export citygml -o transformed_output.gml --xsl-transform=transform1.xsl,transform2.xsl
-```
+=== "Linux"
+    ```bash
+    citydb export citygml \
+           -o transformed_output.gml \
+           --xsl-transform=transform1.xsl,transform2.xsl
+    ```
+=== "Windows"
+    ```bash
+    citydb export citygml ^
+           -o transformed_output.gml ^
+           --xsl-transform=transform1.xsl,transform2.xsl
+    ```
 
 This applies transform1.xsl and transform2.xsl sequentially to the export.
 
-### Replace LoD3 with LoD4 Geometries
+### Replace LoD3 with LoD4 geometries
 
 To replace existing **LoD3** geometries with **LoD4** geometries during the export:
 
@@ -60,7 +69,7 @@ To replace existing **LoD3** geometries with **LoD4** geometries during the expo
 citydb export citygml -o lod3_output.gml --use-lod4-as-lod3
 ```
 
-### Map LoD0 Roof Edges to Roof Surfaces
+### Map LoD0 roof edges to roof surfaces
 
 To include LoD0 roof edge lines as part of roof surfaces in the export:
 
@@ -68,7 +77,7 @@ To include LoD0 roof edge lines as part of roof surfaces in the export:
 citydb export citygml -o lod0_with_roofs.gml --map-lod0-roof-edge
 ```
 
-### Map LoD1 Multi-Surfaces to Generic Surfaces
+### Map LoD1 multi-surfaces to generic surfaces
 
 To restructure LoD1 multi-surfaces into thematic surfaces for better alignment:
 

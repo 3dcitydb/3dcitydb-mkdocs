@@ -9,13 +9,13 @@ tags:
   - export
 ---
 
-# CityJSON-Specific Export Options
+# CityJSON-specific export options
 
-The **CityJSON** exporter in the **3DCityDB Tool** provides additional options unique to the CityJSON format. These options allow precise control over JSON formatting, geometry precision, and transformations.
+The **CityJSON** exporter in the **citydb-tool** provides additional options unique to the CityJSON format. These options allow precise control over JSON formatting, geometry precision, and transformations.
 
 ---
 
-## CityJSON-Specific Options
+## CityJSON-specific options
 
 | Option                               | Description                                                                                           | Default Value |
 |--------------------------------------|-------------------------------------------------------------------------------------------------------|------------|
@@ -31,13 +31,13 @@ The **CityJSON** exporter in the **3DCityDB Tool** provides additional options u
 
 ---
 
-## Examples for CityJSON Export Options
+## Examples for CityJSON export options
 
-Below are practical examples demonstrating how to use **CityJSON-specific options** in the **3DCityDB Tool**.
+Below are practical examples demonstrating how to use **CityJSON-specific options** in the **citydb-tool**.
 
 ---
 
-### Export with Custom Precision for Geometry Vertices
+### Export with custom precision for geometry vertices
 
 To set the **vertex precision** to 5 decimal places to reduce file size:
 
@@ -45,7 +45,7 @@ To set the **vertex precision** to 5 decimal places to reduce file size:
 citydb export cityjson -o output.json --vertex-precision=5
 ```
 
-### Export with CityJSON Lines Format
+### Export with CityJSON lines format
 
 To export data as a CityJSON Sequence in JSON Lines format (requires CityJSON version 1.1+):
 
@@ -54,7 +54,7 @@ citydb export cityjson -o output.json --json-lines -v 1.1
 ```
 Each line in the output file will contain a separate JSON object.
 
-### Transform Coordinates into Integers
+### Transform coordinates into integers
 
 To transform geometry coordinates into integers for optimized file size (CityJSON version 1.0):
 
@@ -62,7 +62,7 @@ To transform geometry coordinates into integers for optimized file size (CityJSO
 citydb export cityjson -o output.json --transform-coordinates -v 1.0
 ```
 
-### Replace Templates with Explicit Coordinates
+### Replace templates with explicit coordinates
 
 To replace template geometries with explicit vertex coordinates for simplified output:
 
@@ -70,7 +70,7 @@ To replace template geometries with explicit vertex coordinates for simplified o
 citydb export cityjson -o output.json --replace-templates
 ```
 
-### Export with Default Material Values
+### Export with default material values
 
 To export CityJSON with default material values (e.g., colors and textures) defined in the CityGML standard:
 
@@ -84,7 +84,7 @@ To disable default material values:
 citydb export cityjson -o output.json --no-material-defaults
 ```
 
-### Export CityJSON for HTML Embedding
+### Export CityJSON for HTML embedding
 
 To escape problematic characters in the JSON output for safe embedding into HTML documents:
 

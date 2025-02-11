@@ -1,34 +1,32 @@
 ---
-title: Database connection
-description: How to connect a 3DCityDB
-# icon: material/emoticon-happy
+title: CQL2 Query Language
+subtitle: Filtering and Querying Data with CQL2
+description:
+# icon: material/filter
 status: wip
-tags:
-  - citydb-tool
-  - database-connection
 ---
 
-## Connecting to a PostgreSQL Database
+## Connecting to a postgreSQL database
 
-The CityDB tool requires a connection to a PostgreSQL database hosting the 3DCityDB schema. You can specify the database
+The citydb-tool requires a connection to a PostgreSQL database hosting the 3DCityDB schema. You can specify the database
 connection details using the database [options](#specifying-database-options-in-the-command)
 (refer to the [Export](./export_shared_options.md) or [Import](import.md) sections for more details) section or store them
 in an external [options file](#specifying-database-options-in-an-options-file) for reuse.
 It is also possible to use a [config file](#specifying-database-options-in-a-config-file) in JSON format to
 specify the database connection options. Alternatively, you can use **environment variables** for dynamic configuration.
 
-### Specifying Database Options in the Command
+### Specifying database options in the command
 
 You can provide the database connection options directly in the command:
 
-| Option                  | Description                                              | Default Value |
-|-------------------------|----------------------------------------------------------|---------------|
-| `-H`, `--db-host=<host>` | Hostname of the 3DCityDB server.                         |               |
-| `-P`, `--db-port=<port>` | Port of the 3DCityDB server (default: 5432).             | 5432          |
-| `-d`, `--db-name=<database>` | Name of the 3DCityDB database to connect to.         |               |
-| `-S`, `--db-schema=<schema>` | Database schema to use (default: `citydb` or `username`). | citydb or username |
-| `-u`, `--db-username=<user>` | Username for the database connection.                |               |
-| `-p`, `--db-password[=<password>]` | Password for the database connection. Leave empty to be prompted. |               |
+| Option                  | Description                                        | Default Value |
+|-------------------------|----------------------------------------------------|-----------|
+| `-H`, `--db-host=<host>` | Hostname of the 3DCityDB server.                   |           |
+| `-P`, `--db-port=<port>` | Port of the 3DCityDB server (default: 5432).       | 5432      |
+| `-d`, `--db-name=<database>` | Name of the 3DCityDB database to connect to.   |           |
+| `-S`, `--db-schema=<schema>` | Database schema to use | citydb |
+| `-u`, `--db-username=<user>` | Username for the database connection.          |           |
+| `-p`, `--db-password[=<password>]` | Password for the database connection. Leave empty to be prompted. |           |
 
 #### Example
 
@@ -36,7 +34,7 @@ You can provide the database connection options directly in the command:
 citydb export citygml -H localhost -P 5432 -d 3dcitydb -S citydb -u admin -p password -o output.gml
 ```
 
-### Specifying Database Options in an options File
+### Specifying database options in an options file
 
 You can store the database connection options in a file and reference it in the command using the `@` symbol.  The file should contain the options in the format `--option=value` (one per line).
 
@@ -57,7 +55,7 @@ Example of a Database Connection File:
 --db-password=password
 ```
 
-### Specifying Database Options in a config File
+### Specifying database options in a config file
 
 You can store the database connection options in a JSON file and reference it in the command using `--config-file=file.json`.
 
@@ -81,7 +79,7 @@ You can store the database connection options in a JSON file and reference it in
 }
 ```
 
-### Using Environment Variables for Database Connection
+### Using environment variables for database connection
 
 You can use **environment variables** to define database connection parameters dynamically. This approach is useful for automated scripts, CI/CD pipelines, or when credentials should not be hard-coded.
 
