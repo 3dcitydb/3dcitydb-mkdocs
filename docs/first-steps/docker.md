@@ -46,7 +46,7 @@ The quickest way to get up and running with 3DCityDB is using Docker!  On this p
           -e CITYDB_SCHEMA=theCityDBSchemaName \
           -e CITYDB_USERNAME=theUsername \
           -e CITYDB_PASSWORD=theSecretPass \
-        3dcitydb/3dcitydb-pg [help|import|export|delete|index]
+        3dcitydb/citydb-tool [help|import|export|delete|index]
         ```
 
     === "Windows"
@@ -60,7 +60,7 @@ The quickest way to get up and running with 3DCityDB is using Docker!  On this p
           -e CITYDB_SCHEMA=theCityDBSchemaName ^
           -e CITYDB_USERNAME=theUsername ^
           -e CITYDB_PASSWORD=theSecretPass ^
-        3dcitydb/3dcitydb-pg [help|import|export|delete|index]
+        3dcitydb/citydb-tool [help|import|export|delete|index]
         ```
 
     !!! tip
