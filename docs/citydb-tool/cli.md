@@ -216,7 +216,7 @@ citydb import citygml [...] --db-password -- my-city.gml
 To simplify CLI usage, citydb-tool provides short forms for some options (e.g., `-h` for `--help`). Additionally, long
 options without a specific short form can be abbreviated by using the initial letter(s) of the first component and
 optionally of one or more subsequent components of the option name. "Components" are separated by `-` (dash) characters
-or by case. For example, both `--CamelCase` and `--kebab-case` consist of two components.
+or by case. For example, both `--camelCase` and `--kebab-case` consist of two components.
 
 The following are valid abbreviations for `--super-long-option`, which has three components:
 

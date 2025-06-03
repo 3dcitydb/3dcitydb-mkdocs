@@ -39,18 +39,18 @@ For more details on the general export options and usage hints, see [here](expor
 
 ### CityJSON export options
 
-| Option                                | Description                                                                                         | Default value |
-|---------------------------------------|-----------------------------------------------------------------------------------------------------|---------------|
-| `-v`, `--cityjson-version=<version>`  | CityJSON version: `2.0`, `1.1`, `1.0`.                                                              | `2.0`         |
-| `--[no-]json-lines`                   | Write output as CityJSON Sequence in JSON Lines format. This option requires CityJSON 1.1 or later. | `true`        |
-| `--pretty-print`                      | Format and indent output file.                                                                      |               |
-| `--html-safe`                         | Write JSON that is safe to embed into HTML.                                                         |               |
-| `--vertex-precision=<digits>`         | Number of decimal places to keep for geometry vertices.                                             | 3             |
-| `--template-precision=<digits>`       | Number of decimal places to keep for template vertices.                                             | 3             |
-| `--texture-vertex-precision=<digits>` | Number of decimal places to keep for texture vertices.                                              | 7             |
-| `--[no-]transform-coordinates`        | Transform coordinates to integer values when exporting in CityJSON 1.0.                             | `true`        |
-| `--replace-templates`                 | Replace template geometries with real coordinates.                                                  |               |
-| `--[no-]material-defaults`            | Use CityGML default values for material properties.                                                 | `true`        |
+| Option                                | Description                                                                                              | Default value |
+|---------------------------------------|----------------------------------------------------------------------------------------------------------|---------------|
+| `-v`, `--cityjson-version=<version>`  | CityJSON version: `2.0`, `1.1`, `1.0`.                                                                   | `2.0`         |
+| `--[no-]json-lines`                   | Write output as CityJSON Text Sequence in JSON Lines format. This option requires CityJSON 1.1 or later. | `true`        |
+| `--pretty-print`                      | Format and indent output file.                                                                           |               |
+| `--html-safe`                         | Write JSON that is safe to embed into HTML.                                                              |               |
+| `--vertex-precision=<digits>`         | Number of decimal places to keep for geometry vertices.                                                  | 3             |
+| `--template-precision=<digits>`       | Number of decimal places to keep for template vertices.                                                  | 3             |
+| `--texture-vertex-precision=<digits>` | Number of decimal places to keep for texture vertices.                                                   | 7             |
+| `--[no-]transform-coordinates`        | Transform coordinates to integer values when exporting in CityJSON 1.0.                                  | `true`        |
+| `--replace-templates`                 | Replace template geometries with real coordinates.                                                       |               |
+| `--[no-]material-defaults`            | Use CityGML default values for material properties.                                                      | `true`        |
 
 ### Upgrade options for CityGML 2.0 and 1.0
 

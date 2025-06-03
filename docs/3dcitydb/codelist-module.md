@@ -45,7 +45,7 @@ the `CODELIST` table can be identified by matching the `codeSpace` value with th
 ## `CODELIST_ENTRY` table
 
 The `CODELIST_ENTRY` tables stores the values of the registered codelists. Each value is linked to a
-`codelist` through the `codelist_id` foreign key, which references an entry in the `CODELIST` table.
+codelist through the `codelist_id` foreign key, which references an entry in the `CODELIST` table.
 
 The code for each permissible codelist value, along with its definition or description, is stored in the `code` and
 `definition` columns, respectively. This setup allows for easy lookup of the definition for a code that is stored as

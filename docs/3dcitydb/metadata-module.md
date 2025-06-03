@@ -550,10 +550,15 @@ row** in the data type's table. To deviate from this rule, `"join"` or `"joinTab
 properties to specify their target table and how it is linked to the data type's table.
 
 The `core:ExternalReference` type shown above is an example where all nested properties are stored in different `val_*` columns within a
-single row of the `PROPERTY` table, ensuring a compact representation. However, for the `con:Height` type, storing all
-properties in one row is not possible due to conflicting target columns. Therefore, each nested property is stored in a
-separate row of `PROPERTY` and joined with the parent row representing the data type itself. See
-[here](feature-module.md#examples) for an example of how a `con:Height` value is stored in the `PROPERTY` table.
+single row of the `PROPERTY` table, ensuring a compact representation.
+
+In contrast, for the `con:Height` type, storing all properties in one row is not possible due to conflicting target columns
+used for the nested properties. Therefore, each nested property must be stored in a
+separate row of `PROPERTY` and joined with the parent row representing the `con:Height` data type itself.
+For the default case, where data types are stored in the `PROPERTY` table, this is achieved through a self-join on
+the `PROPERTY` table using the `parent_id` foreign key (see the `"join`" attribute in the example). This results in a
+hierarchical structure for complex data types within the `PROPERTY` table. See
+[here](feature-module.md#examples) for an example of how an attribute of type `con:Height` is stored in the `PROPERTY` table.
 
 !!! tip
     The complete JSON Schema specification for defining data types is provided in the file
@@ -587,7 +592,7 @@ key, with its name, version string, and human-readable description stored as met
 
 In the context of 3DCityDB `v5`, an ADE is a collection of user-defined feature types, data types, and namespaces. These
 extensions are linked to their corresponding ADE via the `ade_id` foreign key in the `OBJECTCLASS`, `DATATYPE`, and `NAMESPACE`
-tables, referencing the `id` column of the ADE table.
+tables, referencing the `id` column of the `ADE` table.
 
 !!! warning
     Although ADE support is implemented in the 3DCityDB `v5` relational schema, no tool is currently available to

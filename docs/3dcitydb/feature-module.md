@@ -76,7 +76,7 @@ columns, depending on its data type.
 Simple attribute values such as integers, doubles, strings, or timestamps are stored in the corresponding `val_int`,
 `val_double`, `val_string`, or `val_timestamp` columns. Boolean values are stored in the `val_int` column, with `0`
 representing false and `1` representing true. Array values of attributes are represented as JSON arrays in the
-`val_array` column, with items that can either be simple values or JSON objects.
+`val_array` column, with items that can either be simple values, JSON objects, or JSON arrays themselves.
 
 The `val_content` column can hold arbitrary content as a character blob, while the `val_content_mime_type` column
 specifies the MIME type of the content. This setup can be used to store property values in the format they appear in the original
@@ -268,17 +268,17 @@ table is shown below:
 
 This type definition specifies that `con:Height` has four nested attributes:
 
-1. `value` of type `core:Measure`: Represents a measurement, with the value stored in `val_double` and the unit in
+1. **`"value"` of type `core:Measure`**: Represents a measurement, with the value stored in `val_double` and the unit in
    `val_uom`.
-2. `status` of type `core:String`: A simple string stored in `val_string`.
-3. `lowReference` of type `core:Code`: As explained earlier, a string stored in `val_string`, with the code space stored
+2. **`"status"` of type `core:String`**: A simple string stored in `val_string`.
+3. **`"lowReference"` of type `core:Code`**: As explained earlier, a string stored in `val_string`, with the code space stored
    in `val_codespace`.
-4. `highReference` of type `core:Code`: Stored the same way as `lowReference`.
+4. **`"highReference"` of type `core:Code`**: Stored the same way as `lowReference`.
 
-Additionally, the `"join"` property in the JSON defines a hierarchical relationship, where each of these attributes
-is linked back to the parent through the `parent_id` foreign key. This means that each nested attribute should be
-stored in a separate row, all referencing the same parent `id`. Since `con:Height` does not store an own `"value"`,
-the parent row will have `NULL` in all `val_*` columns.
+Additionally, the JSON defines a `"join"` property for each nested attribute that links back to the parent
+attribute through the `parent_id` foreign key. This establishes a hierarchical relationship and means that
+each nested attribute should be stored in a separate row, all referencing the same parent `id`. Since `con:Height`
+does not store an own `"value"`, the parent row will have `NULL` in all `val_*` columns.
 
 | id | name            | parent_id | val_string          | val_double | val_uom | val_codespace                    | ... |
 |----|-----------------|-----------|---------------------|------------|---------|----------------------------------|-----|

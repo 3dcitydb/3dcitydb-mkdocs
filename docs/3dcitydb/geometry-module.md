@@ -155,9 +155,9 @@ consisting of six polygons. The equivalent CityGML `Solid` geometry is shown in 
     </gml:Solid>
     ```
 
-Unlike the PostGIS polyhedral surface, the CityGML `Solid` geometry has an additional `CompositeSurface` to represent
-the outer shell formed by the polygons. Moreover, the solid, the composite surface, and each polygon have an
-identifier that allows the reuse of the component and the assignment of textures or colors. The following JSON object
+Unlike the PostGIS polyhedral surface, the CityGML `Solid` geometry has an additional `Shell` to represent
+the outer shell formed by the polygons. Moreover, the solid, the shell, and each polygon have an
+identifier (`gml:id`) that allows the reuse of the component and the assignment of textures or colors. The following JSON object
 encodes this extra metadata and links it to the `POLYHEDRALSURFACE Z` representation:
 
 ```json
@@ -210,7 +210,7 @@ encodes this extra metadata and links it to the `POLYHEDRALSURFACE Z` representa
 ```
 
 1. A value of `9` means `Solid`.
-2. A value of `6` means `CompositeSurface`.
+2. A value of `6` means `CompositeSurface` or `Shell`.
 3. A value of `5` means `Polygon`.
 
 The metadata is interpreted as follows: The `"type"` property of the JSON object classifies the geometry as a `Solid` (`type = 9`), with a

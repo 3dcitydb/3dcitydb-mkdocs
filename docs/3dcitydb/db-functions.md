@@ -46,7 +46,7 @@ The delete functions are provided in two forms:
 value if the deletion is successful. If `NULL` is returned, it indicates that the entry has either already been deleted or
 an error occurred during the deletion process.
 
-- **Deletion of multiple entries:** The other variant accepts an array of `id` values, returning the id values of the
+- **Deletion of multiple entries:** The other variant accepts an array of `id` values, returning the `id` values of the
 successfully deleted entries as a `SETOF BIGINT`, allowing multiple entries to be deleted in a single operation.
 
 All functions offer an optional `schema_name` parameter, allowing you to apply them to different database schemas within your
@@ -73,7 +73,7 @@ The following example demonstrates how to create a custom function to delete all
 using the single-`id` version of `delete_feature`:
 
 ```sql
--- example procedure for deleting all building features
+-- example function for deleting all building features
 DO $$
 DECLARE
   rec RECORD;
@@ -150,24 +150,27 @@ SELECT terminate_feature(
 The `citydb_pkg` package offers functions for calculating the 3D bounding box of features and implicit geometries, as well
 as additional utility functions to support these operations.
 
-| Function                                                                                                  | Return type | Description                                                |
-|-----------------------------------------------------------------------------------------------------------|-------------|------------------------------------------------------------|
-| **`get_feature_envelope`**<br/> `(fid BIGINT, set_envelope INTEGER, schema_name TEXT)`                    | `GEOMETRY`  | Returns the envelope geometry of a given feature           |
-| **`calc_implicit_geometry_envelope`**<br/> `(gid BIGINT, ref_pt GEOMETRY, matrix JSON, schema_name TEXT)` | `GEOMETRY`  | Returns the envelope geometry of a given implicit geometry |
-| **`box2envelope`**<br/> `(box BOX3D, schema_name TEXT)`                                                   | `GEOMETRY`  | Converts a box geometry to to envelope                     |
-| **`update_bounds`**<br/> `(old_bbox GEOMETRY, new_bbox GEOMETRY, schema_name TEXT)`                       | `GEOMETRY`  | Returns the envelope geometry of two bounding boxes        |
+| Function                                                                                                         | Return type | Description                                                |
+|------------------------------------------------------------------------------------------------------------------|-------------|------------------------------------------------------------|
+| **`get_feature_envelope`**<br/> `(fid BIGINT, compute_envelope INTEGER, set_envelope INTEGER, schema_name TEXT)` | `GEOMETRY`  | Returns the envelope geometry of a given feature           |
+| **`get_implicit_geometry_envelope`**<br/> `(gid BIGINT, ref_pt GEOMETRY, matrix JSON, schema_name TEXT)`         | `GEOMETRY`  | Returns the envelope geometry of a given implicit geometry |
+| **`get_envelope`**<br/> `(geom GEOMETRY, schema_name TEXT)`                                                      | `GEOMETRY`  | Computes the envelope geometry for a given geometry        |
+| **`get_envelope`**<br/> `(box BOX3D, schema_name TEXT)`                                                          | `GEOMETRY`  | Converts a BOX3D geometry to an envelope geometry          |
+| **`get_envelope`**<br/> `(geom1 GEOMETRY, geom2 GEOMETRY, schema_name TEXT)`                                     | `GEOMETRY`  | Computes the envelope geometry for two geometries          |
 
-The `get_feature_envelope` function computes and returns the envelope of a feature. The feature's primary key `id` must be
-provided as input. The bounding volume is calculated by evaluating all the geometries of the feature and its "contained"
+The `get_feature_envelope` function returns the envelope of a feature. The feature's primary key `id` must be
+provided as input. When the `compute_envelope` parameter is set to `0` (default), the envelope currently stored in the
+`FEATURE` table is returned. When set to `1` – or in case the value in the `FEATURE` table is `NULL` – the envelope
+is computed by evaluating all the geometries of the feature and its "contained"
 subfeatures across all LoDs, including implicit geometries. The returned geometry is the minimal 3D rectangle that
 encloses the feature, and it can be directly used as the value for the `envelope` column of the `FEATURE` table.
 
-The `get_feature_envelope` function offers two optional parameters: The `set_envelope` parameter specifies whether the
+The `get_feature_envelope` function offers two more optional parameters: The `set_envelope` parameter specifies whether the
 computed envelopes should be used to update the `envelope` columns of the feature and its subfeatures (`1` for true, `0` for
 false; default: `0`). The `schema_name` parameter defines the target database schema to operate in, as explained above
 (default: `citydb`).
 
-The 3D bounding volume of implicit geometries can be calculated using the `calc_implicit_geometry_envelope` function. It
+The envelope of implicit geometries can be calculated using the `get_implicit_geometry_envelope` function. It
 requires the following inputs: the primary key `id` of the template geometry from the `GEOMETRY_DATA` table, a PostGIS `POINT`
 geometry specifying the real-world coordinates where the template should be placed (`ref_pt`), and a 3x4 row-major matrix (JSON
 double array) defining the rotation, scaling, and translation for the template (`matrix`).
@@ -176,9 +179,9 @@ The reference point and transformation matrix follow the format used for storing
 (see [here](feature-module.md#relationships)). Therefore, the values from the `PROPERTY` table can be
 directly used as input parameters.
 
-The `update_bounds` and `box2envelope` functions are utility functions used by the functions mentioned above. However, they
-can also be used on their own to update a bounding box based on another or to convert a PostGIS `BOX3D` geometry into the
-envelope representation needed for the envelope column in the FEATURE table.
+The remaining `get_envelope` functions are utility functions used by the functions mentioned above. However, they
+can also be used on their own to compute the envelope for one or two geometries, or to convert a PostGIS `BOX3D`
+geometry into the envelope representation needed for the `envelope` column in the `FEATURE` table.
 
 ## CRS functions
 
@@ -186,13 +189,13 @@ The `citydb_pkg` package provides functions for performing CRS operations on a 3
 
 | Function                                                                                                                                                  | Return type  | Description                                         |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|-----------------------------------------------------|
-| **`change_schema_srid`**<br/>`(schema_srid INTEGER, schema_srs_name TEXT, transform INTEGER, schema_name TEXT)`                                           | `SETOF VOID` | Updates the coordinate system for a database schema |
-| **`change_column_srid`**<br/>`(table_name TEXT, column_name TEXT, dim INTEGER, schema_srid INTEGER, transform INTEGER, geom_type TEXT, schema_name TEXT)` | `SETOF VOID` | Updates the coordinate system for a geometry column |
-| **`check_srid`**<br/>`(srsno INTEGER)`                                                                                                                    | `TEXT`       | Checks if a given `SRID` is valid                   |
-| **`is_coord_ref_sys_3d`**<br/>`(schema_srid INTEGER)`                                                                                                     | `INTEGER`    | Checks if a a CRS is a true 3D system               |
+| **`change_schema_srid`**<br/>`(target_srid INTEGER, target_srs_name TEXT, transform INTEGER, schema_name TEXT)`                                           | `SETOF VOID` | Updates the coordinate system for a database schema |
+| **`change_column_srid`**<br/>`(table_name TEXT, column_name TEXT, dim INTEGER, target_srid INTEGER, transform INTEGER, geom_type TEXT, schema_name TEXT)` | `SETOF VOID` | Updates the coordinate system for a geometry column |
+| **`check_srid`**<br/>`(srid INTEGER)`                                                                                                                     | `INTEGER`    | Checks if a given `SRID` is valid                   |
+| **`is_coord_ref_sys_3d`**<br/>`(srid INTEGER)`                                                                                                            | `INTEGER`    | Checks if a a CRS is a true 3D system               |
 | **`is_db_coord_ref_sys_3d`**<br/>`(schema_name TEXT)`                                                                                                     | `INTEGER`    | Checks if the CRS of the 3DCityDB is true 3D system |
 
-The primary function is `change_schema_srid`, which changes the CRS for all geometry columns within the 3DCityDB.
+The primary function is `change_schema_srid`, which changes the CRS for all geometry columns within a 3DCityDB schema (default: `citydb`).
 It takes the database-specifc `SRID` (**S**patial **R**eference **ID**) of the new CRS and its OGC-compliant name as inputs.
 
 The function operates in two modes, determined by the value of the `transform` parameter:
@@ -213,29 +216,6 @@ table with the new values.
     spatial indexes on the geometry columns to maintain consistency with the new CRS. As a result, the process can be
     time-consuming depending on the table size.
 
-## Database constraint functions
-
-The `citydb_pkg` package provides functions to set database constraints or modify their behavior.
-
-| Function                                                                                                                                                      | Return type  | Description                                                           |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|-----------------------------------------------------------------------|
-| **`set_enabled_fkey`**<br/>`(fkey_trigger_oid OID, enable BOOLEAN)`                                                                                           | `SETOF VOID` | Enables or disables a given foreign key constraint                    |
-| **`set_enabled_geom_fkeys`**<br/>`(enable BOOLEAN, schema_name TEXT)`                                                                                         | `SETOF VOID` | Enables/disables references to `GEOMETRY_DATA` table                  |
-| **`set_enabled_schema_fkeys`**<br/>`(enable BOOLEAN, schema_name TEXT)`                                                                                       | `SETOF VOID` | Enables/disables all foreign keys in a given schema                   |
-| **`set_fkey_delete_rule`**<br/>`(fkey_name TEXT, table_name TEXT, column_name TEXT, ref_table TEXT, ref_column TEXT, on_delete_param CHAR, schema_name TEXT)` | `SETOF VOID` | Removes a constraint to add it again with given `ON DELETE` parameter |
-| **`set_schema_fkeys_delete_rule`**<br/>`(on_delete_param CHAR, schema_name TEXT)`                                                                             | `SETOF VOID` | Updates all the constraints in the specified schema                   |
-
-Users can temporarily disable specific foreign key relationships between tables, such as those referencing
-the `GEOMETRY_DATA` table. While the constraints remain in place, disabling them can significantly improve performance for bulk write
-operations, such as importing large volumes of city objects. It is also possible to modify the delete rule of
-foreign keys, changing it from `ON DELETE NO ACTION` (use `'a'` as input) to `ON DELETE SET NULL` (`'n'`) or
-`ON DELETE CASCADE` (`'c'`). Switching the delete rule removes and recreates the foreign key constraint.
-
-!!! warning
-    Use these functions with caution. Disabling foreign key constraints may lead to data inconsistencies, and modifying
-    their delete rules can introduce unintended side effects. For example, the delete functions rely on cascading deletes,
-    so disabling this could cause them to malfunction. Similar issues may arise with other database operations.
-
 ## Utility functions
 
 The `citydb_pkg` package also provides various utility functions as shown below.
@@ -244,5 +224,5 @@ The `citydb_pkg` package also provides various utility functions as shown below.
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|--------------------------------------------------------------------------------|
 | **`citydb_version`**<br/>`(OUT version TEXT, OUT major_version INTEGER, OUT minor_version INTEGER, OUT minor_revision INTEGER)`                                                 | `RECORD`        | Returns the version of the 3DCityDB instance                                   |
 | **`db_metadata`**<br/>`(schema_name TEXT, OUT srid INTEGER, OUT srs_name TEXT, OUT coord_ref_sys_name TEXT, OUT coord_ref_sys_kind TEXT, OUT wktext TEXT, OUT versioning TEXT)` | `RECORD`        | Returns meta information about the 3DCityDB instance                           |
-| **`get_seq_values`**<br/>`(seq_name TEXT,seq_count BIGINT)`                                                                                                                     | `SETOF BIGINT`  | Returns `n` sequence values from the given sequence                            |
-| **`get_child_objectclass_ids`**<br/>`(class_id INTEGER,skip_abstract INTEGER, schema_name TEXT)`                                                                                | `SETOF INTEGER` | Returns the `id` values of all transitive subclasses of the given object class |
+| **`get_seq_values`**<br/>`(seq_name TEXT, seq_count BIGINT)`                                                                                                                    | `SETOF BIGINT`  | Returns `n` sequence values from the given sequence                            |
+| **`get_child_objectclass_ids`**<br/>`(class_id INTEGER, skip_abstract INTEGER, schema_name TEXT)`                                                                               | `SETOF INTEGER` | Returns the `id` values of all transitive subclasses of the given object class |

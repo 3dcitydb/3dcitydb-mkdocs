@@ -160,7 +160,6 @@ The following example illustrates a CityGML import command with multiple filters
         --type-name=bldg:Building,tran:Road \
         --bbox=367123,5807268,367817,5807913,25833 \
         --bbox-mode=on_tile \
-        --no-appearances \
         --limit=100
     ```
 
@@ -171,7 +170,6 @@ The following example illustrates a CityGML import command with multiple filters
         --type-name=bldg:Building,tran:Road ^
         --bbox=367123,5807268,367817,5807913,25833 ^
         --bbox-mode=on_tile ^
-        --no-appearances ^
         --limit=100
     ```
 

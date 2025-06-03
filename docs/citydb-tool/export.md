@@ -79,7 +79,7 @@ used by implicit geometries. When exporting as a ZIP archive, these folders are 
 
 ### Querying and filtering
 
-citydb-tool allows exporting all features stored in a 3DCityDB `v5` instance with a single command. However, in most
+citydb-tool allows exporting all features stored in a 3DCityDB `v5` instance into a single file. However, in most
 cases, only a specific subset of features is needed. The `export` command provides various querying and filtering
 options to control which features are included in the export.
 

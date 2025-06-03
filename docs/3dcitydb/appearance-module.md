@@ -28,10 +28,10 @@ stored in the `FEATURE` table.
 
 The columns `objectid`, `identifier`, and `identifier_codespace` in the `APPEARANCE` table are used to store unique identifiers
 for an appearance object, serving the same purpose as in the [`FEATURE`](feature-module.md#feature-table) table.
-The `objectid` is a string identifier used to uniquely reference a feature within the database
+The `objectid` is a string identifier used to uniquely reference an appearance object within the database
 and datasets. It is recommended to use a globally unique value for `objectid` and ensure this column is always populated.
 The `identifier` column provides an optional identifier to uniquely distinguish the appearance across different systems and
-potentially multiple versions of the same real-world object. It must be accompanied by a code space, stored in the
+potentially multiple versions. It must be accompanied by a code space, stored in the
 `identifier_codespace` column, which indicates the authority responsible for maintaining the identifier.
 
 Each appearance is associated with a specific theme for its surface data, stored as a string identifier in the `theme`
