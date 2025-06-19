@@ -25,11 +25,11 @@ Relation schema of the 3DCityDB `v5`.
 All tables of the relation schema are logically grouped into five modules, which are discussed in the
 following chapters:
 
-- **Feature module**: Contains the core tables for storing feature information, excluding geometry and appearance data.
-- **Geometry module**: Contains tables for storing both explicit and implicit geometry data.
-- **Appearance module**: Contains tables for storing appearance information.
-- **Metadata module**: Holds meta-information about features and their properties.
-- **Codelist module**: Stores codelists with their corresponding values.
+- [**Feature module**](feature-module.md): Contains the core tables for storing feature information, excluding geometry and appearance data.
+- [**Geometry module**](geometry-module.md): Contains tables for storing both explicit and implicit geometry data.
+- [**Appearance module**](appearance-module.md): Contains tables for storing appearance information.
+- [**Metadata module**](metadata-module.md): Holds meta-information about features and their properties.
+- [**Codelist module**](codelist-module.md): Stores codelists with their corresponding values.
 
 !!! note
     Although conceptually the database model is applicable to any database system, this chapter uses

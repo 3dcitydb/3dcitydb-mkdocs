@@ -136,14 +136,16 @@ The example below shows the JSON definitions for the `Road` feature type and the
           "namespace": "http://3dcitydb.org/3dcitydb/transportation/5.0",
           "description": "Relates to the sections that are part of the Road.",
           "type": "core:FeatureProperty",
-          "target": "tran:Section"
+          "target": "tran:Section",
+          "relationType": "contains"
         },
         {
           "name": "intersection",
           "namespace": "http://3dcitydb.org/3dcitydb/transportation/5.0",
           "description": "Relates to the intersections that are part of the Road.",
           "type": "core:FeatureProperty",
-          "target": "tran:Intersection"
+          "target": "tran:Intersection",
+          "relationType": "contains"
         }
       ]
     }
@@ -324,7 +326,7 @@ for the `"imageURI"` property in the `core:AbstractTexture` type:
 Properties of type `core:FeatureProperty` or `core:GeometryProperty` are used to link a feature to another feature or a
 geometry representation. The JSON objects for these properties must include an additional `"target"` property, which holds
 the identifier of the referenced feature type or geometry type as its value. The following two properties, taken from
-the `core:AbstractObject` feature type, illustrate this.
+the `core:AbstractSpace` feature type, illustrate this.
 
 === "Feature property"
 
@@ -334,7 +336,8 @@ the `core:AbstractObject` feature type, illustrate this.
       "namespace": "http://3dcitydb.org/3dcitydb/core/5.0",
       "description": "Relates to surfaces that bound the space.",
       "type": "core:FeatureProperty",
-      "target": "core:AbstractSpaceBoundary"
+      "target": "core:AbstractSpaceBoundary",
+      "relationType": "contains"
     }
     ```
 
@@ -349,6 +352,10 @@ the `core:AbstractObject` feature type, illustrate this.
       "target": "core:AbstractSolid"
     }
     ```
+
+In addition to the `"target"` property, a `core:FeatureProperty` also specifies the relationship to the target feature using
+the `"relationType"` property, which can be either `relates` or `contains`. The meaning and implications of each
+relationship type are further explained in the context of the `PROPERTY` table [here](feature-module.md#relationships).
 
 !!! tip
     The [3DCityDB software package](../download.md#3dcitydb-database-scripts) includes a JSON Schema specification that defines

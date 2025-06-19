@@ -50,10 +50,10 @@ an error occurred during the deletion process.
 successfully deleted entries as a `SETOF BIGINT`, allowing multiple entries to be deleted in a single operation.
 
 All functions offer an optional `schema_name` parameter, allowing you to apply them to different database schemas within your
-PostgreSQL database. The provided target schema must contain a 3DCityDB `v5` instance. If the `schema_name` is omitted,
-the default schema `citydb` will be used.
+PostgreSQL database. The provided target schema must contain a 3DCityDB `v5` instance. For more information, see
+[below](#applying-functions-to-different-schemas).
 
-The example below demonstrates how to easily delete features based on a query result:
+The following example demonstrates how to easily delete features based on a query result:
 
 ```sql
 -- delete a single feature by id
@@ -69,7 +69,7 @@ depends on the ratio between the number of entries to be deleted and the total n
 example, if the `id` array is very large and covers a significant portion of the table, it may be more efficient to use the
 single-`id` version or delete entries in smaller batches.
 
-The following example demonstrates how to create a custom function to delete all buildings from the 3DCityDB
+The example below demonstrates how to create a custom function to delete all buildings from the 3DCityDB
 using the single-`id` version of `delete_feature`:
 
 ```sql
@@ -152,11 +152,9 @@ as additional utility functions to support these operations.
 
 | Function                                                                                                         | Return type | Description                                                |
 |------------------------------------------------------------------------------------------------------------------|-------------|------------------------------------------------------------|
-| **`get_feature_envelope`**<br/> `(fid BIGINT, compute_envelope INTEGER, set_envelope INTEGER, schema_name TEXT)` | `GEOMETRY`  | Returns the envelope geometry of a given feature           |
+| **`get_feature_envelope`**<br/> `(fid BIGINT, schema_name TEXT, compute_envelope INTEGER, set_envelope INTEGER)` | `GEOMETRY`  | Returns the envelope geometry of a given feature           |
 | **`get_implicit_geometry_envelope`**<br/> `(gid BIGINT, ref_pt GEOMETRY, matrix JSON, schema_name TEXT)`         | `GEOMETRY`  | Returns the envelope geometry of a given implicit geometry |
 | **`get_envelope`**<br/> `(geom GEOMETRY, schema_name TEXT)`                                                      | `GEOMETRY`  | Computes the envelope geometry for a given geometry        |
-| **`get_envelope`**<br/> `(box BOX3D, schema_name TEXT)`                                                          | `GEOMETRY`  | Converts a BOX3D geometry to an envelope geometry          |
-| **`get_envelope`**<br/> `(geom1 GEOMETRY, geom2 GEOMETRY, schema_name TEXT)`                                     | `GEOMETRY`  | Computes the envelope geometry for two geometries          |
 
 The `get_feature_envelope` function returns the envelope of a feature. The feature's primary key `id` must be
 provided as input. When the `compute_envelope` parameter is set to `0` (default), the envelope currently stored in the
@@ -167,8 +165,8 @@ encloses the feature, and it can be directly used as the value for the `envelope
 
 The `get_feature_envelope` function offers two more optional parameters: The `set_envelope` parameter specifies whether the
 computed envelopes should be used to update the `envelope` columns of the feature and its subfeatures (`1` for true, `0` for
-false; default: `0`). The `schema_name` parameter defines the target database schema to operate in, as explained above
-(default: `citydb`).
+false; default: `0`). The `schema_name` parameter defines the target database schema to operate in, as explained
+[below](#applying-functions-to-different-schemas).
 
 The envelope of implicit geometries can be calculated using the `get_implicit_geometry_envelope` function. It
 requires the following inputs: the primary key `id` of the template geometry from the `GEOMETRY_DATA` table, a PostGIS `POINT`
@@ -176,12 +174,11 @@ geometry specifying the real-world coordinates where the template should be plac
 double array) defining the rotation, scaling, and translation for the template (`matrix`).
 
 The reference point and transformation matrix follow the format used for storing them in the `PROPERTY` table
-(see [here](feature-module.md#relationships)). Therefore, the values from the `PROPERTY` table can be
-directly used as input parameters.
+(see [here](feature-module.md#relationships)). Therefore, the values from the `PROPERTY` table can be directly used as input parameters.
 
-The remaining `get_envelope` functions are utility functions used by the functions mentioned above. However, they
-can also be used on their own to compute the envelope for one or two geometries, or to convert a PostGIS `BOX3D`
-geometry into the envelope representation needed for the `envelope` column in the `FEATURE` table.
+The remaining `get_envelope` function is primarily used internally by the functions mentioned above. However, it
+can also be called directly to compute the envelope of a single geometry. The result is also returned in the
+format required by the `envelope` column of the `FEATURE` table.
 
 ## CRS functions
 
@@ -189,8 +186,8 @@ The `citydb_pkg` package provides functions for performing CRS operations on a 3
 
 | Function                                                                                                                                                  | Return type  | Description                                         |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|-----------------------------------------------------|
-| **`change_schema_srid`**<br/>`(target_srid INTEGER, target_srs_name TEXT, transform INTEGER, schema_name TEXT)`                                           | `SETOF VOID` | Updates the coordinate system for a database schema |
-| **`change_column_srid`**<br/>`(table_name TEXT, column_name TEXT, dim INTEGER, target_srid INTEGER, transform INTEGER, geom_type TEXT, schema_name TEXT)` | `SETOF VOID` | Updates the coordinate system for a geometry column |
+| **`change_schema_srid`**<br/>`(target_srid INTEGER, target_srs_name TEXT, schema_name TEXT, transform INTEGER)`                                           | `SETOF VOID` | Updates the coordinate system for a database schema |
+| **`change_column_srid`**<br/>`(table_name TEXT, column_name TEXT, dim INTEGER, target_srid INTEGER, schema_name TEXT, transform INTEGER, geom_type TEXT)` | `SETOF VOID` | Updates the coordinate system for a geometry column |
 | **`check_srid`**<br/>`(srid INTEGER)`                                                                                                                     | `INTEGER`    | Checks if a given `SRID` is valid                   |
 | **`is_coord_ref_sys_3d`**<br/>`(srid INTEGER)`                                                                                                            | `INTEGER`    | Checks if a a CRS is a true 3D system               |
 | **`is_db_coord_ref_sys_3d`**<br/>`(schema_name TEXT)`                                                                                                     | `INTEGER`    | Checks if the CRS of the 3DCityDB is true 3D system |
@@ -220,9 +217,42 @@ table with the new values.
 
 The `citydb_pkg` package also provides various utility functions as shown below.
 
-| Function                                                                                                                                                                        | Return type     | Description                                                                    |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|--------------------------------------------------------------------------------|
-| **`citydb_version`**<br/>`(OUT version TEXT, OUT major_version INTEGER, OUT minor_version INTEGER, OUT minor_revision INTEGER)`                                                 | `RECORD`        | Returns the version of the 3DCityDB instance                                   |
-| **`db_metadata`**<br/>`(schema_name TEXT, OUT srid INTEGER, OUT srs_name TEXT, OUT coord_ref_sys_name TEXT, OUT coord_ref_sys_kind TEXT, OUT wktext TEXT, OUT versioning TEXT)` | `RECORD`        | Returns meta information about the 3DCityDB instance                           |
-| **`get_seq_values`**<br/>`(seq_name TEXT, seq_count BIGINT)`                                                                                                                    | `SETOF BIGINT`  | Returns `n` sequence values from the given sequence                            |
-| **`get_child_objectclass_ids`**<br/>`(class_id INTEGER, skip_abstract INTEGER, schema_name TEXT)`                                                                               | `SETOF INTEGER` | Returns the `id` values of all transitive subclasses of the given object class |
+| Function                                                                                                                                                                        | Return type     | Description                                                                               |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|-------------------------------------------------------------------------------------------|
+| **`citydb_version`**<br/>`(OUT version TEXT, OUT major_version INTEGER, OUT minor_version INTEGER, OUT minor_revision INTEGER)`                                                 | `RECORD`        | Returns the version of the 3DCityDB instance                                              |
+| **`db_metadata`**<br/>`(schema_name TEXT, OUT srid INTEGER, OUT srs_name TEXT, OUT coord_ref_sys_name TEXT, OUT coord_ref_sys_kind TEXT, OUT wktext TEXT, OUT versioning TEXT)` | `RECORD`        | Returns meta information about the 3DCityDB instance                                      |
+| **`get_seq_values`**<br/>`(seq_name TEXT, seq_count BIGINT)`                                                                                                                    | `SETOF BIGINT`  | Returns `n` sequence values from the given sequence                                       |
+| **`get_child_objectclass_ids`**<br/>`(class_id INTEGER, schema_name TEXT, skip_abstract INTEGER)`                                                                               | `SETOF INTEGER` | Returns the `id` values of all transitive subclasses of the given object class            |
+| **`get_current_schema`**()                                                                                                                                                      | `TEXT`          | Returns the name of the active 3DCityDB schema as determined by the current `search_path` |
+| **`set_current_schema`**<br/>`(schema_name TEXT, local BOOLEAN)`                                                                                                                | `SETOF VOID`    | Sets the active 3DCityDB schema to the specified name by adjusting the `search_path`      |
+
+The functions `get_current_schema` and `set_current_schema` simplify managing the active 3DCityDB schema. While `get_current_schema`
+returns the schema currently set in the `search_path`, `set_current_schema` updates it to the specified name. The
+`local` parameter controls the scope of the change: when set to true (default), it applies the current transaction only;
+when false, it applies to the entire session until explicitly changed. Additionally, `set_current_schema` automatically
+includes required schemas like `citydb_pkg` and `public`.
+
+## Applying functions to different schemas
+
+The 3DCityDB supports using multiple data schemas within the same PostgreSQL database. The default schema
+is named `citydb`, while additional schemas can be freely named by the user. A setup script to create additional data
+schemas is included in the 3DCityDB software package and is documented [here](db-scripts.md#shell-scripts).
+
+Most of the database functions described in this chapter accept an optional `schema_name` parameter to specify the
+target schema. If this parameter is provided, the function temporarily sets the database `search_path` to the given
+schema, making it the active schema for that operation. This change to the `search_path` applies only for the duration
+of the current transaction — not the entire session. This ensures that any change to the `search_path` remains isolated
+and does not affect other operations outside the transaction, helping to avoid unintended side effects.
+
+If `schema_name` is omitted, the function uses the schema currently set in the `search_path`. This offers
+flexibility, allowing users to configure the search path according to their needs before calling any 3DCityDB
+database functions.
+
+!!! note
+    When setting up a 3DCityDB instance, the default schema is always `citydb`. If you are not working with multiple schemas, you
+    can simply omit the `schema_name` parameter when calling functions — they will automatically operate on the `citydb` schema.
+    For most users, this is the default and recommended approach for invoking the database functions.
+
+!!! tip
+    The utility functions `get_current_schema` and `set_current_schema` (see [above](#utility-functions)) are especially useful
+    for users who prefer not to manage the `search_path` manually.
