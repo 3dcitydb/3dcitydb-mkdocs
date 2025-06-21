@@ -219,3 +219,8 @@ ALTER DATABASE new_citydb_v5 SET search_path TO citydb, citydb_pkg, public;
 !!! info
     If your 3DCityDB template contains more schemas, ensure to add them all to the `search_path`.
     Note that the search path will be updated upon the next login, not within the same session.
+
+## Upgrading a 3DCityDB `v5` to the latest release
+
+If you already have a 3DCityDB `v5` installed and running, and want to update it to the latest release instead of
+setting up a new instance, please follow this [guide](../3dcitydb/db-upgrade.md).

@@ -36,6 +36,7 @@ The following table provides an overview of the available shell scripts and thei
 | `revoke-access`      | Revokes read-only or read-write access to a 3DCityDB instance, which has been granted with `grant-access` |
 | `create-changelog`   | Create the changelog extension for a 3DCityDB instance                                                    |
 | `drop-changelog`     | Remove the changelog extension from a 3DCityDB instance                                                   |
+| `upgrade-db`         | Upgrade an existing 3DCityDB instance to a newer minor or patch version                                   |
 
 The scripts are intended to run in an interactive shell session, prompting the user for necessary information to perform
 their tasks. The `connection-details` script serves a special purpose, as it defines the connection details for your

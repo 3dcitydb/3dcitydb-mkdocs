@@ -9,4 +9,6 @@ nav:
     - Codelist module: codelist-module.md
   - db-scripts.md
   - db-functions.md
+  - db-upgrade.md
+  - docker.md
   - ...
