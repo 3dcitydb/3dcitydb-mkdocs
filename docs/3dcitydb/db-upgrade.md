@@ -14,8 +14,8 @@ available [here](db-scripts.md#shell-scripts).
 
 !!! note
     - The upgrade scripts are intended **only** for minor and patch version updates within the same major version.
-    - The upgrade may involve schema changes. Because this affects the stored city model data, we **strongly recommend backing
-      up your 3DCityDB instance before upgrading**.
+    - The upgrade may involve schema changes. Because these changes affect the stored city model data,
+      we **strongly recommend backing up your 3DCityDB instance before upgrading**.
 
 ## 3DCityDB upgrade steps
 
