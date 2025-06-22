@@ -184,13 +184,14 @@ format required by the `envelope` column of the `FEATURE` table.
 
 The `citydb_pkg` package provides functions for performing CRS operations on a 3DCityDB instance.
 
-| Function                                                                                                                                                  | Return type  | Description                                         |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|-----------------------------------------------------|
-| **`change_schema_srid`**<br/>`(target_srid INTEGER, target_srs_name TEXT, schema_name TEXT, transform INTEGER)`                                           | `SETOF VOID` | Updates the coordinate system for a database schema |
-| **`change_column_srid`**<br/>`(table_name TEXT, column_name TEXT, dim INTEGER, target_srid INTEGER, schema_name TEXT, transform INTEGER, geom_type TEXT)` | `SETOF VOID` | Updates the coordinate system for a geometry column |
-| **`check_srid`**<br/>`(srid INTEGER)`                                                                                                                     | `INTEGER`    | Checks if a given `SRID` is valid                   |
-| **`is_coord_ref_sys_3d`**<br/>`(srid INTEGER)`                                                                                                            | `INTEGER`    | Checks if a a CRS is a true 3D system               |
-| **`is_db_coord_ref_sys_3d`**<br/>`(schema_name TEXT)`                                                                                                     | `INTEGER`    | Checks if the CRS of the 3DCityDB is true 3D system |
+| Function                                                                                                                                                  | Return type  | Description                                                        |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|--------------------------------------------------------------------|
+| **`change_schema_srid`**<br/>`(target_srid INTEGER, target_srs_name TEXT, schema_name TEXT, transform INTEGER)`                                           | `SETOF VOID` | Updates the coordinate system for a database schema                |
+| **`change_column_srid`**<br/>`(table_name TEXT, column_name TEXT, dim INTEGER, target_srid INTEGER, schema_name TEXT, transform INTEGER, geom_type TEXT)` | `SETOF VOID` | Updates the coordinate system for a geometry column                |
+| **`check_srid`**<br/>`(srid INTEGER)`                                                                                                                     | `INTEGER`    | Checks if a given `SRID` is valid                                  |
+| **`get_coord_ref_sys_info`**<br/>`(srid INTEGER)`                                                                                                         | `RECORD`     | Returns the name, type and WKT representation of the specified CRS |
+| **`is_coord_ref_sys_3d`**<br/>`(srid INTEGER)`                                                                                                            | `INTEGER`    | Checks if a CRS is a true 3D system                                |
+| **`is_db_coord_ref_sys_3d`**<br/>`(schema_name TEXT)`                                                                                                     | `INTEGER`    | Checks if the CRS of the 3DCityDB is true 3D system                |
 
 The primary function is `change_schema_srid`, which changes the CRS for all geometry columns within a 3DCityDB schema (default: `citydb`).
 It takes the database-specifc `SRID` (**S**patial **R**eference **ID**) of the new CRS and its OGC-compliant name as inputs.
@@ -225,12 +226,15 @@ The `citydb_pkg` package also provides various utility functions as shown below.
 | **`get_child_objectclass_ids`**<br/>`(class_id INTEGER, schema_name TEXT, skip_abstract INTEGER)`                                                                               | `SETOF INTEGER` | Returns the `id` values of all transitive subclasses of the given object class            |
 | **`get_current_schema`**()                                                                                                                                                      | `TEXT`          | Returns the name of the active 3DCityDB schema as determined by the current `search_path` |
 | **`set_current_schema`**<br/>`(schema_name TEXT, local BOOLEAN)`                                                                                                                | `SETOF VOID`    | Sets the active 3DCityDB schema to the specified name by adjusting the `search_path`      |
+| **`schema_exists`**<br/>`(schema_name TEXT)`                                                                                                                                    | `INTEGER`       | Checks whether the specified schema is a 3DCityDB schema                                  |
 
 The functions `get_current_schema` and `set_current_schema` simplify managing the active 3DCityDB schema. While `get_current_schema`
 returns the schema currently set in the `search_path`, `set_current_schema` updates it to the specified name. The
 `local` parameter controls the scope of the change: when set to true (default), it applies the current transaction only;
 when false, it applies to the entire session until explicitly changed. Additionally, `set_current_schema` automatically
 includes required schemas like `citydb_pkg` and `public`.
+
+The `schema_exists` function can be used to verify whether the specified schema is a valid 3DCityDB data schema.
 
 ## Applying functions to different schemas
 
