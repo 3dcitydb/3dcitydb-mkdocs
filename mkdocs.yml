@@ -1,6 +1,6 @@
 site_name: 3D City Database v5 documentation
 site_url: https://docs.3dcitydb.net/
-site_description: Notizen und Dokumentation zu Meetings
+site_description: Documentation for the 3D City Database v5.
 site_author: 3DCityDB Steering Group
 copyright: 3DCityDB Steering Group, 2025
 repo_name: 3dcitydb/3dcitydb-mkdocs
