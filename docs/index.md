@@ -1,21 +1,31 @@
 ---
-title: Welcome
+title: " "
 description: 3D City Database v5 documentation welcome page
 ---
 
-#### :simple-rocket: Welcome to the brand new 3D City Database `v5` documentation! :simple-rocket:
+## :simple-rocket: Welcome to the 3D City Database `v5` documentation! :simple-rocket:
 
-The 3D City Database (3DCityDB) is a free and open source package consisting of a database schema and a set of software
-tools to import, export, manage, analyse, and visualize virtual 3D city models on top of a spatial database system. This
-user manual provides the documentation of the 3DCityDB `v5` and its components.
-
-The content of this documentation is all new! If you encounter a mistake, miss some content, or for any other input,
-please get in touch on [GitHub discussions](https://github.com/orgs/3dcitydb/discussions). We are happy for any feedback
-we can use to improve the documentation.
-
-[![3DCityDB logo](./assets/img/logos/3dcitydb-logo-long.png){ width="300" }](https://www.3dcitydb.org){target="blank"}
+[![3DCityDB logo](./assets/img/logos/3dcitydb-logo-long.png){ width="400" }](https://www.3dcitydb.org){target="blank"}
 /// caption
 ///
+
+The 3D City Database (3DCityDB) is a free and open source package consisting of a database schema and a set of software
+tools to import, export, manage, analyse, and visualize virtual 3D city models on top of a spatial database system. This is version `1.0.0` of the
+user manual. It provides the documentation of the 3DCityDB and its components in the following versions.
+
+| Component                           | Version                                |
+|-------------------------------------|----------------------------------------|
+| 3D City Database                    | `5.1.0`                                |
+| citydb-tool                         | `1.1.0`                                |
+
+/// caption
+///
+
+The legacy documentation of the 3D City Database `v4` and older and components is available here: <https://3dcitydb-docs.readthedocs.io/en/latest/>
+
+The content of this documentation is all new! If you encounter a mistake, miss some content, or for any other input,
+please get in touch on [GitHub discussions](https://github.com/orgs/3dcitydb/discussions), or submit an [issue](https://github.com/3dcitydb/3dcitydb-mkdocs/issues)/[pull request](https://github.com/3dcitydb/3dcitydb-mkdocs/pulls). For things that should not be visible on Github you can reach us at <3dcitydb@tum.de>.
+We are happy for any feedback or contribution we can use to improve 3DCityDB, its components, and this documentation.
 
 ## Content overview
 
