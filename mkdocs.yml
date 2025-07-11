@@ -77,14 +77,12 @@ plugins:
   - tags:
       tags: true
   - mike:
-      alias_type: copy
+      # alias_type: copy
       canonical_version: latest
       css_dir: assets/stylesheets
       javascript_dir: assets/javascripts
-      # deploy_prefix: /3dcitydb-mkdocs
-      version_selector: true
-      remote_branch: gh-pages
-      remote_name: origin
+      # # deploy_prefix: /3dcitydb-mkdocs
+      # version_selector: true
 
 # Extra #######################################################################
 extra:
@@ -94,6 +92,7 @@ extra:
   version:
     provider: mike
     default: latest
+    alias: true
 
 # Markdown extensions #########################################################
 markdown_extensions:
