@@ -1,6 +1,7 @@
 mkdocs-material
 mkdocs-material[imaging]
 mkdocs-glightbox
+mike
 
 # Plugins
 mkdocs-awesome-pages-plugin
