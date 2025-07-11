@@ -76,12 +76,24 @@ plugins:
   - awesome-pages
   - tags:
       tags: true
+  - mike:
+      alias_type: copy
+      canonical_version: latest
+      css_dir: assets/stylesheets
+      javascript_dir: assets/javascripts
+      # deploy_prefix: /3dcitydb-mkdocs
+      version_selector: true
+      remote_branch: gh-pages
+      remote_name: origin
 
 # Extra #######################################################################
 extra:
   homepage: https://github.com/3dcitydb/3dcitydb-mkdocs
   status:
     wip: "Work in progress"
+  version:
+    provider: mike
+    default: latest
 
 # Markdown extensions #########################################################
 markdown_extensions:
