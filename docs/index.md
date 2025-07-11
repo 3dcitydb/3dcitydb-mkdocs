@@ -3,7 +3,7 @@ title: " "
 description: 3D City Database v5 documentation welcome page
 ---
 
-## :simple-rocket: Welcome to the 3D City Database `v5` documentation! :simple-rocket:
+## :simple-rocket: Welcome to the 3D City Database `v5` documentation :simple-rocket:
 
 [![3DCityDB logo](./assets/img/logos/3dcitydb-logo-long.png){ width="400" }](https://www.3dcitydb.org){target="blank"}
 /// caption
