@@ -221,7 +221,7 @@ or by case. For example, both `--camelCase` and `--kebab-case` consist of two co
 The following are valid abbreviations for `--super-long-option`, which has three components:
 
 ```bash
---sup, --slo, --s-l-o, --s-lon, --s-opt, --sLon, --sOpt, --soLoOp (...)
+--sup, --sLO, --s-l-o, --s-lon, --s-opt, --sLon, --sOpt, --soLoOp (...)
 ```
 
 The same abbreviation syntax can also be used for command names. However, abbreviations for both options and commands
