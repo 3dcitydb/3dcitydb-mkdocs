@@ -226,28 +226,33 @@ The `"geometryIndex"` is a `0`-based index linking the child to a specific polyg
 in the `geometry` column.
 
 !!! note "Summary"
-    This simple JSON structure works for mapping any CityGML geometry type onto a spatial database type. In summary, the main idea is that the
+    This simple JSON structure works for mapping a CityGML geometry type onto a spatial database type. In summary, the main idea is that the
     primitives in the spatial database type (points, lines, polygons) are referenced by the `geometryIndex`, while the
-    `children` and `parent` structure enables embedding the primitives into any CityGML geometry hierarchy. The `objectId`
+    `children` and `parent` structure enables embedding the primitives into a CityGML geometry hierarchy. The `objectId`
     provides a unique identifier for each component, ensuring that each geometry and its parts can be individually
     referenced and distinguished within the database.
 
-The following list shows all supported values for the `type` attribute in the JSON metadata, mapping them to their
-corresponding CityGML geometry types:
+The following table lists all geometry types that can be supported and described via the JSON metadata.
+For each type, the corresponding value of the `"type"` attribute and the allowed child elements are specified:
 
-```yaml
-    1: Point
-    2: MultiPoint
-    3: LineString
-    4: MultiLineString
-    5: Polygon
-    6: CompositeSurface
-    7: TriangulatedSurface
-    8: MultiSurface
-    9: Solid
-    10: CompositeSolid
-    11: MultiSolid
-```
+| <div style="width:170px;">Geometry type</div> | `"type"` | Allowed child elements                                                                                      |
+|-----------------------------------------------|----------|-------------------------------------------------------------------------------------------------------------|
+| `Point`                                       | 1        | –                                                                                                           |
+| `MultiPoint`                                  | 2        | One or more `Point` geometries                                                                              |
+| `LineString`                                  | 3        | –                                                                                                           |
+| `MultiLineString`                             | 4        | One or more `LineString` geometries                                                                         |
+| `Polygon`                                     | 5        | –                                                                                                           |
+| `CompositeSurface`                            | 6        | One or more `Polygon` geometries                                                                            |
+| `TriangulatedSurface`                         | 7        | One or more `Polygon` geometries                                                                            |
+| `MultiSurface`                                | 8        | One or more `Polygon` geometries                                                                            |
+| `Solid`                                       | 9        | Exactly one `CompositeSurface` geometry representing the exterior shell (interior shells are not supported) |
+| `CompositeSolid`                              | 10       | One or more `Solid` geometries                                                                              |
+| `MultiSolid`                                  | 11       | One or more `Solid` geometries                                                                              |
+
+!!! info
+    Compared to ISO 19107 and its implementation in GML, the set of supported geometry types and their
+    allowed child elements has been deliberately simplified to reduce the complexity of the JSON metadata and
+    facilitate its processing.
 
 In addition to `"objectId"`, `"type"`, and `"children"` mentioned above, the JSON metadata object can also include the
 `"is2D"` property. When `"is2D"` is set to `true`, the geometry should be interpreted as 2D. However, it must
