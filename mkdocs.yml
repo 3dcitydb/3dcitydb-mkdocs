@@ -77,7 +77,7 @@ plugins:
   - tags:
       tags: true
   - mike:
-      # alias_type: copy
+      alias_type: redirect
       canonical_version: latest
       css_dir: assets/stylesheets
       javascript_dir: assets/javascripts
