@@ -1,16 +1,15 @@
-name: Deploy MkDocs Docs - Release
+name: Deploy MkDocs Docs
 
 on:
   push:
-    branches: [main]
-  release:
-    types: [released, edited]
+    branches:
+      - main
+      - 'release/*'  # Trigger on release/semver branches
 
 permissions:
-  contents: write  # Required to push to gh-pages
+  contents: write
 
 jobs:
-
   deploy:
     runs-on: ubuntu-latest
     concurrency:
@@ -18,18 +17,30 @@ jobs:
       cancel-in-progress: false
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0  # Important for mike to access full git history
-      -
-        name: Get release version without v
-        id: release_version
-        uses: battila7/get-version-action@v2
+
+      - name: Read version from VERSION file
+        id: version
+        run: |
+          # Always read version from VERSION file
+          VERSION=$(cat VERSION | tr -d '\n\r')
+          echo "Using version from VERSION file: $VERSION"
+
+          # Validate semantic version format
+          if [[ ! $VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Error: Version in VERSION file must follow semantic versioning format (X.Y.Z)"
+            exit 1
+          fi
+
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Final version: $VERSION"
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.13'
 
       - name: Install dependencies
         run: |
@@ -40,13 +51,35 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-      - name: Deploy edge version
-        run:
-          mike deploy --push --update-aliases edge
-
-      - name: Deploy release version
-        if: github.event_name == 'release'
+      - name: Deploy edge version (main branch)
+        if: github.ref == 'refs/heads/main'
         run: |
           mike deploy --push --update-aliases edge
-          mike deploy --push --update-aliases "${{ steps.release_version.outputs.version-without-v }}" latest
+      - name: Get all existing versions for latest determination
+        if: startsWith(github.ref, 'refs/heads/release/') || github.event_name == 'workflow_dispatch'
+        id: get_versions
+        run: |
+          # Get all git tags that match version pattern
+          git fetch --tags
+          VERSIONS=$(git tag -l 'v*' | sed 's/^v//' | sort -V)
+          CURRENT_VERSION="${{ steps.version.outputs.version }}"
+
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          echo "latest_version=${ALL_VERSIONS:-$CURRENT_VERSION}" >> $GITHUB_OUTPUT
+          echo "is_latest=$IS_LATEST" >> $GITHUB_OUTPUT
+
+          echo "Current version: $CURRENT_VERSION"
+          echo "Latest version: ${ALL_VERSIONS:-$CURRENT_VERSION}"
+          echo "Is latest: $IS_LATEST"
+
+      - name: Deploy release version
+        if: startsWith(github.ref, 'refs/heads/release/')
+        run: |
+          mike deploy --push --update-aliases "${{ steps.version.outputs.version }}"
+
+      - name: Update latest alias (only for actual latest version)
+        if: (startsWith(github.ref, 'refs/heads/release/')) && steps.get_versions.outputs.is_latest == 'true'
+        run: |
+          mike alias --push "${{ steps.version.outputs.version }}" latest
           mike set-default --push latest
+          echo "Updated latest alias to point to ${{ steps.version.outputs.version }}"
