@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - 'release/*'  # Trigger on release/semver branches
+      - "release/**" # Trigger on release/semver branches
 
 permissions:
   contents: write
@@ -19,7 +19,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v5
         with:
-          fetch-depth: 0  # Important for mike to access full git history
+          fetch-depth: 0 # Important for mike to access full git history
 
       - name: Read version from VERSION file
         id: version
@@ -40,7 +40,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13'
+          python-version: "3.13"
 
       - name: Install dependencies
         run: |
@@ -56,20 +56,32 @@ jobs:
         run: |
           mike deploy --push --update-aliases edge
       - name: Get all existing versions for latest determination
-        if: startsWith(github.ref, 'refs/heads/release/') || github.event_name == 'workflow_dispatch'
+        if: startsWith(github.ref, 'refs/heads/release/')
         id: get_versions
         run: |
-          # Get all git tags that match version pattern
-          git fetch --tags
-          VERSIONS=$(git tag -l 'v*' | sed 's/^v//' | sort -V)
+          # Get all release branches and extract semantic versions
+          git fetch origin
+          RELEASE_BRANCHES=$(git branch -r | grep 'origin/release/' | sed 's|.*origin/release/||' | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V)
           CURRENT_VERSION="${{ steps.version.outputs.version }}"
 
+          # Find the latest version from all release branches
+          LATEST_VERSION=$(echo "$RELEASE_BRANCHES" | tail -n 1)
+          LATEST_VERSION=${LATEST_VERSION:-$CURRENT_VERSION}
+
+          # Check if current version is the latest
+          if [ "$CURRENT_VERSION" = "$LATEST_VERSION" ]; then
+            IS_LATEST="true"
+          else
+            IS_LATEST="false"
+          fi
+
           echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
-          echo "latest_version=${ALL_VERSIONS:-$CURRENT_VERSION}" >> $GITHUB_OUTPUT
+          echo "latest_version=$LATEST_VERSION" >> $GITHUB_OUTPUT
           echo "is_latest=$IS_LATEST" >> $GITHUB_OUTPUT
 
           echo "Current version: $CURRENT_VERSION"
-          echo "Latest version: ${ALL_VERSIONS:-$CURRENT_VERSION}"
+          echo "All release versions: $RELEASE_BRANCHES"
+          echo "Latest version: $LATEST_VERSION"
           echo "Is latest: $IS_LATEST"
 
       - name: Deploy release version
@@ -80,6 +92,7 @@ jobs:
       - name: Update latest alias (only for actual latest version)
         if: (startsWith(github.ref, 'refs/heads/release/')) && steps.get_versions.outputs.is_latest == 'true'
         run: |
-          mike alias --push "${{ steps.version.outputs.version }}" latest
+          mike deploy --push --update-aliases edge
+          mike deploy --push --update-aliases "${{ steps.version.outputs.version }}" latest
           mike set-default --push latest
           echo "Updated latest alias to point to ${{ steps.version.outputs.version }}"
