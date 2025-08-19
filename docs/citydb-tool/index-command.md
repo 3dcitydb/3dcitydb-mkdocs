@@ -36,7 +36,7 @@ For more details on the global options and usage hints, see [here](cli.md#option
 |-------------------------------------------------|----------------------------------------------------|---------------|
 | `-o`, <code>--output=&lt;file&#124;-&gt;</code> | Write output as a JSON file. Use `-` for `stdout`. |               |
 
-The above options are only available for the `index status` command.
+The above option is only available for the `index status` command.
 
 ### Create index options
 
@@ -44,7 +44,7 @@ The above options are only available for the `index status` command.
 |-----------------------------|--------------------------------------------------------------------------------------------------------|---------------|
 | `-m`, `--index-mode=<mode>` | Index mode for property value columns: `partial`, `full`. Null values are not indexed in partial mode. | `partial`     |
 
-The above options are only available for the `index create` command.
+The above option is only available for the `index create` command.
 
 ### Database connection options
 
