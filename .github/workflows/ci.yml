@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   deploy:
@@ -100,3 +101,61 @@ jobs:
           mike deploy --push --update-aliases "${{ steps.version.outputs.version }}" latest
           mike set-default --push latest
           echo "Updated latest alias to point to ${{ steps.version.outputs.version }}"
+
+      - name: Create or update git tag
+        if: startsWith(github.ref, 'refs/heads/release-')
+        run: |
+          TAG_NAME="v${{ steps.version.outputs.version }}"
+          echo "Creating/updating tag: $TAG_NAME"
+
+          # Delete existing tag if it exists (both locally and remotely)
+          if git tag -l | grep -q "^$TAG_NAME$"; then
+            echo "Tag $TAG_NAME already exists locally, deleting..."
+            git tag -d "$TAG_NAME"
+          fi
+
+          if git ls-remote --tags origin | grep -q "refs/tags/$TAG_NAME$"; then
+            echo "Tag $TAG_NAME exists on remote, deleting..."
+            git push origin ":refs/tags/$TAG_NAME"
+          fi
+
+          # Create new tag pointing to current commit
+          git tag "$TAG_NAME"
+          git push origin "$TAG_NAME"
+          echo "Tag $TAG_NAME created and pushed successfully"
+
+      - name: Create or update GitHub release
+        if: startsWith(github.ref, 'refs/heads/release-')
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v${{ steps.version.outputs.version }}"
+          name: "Release v${{ steps.version.outputs.version }}"
+          body: |
+            ## 3D City Database Documentation v${{ steps.version.outputs.version }}
+
+            This release contains the documentation for 3D City Database version ${{ steps.version.outputs.version }}.
+
+            📖 **Documentation**: https://docs.3dcitydb.org/
+            🏷️ **Version**: ${{ steps.version.outputs.version }}
+            🌿 **Branch**: ${{ steps.version.outputs.branch_name }}
+
+            ### Access the documentation
+            - **Latest stable**: https://docs.3dcitydb.org/
+            - **This version**: https://docs.3dcitydb.org/${{ steps.version.outputs.version }}/
+          draft: false
+          prerelease: false
+          make_latest: ${{ steps.get_versions.outputs.is_latest == 'true' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update previous latest release
+        if: (startsWith(github.ref, 'refs/heads/release-')) && steps.get_versions.outputs.is_latest == 'true' && steps.get_versions.outputs.current_version != steps.get_versions.outputs.latest_version
+        run: |
+          # Find and update the previous latest release
+          PREVIOUS_LATEST=$(gh release list --limit 100 --json tagName,isLatest --jq '.[] | select(.isLatest == true) | .tagName')
+          if [ ! -z "$PREVIOUS_LATEST" ] && [ "$PREVIOUS_LATEST" != "v${{ steps.version.outputs.version }}" ]; then
+            echo "Updating previous latest release: $PREVIOUS_LATEST"
+            gh release edit "$PREVIOUS_LATEST" --latest=false
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
