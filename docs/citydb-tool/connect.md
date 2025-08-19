@@ -28,9 +28,9 @@ For more details on the global options and usage hints, see [here](cli.md#option
 
 ### Output options
 
-| Option                                          | Description                                      | Default value |
-|-------------------------------------------------|--------------------------------------------------|---------------|
-| `-o`, <code>--output=&lt;file&#124;-&gt;</code> | Write output as a JSON file. Use `-` for stdout. |               |
+| Option                                          | Description                                        | Default value |
+|-------------------------------------------------|----------------------------------------------------|---------------|
+| `-o`, <code>--output=&lt;file&#124;-&gt;</code> | Write output as a JSON file. Use `-` for `stdout`. |               |
 
 ### Database connection options
 
