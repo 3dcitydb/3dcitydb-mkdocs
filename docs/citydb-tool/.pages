@@ -2,6 +2,7 @@ nav:
   - index.md
   - cli.md
   - database.md
+  - connect.md
   - Import command:
     - Import overview: import.md
     - CityGML import: import-citygml.md

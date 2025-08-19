@@ -1,6 +1,6 @@
 ---
-title: Database connection
-description: Options for connection to a 3DCityDB
+title: Connection details
+description: Options for the connection to a 3DCityDB
 tags:
   - database
   - connection options

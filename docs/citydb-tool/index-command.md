@@ -21,8 +21,8 @@ citydb index [OPTIONS] COMMAND
 
 ## Options
 
-The `index` command inherits global options from the main [`citydb`](cli.md) command. Additionally, the `index create`
-subcommand provides more options for creating indexes.
+The `index` command inherits global options from the main [`citydb`](cli.md) command. Additionally, the `index status`
+and `index create` subcommands offer more options tailored to their respective tasks.
 
 ### Global options
 
@@ -30,11 +30,19 @@ subcommand provides more options for creating indexes.
 
 For more details on the global options and usage hints, see [here](cli.md#options).
 
+### Index status options
+
+| Option                                          | Description                                      | Default value |
+|-------------------------------------------------|--------------------------------------------------|---------------|
+| `-o`, <code>--output=&lt;file&#124;-&gt;</code> | Write output as a JSON file. Use `-` for stdout. |               |
+
+The above options are only available for the `index status` command.
+
 ### Create index options
 
-| Option                    | Description                                                                                            | Default value |
-|---------------------------|--------------------------------------------------------------------------------------------------------|---------------|
-| `-m, --index-mode=<mode>` | Index mode for property value columns: `partial`, `full`. Null values are not indexed in partial mode. | `partial`     |
+| Option                      | Description                                                                                            | Default value |
+|-----------------------------|--------------------------------------------------------------------------------------------------------|---------------|
+| `-m`, `--index-mode=<mode>` | Index mode for property value columns: `partial`, `full`. Null values are not indexed in partial mode. | `partial`     |
 
 The above options are only available for the `index create` command.
 
@@ -88,7 +96,7 @@ is defined. This command helps you understand the current index situation and de
 to optimize subsequent database operations.
 
 !!! note
-    When setting up a new instance of the 3DCityDB v5, all indexes are enabled by default.
+    When setting up a new instance of the 3DCityDB `v5`, all indexes are enabled by default.
 
 The following example demonstrates how to use the `index status` command, which then prints the index statuses to the
 console.
@@ -112,6 +120,58 @@ console.
         -u citydb_user ^
         -p mySecret
     ```
+
+The index status list can optionally be written as JSON using the `--output` option. If a file path is provided, the
+JSON output will be written to that file. If `-` is specified instead of a file path, the JSON output will be written
+to `stdout`. This JSON output can be easily piped to and processed by external tools.
+
+The following examples demonstrate the usage of the `--output` option.
+
+=== "Linux"
+
+    ```bash
+    ./citydb index status [...] -o status.json      # write JSON to a file
+    ./citydb index status [...] -o -                # write JSON to stdout
+    ./citydb index status [...] -o - > status.json  # redirect stdout to a file
+    ```
+
+=== "Windows CMD"
+
+    ```shell
+    citydb index status [...] -o status.json      # write JSON to a file
+    citydb index status [...] -o -                # write JSON to stdout
+    citydb index status [...] -o - > status.json  # redirect stdout to a file
+    ```
+
+An excerpt of the generated JSON output is shown below.
+
+```json
+{
+  "indexes":[
+    {
+      "table":"appearance",
+      "columns":[
+        "theme"
+      ],
+      "type":"normal",
+      "name":"appearance_theme_inx",
+      "status":"on"
+    },
+    ...
+}
+```
+
+Each entry in the `"indexes"` array provides the following information:
+
+- `"table"`: The name of the table on which the index is defined.
+- `"columns"`: The column or columns covered by the index.
+- `"type"`: Either `normal` (a standard index) or `spatial` (an index on geometry columns).
+- `"name"`: The database name of the index.
+- `"status"`: Whether the index is currently enabled (`on`) or dropped (`off`).
+
+!!! tip
+    The structure of the JSON output is defined by the JSON Schema file `index-status.json.schema`,
+    which is located in the `json-schema` folder of the citydb-tool installation directory.
 
 ### Creating indexes
 

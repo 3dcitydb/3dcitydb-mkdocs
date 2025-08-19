@@ -26,6 +26,7 @@ citydb [OPTIONS] COMMAND
 | Command                               | Description                                                                          |
 |---------------------------------------|--------------------------------------------------------------------------------------|
 | [`help`](#help-and-cli-documentation) | [Display help information about the specified command.](#help-and-cli-documentation) |
+| [`connect`](connect.md)               | [Test connection to the database.](connect.md)                                       |
 | [`import`](import.md)                 | [Import data in a supported format.](import.md)                                      |
 | [`export`](export.md)                 | [Export data in a supported format.](export.md)                                      |
 | [`delete`](delete.md)                 | [Delete features from the database.](delete.md)                                      |
@@ -77,9 +78,12 @@ which can also be a subcommand, to get the same information.
 
 ### Logging
 
-citydb-tool logs events such as activities or errors in the console, with each entry including a timestamp, severity
-level, and a descriptive message. The `--log-level` option controls the level of logging output shown in the console. It
-will include all events of the specified severity and those of higher severity. Available levels are:
+citydb-tool logs events such as activities, warnings and errors to the console. Each log entry contains a timestamp,
+a severity level, and a descriptive message. The logging output is controlled using the `--log-level` option,
+which defines the minimum severity of events that are shown. All messages of that severity or higher are
+included.
+
+The available log levels, ordered from highest to lowest severity, are:
 
 - `fatal`: Critical errors causing immediate termination
 - `error`: Non-recoverable errors
@@ -87,6 +91,15 @@ will include all events of the specified severity and those of higher severity. 
 - `info`: General operational messages (default)
 - `debug`: Detailed debugging information
 - `trace`: Most detailed logs for troubleshooting
+
+All console log messages are written to `stderr`, regardless of the selected log level. This design ensures that
+structured output (for example, JSON returned by commands such as `info` or `connect`) written to `stdout` remains
+clean and uncorrupted by log entries. This separation makes it possible, for example, to pipe structured output to
+another program while log messages remain visible in the terminal.
+
+The `--quiet` option disables log messages on the console entirely. With this option, only the structured output on
+`stdout` is printed. Although not strictly required due to the separation of `stdout` and `stderr`, it is useful when
+a completely silent console is desired except for structured output.
 
 Log messages can also be recorded in a log file specified with the `--log-file` option. The log level set with the
 `--log-level` option also applies to the log file.
