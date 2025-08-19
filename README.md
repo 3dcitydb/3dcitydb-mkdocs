@@ -4,7 +4,7 @@ Welcome to the repository of the 3D City Database and tool documentation startin
 
 This page is dedicated to developers. Go to the page below to see the documentation.
 
-:rocket: [docs.3dcitydb.net](https://docs.3dcitydb.net/) :rocket:
+:rocket: [docs.3dcitydb.org](https://docs.3dcitydb.org/) :rocket:
 
 ## What's included
 
