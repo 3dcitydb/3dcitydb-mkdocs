@@ -14,8 +14,8 @@ tools to import, export, manage, analyse, and visualize virtual 3D city models o
 
 | Component                           | Version                                |
 |-------------------------------------|----------------------------------------|
-| 3D City Database                    | `5.1.0`                                |
-| citydb-tool                         | `1.1.0`                                |
+| 3D City Database                    | `5.0.0`                                |
+| citydb-tool                         | `1.0.0`                                |
 
 /// caption
 ///
