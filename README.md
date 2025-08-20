@@ -1,8 +1,8 @@
 # 3D City Database (3DCityDB) v5 documentation
 
-Welcome to the repository of the 3D City Database and tool documentation starting from version `5`.
+Welcome to the repository of the 3D City Database and software tools documentation starting from version `5`.
 
-This page is dedicated to developers. Go to the page below to see the documentation.
+This page is dedicated to developers. Please find the live version of the user manual here:
 
 :rocket: [docs.3dcitydb.org](https://docs.3dcitydb.org/) :rocket:
 
@@ -67,8 +67,7 @@ The GitHub Actions workflow (`.github/workflows/ci.yml`) automatically:
 To create a new documentation release:
 
 1. Create a new branch named `release-X.Y` (e.g., `release-1.0`, `release-2.5`)
-2. Update the documentation version in the first section in `docs/index.md`
-3. Push the branch - CI will automatically:
+2. Push the branch - CI will automatically:
    - Deploy the new documentation version
    - Create a GitHub release with tag `vX.Y`
    - If this is the highest version number, mark it as the new `latest`
