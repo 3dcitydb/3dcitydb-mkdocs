@@ -1,37 +1,161 @@
-name: ci
+name: Deploy MkDocs Docs
+
 on:
   push:
     branches:
       - main
+      - "release-*" # Trigger on release-X.Y branches
 
 permissions:
   contents: write
+  pull-requests: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    concurrency:
+      group: docs-deploy
+      cancel-in-progress: false
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0 # Important for mike to access full git history
 
-      - uses: actions/checkout@v4
-
-      - name: Configure Git Credentials
+      - name: Extract version from branch name
+        id: version
         run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          BRANCH_NAME="${GITHUB_REF#refs/heads/}"
+          echo "Branch name: $BRANCH_NAME"
 
-      - uses: actions/setup-python@v5
+          if [[ "$BRANCH_NAME" == "main" ]]; then
+            VERSION="edge"
+            echo "Main branch detected, using edge version"
+          elif [[ "$BRANCH_NAME" =~ ^release-([0-9]+)\.([0-9]+)$ ]]; then
+            VERSION="${BASH_REMATCH[1]}.${BASH_REMATCH[2]}"
+            echo "Release branch detected, extracted version: $VERSION"
+          else
+            echo "Error: Branch name must be 'main' or follow 'release-X.Y' format (e.g., release-1.0)"
+            exit 1
+          fi
+
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          echo "Final version: $VERSION"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.x
+          python-version: "3.13"
 
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+      - name: Install dependencies
+        run: |
+          pip install -U -r requirements.txt
 
+      - name: Configure git user
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
 
-      - uses: actions/cache@v4
+      - name: Deploy edge version (main branch)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          mike deploy --push --update-aliases edge
+      - name: Get all existing versions for latest determination
+        if: startsWith(github.ref, 'refs/heads/release-')
+        id: get_versions
+        run: |
+          # Get all release branches and extract major.minor versions
+          git fetch origin
+          RELEASE_BRANCHES=$(git branch -r | grep 'origin/release-' | sed 's|.*origin/release-||' | grep -E '^[0-9]+\.[0-9]+$' | sort -V)
+          CURRENT_VERSION="${{ steps.version.outputs.version }}"
+
+          # Find the latest version from all release branches
+          LATEST_VERSION=$(echo "$RELEASE_BRANCHES" | tail -n 1)
+          LATEST_VERSION=${LATEST_VERSION:-$CURRENT_VERSION}
+
+          # Check if current version is the latest
+          if [ "$CURRENT_VERSION" = "$LATEST_VERSION" ]; then
+            IS_LATEST="true"
+          else
+            IS_LATEST="false"
+          fi
+
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          echo "latest_version=$LATEST_VERSION" >> $GITHUB_OUTPUT
+          echo "is_latest=$IS_LATEST" >> $GITHUB_OUTPUT
+
+          echo "Current version: $CURRENT_VERSION"
+          echo "All release versions: $RELEASE_BRANCHES"
+          echo "Latest version: $LATEST_VERSION"
+          echo "Is latest: $IS_LATEST"
+
+      - name: Deploy release version
+        if: startsWith(github.ref, 'refs/heads/release-')
+        run: |
+          mike deploy --push --update-aliases "${{ steps.version.outputs.version }}"
+
+      - name: Update latest alias (only for actual latest version)
+        if: (startsWith(github.ref, 'refs/heads/release-')) && steps.get_versions.outputs.is_latest == 'true'
+        run: |
+          mike deploy --push --update-aliases "${{ steps.version.outputs.version }}" latest
+          mike set-default --push latest
+          echo "Updated latest alias to point to ${{ steps.version.outputs.version }}"
+
+      - name: Create or update git tag
+        if: startsWith(github.ref, 'refs/heads/release-')
+        run: |
+          TAG_NAME="v${{ steps.version.outputs.version }}"
+          echo "Creating/updating tag: $TAG_NAME"
+
+          # Delete existing tag if it exists (both locally and remotely)
+          if git tag -l | grep -q "^$TAG_NAME$"; then
+            echo "Tag $TAG_NAME already exists locally, deleting..."
+            git tag -d "$TAG_NAME"
+          fi
+
+          if git ls-remote --tags origin | grep -q "refs/tags/$TAG_NAME$"; then
+            echo "Tag $TAG_NAME exists on remote, deleting..."
+            git push origin ":refs/tags/$TAG_NAME"
+          fi
+
+          # Create new tag pointing to current commit
+          git tag "$TAG_NAME"
+          git push origin "$TAG_NAME"
+          echo "Tag $TAG_NAME created and pushed successfully"
+
+      - name: Create or update GitHub release
+        if: startsWith(github.ref, 'refs/heads/release-')
+        uses: softprops/action-gh-release@v2
         with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
-          restore-keys: |
-            mkdocs-material-
+          tag_name: "v${{ steps.version.outputs.version }}"
+          name: "Release v${{ steps.version.outputs.version }}"
+          body: |
+            ## 3D City Database Documentation v${{ steps.version.outputs.version }}
 
-      - run: pip install -U -r requirements.txt
+            This release contains the documentation for 3D City Database version ${{ steps.version.outputs.version }}.
 
-      - run: mkdocs gh-deploy --force
+            📖 **Documentation**: https://docs.3dcitydb.org/
+            🏷️ **Version**: ${{ steps.version.outputs.version }}
+            🌿 **Branch**: ${{ steps.version.outputs.branch_name }}
+
+            ### Access the documentation
+            - **Latest stable**: https://docs.3dcitydb.org/
+            - **This version**: https://docs.3dcitydb.org/${{ steps.version.outputs.version }}/
+          draft: false
+          prerelease: false
+          make_latest: ${{ steps.get_versions.outputs.is_latest == 'true' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update previous latest release
+        if: (startsWith(github.ref, 'refs/heads/release-')) && steps.get_versions.outputs.is_latest == 'true' && steps.get_versions.outputs.current_version != steps.get_versions.outputs.latest_version
+        run: |
+          # Find and update the previous latest release
+          PREVIOUS_LATEST=$(gh release list --limit 100 --json tagName,isLatest --jq '.[] | select(.isLatest == true) | .tagName')
+          if [ ! -z "$PREVIOUS_LATEST" ] && [ "$PREVIOUS_LATEST" != "v${{ steps.version.outputs.version }}" ]; then
+            echo "Updating previous latest release: $PREVIOUS_LATEST"
+            gh release edit "$PREVIOUS_LATEST" --latest=false
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
