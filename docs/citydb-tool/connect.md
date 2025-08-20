@@ -18,7 +18,7 @@ citydb connect [OPTIONS]
 ## Options
 
 The `connect` command inherits global options from the main [`citydb`](cli.md) command. Additionally, it defines
-general database connection options and the ability to output the connection status in JSON format.
+general database connection options and supports outputting the connection status in JSON format.
 
 ### Global options
 

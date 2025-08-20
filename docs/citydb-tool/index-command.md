@@ -72,6 +72,7 @@ The following indexes are supported by citydb-tool:
 
 | Table           | Column(s)                            | Index type |
 |-----------------|--------------------------------------|------------|
+| `APPEARANCE`    | `theme`                              | Regular    |
 | `FEATURE`       | `identifier`, `identifier_codespace` | Regular    |
 | `FEATURE`       | `envelope`                           | Spatial    |
 | `FEATURE`       | `creation_date`                      | Regular    |
