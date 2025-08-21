@@ -259,22 +259,15 @@ provides an overview and description of these sections.
 The `--feature-scope` option controls which features are considered when generating the report:
 
 - `all`: Includes **all features** in the 3DCityDB, both active and terminated. All counts and derived statistics
-  reflect the
-  complete database. This is the default mode.
+  reflect the complete database. This is the default mode.
+- `active`: Includes **only active features** when computing statistics and properties. Terminated features are ignored
+  for derived statistics such as top-level features, available LoDs, and other feature-based properties. However, overall
+  feature counts still show both active and terminated features.
 
-- `active`: Includes **only active features** when computing statistics and properties, ignoring terminated features. Overall
-  feature counts still show both active and terminated features. Derived statistics—such as top-level features,
-  available LoDs, and other feature-based properties—reflect only active features.
-
-In databases containing both active and terminated features, the `active` scope produces a report that:
-
-- Shows only statistics and properties derived from active features.
-- Reflects what would be returned when exporting active features.
-- Indicates which properties (e.g., LoDs or top-level feature types) can be used to filter active features.
-
-For example, if a specific LoD exists only for terminated features, it will not appear in the report or be usable
-for filtering active features. This makes the `active` scope useful for concise reports focused on current features, while
-the `all` scope provides a complete overview of the database.
+For example, if a specific LoD exists only for terminated features, it will not be included in an export of active
+features or be usable for filtering them. Consequently, this LoD does not appear in reports with `active` scope. This
+makes the `active` scope ideal for concise reports focused on current features, while the `all` scope provides a complete
+overview of the database.
 
 !!! note
     - Generating the report for only active features may take considerably more time.
