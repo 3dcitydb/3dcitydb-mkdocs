@@ -2750,26 +2750,16 @@ provides an overview and description of these sections.</p>
 <h3 id="feature-scope">Feature scope<a class="headerlink" href="#feature-scope" title="Link to this headline for referencing">&para;</a></h3>
 <p>The <code>--feature-scope</code> option controls which features are considered when generating the report:</p>
 <ul>
-<li>
-<p><code>all</code>: Includes <strong>all features</strong> in the 3DCityDB, both active and terminated. All counts and derived statistics
-  reflect the
-  complete database. This is the default mode.</p>
-</li>
-<li>
-<p><code>active</code>: Includes <strong>only active features</strong> when computing statistics and properties, ignoring terminated features. Overall
-  feature counts still show both active and terminated features. Derived statistics—such as top-level features,
-  available LoDs, and other feature-based properties—reflect only active features.</p>
-</li>
+<li><code>all</code>: Includes <strong>all features</strong> in the 3DCityDB, both active and terminated. All counts and derived statistics
+  reflect the complete database. This is the default mode.</li>
+<li><code>active</code>: Includes <strong>only active features</strong> when computing statistics and properties. Terminated features are ignored
+  for derived statistics such as top-level features, available LoDs, and other feature-based properties. However, overall
+  feature counts still show both active and terminated features.</li>
 </ul>
-<p>In databases containing both active and terminated features, the <code>active</code> scope produces a report that:</p>
-<ul>
-<li>Shows only statistics and properties derived from active features.</li>
-<li>Reflects what would be returned when exporting active features.</li>
-<li>Indicates which properties (e.g., LoDs or top-level feature types) can be used to filter active features.</li>
-</ul>
-<p>For example, if a specific <abbr title="Level of Detail">LoD</abbr> exists only for terminated features, it will not appear in the report or be usable
-for filtering active features. This makes the <code>active</code> scope useful for concise reports focused on current features, while
-the <code>all</code> scope provides a complete overview of the database.</p>
+<p>For example, if a specific <abbr title="Level of Detail">LoD</abbr> exists only for terminated features, it will not be included in an export of active
+features or be usable for filtering them. Consequently, this <abbr title="Level of Detail">LoD</abbr> does not appear in reports with <code>active</code> scope. This
+makes the <code>active</code> scope ideal for concise reports focused on current features, while the <code>all</code> scope provides a complete
+overview of the database.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul>
