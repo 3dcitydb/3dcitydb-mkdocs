@@ -80,8 +80,8 @@ instance.
     [`index`](index-command.md) command to check the current status of indexes and enable them as needed.
 
 The report is displayed on the console in a human-readable format. It can also be generated in machine-readable JSON
-using the `--output` option. If a file path is provided for `--output`, the JSON output will be written to that file.
-If `-` is specified instead of a file path, the JSON output will be written to `stdout`. This JSON output can be easily
+using the `--output` option. If a file path is provided for `--output`, the JSON report will be written to that file.
+If `-` is specified instead of a file path, the JSON report will be written to `stdout`. This JSON report can be easily
 piped to and processed by external tools.
 
 The following examples demonstrate the usage of the `--output` option.
