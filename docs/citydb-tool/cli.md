@@ -27,6 +27,7 @@ citydb [OPTIONS] COMMAND
 |---------------------------------------|--------------------------------------------------------------------------------------|
 | [`help`](#help-and-cli-documentation) | [Display help information about the specified command.](#help-and-cli-documentation) |
 | [`connect`](connect.md)               | [Test connection to the database.](connect.md)                                       |
+| [`info`](info.md)                     | [Show database contents and summary information.](info.md)                           |
 | [`import`](import.md)                 | [Import data in a supported format.](import.md)                                      |
 | [`export`](export.md)                 | [Export data in a supported format.](export.md)                                      |
 | [`delete`](delete.md)                 | [Delete features from the database.](delete.md)                                      |

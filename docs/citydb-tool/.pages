@@ -3,6 +3,7 @@ nav:
   - cli.md
   - database.md
   - connect.md
+  - info.md
   - Import command:
     - Import overview: import.md
     - CityGML import: import-citygml.md
@@ -18,5 +19,6 @@ nav:
     - Import configuration: import-config.md
     - Export configuration: export-config.md
     - Delete configuration: delete-config.md
+    - Report configuration: report-config.md
   - cql2.md
   - docker.md

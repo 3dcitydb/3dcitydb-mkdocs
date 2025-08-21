@@ -10,21 +10,16 @@ description: 3D City Database v5 documentation welcome page
 ///
 
 The 3D City Database (3DCityDB) is a free and open source package consisting of a database schema and a set of software
-tools to import, export, manage, analyse, and visualize virtual 3D city models on top of a spatial database system. The version of this user manual is displayed in the top menu. It provides the documentation of the 3DCityDB and its components in the following versions.
+tools to import, export, manage, analyse, and visualize virtual 3D city models on top of a spatial database system.
+This user manual documents the 3DCityDB and its components in the versions listed below:
 
-| Component                           | Version                                |
-|-------------------------------------|----------------------------------------|
-| 3D City Database                    | `5.1.0`                                |
-| citydb-tool                         | `1.1.0`                                |
+| Component        | Version |
+|------------------|---------|
+| 3D City Database | `5.1`   |
+| citydb-tool      | `1.1`   |
 
 /// caption
 ///
-
-The legacy documentation of the 3D City Database `v4` and older and components is available here: <https://3dcitydb-docs.readthedocs.io/en/latest/>
-
-The content of this documentation is all new! If you encounter a mistake, miss some content, or for any other input,
-please get in touch on [GitHub discussions](https://github.com/orgs/3dcitydb/discussions), or submit an [issue](https://github.com/3dcitydb/3dcitydb-mkdocs/issues)/[pull request](https://github.com/3dcitydb/3dcitydb-mkdocs/pulls). For things that should not be visible on Github you can reach us at <3dcitydb@tum.de>.
-We are happy for any feedback or contribution we can use to improve 3DCityDB, its components, and this documentation.
 
 ## Content overview
 
@@ -87,3 +82,14 @@ We are happy for any feedback or contribution we can use to improve 3DCityDB, it
     [:octicons-arrow-right-24: Partners](partners/index.md)
 
 </div>
+
+## Feedback and contributions
+
+The content of this documentation is all new! If you encounter a mistake, miss some content, or for any other input,
+please get in touch on [GitHub discussions](https://github.com/orgs/3dcitydb/discussions), or submit an [issue](https://github.com/3dcitydb/3dcitydb-mkdocs/issues)/[pull request](https://github.com/3dcitydb/3dcitydb-mkdocs/pulls).
+For things that should not be visible on Github you can reach us at <3dcitydb@tum.de>.
+We are happy for any feedback or contribution we can use to improve 3DCityDB, its components, and this documentation.
+
+## Legacy documentation
+
+The legacy documentation of the 3D City Database `v4` is available here: <https://3dcitydb-docs.readthedocs.io/>

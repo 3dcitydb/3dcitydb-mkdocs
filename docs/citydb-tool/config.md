@@ -42,7 +42,8 @@ explained in more detail in the following chapters.
 | [`"readOptions"`](import-config.md#read-options)             | Specifies settings for reading input files, including format-specific options.                                            |
 | [`"exportOptions"`](export-config.md#export-options)         | Defines options for controlling the export process.                                                                       |
 | [`"writeOptions"`](export-config.md#write-options)           | Specifies settings for writing output files, including format-specific options.                                           |
-| [`"deleteOptions"`](delete-config.md)                        | Defines options for controlling the delete process.                                                                       |                                                                                     |
+| [`"deleteOptions"`](delete-config.md)                        | Defines options for controlling the delete process.                                                                       |
+| [`"reportOptions"`](report-config.md)                        | Defines options for controlling the database report generation.                                                           |
 
 You can load configuration files using the [`--config-file`](cli.md#configuration-files) option when executing
 citydb-tool commands.
