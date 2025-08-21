@@ -250,9 +250,9 @@ provides an overview and description of these sections.
 | `geometries`  | Statistics about geometries, including total count, count of implicit geometries, distribution by geometry type, and counts by LoD.                                                                           |
 | `addresses`   | Total number of addresses stored in the database.                                                                                                                                                             |
 | `appearances` | Detailed information about all appearances, including total number of appearances, presence of global appearances, materials, textures, georeferenced textures, and appearance counts broken down by theme.   |
-| `extensions`  | List of all ADE extensions registered in the database, including name, version, and description. An empty array is shown if no extensions are available.                                                      |
-| `codeLists`   | References to external codelists that are registered for appropriate CityGML data types in the database. An empty object is shown if no codelists are available.                                              |
-| `modules`     | List of 3DCityDB module namespaces used by the data stored in the database.                                                                                                                                   |
+| `extensions`  | List of all ADE extensions registered in the database, including name, version, and description. An empty array is included if no extensions are available.                                                   |
+| `codeLists`   | References to external codelists that are registered for appropriate CityGML data types in the database. An empty object is included if no codelists are available.                                           |
+| `modules`     | List of 3DCityDB module namespaces used by the data stored in the database. An empty object is included if no modules are used.                                                                               |
 
 ### Feature scope
 
