@@ -22,3 +22,28 @@
 .md-typeset table:not([class]) td {
   padding: 10px 5px;
 }
+
+.version-block {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.version-table table,
+.version-table thead,
+.version-table tbody,
+.version-table tr,
+.version-table th,
+.version-table td {
+    font-size: 18px;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-right: 10px !important;
+}
+
+.version-table thead {
+    display: none;
+}
