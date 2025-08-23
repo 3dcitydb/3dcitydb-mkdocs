@@ -11,15 +11,14 @@ description: 3D City Database v5 documentation welcome page
 
 The 3D City Database (3DCityDB) is a free and open source package consisting of a database schema and a set of software
 tools to import, export, manage, analyse, and visualize virtual 3D city models on top of a spatial database system.
-This user manual documents the 3DCityDB and its components in the versions listed below:
 
-| Component        | Version |
-|------------------|---------|
-| 3D City Database | `5.1`   |
-| citydb-tool      | `1.1`   |
-
-/// caption
-///
+<div class="version-block version-table" markdown>
+!!! info "Software covered by this documentation"
+    | | |
+    | - | - |
+    | 3D City Database: | `5.1` |
+    | citydb-tool: | `1.1` |
+</div>
 
 ## Content overview
 
