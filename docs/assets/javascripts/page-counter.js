@@ -1,6 +1,6 @@
 /**
  * Privacy-friendly page counter for 3DCityDB documentation
- * 
+ *
  * This script tracks page visits without using cookies or collecting
  * personal information, making it GDPR compliant without requiring
  * cookie notices.
@@ -8,7 +8,7 @@
 
 (function() {
     'use strict';
-    
+
     // Configuration
     const CONFIG = {
         // Default to local storage counter, can be overridden for external service
@@ -33,7 +33,7 @@
         const key = `pageCounter_${pagePath}`;
         const lastVisit = localStorage.getItem(`${key}_lastVisit`);
         const now = Date.now();
-        
+
         // Debounce: only count if last visit was more than debounceTime ago
         if (!lastVisit || (now - parseInt(lastVisit)) > CONFIG.debounceTime) {
             const currentCount = parseInt(localStorage.getItem(key) || '0');
@@ -42,7 +42,7 @@
             localStorage.setItem(`${key}_lastVisit`, now.toString());
             return newCount;
         }
-        
+
         return parseInt(localStorage.getItem(key) || '0');
     }
 
@@ -55,7 +55,7 @@
     // External API counter implementation
     async function incrementExternalCounter(pagePath) {
         if (!CONFIG.apiEndpoint) return 0;
-        
+
         try {
             const response = await fetch(`${CONFIG.apiEndpoint}/count`, {
                 method: 'POST',
@@ -67,7 +67,7 @@
                     site: window.location.hostname
                 })
             });
-            
+
             if (response.ok) {
                 const data = await response.json();
                 return data.count || 0;
@@ -75,14 +75,14 @@
         } catch (error) {
             console.debug('Counter API not available, falling back to local counter');
         }
-        
+
         return incrementLocalCounter(pagePath);
     }
 
     // Get external counter value
     async function getExternalCounter(pagePath) {
         if (!CONFIG.apiEndpoint) return getLocalCounter(pagePath);
-        
+
         try {
             const response = await fetch(`${CONFIG.apiEndpoint}/count/${encodeURIComponent(pagePath)}?site=${window.location.hostname}`);
             if (response.ok) {
@@ -92,14 +92,14 @@
         } catch (error) {
             console.debug('Counter API not available, using local counter');
         }
-        
+
         return getLocalCounter(pagePath);
     }
 
     // Display counter on page
     function displayCounter(count, pagePath) {
         if (!CONFIG.showCounter) return;
-        
+
         // Create counter element
         const counterElement = document.createElement('div');
         counterElement.id = 'page-counter';
@@ -109,7 +109,7 @@
                 <span class="page-counter-text">${count.toLocaleString()} ${count === 1 ? 'view' : 'views'}</span>
             </div>
         `;
-        
+
         // Add CSS styles
         const style = document.createElement('style');
         style.textContent = `
@@ -126,20 +126,20 @@
                 border-radius: 0.25rem;
                 transition: all 0.2s ease;
             }
-            
+
             .page-counter-container:hover {
                 color: var(--md-default-fg-color);
                 border-color: var(--md-default-fg-color--light);
             }
-            
+
             .page-counter-icon {
                 opacity: 0.7;
             }
-            
+
             .page-counter-text {
                 font-weight: 500;
             }
-            
+
             @media (max-width: 768px) {
                 .page-counter-container {
                     font-size: 0.8rem;
@@ -147,9 +147,9 @@
                 }
             }
         `;
-        
+
         document.head.appendChild(style);
-        
+
         // Find a good place to insert the counter
         const insertCounter = () => {
             // Try to insert after the main content title
@@ -158,39 +158,39 @@
                 title.parentNode.insertBefore(counterElement, title.nextSibling);
                 return;
             }
-            
+
             // Fallback: insert at the beginning of main content
-            const content = document.querySelector('.md-content__inner') || 
-                           document.querySelector('main') || 
+            const content = document.querySelector('.md-content__inner') ||
+                           document.querySelector('main') ||
                            document.querySelector('article');
             if (content) {
                 content.insertBefore(counterElement, content.firstChild);
             }
         };
-        
+
         insertCounter();
     }
 
     // Initialize counter
     async function initCounter() {
         const pagePath = getCurrentPagePath();
-        
+
         try {
             let count;
-            
+
             if (CONFIG.useLocalCounter) {
                 count = incrementLocalCounter(pagePath);
             } else {
                 count = await incrementExternalCounter(pagePath);
             }
-            
+
             displayCounter(count, pagePath);
-            
+
             // Emit custom event for other scripts that might want to use the count
             window.dispatchEvent(new CustomEvent('pageCounterUpdated', {
                 detail: { count, pagePath }
             }));
-            
+
         } catch (error) {
             console.debug('Failed to initialize page counter:', error);
         }
@@ -205,7 +205,7 @@
 
     // Handle navigation in single-page applications (like Material for MkDocs)
     let currentPath = getCurrentPagePath();
-    
+
     // Check for path changes (for instant navigation)
     const checkPathChange = () => {
         const newPath = getCurrentPagePath();
@@ -220,13 +220,13 @@
             setTimeout(initCounter, 100);
         }
     };
-    
+
     // Listen for navigation events
     window.addEventListener('popstate', checkPathChange);
-    
+
     // For Material for MkDocs instant navigation
     document.addEventListener('location-changed', checkPathChange);
-    
+
     // Fallback: periodically check for path changes
     setInterval(checkPathChange, 1000);
 

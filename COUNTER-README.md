@@ -27,7 +27,7 @@ The counter is pre-configured to use local storage and will work immediately. Ea
 For centralized counting across all visitors, you can configure external services:
 
 1. **GoatCounter** (Recommended) - Privacy-focused analytics
-2. **Umami Analytics** - Open-source analytics platform  
+2. **Umami Analytics** - Open-source analytics platform
 3. **Self-Hosted API** - Complete control with provided Python API
 
 ## Files
