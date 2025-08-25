@@ -86,7 +86,7 @@ plugins:
 
 # Extra #######################################################################
 extra:
-  homepage: https://github.com/3dcitydb/3dcitydb-mkdocs
+  homepage: https://github.com/3dcitydb/
   status:
     wip: "Work in progress"
   version:
