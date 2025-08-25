@@ -149,6 +149,8 @@ extra_javascript:
   - assets/javascripts/katex.js
   - https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js
   - https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js
+  - assets/javascripts/page-counter.js
+  - assets/javascripts/counter-config.js
 
 # Extra CSS ###################################################################
 extra_css:

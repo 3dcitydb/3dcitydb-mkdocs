@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  counter-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.counter
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - DATABASE_PATH=/app/data/counter.db
+      - ALLOWED_ORIGINS=https://docs.3dcitydb.org,http://localhost:8000
+    volumes:
+      - counter_data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:5000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  counter_data:

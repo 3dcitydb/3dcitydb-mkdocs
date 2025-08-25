@@ -1,0 +1,37 @@
+# Use Python 3.11 slim image
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy requirements first for better caching
+COPY counter-api-requirements.txt .
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r counter-api-requirements.txt
+
+# Copy application files
+COPY counter-api.py .
+
+# Create directory for database
+RUN mkdir -p /app/data
+
+# Set environment variables
+ENV PORT=5000
+ENV DATABASE_PATH=/app/data/counter.db
+ENV ALLOWED_ORIGINS=*
+
+# Expose port
+EXPOSE 5000
+
+# Create non-root user for security
+RUN useradd -m -u 1000 counteruser && \
+    chown -R counteruser:counteruser /app
+USER counteruser
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD python -c "import requests; requests.get('http://localhost:5000/health')" || exit 1
+
+# Run the application
+CMD ["python", "counter-api.py"]
