@@ -28,9 +28,9 @@ For more details on the global options and usage hints, see [here](cli.md#option
 
 ### Output options
 
-| Option                                          | Description                                        | Default value |
-|-------------------------------------------------|----------------------------------------------------|---------------|
-| `-o`, <code>--output=&lt;file&#124;-&gt;</code> | Write output as a JSON file. Use `-` for `stdout`. |               |
+| Option                                          | Description                                          | Default value |
+|-------------------------------------------------|------------------------------------------------------|---------------|
+| `-o`, <code>--output=&lt;file&#124;-&gt;</code> | Write connection info to JSON. Use `-` for `stdout`. |               |
 
 ### Database connection options
 
@@ -81,7 +81,7 @@ interpretation of the connection status:
 
 ### JSON output
 
-The connection status can also be output in JSON format by using the `--output` option. If a file path is provided, the
+The connection info can also be output in JSON format by using the `--output` option. If a file path is provided, the
 JSON output will be written to that file. If `-` is specified instead of a file path, the JSON output will be written
 to `stdout`. This JSON output can be easily piped to and processed by external tools.
 
@@ -103,79 +103,49 @@ The following examples demonstrate the usage of the `--output` option.
     citydb connect [...] -o - > status.json  # redirect stdout to a file
     ```
 
-The JSON output contains information about whether the connection succeeded or failed, along with relevant database
-details or error messages.
+The JSON output contains information about the connection parameters along with relevant database details.
 
-=== "Success example"
-
-    ```bash
-    {
-      "connectionStatus": "success",
-      "connection": {
-        "host": "localhost",
-        "port": 5432,
-        "database": "citydb",
-        "schema": "mySchema",
-        "user": "citydb_user"
-      },
-      "database": {
-        "name": "3D City Database",
-        "version": "5.1.0",
-        "dbms": {
-          "name": "PostgreSQL",
-          "version": "17.2",
-          "properties": {
-            "postgis": {
-              "name": "PostGIS",
-              "value": "3.5.0"
-            },
-            "postgis_sfcgal": {
-              "name": "SFCGAL",
-              "value": "1.5.2"
-            }
-          }
+```bash
+{
+  "connection": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "citydb",
+    "schema": "mySchema",
+    "user": "citydb_user"
+  },
+  "database": {
+    "name": "3D City Database",
+    "version": "5.1.0",
+    "dbms": {
+      "name": "PostgreSQL",
+      "version": "17.2",
+      "properties": {
+        "postgis": {
+          "name": "PostGIS",
+          "value": "3.5.0"
         },
-        "hasChangelogEnabled": false,
-        "crs": {
-          "srid": 25832,
-          "identifier": "urn:ogc:def:crs:EPSG::25832",
-          "name": "ETRS89 / UTM zone 32N"
+        "postgis_sfcgal": {
+          "name": "SFCGAL",
+          "value": "1.5.2"
         }
       }
+    },
+    "hasChangelogEnabled": false,
+    "crs": {
+      "srid": 25832,
+      "identifier": "urn:ogc:def:crs:EPSG::25832",
+      "name": "ETRS89 / UTM zone 32N"
     }
-    ```
-
-=== "Error example"
-
-    ```shell
-    {
-      "connectionStatus": "failure",
-      "connection": {
-        "host": "localhost",
-        "port": 5432,
-        "database": "citydb",
-        "schema": "mySchema",
-        "user": "citydb_user"
-      },
-      "error": {
-        "causes": [
-          {
-            "message": "The requested schema 'mySchema' is not a 3DCityDB schema.",
-            "exception": "org.citydb.database.DatabaseException"
-          }
-        ]
-      }
-    }
-    ```
+  }
+}
+```
 
 The JSON structure contains the following details:
 
-- `"connectionStatus"`: The connection result, either `success` or `failure`.
 - `"connection"`: The connection details used for the attempt.
-- `"database"` (present on success): Database name, version, DBMS-specific extensions, properties, and CRS details.
-- `"error"` (present on failure): One or more causes with descriptive messages and associated exceptions to help identify the
-  connection issue.
+- `"database"`: Database name, version, DBMS-specific extensions, properties, and CRS details.
 
 !!! tip
-    The structure of the JSON output is defined by the JSON Schema file `connection-status.json.schema`,
+    The structure of the JSON output is defined by the JSON Schema file `connection-info.json.schema`,
     which is located in the `json-schema` folder of the citydb-tool installation directory.

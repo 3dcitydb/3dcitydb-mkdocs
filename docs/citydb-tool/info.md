@@ -35,7 +35,7 @@ For more details on the global options and usage hints, see [here](cli.md#option
 
 | Option                                          | Description                                                                                              | Default value |
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------|---------------|
-| `-o`, <code>--output=&lt;file&#124;-&gt;</code> | Write output as a JSON file. Use `-` for `stdout`.                                                       |               |
+| `-o`, <code>--output=&lt;file&#124;-&gt;</code> | Write database report to JSON. Use `-` for `stdout`.                                                     |               |
 | `--threads=<threads>`                           | Number of threads to use for parallel processing.                                                        | 4             |
 | `-s`, `--feature-scope=<scope>`                 | Feature scope: `all`, `active`. For `active`, only properties of non-terminated features are considered. | `all`         |
 | `--include-generic-attributes`                  | Include generic attributes and their data types.                                                         |               |
