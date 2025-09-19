@@ -174,7 +174,7 @@ closely align with the command-line options:
 | `CITYDB_PORT`        | Port of the 3DCityDB server.                                                                        |
 | `CITYDB_NAME`        | Name of the 3DCityDB database to connect to.                                                        |
 | `CITYDB_SCHEMA`      | Schema to use when connecting to the 3DCityDB.                                                      |
-| `CITYDB_USER`        | Username to use when connecting to the 3DCityDB.                                                    |
+| `CITYDB_USERNAME`    | Username to use when connecting to the 3DCityDB.                                                    |
 | `CITYDB_PASSWORD`    | Password to use when connecting to the 3DCityDB.                                                    |
 | `CITYDB_CONN_PROPS`  | Database-specific connection properties provided as comma-separated list of `property=value` pairs. |
 
@@ -188,7 +188,7 @@ details.
     export CITYDB_PORT=5432
     export CITYDB_NAME=citdb
     export CITYDB_SCHEMA=citydb
-    export CITYDB_USER=citydb_user
+    export CITYDB_USERNAME=citydb_user
     export CITYDB_PASSWORD=mySecret
     export CITYDB_CONN_PROPS=ssl=true
         
@@ -202,7 +202,7 @@ details.
     set CITYDB_PORT=5432
     set CITYDB_NAME=citdb
     set CITYDB_SCHEMA=citydb
-    set CITYDB_USER=citydb_user
+    set CITYDB_USERNAME=citydb_user
     set CITYDB_PASSWORD=mySecret
     set CITYDB_CONN_PROPS=ssl=true
     
