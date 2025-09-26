@@ -83,7 +83,7 @@ Singapore, Zurich, and is also being used in a number of research projects.
 With the release of 3DCityDB `v5`, we expect that most users of `v4` will
 migrate to the new version in the future.
 
-The companies [Virtual City Systems](../partners/vcs.md) and [M.O.S.S.](../partners/moss.md),
+The companies [Virtual City Systems](../contributors/vcs.md) and [M.O.S.S.](../contributors/moss.md),
 who are also partners in development, use the 3DCityDB at the core of their
 commercial products and services to create, maintain, visualize, transform, and export
 virtual 3D city models. Furthermore, the state mapping agencies of the federal states in Germany
