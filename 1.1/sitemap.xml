@@ -2,230 +2,234 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.3dcitydb.org/latest/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/compatibility/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/download/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/tags/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/usage-contrib/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/3dcitydb/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/3dcitydb/appearance-module/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/3dcitydb/codelist-module/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/3dcitydb/db-functions/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/3dcitydb/db-scripts/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/3dcitydb/db-upgrade/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/3dcitydb/docker/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/3dcitydb/feature-module/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/3dcitydb/geometry-module/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/3dcitydb/metadata-module/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/3dcitydb/relational-schema/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/cli/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/config/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/connect/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/cql2/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/database/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/delete-config/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/delete/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/docker/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/export-citygml/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/export-cityjson/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/export-config/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/export/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/import-citygml/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/import-cityjson/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/import-config/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/import/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/index-command/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/info/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/report-config/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/includes/db-options/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/includes/export-filter-options/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/includes/export-general-options/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/includes/export-history-options/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/includes/export-tiling-options/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/includes/global-options/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/includes/import-filter-options/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/includes/import-general-options/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/citydb-tool/includes/import-metadata-options/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.3dcitydb.org/latest/contributors/</loc>
+         <lastmod>2025-09-26</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.3dcitydb.org/latest/contributors/acknowledgements/</loc>
+         <lastmod>2025-09-26</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.3dcitydb.org/latest/contributors/hft-stuttgart/</loc>
+         <lastmod>2025-09-26</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.3dcitydb.org/latest/contributors/list-eco/</loc>
+         <lastmod>2025-09-26</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.3dcitydb.org/latest/contributors/moss/</loc>
+         <lastmod>2025-09-26</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.3dcitydb.org/latest/contributors/tum-gis/</loc>
+         <lastmod>2025-09-26</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.3dcitydb.org/latest/contributors/vcs/</loc>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/first-steps/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/first-steps/citydb-tool/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/first-steps/docker/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/first-steps/migration/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/first-steps/requirements/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://docs.3dcitydb.org/latest/first-steps/setup/</loc>
-         <lastmod>2025-09-25</lastmod>
-    </url>
-    <url>
-         <loc>https://docs.3dcitydb.org/latest/partners/</loc>
-         <lastmod>2025-09-25</lastmod>
-    </url>
-    <url>
-         <loc>https://docs.3dcitydb.org/latest/partners/hft-stuttgart/</loc>
-         <lastmod>2025-09-25</lastmod>
-    </url>
-    <url>
-         <loc>https://docs.3dcitydb.org/latest/partners/list-eco/</loc>
-         <lastmod>2025-09-25</lastmod>
-    </url>
-    <url>
-         <loc>https://docs.3dcitydb.org/latest/partners/moss/</loc>
-         <lastmod>2025-09-25</lastmod>
-    </url>
-    <url>
-         <loc>https://docs.3dcitydb.org/latest/partners/tum-gis/</loc>
-         <lastmod>2025-09-25</lastmod>
-    </url>
-    <url>
-         <loc>https://docs.3dcitydb.org/latest/partners/vcs/</loc>
-         <lastmod>2025-09-25</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
 </urlset>
