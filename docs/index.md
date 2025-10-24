@@ -72,13 +72,13 @@ tools to import, export, manage, analyse, and visualize virtual 3D city models o
 
     [:octicons-arrow-right-24: Usage and contribution](usage-contrib.md)
 
-- :material-heart:{ .lg .middle } __Partners__
+- :material-heart:{ .lg .middle } __Contributors__
 
     ---
 
-    Get to know the people and organizations behind 3DCityDB
+    Get to know the people, organizations and contributors behind 3DCityDB
 
-    [:octicons-arrow-right-24: Partners](partners/index.md)
+    [:octicons-arrow-right-24: Contributors](contributors/index.md)
 
 </div>
 
@@ -86,7 +86,7 @@ tools to import, export, manage, analyse, and visualize virtual 3D city models o
 
 The content of this documentation is all new! If you encounter a mistake, miss some content, or for any other input,
 please get in touch on [GitHub discussions](https://github.com/orgs/3dcitydb/discussions), or submit an [issue](https://github.com/3dcitydb/3dcitydb-mkdocs/issues)/[pull request](https://github.com/3dcitydb/3dcitydb-mkdocs/pulls).
-For things that should not be visible on Github you can reach us at <3dcitydb@tum.de>.
+For things that should not be visible on GitHub you can reach us at <3dcitydb@tum.de>.
 We are happy for any feedback or contribution we can use to improve 3DCityDB, its components, and this documentation.
 
 ## Legacy documentation

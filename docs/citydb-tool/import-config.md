@@ -22,6 +22,8 @@ The example below illustrates the JSON structure for the import options.
 {
   "importOptions": {
     "mode": "importAll",
+    "indexMode": "keep",
+    "failFast": false,
     "numberOfThreads": 4,
     "batchSize": 20,
     "tempDirectory": "/my/path/to/temp",
@@ -39,6 +41,8 @@ The example below illustrates the JSON structure for the import options.
 | <div style="width:130px;">Property</div>                        | Description                                                                                                                                                             | Default value |
 |-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | [`"mode"`](import.md#import-modes-and-duplicate-features)       | Import mode: `importAll`, `skipExisting`, `deleteExisting`, `terminateExisting`.                                                                                        | `importAll`   |
+| [`"indexMode"`](import.md#managing-indexes-during-import)       | Index mode: `keep`, `drop`, `dropCreate`.                                                                                                                               | `keep`        |
+| [`"failFast"`](import.md#controlling-the-import-process)        | Fail fast on errors.                                                                                                                                                    | `false`       |
 | [`"numberOfThreads"`](import.md#controlling-the-import-process) | Number of threads to use for parallel processing.                                                                                                                       |               |
 | `"batchSize"`                                                   | Number of top-level features that are committed to the database in a single transaction. A higher batch size might improve import performance but requires more memory. | 20            |
 | [`"tempDirectory"`](import.md#controlling-the-import-process)   | Store temporary files in this directory.                                                                                                                                |               |
