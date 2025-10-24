@@ -66,7 +66,7 @@ research and daily business.
 
   <div style="display: table-row;">
     <div style="display: table-cell; text-align: center; vertical-align: middle; width: 20%;">
-      <a href="list-eco/"><img src="./assets/List_Eco_Farbe_sRGB.svg" alt="Logo" style="max-width: 100px;"></a>
+      <a href="list-eco/"><img src="./assets/LIST_ECO_LIST-RED_RGB.png" alt="Logo" style="max-width: 100px;"></a>
     </div>
     <div style="display: table-cell; text-align: left; vertical-align: top; width: 40%;">
       <p>
