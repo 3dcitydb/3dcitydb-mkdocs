@@ -184,14 +184,14 @@ format required by the `envelope` column of the `FEATURE` table.
 
 The `citydb_pkg` package provides functions for performing CRS operations on a 3DCityDB instance.
 
-| Function                                                                                                                                                  | Return type  | Description                                                        |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|--------------------------------------------------------------------|
-| **`change_schema_srid`**<br/>`(target_srid INTEGER, target_srs_name TEXT, schema_name TEXT, transform INTEGER)`                                           | `SETOF VOID` | Updates the coordinate system for a database schema                |
-| **`change_column_srid`**<br/>`(table_name TEXT, column_name TEXT, dim INTEGER, target_srid INTEGER, schema_name TEXT, transform INTEGER, geom_type TEXT)` | `SETOF VOID` | Updates the coordinate system for a geometry column                |
-| **`check_srid`**<br/>`(srid INTEGER)`                                                                                                                     | `INTEGER`    | Checks if a given `SRID` is valid                                  |
-| **`get_coord_ref_sys_info`**<br/>`(srid INTEGER)`                                                                                                         | `RECORD`     | Returns the name, type and WKT representation of the specified CRS |
-| **`is_coord_ref_sys_3d`**<br/>`(srid INTEGER)`                                                                                                            | `INTEGER`    | Checks if a CRS is a true 3D system                                |
-| **`is_db_coord_ref_sys_3d`**<br/>`(schema_name TEXT)`                                                                                                     | `INTEGER`    | Checks if the CRS of the 3DCityDB is true 3D system                |
+| Function                                                                                                                     | Return type  | Description                                                        |
+|------------------------------------------------------------------------------------------------------------------------------|--------------|--------------------------------------------------------------------|
+| **`change_schema_srid`**<br/>`(target_srid INTEGER, target_srs_name TEXT, schema_name TEXT, transform INTEGER)`              | `SETOF VOID` | Updates the coordinate system for a database schema                |
+| **`change_column_srid`**<br/>`(table_name TEXT, column_name TEXT, target_srid INTEGER, schema_name TEXT, transform INTEGER)` | `SETOF VOID` | Updates the coordinate system for a geometry column                |
+| **`check_srid`**<br/>`(srid INTEGER)`                                                                                        | `INTEGER`    | Checks if a given `SRID` is valid                                  |
+| **`get_coord_ref_sys_info`**<br/>`(srid INTEGER)`                                                                            | `RECORD`     | Returns the name, type and WKT representation of the specified CRS |
+| **`is_coord_ref_sys_3d`**<br/>`(srid INTEGER)`                                                                               | `INTEGER`    | Checks if a CRS is a true 3D system                                |
+| **`is_db_coord_ref_sys_3d`**<br/>`(schema_name TEXT)`                                                                        | `INTEGER`    | Checks if the CRS of the 3DCityDB is true 3D system                |
 
 The primary function is `change_schema_srid`, which changes the CRS for all geometry columns within a 3DCityDB schema (default: `citydb`).
 It takes the database-specifc `SRID` (**S**patial **R**eference **ID**) of the new CRS and its OGC-compliant name as inputs.
