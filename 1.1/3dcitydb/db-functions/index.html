@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../assets/img/logos/3dcitydb-logo-transparent.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
     
     
       
@@ -2502,7 +2502,7 @@ format required by the <code>envelope</code> column of the <code>FEATURE</code> 
 </tr>
 <tr>
 <td><strong><code>get_coord_ref_sys_info</code></strong><br><code>(srid INTEGER)</code></td>
-<td><code>RECORD</code></td>
+<td><code>TABLE</code></td>
 <td>Returns the name, type and WKT representation of the specified <abbr title="Coordinate Reference System">CRS</abbr></td>
 </tr>
 <tr>
@@ -2549,12 +2549,12 @@ time-consuming depending on the table size.</p>
 <tbody>
 <tr>
 <td><strong><code>citydb_version</code></strong><br><code>(OUT version TEXT, OUT major_version INTEGER, OUT minor_version INTEGER, OUT minor_revision INTEGER)</code></td>
-<td><code>RECORD</code></td>
+<td><code>TABLE</code></td>
 <td>Returns the version of the 3DCityDB instance</td>
 </tr>
 <tr>
 <td><strong><code>db_metadata</code></strong><br><code>(schema_name TEXT, OUT srid INTEGER, OUT srs_name TEXT, OUT coord_ref_sys_name TEXT, OUT coord_ref_sys_kind TEXT, OUT wktext TEXT, OUT versioning TEXT)</code></td>
-<td><code>RECORD</code></td>
+<td><code>TABLE</code></td>
 <td>Returns meta information about the 3DCityDB instance</td>
 </tr>
 <tr>
