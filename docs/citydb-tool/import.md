@@ -258,10 +258,48 @@ shorthand for this transformation, as shown below.
 
 ### Defining import metadata
 
-The options `--lineage`, `--updating-person`, and `--reason-for-update` capture metadata about the feature's origin, the
+The options `--lineage`, `--updating-person`, and `--reason-for-update` allow you to capture metadata about the feature's origin, the
 person responsible for the import, and the reason for the import. This metadata is specific to 3DCityDB and is not
 part of the CityGML standard (see also [here](../3dcitydb/feature-module.md#feature-table)). If not provided, the
 username used to establish the 3DCityDB database connection will be used as the default value for `--updating-person`.
+
+The `--lineage` option supports the following placeholders, which are automatically replaced during the import process.
+
+| <div style="width:150px;">Token</div> | Description                                                                     |
+|---------------------------------------|---------------------------------------------------------------------------------|
+| `@file_path@`                         | Absolute path to the input file.                                                |
+| `@file_name@`                         | Name of the input file.                                                         |
+| `@content_path@`                      | Full logical path to the imported content, including ZIP entries if applicable. |
+| `@content_name@`                      | Name of the imported content, e.g., the file name or the name of the ZIP entry. |
+
+The `file_*` and `content_*` placeholders produce identical results for **regular files**. For **ZIP archives**,
+the `file_*` placeholders refer to the ZIP file itself, while the `content_*` placeholders refer to the specific file
+inside the archive.
+
+=== "Regular files"
+
+    Example input file: `/path/to/my/city.gml`
+
+    ```text
+    @file_path@     → /path/to/my/city.gml
+    @file_name@     → city.gml
+    @content_path@  → /path/to/my/city.gml
+    @content_name@  → city.gml
+    ```
+
+=== "ZIP archives"
+
+    Example input ZIP archive: `/path/to/my/city-archive.zip` with entry `buildings.gml`
+
+    ```text
+    @file_path@     → /path/to/my/city-archive.zip
+    @file_name@     → city-archive.zip
+    @content_path@  → /path/to/my/city-archive.zip/buildings.gml
+    @content_name@  → buildings.gml
+    ```
+
+!!! note
+    The placeholders are case-insensitive and can be combined freely in the lineage string.
 
 ### Controlling the import process
 
