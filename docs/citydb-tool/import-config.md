@@ -28,6 +28,8 @@ The example below illustrates the JSON structure for the import options.
     "batchSize": 20,
     "tempDirectory": "/my/path/to/temp",
     "affineTransform": [0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0],
+    "creationDateMode": "overwriteWithFixed",
+    "creationDate": "2023-01-01T12:00:00+01:00",
     "lineage": "myLineage",
     "updatingPerson": "myUpdatingUser",
     "reasonForUpdate": "myReasonForUpdate",
@@ -47,6 +49,8 @@ The example below illustrates the JSON structure for the import options.
 | `"batchSize"`                                                   | Number of top-level features that are committed to the database in a single transaction. A higher batch size might improve import performance but requires more memory. | 20            |
 | [`"tempDirectory"`](import.md#controlling-the-import-process)   | Store temporary files in this directory.                                                                                                                                |               |
 | [`"affineTransform"`](import.md#transforming-geometries)        | Transform coordinates using a 3x4 matrix in row-major order. The matrix coefficients are represented as array.                                                          |               |
+| [`"creationDateMode"`](import.md#defining-import-metadata)      |Mode for handling the creation date: `attributeOrNow`, `overwriteWithFixed`, `overwriteWithNow`.                                                                         |               |
+| [`"creationDate"`](import.md#defining-import-metadata)          | The specific date to use when `creationDateMode` is set to `overwriteWithFixed`.                                                                                        |               |
 | [`"lineage"`](import.md#defining-import-metadata)               | Lineage to use for the features.                                                                                                                                        |               |
 | [`"updatingPerson"`](import.md#defining-import-metadata)        | Name of the user responsible for the import.                                                                                                                            | database user |
 | [`"reasonForUpdate"`](import.md#defining-import-metadata)       | Reason for importing the data.                                                                                                                                          |               |

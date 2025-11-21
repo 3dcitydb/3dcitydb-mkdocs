@@ -263,7 +263,19 @@ person responsible for the import, and the reason for the import. This metadata 
 part of the CityGML standard (see also [here](../3dcitydb/feature-module.md#feature-table)). If not provided, the
 username used to establish the 3DCityDB database connection will be used as the default value for `--updating-person`.
 
+The `import` command also allows you to control the `creationDate` of the imported features using the `--creation-date` option.
+By default, the `creationDate` defined in the input file is used. If the input feature lacks a creation date, the current
+import time is used.
+You can use this option to force a specific timestamp (e.g., `2023-01-01`) or use `now` to overwrite the creation date
+of all features with the current import time, regardless of the values in the input file.
+
+!!! warning
+Be cautious when overwriting the `creationDate`, especially when importing data that may contain terminated features
+(e.g., exports from another database). Ensure that the chosen `creationDate` does not result in a timestamp that is
+later than the feature's `terminationDate`, as this would create an invalid lifecycle interval.
+
 The `--lineage` option supports the following placeholders, which are automatically replaced during the import process.
+
 
 | <div style="width:150px;">Token</div> | Description                                                                     |
 |---------------------------------------|---------------------------------------------------------------------------------|
