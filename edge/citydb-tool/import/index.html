@@ -3044,6 +3044,11 @@ import, metadata, and filter options, which apply to all of its <a href="#comman
 </thead>
 <tbody>
 <tr>
+<td><code>--creation-date=&lt;date&gt;</code></td>
+<td>Time in <code>&lt;YYYY-MM-DD&gt;</code> or <code>&lt;YYYY-MM-DDThh:mm:ss[(+|-)hh:mm]&gt;</code> format or <code>now</code> to use as creation date.</td>
+<td>attribute value or <code>now</code></td>
+</tr>
+<tr>
 <td><code>--lineage=&lt;lineage&gt;</code></td>
 <td>Lineage to use for the features.</td>
 <td></td>
@@ -3315,10 +3320,22 @@ shorthand for this transformation, as shown below.</p>
 <p>Ensure that the transformed coordinates remain consistent with the <abbr title="Coordinate Reference System">CRS</abbr> defined for your 3DCityDB instance.</p>
 </div>
 <h3 id="defining-import-metadata">Defining import metadata<a class="headerlink" href="#defining-import-metadata" title="Link to this headline for referencing">¶</a></h3>
-<p>The options <code>--lineage</code>, <code>--updating-person</code>, and <code>--reason-for-update</code> allow you to capture metadata about the feature's origin, the
-person responsible for the import, and the reason for the import. This metadata is specific to 3DCityDB and is not
+<p>The options <code>--creationDate</code>, <code>--lineage</code>, <code>--updating-person</code>, and <code>--reason-for-update</code> allow you to capture metadata
+about the feature's creation time, origin, the person responsible for the import, and the reason for the import.</p>
+<p>By default, the creation date is taken from the corresponding <abbr title="OGC City Geography Markup Language">CityGML</abbr> attribute in the input file. If the input feature
+lacks a creation date, the current import time is used. With the <code>--creation-date</code> option, you can set a specific
+timestamp (e.g., <code>2023-01-01</code>) or use <code>now</code> to apply the current import time, overriding any value from the input file.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The creation and termination dates together define a feature's lifespan in the database (see
+<a href="../../3dcitydb/feature-module/#feature-table">here</a>). Be especially careful when overwriting the <code>creationDate</code>,
+for example when importing data that may include terminated features (e.g., exports from another database). Make
+sure the <code>creationDate</code> is not later than the feature's <code>terminationDate</code>, as this would create an invalid
+lifecycle interval.</p>
+</div>
+<p>The metadata about lineage, updating person and reason for update is specific to 3DCityDB and is not
 part of the <abbr title="OGC City Geography Markup Language">CityGML</abbr> standard (see also <a href="../../3dcitydb/feature-module/#feature-table">here</a>). If not provided, the
-username used to establish the 3DCityDB database connection will be used as the default value for <code>--updating-person</code>.</p>
+username used to establish the 3DCityDB database connection will be used as the default for <code>--updating-person</code>.</p>
 <p>The <code>--lineage</code> option supports the following placeholders, which are automatically replaced during the import process.</p>
 <table>
 <thead>
