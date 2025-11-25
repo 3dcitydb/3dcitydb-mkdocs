@@ -38,6 +38,7 @@ For more details on the global options and usage hints, see [here](cli.md#option
 | `-o`, <code>--output=&lt;file&#124;-&gt;</code> | Write database report to JSON. Use `-` for `stdout`.                                                     |               |
 | `--threads=<threads>`                           | Number of threads to use for parallel processing.                                                        | 4             |
 | `-s`, `--feature-scope=<scope>`                 | Feature scope: `all`, `active`. For `active`, only properties of non-terminated features are considered. | `all`         |
+| `-c`, `--compact`                               | Only generate a compact overview.                                                                        |               |
 | `--include-generic-attributes`                  | Include generic attributes and their data types.                                                         |               |
 | `--include-size-metrics`                        | Include database size metrics.                                                                           |               |
 
@@ -254,6 +255,10 @@ provides an overview and description of these sections.
 | `codeLists`   | References to external codelists that are registered for appropriate CityGML data types in the database. An empty object is included if no codelists are available.                                           |
 | `modules`     | List of 3DCityDB module namespaces used by the data stored in the database. An empty object is included if no modules are used.                                                                               |
 
+A more concise version of the database report can be generated using the `--compact` option. When this option is
+provided, only the sections `metadata`, `summary`, and `database` are included in the output and all other sections
+are omitted. Use this mode when you want a lightweight summary without detailed feature or geometry statistics.
+
 ### Feature scope
 
 The `--feature-scope` option controls which features are considered when generating the report:
@@ -277,9 +282,9 @@ overview of the database.
 ### Including generic attributes
 
 The `--include-generic-attributes` option adds an additional `genericAttributes` section to the report.
-This section lists all generic attributes present in the database together with their data types as defined
-in the [`DATATYPE`](../3dcitydb/metadata-module.md#datatype-table) metadata table. Use this option when you need
-a complete overview of the generic attributes available in the database.
+This section lists all generic attributes present in the database grouped by feature type and together with their data
+types as defined in the [`DATATYPE`](../3dcitydb/metadata-module.md#datatype-table) metadata table. Use this option
+when you need a complete overview of the generic attributes available in the database.
 
 The example below shows an excerpt of the `genericAttributes` section.
 
@@ -289,16 +294,24 @@ The example below shows an excerpt of the `genericAttributes` section.
   "summary": {},
   ...
   "genericAttributes": {
-    "ownerName": [
-      "core:String"
-    ],
-    "roofHeight": [
-      "core:Double"
-    ],
-    "energyPerformance": [ // (1)!
-      "core:Integer",
-      "core:String"
-    ],
+    "bldg:Building": {
+      "ownerName": [
+        "core:String"
+      ],
+      "roofHeight": [
+        "core:Double"
+      ],
+      "energyPerformance": [ // (1)!
+        "core:Integer",
+        "core:String"
+      ],
+      ...
+    },
+    "con:RoofSurface": {
+      "solarIrradiation": [
+        "core:Double"
+      ]
+    },
     ...
   }
 }

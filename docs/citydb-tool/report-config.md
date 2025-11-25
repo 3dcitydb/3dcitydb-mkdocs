@@ -21,6 +21,7 @@ The configuration settings for generating a database report using the `info` com
   "reportOptions": {
     "numberOfThreads": 4,
     "featureScope": "all",
+    "compact": false,
     "includeGenericAttributes": true,
     "includeDatabaseSize": true
   }
@@ -31,5 +32,6 @@ The configuration settings for generating a database report using the `info` com
 |----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|---------------|
 | [`"numberOfThreads"`](info.md#controlling-the-report-process)        | Number of threads to use for parallel processing.                                                        |               |
 | [`"featureScope"`](info.md#feature-scope)                            | Feature scope: `all`, `active`. For `active`, only properties of non-terminated features are considered. | `all`         |
+| [`"compact"`](info.md#report-contents)                               | Only generate a compact overview.                                                                        | `false`       |
 | [`"includeGenericAttributes"`](info.md#including-generic-attributes) | Include generic attributes and their data types.                                                         | `false`       |
 | [`"includeDatabaseSize"`](info.md#including-database-size-metrics)   | Include database size metrics.                                                                           | `false`       |
