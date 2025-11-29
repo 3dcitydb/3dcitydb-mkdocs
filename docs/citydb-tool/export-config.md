@@ -22,6 +22,7 @@ The example below illustrates the JSON structure for the export options.
 {
   "exportOptions": {
     "numberOfThreads": 4,
+    "useAbsoluteResourcePaths": false,
     "targetSrs": { // (1)!
       "srid": 4326,
       "identifier": "http://www.opengis.net/def/crs/EPSG/0/4326"
@@ -47,9 +48,10 @@ The example below illustrates the JSON structure for the export options.
 
 ### General export options
 
-| <div style="width:150px;">Property</div>                        | Description                                                                                                                                                                                                                                                                                                 | Default value |
+| <div style="width:170px;">Property</div>                        | Description                                                                                                                                                                                                                                                                                                 | Default value |
 |-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | [`"numberOfThreads"`](export.md#controlling-the-export-process) | Number of threads to use for parallel processing.                                                                                                                                                                                                                                                           |               |
+| <code>"useAbsoluteResource<br/>Paths"</code>                    | Use absolute paths to reference external resources, such as texture images and library objects. Paths are OS-specific and **may break on a different OS**.                                                                                                                                                  | `false`       |
 | [`"targetSrs"`](export.md#reprojecting-geometries)              | Specifies the CRS for reprojecting geometries during export. Use the `"srid"` or `"identifier"` property to define the target CRS.                                                                                                                                                                          |               |
 | [`"affineTransform"`](export.md#transforming-geometries)        | Transform coordinates using a 3x4 matrix in row-major order. The matrix coefficients are represented as array.                                                                                                                                                                                              |               |
 | [`"lodOptions"`](export.md#lod-filter)                          | Defines an `"lods"` array and a `"mode"` to specify whether to `"keep"` (default), `"remove"`, or keep only the `"minimum"` or `"maximum"` matching LoD representation of each feature.                                                                                                                     |               |
