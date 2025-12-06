@@ -21,7 +21,7 @@ We recommend checking data and database [compatibility](../compatibility.md) fir
 !!! info
     We are expanding support to include more database systems, starting with __Oracle Database__. Stay tuned!
 
-Supported PostgreSQL versions include __PostgreSQL 13__ and higher, with __PostGIS 3.0__ and higher. Make sure to check
+Supported PostgreSQL versions include __PostgreSQL 14__ and higher, with __PostGIS 3.1__ and higher. Make sure to check
 the [PostgreSQL versioning policy](https://www.postgresql.org/support/versioning/) to determine which PostgreSQL versions are actively maintained or have
 reached end-of-life. The [PostGIS support matrix](https://trac.osgeo.org/postgis/wiki/UsersWikiPostgreSQLPostGIS) provides details on which PostgreSQL versions are supported
 by specific PostGIS versions and whether any particular version of PostGIS has reached end-of-life.
