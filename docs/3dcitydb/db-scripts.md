@@ -8,7 +8,7 @@ tags:
 
 The 3DCityDB `v5` software package comes with shell and SQL scripts for tasks such as
 [setting up](../first-steps/setup.md#3dcitydb-setup-steps) or removing a 3DCityDB instance, creating
-additional schemas, and granting or revoking access permissions. 
+additional schemas, and [granting or revoking access permissions](#granting-and-revoking-access).
 
 !!! tip
     Follow the [download instructions](../download.md) to obtain the database scripts. They are available as an individual
@@ -32,8 +32,8 @@ The following table provides an overview of the available shell scripts and thei
 | `create-schema`      | Creates an additional data schema (analogous to the default schema `citydb`) with a user-defined name     |
 | `drop-db`            | Drops a 3DCityDB instance (incl. all elements of the relational schema)                                   |
 | `drop-schema`        | Drops a data schema that has been created with `create-schema`                                            |
-| `grant-access`       | Grants read-only or read-write access to a 3DCityDB instance                                              |
-| `revoke-access`      | Revokes read-only or read-write access to a 3DCityDB instance, which has been granted with `grant-access` |
+| `grant-access`       | Grants read-only, read-update, or read-write access to a 3DCityDB instance                                              |
+| `revoke-access`      | Revokes access to a 3DCityDB instance that has been granted with `grant-access` |
 | `create-changelog`   | Create the changelog extension for a 3DCityDB instance                                                    |
 | `drop-changelog`     | Remove the changelog extension from a 3DCityDB instance                                                   |
 | `upgrade-db`         | Upgrade an existing 3DCityDB instance to a newer minor or patch version                                   |
@@ -152,3 +152,53 @@ on its usage and command-line options.
     it easier to reuse the SQL scripts across different setups or systems. This makes automating things, integrating them
     into other software, or running them as part of a CI/CD pipeline way more flexible. This is an easy way to streamline
     workflows using the SQL scripts.
+
+## Granting and revoking access
+
+The `grant-access` script allows you to grant database access to a specified user (the _grantee_) for a 3DCityDB
+instance. Three access modes are available:
+
+| Access mode | Code | Description |
+|---|---|---|
+| **Read-only** | `RO` | Grants `SELECT` privileges on all tables in the data schema and auxiliary schemas (`citydb_pkg`, `public`). No sequence privileges are granted. The grantee can query data but cannot modify it. This is the default. |
+| **Read-update** | `RU` | Grants `SELECT`, `INSERT`, and `UPDATE` privileges on tables in the data schema, and `SELECT` on auxiliary schemas (`citydb_pkg`, `public`). Grants `USAGE` and `SELECT` on sequences in the data schema. This mode is suitable when users need to read and modify city objects but should not delete data or alter the database structure. |
+| **Read-write** | `RW` | Grants `ALL` privileges on all tables in the data schema and auxiliary schemas (`citydb_pkg`, `public`), and `ALL` privileges on sequences in the data schema. The grantee has full access to the 3DCityDB instance. |
+
+To run the script, execute it from the shell scripts directory:
+
+=== "Linux"
+
+    ```bash
+    ./grant-access.sh
+    ```
+
+=== "Windows CMD"
+
+    ```bat
+    grant-access.bat
+    ```
+
+The script will prompt for the following inputs:
+
+1. **Grantee** -- the name of the database user to whom access should be granted.
+2. **Schema** -- the target 3DCityDB schema (default: `citydb`).
+3. **Access mode** -- the level of access: `RO`, `RU`, or `RW` (default: `RO`).
+
+To revoke previously granted access, use the `revoke-access` script:
+
+=== "Linux"
+
+    ```bash
+    ./revoke-access.sh
+    ```
+
+=== "Windows CMD"
+
+    ```bat
+    revoke-access.bat
+    ```
+
+The script will prompt for the following inputs:
+
+1. **Grantee** -- the name of the database user whose access should be revoked.
+2. **Schema** -- the target 3DCityDB schema (default: `citydb`).
