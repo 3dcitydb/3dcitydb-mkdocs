@@ -156,7 +156,7 @@ on its usage and command-line options.
 ## Granting and revoking access
 
 The `grant-access` script allows you to grant database access to a specified user (the _grantee_) for a 3DCityDB
-instance. The script prompts for the target schema and the desired access mode. Three access modes are available:
+instance. Three access modes are available:
 
 | Access mode | Code | Description |
 |---|---|---|
@@ -183,3 +183,22 @@ The script will prompt for the following inputs:
 1. **Grantee** -- the name of the database user to whom access should be granted.
 2. **Schema** -- the target 3DCityDB schema (default: `citydb`).
 3. **Access mode** -- the level of access: `RO`, `RU`, or `RW` (default: `RO`).
+
+To revoke previously granted access, use the `revoke-access` script:
+
+=== "Linux"
+
+    ```bash
+    ./revoke-access.sh
+    ```
+
+=== "Windows CMD"
+
+    ```bat
+    revoke-access.bat
+    ```
+
+The script will prompt for the following inputs:
+
+1. **Grantee** -- the name of the database user whose access should be revoked.
+2. **Schema** -- the target 3DCityDB schema (default: `citydb`).
