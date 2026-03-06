@@ -25,7 +25,6 @@ The example below illustrates the JSON structure for the import options.
     "indexMode": "keep",
     "failFast": false,
     "numberOfThreads": 4,
-    "batchSize": 20,
     "tempDirectory": "/my/path/to/temp",
     "affineTransform": [0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0],
     "creationDateMode": "overwriteWithFixed",
@@ -45,8 +44,7 @@ The example below illustrates the JSON structure for the import options.
 | [`"mode"`](import.md#import-modes-and-duplicate-features)       | Import mode: `importAll`, `skipExisting`, `deleteExisting`, `terminateExisting`.                                                                                        | `importAll`                                   |
 | [`"indexMode"`](import.md#managing-indexes-during-import)       | Index mode: `keep`, `drop`, `dropCreate`.                                                                                                                               | `keep`                                        |
 | [`"failFast"`](import.md#controlling-the-import-process)        | Fail fast on errors.                                                                                                                                                    | `false`                                       |
-| [`"numberOfThreads"`](import.md#controlling-the-import-process) | Number of threads to use for parallel processing.                                                                                                                       |                                               |
-| `"batchSize"`                                                   | Number of top-level features that are committed to the database in a single transaction. A higher batch size might improve import performance but requires more memory. | 20                                            |
+| [`"numberOfThreads"`](import.md#controlling-the-import-process) | Number of threads to use for parallel processing.                                                                                                                       |                                               | |
 | [`"tempDirectory"`](import.md#controlling-the-import-process)   | Store temporary files in this directory.                                                                                                                                |                                               |
 | [`"affineTransform"`](import.md#transforming-geometries)        | Transform coordinates using a 3x4 matrix in row-major order. The matrix coefficients are represented as array.                                                          |                                               |
 | [`"creationDateMode"`](import.md#defining-import-metadata)      | Mode for handling the creation date: `attributeOrNow`, `overwriteWithFixed`, `overwriteWithNow`.                                                                        | `attributeOrNow`                              |
