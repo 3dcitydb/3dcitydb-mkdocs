@@ -7,3 +7,6 @@
 
 # Build dirs
 site/
+
+# claude
+.claude/
