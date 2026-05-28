@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/img/logos/3dcitydb-logo-transparent.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -3570,6 +3570,10 @@ Some common examples include:</p>
 <li><code>%.2f</code>: Formats the value as a decimal number with two decimal places.</li>
 <li><code>%4.4s</code>: Formats the value as a string, but only prints exactly four characters.</li>
 </ul>
+<h4 id="handling-empty-tiles">Handling empty tiles<a class="headerlink" href="#handling-empty-tiles" title="Link to this headline for referencing">¶</a></h4>
+<p>By default, citydb-tool generates output files for all tiles in the tile grid, including tiles without exported
+features. Use the <code>--skip-empty-tiles</code> option to omit empty tiles from the output. When enabled, only files for tiles
+containing exported features are retained, reducing the number of generated files and saving disk space.</p>
 <h4 id="tiled-export-example">Tiled export example<a class="headerlink" href="#tiled-export-example" title="Link to this headline for referencing">¶</a></h4>
 <p>The following command exports all roads from the 3DCityDB, organizing them into 2x2 km tiles. The tiling extent is
 auto-computed. Tiles align with the database <abbr title="Coordinate Reference System">CRS</abbr> grid and are chosen to cover the tiling extent. 
