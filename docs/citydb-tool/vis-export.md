@@ -156,9 +156,9 @@ same area.
 - `--grid-edge-length` sets the edge length (in meters) of one leaf cell. When omitted, the leaf cell is sized so that
   the entire dataset fits in a single root cell, in which case no spatial subdivision is performed. Set a smaller value
   to produce a finer grid with shorter camera load distances.
-- `--lod-refine-radius` defines the projected bounding-sphere radius (in pixels) above which a tile refines to its
+- `--screen-pixel-threshold` defines the projected bounding-sphere radius (in pixels) above which a tile refines to its
   children. The same threshold drives the 3D Tiles `geometricError` and the I3S LOD threshold, so that both formats
-  load the same level of detail at any given camera distance. Lower values load more detail (heavier viewer), while
+  refine at the same camera distance. Lower values load more detail (heavier viewer), while
   higher values defer refinement (lighter viewer). Pass `0` to always refine to the leaves, which is useful for small
   exports or debugging but easily crashes the viewer on city-scale datasets.
 - `--clamp-to-ground` places each feature on the ellipsoid surface (height 0). This is useful when the viewer has no
