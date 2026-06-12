@@ -137,18 +137,26 @@ identical across formats.
 | <div style="width:200px;">Property</div>                                                | Description                                                                                                                              | Default value |
 |-----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | [`"gridEdgeLength"`](vis-export.md#spatial-aggregation-and-lod)                         | Edge length in meters of one grid cell used as the leaf of the spatial aggregation tree. `0` means auto-sized to the dataset extent.     | `0`           |
-| [`"lodRefineRadius"`](vis-export.md#spatial-aggregation-and-lod)                        | Projected bounding-sphere radius (pixels) above which a tile refines to its children. `0` always refines to the leaves.                  | `56`          |
+| [`"screenPixelThreshold"`](vis-export.md#spatial-aggregation-and-lod)                   | Projected bounding-sphere radius (pixels) above which a tile refines to its children. `0` always refines to the leaves.                  | `56`          |
 | [`"clampToGround"`](vis-export.md#spatial-aggregation-and-lod)                          | Place each feature on the ellipsoid surface (height 0).                                                                                  | `false`       |
 | [`"textureScale"`](vis-export.md#texture-atlas-handling)                                | Texture resolution scale factor between `0.01` and `1.0`.                                                                                | `1.0`         |
 | [`"maxAtlasSize"`](vis-export.md#texture-atlas-handling)                                | Maximum texture atlas edge length in pixels, between `1024` and `16384`.                                                                 | `1024`        |
 | [`"atlasOverflowMode"`](vis-export.md#texture-atlas-handling)                           | Strategy when a cell's textures exceed `maxAtlasSize`: `HYBRID`, `SPLIT`, `FLAT`.                                                        | `HYBRID`      |
 | [`"atlasFallbackStrategy"`](vis-export.md#texture-atlas-handling)                       | Fallback strategy for cells the split stage did not subdivide further, and for every overflowing cell under `FLAT`: `EXPAND`, `RESCALE`.    | `EXPAND`   |
 | [`"enableShading"`](vis-export.md#styling-features-without-appearances)                 | Emit per-vertex normals so surfaces render shaded.                                                                                       | `false`       |
+| [`"defaultColor"`](vis-export.md#styling-features-without-appearances)                  | Default sRGB color (`#rrggbb` or `#rrggbbaa`) applied to features without a texture or `X3DMaterial`.                                     | opaque white  |
+| [`"featureTypeStyles"`](vis-export.md#styling-features-without-appearances)             | JSON object mapping a qualified feature type name (e.g. `"con:RoofSurface"`) to an sRGB hex color, overriding `"defaultColor"` per type. |               |
+| [`"attributes"`](vis-export.md#selecting-attributes)                                    | Array of declarative column-mapping tokens for the per-feature attribute table. Each entry has the form `"<output_col>:<source>"`.       | export all    |
 
-The styling registry (default color and per-feature-type colors) and the attribute projection are configured via the
-nested `"styleRegistry"` and `"attributeProjection"` properties. Their JSON structures mirror the corresponding CLI
-options described in [Styling features without appearances](vis-export.md#styling-features-without-appearances) and
-[Selecting attributes](vis-export.md#selecting-attributes).
+Styling and attribute selection are configured directly through the `"defaultColor"`, `"featureTypeStyles"`, and
+`"attributes"` properties listed above, nested in the same format container (`"3DTiles"` or `"I3S"`) as the other scene
+options. They accept the same values as their command-line counterparts
+([`--default-color`](vis-export.md#styling-features-without-appearances),
+[`--feature-type-style`](vis-export.md#styling-features-without-appearances), and
+[`--attributes`](vis-export.md#selecting-attributes)); a command-line option, when given, overrides the matching
+property from the configuration file. The keys of `"featureTypeStyles"` must be qualified feature type names with a
+namespace prefix (e.g. `"bldg:Building"`); an unprefixed or unknown type is rejected. See the
+[3D Tiles example](#3d-tiles-options) below for the full structure.
 
 ### 3D Tiles options
 
@@ -160,13 +168,23 @@ options.
 {
   "3DTiles": {
     "gridEdgeLength": 200.0,
-    "lodRefineRadius": 56.0,
+    "screenPixelThreshold": 56.0,
     "clampToGround": false,
     "textureScale": 1.0,
     "maxAtlasSize": 2048,
     "atlasOverflowMode": "HYBRID",
     "atlasFallbackStrategy": "EXPAND",
-    "enableShading": true
+    "enableShading": true,
+    "defaultColor": "#cccccc",
+    "featureTypeStyles": {
+      "con:RoofSurface": "#ff0000",
+      "bldg:Building": "#808080cc"
+    },
+    "attributes": [
+      "COUNTRY:ADDRESS/[FIRST]country",
+      "CITY:ADDRESS/[FIRST]city",
+      "HEIGHT:ATTRIBUTES/con:height.con:value::double"
+    ]
   }
 }
 ```
@@ -181,7 +199,7 @@ be set here, plus the I3S-specific `"slpk"` flag.
   "I3S": {
     "slpk": true,
     "gridEdgeLength": 200.0,
-    "lodRefineRadius": 56.0,
+    "screenPixelThreshold": 56.0,
     "clampToGround": false,
     "textureScale": 1.0,
     "maxAtlasSize": 2048,
