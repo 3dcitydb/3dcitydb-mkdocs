@@ -161,8 +161,14 @@ same area.
   refine at the same camera distance. Lower values load more detail (heavier viewer), while
   higher values defer refinement (lighter viewer). Pass `0` to always refine to the leaves, which is useful for small
   exports or debugging but easily crashes the viewer on city-scale datasets.
-- `--clamp-to-ground` places each feature on the ellipsoid surface (height 0). This is useful when the viewer has no
-  terrain loaded.
+- `--clamp-to-ground=<mode>` vertically clamps each feature before tiling. With `ellipsoid`, each feature is shifted so
+  its lowest point sits on the WGS84 ellipsoid (height 0), which is useful when the viewer has no terrain loaded. With
+  `cesium-world-terrain`, the exporter samples the Cesium World Terrain height at each feature's centroid at export time
+  and bakes it as the ground height, so the export lines up with Cesium World Terrain in the viewer even when the source
+  heights are unreliable or relative. This mode requires a Cesium ion access token, supplied via `--cesium-ion-token`,
+  the configuration file, or the `CESIUM_ION_TOKEN` environment variable (precedence: command line > configuration file
+  > environment variable). Like the database password, a token stored in the configuration file is kept in plain text.
+  When `--clamp-to-ground` is omitted, features keep their absolute database height.
 
 ### Texture atlas handling
 
