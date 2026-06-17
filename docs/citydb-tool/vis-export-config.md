@@ -138,7 +138,8 @@ identical across formats.
 |-----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | [`"gridEdgeLength"`](vis-export.md#spatial-aggregation-and-lod)                         | Edge length in meters of one grid cell used as the leaf of the spatial aggregation tree. `0` means auto-sized to the dataset extent.     | `0`           |
 | [`"screenPixelThreshold"`](vis-export.md#spatial-aggregation-and-lod)                   | Projected bounding-sphere radius (pixels) above which a tile refines to its children. `0` always refines to the leaves.                  | `56`          |
-| [`"clampToGround"`](vis-export.md#spatial-aggregation-and-lod)                          | Place each feature on the ellipsoid surface (height 0).                                                                                  | `false`       |
+| [`"clampMode"`](vis-export.md#spatial-aggregation-and-lod)                              | Vertical clamping target: `"ellipsoid"` (lowest point on the WGS84 ellipsoid, height 0) or `"cesium-world-terrain"` (lowest point on the sampled Cesium World Terrain height, requires `"cesiumIonToken"`). Omit for no clamping. | none          |
+| [`"cesiumIonToken"`](vis-export.md#spatial-aggregation-and-lod)                         | Cesium ion access token for `"clampMode": "cesium-world-terrain"`, stored in plain text like the database password. Can also be supplied via `--cesium-ion-token` or the `CESIUM_ION_TOKEN` environment variable (precedence: command line > config file > environment variable). |               |
 | [`"textureScale"`](vis-export.md#texture-atlas-handling)                                | Texture resolution scale factor between `0.01` and `1.0`.                                                                                | `1.0`         |
 | [`"maxAtlasSize"`](vis-export.md#texture-atlas-handling)                                | Maximum texture atlas edge length in pixels, between `1024` and `16384`.                                                                 | `1024`        |
 | [`"atlasOverflowMode"`](vis-export.md#texture-atlas-handling)                           | Strategy when a cell's textures exceed `maxAtlasSize`: `HYBRID`, `SPLIT`, `FLAT`.                                                        | `HYBRID`      |
@@ -169,7 +170,7 @@ options.
   "3DTiles": {
     "gridEdgeLength": 200.0,
     "screenPixelThreshold": 56.0,
-    "clampToGround": false,
+    "clampMode": "ellipsoid",
     "textureScale": 1.0,
     "maxAtlasSize": 2048,
     "atlasOverflowMode": "HYBRID",
@@ -200,7 +201,8 @@ be set here, plus the I3S-specific `"slpk"` flag.
     "slpk": true,
     "gridEdgeLength": 200.0,
     "screenPixelThreshold": 56.0,
-    "clampToGround": false,
+    "clampMode": "cesium-world-terrain",
+    "cesiumIonToken": "your-cesium-ion-token",
     "textureScale": 1.0,
     "maxAtlasSize": 2048,
     "atlasOverflowMode": "HYBRID",
