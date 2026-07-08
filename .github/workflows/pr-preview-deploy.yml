@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download preview artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: pr-preview
           run-id: ${{ github.event.workflow_run.id }}
@@ -89,7 +89,7 @@ jobs:
           }
 
       - name: Comment preview link on PR
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const pr = Number('${{ steps.meta.outputs.pr }}');
