@@ -1,0 +1,73 @@
+name: Cleanup PR previews
+
+# Weekly sweep that removes pr/<num>/ preview folders from gh-pages whose pull
+# request is no longer open (closed, merged, or deleted). Runs on a schedule
+# only; there is no on-close trigger by design.
+
+on:
+  schedule:
+    - cron: "0 3 * * 1" # Mondays 03:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  # Shared with ci.yml and pr-preview-deploy.yml to avoid racing on gh-pages.
+  group: docs-deploy
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@v5
+        with:
+          ref: gh-pages
+
+      - name: Remove previews of closed/merged PRs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if [ ! -d pr ]; then
+            echo "No pr/ directory; nothing to clean."
+            exit 0
+          fi
+          removed=0
+          for dir in pr/*/; do
+            [ -d "$dir" ] || continue
+            num="$(basename "$dir")"
+            if ! [[ "$num" =~ ^[0-9]+$ ]]; then
+              echo "Skipping non-numeric entry: $dir"
+              continue
+            fi
+            # Treat any non-OPEN state, or a PR that no longer exists, as stale.
+            state="$(gh pr view "$num" --json state -q .state 2>/dev/null || echo MISSING)"
+            if [ "$state" = "OPEN" ]; then
+              echo "PR #$num is open; keeping preview."
+            else
+              echo "PR #$num is $state; removing $dir"
+              rm -rf "$dir"
+              removed=$((removed + 1))
+            fi
+          done
+          echo "Removed $removed preview(s)."
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No stale previews to remove."
+            exit 0
+          fi
+          git commit -m "docs: clean up previews of closed/merged PRs"
+          git push origin gh-pages || {
+            git fetch origin gh-pages
+            git rebase origin/gh-pages
+            git push origin gh-pages
+          }

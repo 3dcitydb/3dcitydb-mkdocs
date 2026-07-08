@@ -1,0 +1,72 @@
+name: Build PR preview
+
+# Builds a documentation preview for a pull request. This job runs with a
+# read-only token and NEVER touches the gh-pages branch, so it is safe even for
+# untrusted (fork) PRs. The actual publish happens in the companion workflow
+# "Deploy PR preview" (pr-preview-deploy.yml), which runs with a write token via
+# workflow_run. This build/deploy split lets us support fork PRs in the future
+# by simply relaxing the same-repo guard below.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# Only build PRs from the same repository for now. Fork PRs could inject content
+# into the published docs, so they are intentionally excluded. Remove this guard
+# (and review the trust model) to enable previews for forks later.
+permissions:
+  contents: read
+
+concurrency:
+  # Supersede in-flight builds for the same PR.
+  group: pr-preview-${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: pip install -U -r requirements.txt
+
+      - name: Build PR preview
+        env:
+          PR_NUMBER: ${{ github.event.number }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_SHA_FULL: ${{ github.event.pull_request.head.sha }}
+        run: |
+          # Derive the host from docs/CNAME so this works on both the production
+          # repo (docs.3dcitydb.org) and the bwibo testing fork
+          # (docs.brunowillenborg.de) without any change.
+          HOST="$(tr -d '[:space:]' < docs/CNAME 2>/dev/null || echo docs.3dcitydb.org)"
+          export SITE_URL="https://${HOST}/pr/${PR_NUMBER}/"
+          export PR_SHA="${PR_SHA_FULL:0:7}"
+          echo "Building preview at $SITE_URL (commit $PR_SHA)"
+          mkdocs build -f mkdocs.pr.yml -d site --strict
+
+      - name: Record PR metadata for deploy job
+        run: |
+          echo "${{ github.event.number }}" > pr_number.txt
+          echo "${{ github.event.pull_request.head.sha }}" > pr_sha.txt
+
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-preview
+          path: |
+            site
+            pr_number.txt
+            pr_sha.txt
+          retention-days: 3
+          if-no-files-found: error

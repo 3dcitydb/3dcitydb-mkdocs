@@ -104,3 +104,29 @@ To update documentation content for an existing release version:
 - Content updates preserve the existing version number and aliases
 - The documentation will be redeployed with the same version identifier
 - If updating the current `latest` version, the changes will be immediately visible on the default documentation site
+
+### PR preview builds
+
+Every pull request from a branch **within this repository** gets an ephemeral
+documentation preview so reviewers can see the rendered result before merging.
+
+- **URL**: `https://docs.3dcitydb.org/pr/<PR-number>/` — a bot comment with the link is
+  posted on the PR and updated on every push.
+- **Not in the version menu**: previews are published straight into the `pr/` folder on the
+  `gh-pages` branch and never touch `versions.json`, so they do **not** appear in the version
+  dropdown at the top of the docs. They also carry a preview banner and are marked `noindex`.
+- **Automatic cleanup**: a scheduled job removes previews of closed/merged PRs **once a week**
+  (Mondays), and can also be run manually via *workflow_dispatch*.
+- **Fork PRs are excluded** for now (a fork could inject content into the docs site).
+
+The feature is implemented as a build/deploy split so it can be extended to forks later:
+
+- `.github/workflows/pr-preview-build.yml` — builds the preview with `mkdocs.pr.yml` using a
+  **read-only** token (safe for untrusted code) and uploads it as an artifact.
+- `.github/workflows/pr-preview-deploy.yml` — publishes the artifact to `gh-pages` under
+  `pr/<num>/` and comments on the PR, using a **write** token via `workflow_run`.
+- `.github/workflows/pr-preview-cleanup.yml` — the weekly cleanup sweep.
+
+`mkdocs.pr.yml` is a small overlay over `mkdocs.yml` (via `INHERIT`) that injects the per-PR
+`site_url`, enables the `overrides/main.html` banner, and hides the version selector — the
+production build (`mkdocs.yml`) is unchanged.
