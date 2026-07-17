@@ -1,0 +1,119 @@
+name: Deploy PR preview
+
+# Publishes the artifact produced by "Build PR preview" into pr/<num>/ on the
+# gh-pages branch and posts/updates a preview link on the PR. This runs via
+# workflow_run so it has a write token even though the build job did not — the
+# build job never sees secrets, which keeps the door open for fork PRs later.
+#
+# This job only copies the already-built static site into gh-pages; it never
+# executes PR code. It also NEVER touches versions.json, so PR previews do not
+# appear in the mike version menu.
+
+on:
+  workflow_run:
+    workflows: ["Build PR preview"]
+    types: [completed]
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read # required to download the build artifact from the triggering run
+
+concurrency:
+  # Shared with ci.yml (mike deploys) and the cleanup workflow so that no two
+  # jobs push to gh-pages at the same time.
+  group: docs-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: >
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download preview artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: pr-preview
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: artifact
+
+      - name: Read PR metadata
+        id: meta
+        run: |
+          PR="$(cat artifact/pr_number.txt)"
+          SHA="$(cat artifact/pr_sha.txt)"
+          # Harden against a tampered artifact: PR number must be digits only.
+          if ! [[ "$PR" =~ ^[0-9]+$ ]]; then
+            echo "Invalid PR number: '$PR'" >&2
+            exit 1
+          fi
+          # Use the host the site was actually built with (from its CNAME) so the
+          # comment link is correct on both the production repo and the fork.
+          HOST="$(tr -d '[:space:]' < artifact/site/CNAME 2>/dev/null || echo docs.3dcitydb.org)"
+          echo "pr=$PR" >> "$GITHUB_OUTPUT"
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+          echo "host=$HOST" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout gh-pages
+        uses: actions/checkout@v5
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Update preview folder
+        run: |
+          PR="${{ steps.meta.outputs.pr }}"
+          rm -rf "gh-pages/pr/$PR"
+          mkdir -p "gh-pages/pr/$PR"
+          cp -r artifact/site/. "gh-pages/pr/$PR/"
+
+      - name: Commit and push
+        run: |
+          cd gh-pages
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add "pr/${{ steps.meta.outputs.pr }}"
+          if git diff --cached --quiet; then
+            echo "No changes to publish."
+            exit 0
+          fi
+          git commit -m "docs: preview for PR #${{ steps.meta.outputs.pr }} (${{ steps.meta.outputs.sha }})"
+          # Serialized by the docs-deploy concurrency group; rebase is a safety net.
+          git push origin gh-pages || {
+            git fetch origin gh-pages
+            git rebase origin/gh-pages
+            git push origin gh-pages
+          }
+
+      - name: Comment preview link on PR
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const pr = Number('${{ steps.meta.outputs.pr }}');
+            const sha = '${{ steps.meta.outputs.sha }}';
+            const host = '${{ steps.meta.outputs.host }}';
+            const url = `https://${host}/pr/${pr}/`;
+            const marker = '<!-- pr-preview-bot -->';
+            const body = [
+              marker,
+              '### 📖 Documentation preview ready',
+              '',
+              'Preview for this PR is live at:',
+              `**${url}**`,
+              '',
+              `Built from ${sha}. Updated automatically on every push. ` +
+              'Removed automatically after the PR is closed.',
+            ].join('\n');
+            const { owner, repo } = context.repo;
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner, repo, issue_number: pr, per_page: 100,
+            });
+            const existing = comments.find(c => c.body && c.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number: pr, body });
+            }

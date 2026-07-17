@@ -1,0 +1,21 @@
+# PR preview build config #####################################################
+# Overlay used ONLY for per-PR preview builds (see .github/workflows/
+# pr-preview-build.yml). It inherits the production mkdocs.yml and overrides
+# just the bits a throwaway preview needs. Do not use this for real deploys.
+INHERIT: mkdocs.yml
+
+# Per-PR values are injected by CI via environment variables.
+site_url: !ENV [SITE_URL, "https://docs.3dcitydb.org/"]
+
+theme:
+  # Only PR builds pull in the preview banner override.
+  custom_dir: overrides
+
+extra:
+  pr_number: !ENV [PR_NUMBER, ""]
+  pr_url: !ENV [PR_URL, ""]
+  pr_sha: !ENV [PR_SHA, ""]
+  # Hide the mike version selector in previews: there is no versions.json
+  # under /pr/<num>/, so a selector would be broken. Replacing the dict from
+  # mkdocs.yml with `false` makes Material render no version dropdown.
+  version: false

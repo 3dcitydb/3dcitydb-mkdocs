@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+<!--
+  PR preview banner. Only active when built with mkdocs.pr.yml (which sets
+  theme.custom_dir: overrides and extra.pr_number). Production builds never
+  use this template, so the official docs are unaffected.
+-->
+
+{% block announce %}
+  {% if config.extra.pr_number %}
+  <a href="{{ config.extra.pr_url }}" style="font-weight: 600;">
+    🔍 Preview of pull request #{{ config.extra.pr_number }}{% if config.extra.pr_sha %} (commit {{ config.extra.pr_sha }}){% endif %} — not the official documentation.
+  </a>
+  {% endif %}
+{% endblock %}
+
+{% block extrahead %}
+  {{ super() }}
+  {% if config.extra.pr_number %}
+  <meta name="robots" content="noindex, nofollow">
+  {% endif %}
+{% endblock %}
