@@ -27,8 +27,8 @@ citydb vis-export 3dtiles [OPTIONS]
 ## Options
 
 The `vis-export 3dtiles` command inherits global options from the main [`citydb`](cli.md) command and general export,
-query and filter, and scene options from its parent [`vis-export`](vis-export.md) command. It does not currently define
-any 3D Tiles-specific CLI options beyond the shared scene options.
+query and filter, and scene options from its parent [`vis-export`](vis-export.md) command. Additionally, it provides
+3D Tiles format-specific export options.
 
 ### Global options
 
@@ -41,6 +41,14 @@ For more details on the global options and usage hints, see [here](cli.md#option
 --8<-- "docs/citydb-tool/includes/vis-export-general-options.md"
 
 For more details on the general export options and usage hints, see [here](vis-export.md#general-export-options).
+
+### 3D Tiles export options
+
+| Option                            | Description                                                                                                                                                                                                              | Default value |
+|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| `--implicit-geometry-instancing`  | Emit implicit geometries as GPU instances using the glTF extensions `EXT_mesh_gpu_instancing` and `EXT_instance_features`. When omitted, every implicit geometry is baked as a full mesh copy per occurrence.             |               |
+
+For more details, see [Rendering implicit geometries as GPU instances](#rendering-implicit-geometries-as-gpu-instances).
 
 ### Query and filter options
 
@@ -71,6 +79,33 @@ For more details on the database connection options and usage hints, see [here](
 !!! tip
     For general usage hints applicable to all subcommands of the `vis-export` command (including but not limited to
     `vis-export 3dtiles`), refer to the documentation for the `vis-export` command [here](vis-export.md#usage).
+
+### Rendering implicit geometries as GPU instances
+
+CityGML [implicit geometries](../3dcitydb/geometry-module.md#implicit_geometry-table) store a template geometry once
+(e.g. a tree or street furniture model) and reference it from many features, each with its own transformation matrix.
+By default, the 3D Tiles exporter *bakes* these references: every occurrence is written as a full, transformed mesh
+copy, which can inflate tile sizes considerably for datasets with many repeated objects such as vegetation.
+
+With `--implicit-geometry-instancing`, the exporter instead uses the glTF extensions
+[`EXT_mesh_gpu_instancing`](https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Vendor/EXT_mesh_gpu_instancing){target="blank"}
+and
+[`EXT_instance_features`](https://github.com/CesiumGS/glTF/tree/3d-tiles-next/extensions/2.0/Vendor/EXT_instance_features){target="blank"}:
+each template mesh is stored only once per tile, and every occurrence is placed by per-instance translation, rotation,
+and scale attributes. Per-instance feature IDs are emitted via `EXT_instance_features`, so instanced features remain
+individually pickable and keep their entries in the attribute table just like baked features.
+
+Note the following behavior:
+
+- Instances whose transformation matrix cannot be decomposed into translation, rotation, and scale (i.e. matrices
+  containing shear or mirroring) automatically fall back to baked mesh copies. The rest of the tile still benefits
+  from instancing.
+- The option is off by default because it requires viewer support for the two glTF extensions. CesiumJS supports both;
+  omit the option for consumers without such support.
+
+```bash
+./citydb vis-export 3dtiles -o my-city --implicit-geometry-instancing
+```
 
 ### 3D Tiles example
 

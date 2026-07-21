@@ -162,12 +162,12 @@ namespace prefix (e.g. `"bldg:Building"`); an unprefixed or unknown type is reje
 ### 3D Tiles options
 
 The `"3DTiles"` property is a container object for 3D Tiles-specific format options. All shared scene options listed
-above can be set here. Currently, 3D Tiles defines no additional format-specific properties beyond the shared scene
-options.
+above can be set here, plus the 3D Tiles-specific `"implicitGeometryInstancing"` flag.
 
 ```json
 {
   "3DTiles": {
+    "implicitGeometryInstancing": true,
     "gridEdgeLength": 200.0,
     "screenPixelThreshold": 56.0,
     "clampMode": "ellipsoid",
@@ -189,6 +189,10 @@ options.
   }
 }
 ```
+
+| <div style="width:230px;">Property</div>                                                                                     | Description                                                                                                                                                                       | Default value |
+|------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| [`"implicitGeometryInstancing"`](vis-export-3dtiles.md#rendering-implicit-geometries-as-gpu-instances)                       | Emit implicit geometries as GPU instances using the glTF extensions `EXT_mesh_gpu_instancing` and `EXT_instance_features` instead of baking a full mesh copy per occurrence.      | `false`       |
 
 ### I3S options
 
