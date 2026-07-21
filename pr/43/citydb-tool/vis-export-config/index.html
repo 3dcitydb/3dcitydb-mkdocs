@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/img/logos/3dcitydb-logo-transparent.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -109,7 +109,7 @@
             
   
   <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/43" style="font-weight: 600;">
-    🔍 Preview of pull request #43 (commit 0ebcdb0) — not the official documentation.
+    🔍 Preview of pull request #43 (commit 8018687) — not the official documentation.
   </a>
   
 
@@ -3178,31 +3178,47 @@ namespace prefix (e.g. <code>"bldg:Building"</code>); an unprefixed or unknown t
 <a href="#3d-tiles-options">3D Tiles example</a> below for the full structure.</p>
 <h3 id="3d-tiles-options">3D Tiles options<a class="headerlink" href="#3d-tiles-options" title="Link to this headline for referencing">¶</a></h3>
 <p>The <code>"3DTiles"</code> property is a container object for 3D Tiles-specific format options. All shared scene options listed
-above can be set here. Currently, 3D Tiles defines no additional format-specific properties beyond the shared scene
-options.</p>
+above can be set here, plus the 3D Tiles-specific <code>"implicitGeometryInstancing"</code> flag.</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">"3DTiles"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">"gridEdgeLength"</span><span class="p">:</span><span class="w"> </span><span class="mf">200.0</span><span class="p">,</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nt">"screenPixelThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mf">56.0</span><span class="p">,</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nt">"clampMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ellipsoid"</span><span class="p">,</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nt">"textureScale"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nt">"maxAtlasSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">2048</span><span class="p">,</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nt">"atlasOverflowMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HYBRID"</span><span class="p">,</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nt">"atlasFallbackStrategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPAND"</span><span class="p">,</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="nt">"enableShading"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="nt">"defaultColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#cccccc"</span><span class="p">,</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="nt">"featureTypeStyles"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">      </span><span class="nt">"con:RoofSurface"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ff0000"</span><span class="p">,</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">      </span><span class="nt">"bldg:Building"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#808080cc"</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">      </span><span class="s2">"COUNTRY:ADDRESS/[FIRST]country"</span><span class="p">,</span>
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">      </span><span class="s2">"CITY:ADDRESS/[FIRST]city"</span><span class="p">,</span>
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">      </span><span class="s2">"HEIGHT:ATTRIBUTES/con:height.con:value::double"</span>
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">    </span><span class="p">]</span>
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="p">}</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">"implicitGeometryInstancing"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nt">"gridEdgeLength"</span><span class="p">:</span><span class="w"> </span><span class="mf">200.0</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nt">"screenPixelThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mf">56.0</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nt">"clampMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ellipsoid"</span><span class="p">,</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nt">"textureScale"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nt">"maxAtlasSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">2048</span><span class="p">,</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nt">"atlasOverflowMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HYBRID"</span><span class="p">,</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="nt">"atlasFallbackStrategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPAND"</span><span class="p">,</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="nt">"enableShading"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="nt">"defaultColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#cccccc"</span><span class="p">,</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="nt">"featureTypeStyles"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">      </span><span class="nt">"con:RoofSurface"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ff0000"</span><span class="p">,</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">      </span><span class="nt">"bldg:Building"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#808080cc"</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">      </span><span class="s2">"COUNTRY:ADDRESS/[FIRST]country"</span><span class="p">,</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">      </span><span class="s2">"CITY:ADDRESS/[FIRST]city"</span><span class="p">,</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">      </span><span class="s2">"HEIGHT:ATTRIBUTES/con:height.con:value::double"</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="p">}</span>
 </span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th><div style="width:230px;">Property</div></th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../vis-export-3dtiles/#rendering-implicit-geometries-as-gpu-instances"><code>"implicitGeometryInstancing"</code></a></td>
+<td>Emit implicit geometries as GPU instances using the glTF extensions <code>EXT_mesh_gpu_instancing</code> and <code>EXT_instance_features</code> instead of baking a full mesh copy per occurrence.</td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
 <h3 id="i3s-options">I3S options<a class="headerlink" href="#i3s-options" title="Link to this headline for referencing">¶</a></h3>
 <p>The <code>"I3S"</code> property is a container object for I3S-specific format options. All shared scene options listed above can
 be set here, plus the I3S-specific <code>"slpk"</code> flag.</p>
@@ -3351,7 +3367,7 @@ Pro and ArcGIS Online refuse to load a scene layer whose legacy geometry buffer 
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.tracking", "toc.follow", "content.code.select", "content.code.copy", "content.code.annotate", "content.tooltips", "search.suggest", "search.highlight", "search.share", "header.autohide", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../assets/javascripts/tablesort.js"></script>
       

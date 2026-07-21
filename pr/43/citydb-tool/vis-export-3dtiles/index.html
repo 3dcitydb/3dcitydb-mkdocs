@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/img/logos/3dcitydb-logo-transparent.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -109,7 +109,7 @@
             
   
   <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/43" style="font-weight: 600;">
-    🔍 Preview of pull request #43 (commit 0ebcdb0) — not the official documentation.
+    🔍 Preview of pull request #43 (commit 8018687) — not the official documentation.
   </a>
   
 
@@ -1971,6 +1971,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#3d-tiles-export-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3D Tiles export options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#query-and-filter-options" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2030,6 +2041,17 @@
   
     <nav class="md-nav" aria-label="Usage">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rendering-implicit-geometries-as-gpu-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rendering implicit geometries as GPU instances
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#3d-tiles-example" class="md-nav__link">
@@ -2779,6 +2801,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#3d-tiles-export-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3D Tiles export options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#query-and-filter-options" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2838,6 +2871,17 @@
   
     <nav class="md-nav" aria-label="Usage">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rendering-implicit-geometries-as-gpu-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rendering implicit geometries as GPU instances
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#3d-tiles-example" class="md-nav__link">
@@ -2968,8 +3012,8 @@ chunks, and a <code>tileset.json</code> index using implicit or explicit refinem
 </span></code></pre></div>
 <h2 id="options">Options<a class="headerlink" href="#options" title="Link to this headline for referencing">¶</a></h2>
 <p>The <code>vis-export 3dtiles</code> command inherits global options from the main <a href="../cli/"><code>citydb</code></a> command and general export,
-query and filter, and scene options from its parent <a href="../vis-export/"><code>vis-export</code></a> command. It does not currently define
-any 3D Tiles-specific <abbr title="Command Line Interface">CLI</abbr> options beyond the shared scene options.</p>
+query and filter, and scene options from its parent <a href="../vis-export/"><code>vis-export</code></a> command. Additionally, it provides
+3D Tiles format-specific export options.</p>
 <h3 id="global-options">Global options<a class="headerlink" href="#global-options" title="Link to this headline for referencing">¶</a></h3>
 <table>
 <thead>
@@ -3066,6 +3110,24 @@ any 3D Tiles-specific <abbr title="Command Line Interface">CLI</abbr> options be
 </tbody>
 </table>
 <p>For more details on the general export options and usage hints, see <a href="../vis-export/#general-export-options">here</a>.</p>
+<h3 id="3d-tiles-export-options">3D Tiles export options<a class="headerlink" href="#3d-tiles-export-options" title="Link to this headline for referencing">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--implicit-geometry-instancing</code></td>
+<td>Emit implicit geometries as GPU instances using the glTF extensions <code>EXT_mesh_gpu_instancing</code> and <code>EXT_instance_features</code>. When omitted, every implicit geometry is baked as a full mesh copy per occurrence.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>For more details, see <a href="#rendering-implicit-geometries-as-gpu-instances">Rendering implicit geometries as GPU instances</a>.</p>
 <h3 id="query-and-filter-options">Query and filter options<a class="headerlink" href="#query-and-filter-options" title="Link to this headline for referencing">¶</a></h3>
 <table>
 <thead>
@@ -3294,31 +3356,53 @@ any 3D Tiles-specific <abbr title="Command Line Interface">CLI</abbr> options be
 <p>For general usage hints applicable to all subcommands of the <code>vis-export</code> command (including but not limited to
 <code>vis-export 3dtiles</code>), refer to the documentation for the <code>vis-export</code> command <a href="../vis-export/#usage">here</a>.</p>
 </div>
+<h3 id="rendering-implicit-geometries-as-gpu-instances">Rendering implicit geometries as GPU instances<a class="headerlink" href="#rendering-implicit-geometries-as-gpu-instances" title="Link to this headline for referencing">¶</a></h3>
+<p><abbr title="OGC City Geography Markup Language">CityGML</abbr> <a href="../../3dcitydb/geometry-module/#implicit_geometry-table">implicit geometries</a> store a template geometry once
+(e.g. a tree or street furniture model) and reference it from many features, each with its own transformation matrix.
+By default, the 3D Tiles exporter <em>bakes</em> these references: every occurrence is written as a full, transformed mesh
+copy, which can inflate tile sizes considerably for datasets with many repeated objects such as vegetation.</p>
+<p>With <code>--implicit-geometry-instancing</code>, the exporter instead uses the glTF extensions
+<a href="https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Vendor/EXT_mesh_gpu_instancing" target="blank"><code>EXT_mesh_gpu_instancing</code></a>
+and
+<a href="https://github.com/CesiumGS/glTF/tree/3d-tiles-next/extensions/2.0/Vendor/EXT_instance_features" target="blank"><code>EXT_instance_features</code></a>:
+each template mesh is stored only once per tile, and every occurrence is placed by per-instance translation, rotation,
+and scale attributes. Per-instance feature IDs are emitted via <code>EXT_instance_features</code>, so instanced features remain
+individually pickable and keep their entries in the attribute table just like baked features.</p>
+<p>Note the following behavior:</p>
+<ul>
+<li>Instances whose transformation matrix cannot be decomposed into translation, rotation, and scale (i.e. matrices
+  containing shear or mirroring) automatically fall back to baked mesh copies. The rest of the tile still benefits
+  from instancing.</li>
+<li>The option is off by default because it requires viewer support for the two glTF extensions. CesiumJS supports both;
+  omit the option for consumers without such support.</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>./citydb<span class="w"> </span>vis-export<span class="w"> </span>3dtiles<span class="w"> </span>-o<span class="w"> </span>my-city<span class="w"> </span>--implicit-geometry-instancing
+</span></code></pre></div>
 <h3 id="3d-tiles-example">3D Tiles example<a class="headerlink" href="#3d-tiles-example" title="Link to this headline for referencing">¶</a></h3>
 <p>The example below exports all buildings in a region of interest as a 3D Tiles dataset with a 200 m grid, a textured
 appearance theme, shaded surfaces, and a curated set of attributes for picking and popups.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Linux</label><label for="__tabbed_1_2">Windows CMD</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>./citydb<span class="w"> </span>vis-export<span class="w"> </span>3dtiles<span class="w"> </span>-o<span class="w"> </span>my-city<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span>--type-name<span class="o">=</span>bldg:Building<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span>--filter<span class="o">=</span><span class="s2">"s_intersects(core:envelope, bbox(13.369,52.506,13.405,52.520))"</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span>--filter-crs<span class="o">=</span><span class="m">4326</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span>--appearance-theme<span class="o">=</span>summer<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span>--grid-edge-length<span class="o">=</span><span class="m">200</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span>--enable-shading<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span>--attributes<span class="o">=</span>CITY:ADDRESS/<span class="o">[</span>FIRST<span class="o">]</span>city,STREET:ADDRESS/<span class="o">[</span>FIRST<span class="o">]</span>street,HOUSE_NUMBER:ADDRESS/<span class="o">[</span>FIRST<span class="o">]</span>houseNumber
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./citydb<span class="w"> </span>vis-export<span class="w"> </span>3dtiles<span class="w"> </span>-o<span class="w"> </span>my-city<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>--type-name<span class="o">=</span>bldg:Building<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>--filter<span class="o">=</span><span class="s2">"s_intersects(core:envelope, bbox(13.369,52.506,13.405,52.520))"</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>--filter-crs<span class="o">=</span><span class="m">4326</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span>--appearance-theme<span class="o">=</span>summer<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span>--grid-edge-length<span class="o">=</span><span class="m">200</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span>--enable-shading<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span>--attributes<span class="o">=</span>CITY:ADDRESS/<span class="o">[</span>FIRST<span class="o">]</span>city,STREET:ADDRESS/<span class="o">[</span>FIRST<span class="o">]</span>street,HOUSE_NUMBER:ADDRESS/<span class="o">[</span>FIRST<span class="o">]</span>houseNumber
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-bat highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>citydb vis-export 3dtiles -o my-city <span class="se">^</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="se"> </span>   --type-name=bldg:Building <span class="se">^</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="se"> </span>   --filter=<span class="s2">"s_intersects(core:envelope, bbox(13.369,52.506,13.405,52.520))"</span> <span class="se">^</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="se"> </span>   --filter-crs=4326 <span class="se">^</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="se"> </span>   --appearance-theme=summer <span class="se">^</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="se"> </span>   --grid-edge-length=200 <span class="se">^</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="se"> </span>   --enable-shading <span class="se">^</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="se"> </span>   --attributes=CITY:ADDRESS/[FIRST]city,STREET:ADDRESS/[FIRST]street,HOUSE_NUMBER:ADDRESS/[FIRST]houseNumber
+<div class="language-bat highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>citydb vis-export 3dtiles -o my-city <span class="se">^</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="se"> </span>   --type-name=bldg:Building <span class="se">^</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="se"> </span>   --filter=<span class="s2">"s_intersects(core:envelope, bbox(13.369,52.506,13.405,52.520))"</span> <span class="se">^</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="se"> </span>   --filter-crs=4326 <span class="se">^</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="se"> </span>   --appearance-theme=summer <span class="se">^</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="se"> </span>   --grid-edge-length=200 <span class="se">^</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="se"> </span>   --enable-shading <span class="se">^</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="se"> </span>   --attributes=CITY:ADDRESS/[FIRST]city,STREET:ADDRESS/[FIRST]street,HOUSE_NUMBER:ADDRESS/[FIRST]houseNumber
 </span></code></pre></div>
 </div>
 </div>
@@ -3432,7 +3516,7 @@ appearance theme, shaded surfaces, and a curated set of attributes for picking a
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.tracking", "toc.follow", "content.code.select", "content.code.copy", "content.code.annotate", "content.tooltips", "search.suggest", "search.highlight", "search.share", "header.autohide", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../assets/javascripts/tablesort.js"></script>
       
