@@ -48,6 +48,7 @@ For more details on the general export options and usage hints, see [here](vis-e
 |-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | `--implicit-geometry-instancing`  | Emit implicit geometries as GPU instances using the glTF extensions `EXT_mesh_gpu_instancing` and `EXT_instance_features`. When omitted, every implicit geometry is baked as a full mesh copy per occurrence.             |               |
 | `--enable-outline`                | Emit polygon boundary edges as outlines using the glTF extension `CESIUM_primitive_outline`, so CesiumJS draws the original polygon edges of each surface as lines on top of the geometry. When omitted, no outlines are exported. |               |
+| `--outline-merge-coplanar[=<degrees>]` | Suppress outlines on edges shared by two coplanar surfaces of the same feature and surface type. Without a value, only exactly coplanar surfaces are merged; pass a maximum dihedral angle in degrees to also merge surfaces whose planes carry angular noise. Only takes effect together with `--enable-outline`. |               |
 
 For more details, see [Rendering implicit geometries as GPU instances](#rendering-implicit-geometries-as-gpu-instances)
 and [Rendering surface outlines](#rendering-surface-outlines).
@@ -125,8 +126,20 @@ Note the following behavior:
 - The option is off by default because each primitive gains an additional edge-index buffer, which increases tile
   sizes and viewer load time.
 
+Source data often subdivides a single planar surface into many polygons (e.g. triangulated or panelized walls). Since
+every polygon boundary is outlined, such surfaces render as a wireframe. With `--outline-merge-coplanar`, the exporter
+suppresses outlines on edges shared by two coplanar surfaces of the same feature and surface type, so only the boundary
+of the merged surface keeps its outline:
+
+- Without a value, only exactly coplanar surfaces are merged, which suits CAD-authored subdivisions. Pass a maximum
+  dihedral angle in degrees between `0` (inclusive) and `90` (exclusive), e.g. `--outline-merge-coplanar=5`, to also
+  merge surveyed surfaces whose planes carry angular noise.
+- Boundaries between different surface types (e.g. a door in its wall) and folds above the angle (e.g. roof ridges)
+  keep their outline.
+- The option only takes effect together with `--enable-outline`.
+
 ```bash
-./citydb vis-export 3dtiles -o my-city --enable-outline
+./citydb vis-export 3dtiles -o my-city --enable-outline --outline-merge-coplanar=5
 ```
 
 ### 3D Tiles example
