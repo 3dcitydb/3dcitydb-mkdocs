@@ -162,12 +162,13 @@ namespace prefix (e.g. `"bldg:Building"`); an unprefixed or unknown type is reje
 ### 3D Tiles options
 
 The `"3DTiles"` property is a container object for 3D Tiles-specific format options. All shared scene options listed
-above can be set here, plus the 3D Tiles-specific `"implicitGeometryInstancing"` flag.
+above can be set here, plus the 3D Tiles-specific `"implicitGeometryInstancing"` and `"enableOutline"` flags.
 
 ```json
 {
   "3DTiles": {
     "implicitGeometryInstancing": true,
+    "enableOutline": true,
     "gridEdgeLength": 200.0,
     "screenPixelThreshold": 56.0,
     "clampMode": "ellipsoid",
@@ -193,6 +194,7 @@ above can be set here, plus the 3D Tiles-specific `"implicitGeometryInstancing"`
 | <div style="width:230px;">Property</div>                                                                                     | Description                                                                                                                                                                       | Default value |
 |------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | [`"implicitGeometryInstancing"`](vis-export-3dtiles.md#rendering-implicit-geometries-as-gpu-instances)                       | Emit implicit geometries as GPU instances using the glTF extensions `EXT_mesh_gpu_instancing` and `EXT_instance_features` instead of baking a full mesh copy per occurrence.      | `false`       |
+| [`"enableOutline"`](vis-export-3dtiles.md#rendering-surface-outlines)                                                        | Emit polygon boundary edges as outlines using the glTF extension `CESIUM_primitive_outline`, drawn by CesiumJS as lines on top of the geometry.                                   | `false`       |
 
 ### I3S options
 

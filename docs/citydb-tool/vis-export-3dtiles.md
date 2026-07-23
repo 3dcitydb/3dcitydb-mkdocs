@@ -47,8 +47,10 @@ For more details on the general export options and usage hints, see [here](vis-e
 | Option                            | Description                                                                                                                                                                                                              | Default value |
 |-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | `--implicit-geometry-instancing`  | Emit implicit geometries as GPU instances using the glTF extensions `EXT_mesh_gpu_instancing` and `EXT_instance_features`. When omitted, every implicit geometry is baked as a full mesh copy per occurrence.             |               |
+| `--enable-outline`                | Emit polygon boundary edges as outlines using the glTF extension `CESIUM_primitive_outline`, so CesiumJS draws the original polygon edges of each surface as lines on top of the geometry. When omitted, no outlines are exported. |               |
 
-For more details, see [Rendering implicit geometries as GPU instances](#rendering-implicit-geometries-as-gpu-instances).
+For more details, see [Rendering implicit geometries as GPU instances](#rendering-implicit-geometries-as-gpu-instances)
+and [Rendering surface outlines](#rendering-surface-outlines).
 
 ### Query and filter options
 
@@ -105,6 +107,26 @@ Note the following behavior:
 
 ```bash
 ./citydb vis-export 3dtiles -o my-city --implicit-geometry-instancing
+```
+
+### Rendering surface outlines
+
+Triangulating the polygon surfaces of a city model for rendering discards the original polygon boundaries: viewers only
+see the resulting triangles. With `--enable-outline`, the exporter marks the original polygon boundary edges of each
+surface using the glTF extension
+[`CESIUM_primitive_outline`](https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Vendor/CESIUM_primitive_outline){target="blank"},
+so CesiumJS renders these edges as outlines on top of the geometry. This gives buildings and other objects a clear
+edge highlight.
+
+Note the following behavior:
+
+- The extension is Cesium-specific. It is declared as an optional glTF extension, so other 3D Tiles clients without
+  support for it simply ignore the outlines and render the geometry unchanged.
+- The option is off by default because each primitive gains an additional edge-index buffer, which increases tile
+  sizes and viewer load time.
+
+```bash
+./citydb vis-export 3dtiles -o my-city --enable-outline
 ```
 
 ### 3D Tiles example
