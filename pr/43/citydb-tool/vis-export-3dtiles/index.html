@@ -109,7 +109,7 @@
             
   
   <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/43" style="font-weight: 600;">
-    🔍 Preview of pull request #43 (commit 111feb2) — not the official documentation.
+    🔍 Preview of pull request #43 (commit 574057b) — not the official documentation.
   </a>
   
 
@@ -3152,6 +3152,11 @@ query and filter, and scene options from its parent <a href="../vis-export/"><co
 <td>Emit polygon boundary edges as outlines using the glTF extension <code>CESIUM_primitive_outline</code>, so CesiumJS draws the original polygon edges of each surface as lines on top of the geometry. When omitted, no outlines are exported.</td>
 <td></td>
 </tr>
+<tr>
+<td><code>--outline-merge-coplanar[=&lt;degrees&gt;]</code></td>
+<td>Suppress outlines on edges shared by two coplanar surfaces of the same feature and surface type. Without a value, only exactly coplanar surfaces are merged; pass a maximum dihedral angle in degrees to also merge surfaces whose planes carry angular noise. Only takes effect together with <code>--enable-outline</code>.</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <p>For more details, see <a href="#rendering-implicit-geometries-as-gpu-instances">Rendering implicit geometries as GPU instances</a>
@@ -3420,7 +3425,19 @@ edge highlight.</p>
 <li>The option is off by default because each primitive gains an additional edge-index buffer, which increases tile
   sizes and viewer load time.</li>
 </ul>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./citydb<span class="w"> </span>vis-export<span class="w"> </span>3dtiles<span class="w"> </span>-o<span class="w"> </span>my-city<span class="w"> </span>--enable-outline
+<p>Source data often subdivides a single planar surface into many polygons (e.g. triangulated or panelized walls). Since
+every polygon boundary is outlined, such surfaces render as a wireframe. With <code>--outline-merge-coplanar</code>, the exporter
+suppresses outlines on edges shared by two coplanar surfaces of the same feature and surface type, so only the boundary
+of the merged surface keeps its outline:</p>
+<ul>
+<li>Without a value, only exactly coplanar surfaces are merged, which suits CAD-authored subdivisions. Pass a maximum
+  dihedral angle in degrees between <code>0</code> (inclusive) and <code>90</code> (exclusive), e.g. <code>--outline-merge-coplanar=5</code>, to also
+  merge surveyed surfaces whose planes carry angular noise.</li>
+<li>Boundaries between different surface types (e.g. a door in its wall) and folds above the angle (e.g. roof ridges)
+  keep their outline.</li>
+<li>The option only takes effect together with <code>--enable-outline</code>.</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./citydb<span class="w"> </span>vis-export<span class="w"> </span>3dtiles<span class="w"> </span>-o<span class="w"> </span>my-city<span class="w"> </span>--enable-outline<span class="w"> </span>--outline-merge-coplanar<span class="o">=</span><span class="m">5</span>
 </span></code></pre></div>
 <h3 id="3d-tiles-example">3D Tiles example<a class="headerlink" href="#3d-tiles-example" title="Link to this headline for referencing">¶</a></h3>
 <p>The example below exports all buildings in a region of interest as a 3D Tiles dataset with a 200 m grid, a textured
