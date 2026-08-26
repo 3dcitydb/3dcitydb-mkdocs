@@ -233,6 +233,7 @@ The JSON structure for storing write options is shown below. Format-specific set
     "encoding": "UTF-8",
     "srsName": "http://www.opengis.net/def/crs/EPSG/0/25832",
     "skipEmptyTiles": false,
+    "metadataOptions": {...},
     "formatOptions": {
       "CityGML": {...},
       "CityJSON": {...}
@@ -251,6 +252,29 @@ The JSON structure for storing write options is shown below. Format-specific set
 | [`"encoding"`](export.md#specifying-the-output-file)            | Encoding to use for the output file.              |               |
 | [`"srsName"`](export.md#reprojecting-geometries)                | Name of the CRS to use in the output file.        |               |
 | [`"skipEmptyTiles"`](export.md#handling-empty-tiles)            | Skip tile files containing no exported features.  | `false`       |
+| `"metadataOptions"`                                             | Metadata options for the output files.            |               |
+
+### Metadata options
+
+The `"metadataOptions"` property is a container object for adding metadata to output files.
+Each metadata property is added only if supported by the selected output format. If `"computeExtent"` is enabled, the extent is
+computed from all features exported to the respective output file.
+
+```json
+{
+  "metadataOptions": {
+    "title": "My dataset title",
+    "description": "My dataset description",
+    "computeExtent": true
+  }
+}
+```
+
+| Property          | Description                                                         | Default value |
+|-------------------|---------------------------------------------------------------------|---------------|
+| `"title"`         | Title to add to the output file.                                    |               |
+| `"description"`   | Description to add to the output file.                              |               |
+| `"computeExtent"` | Compute and add the extent of exported features to the output file. | `false`       |
 
 ### CityGML options
 
@@ -266,6 +290,14 @@ The `"CityGML"` property is a container object for CityGML-specific format optio
       "/path/to/myFirstStylesheet.xsl",
       "/path/to/mySecondStylesheet.xsl"
     ],
+    "prefixes": {
+      "http://www.opengis.net/citygml/3.0": "core",
+      "http://www.opengis.net/citygml/building/3.0": "bldg"
+    },
+    "schemaLocations": {
+      "http://www.opengis.net/citygml/3.0": "/path/to/citygml.xsd",
+      "http://www.opengis.net/citygml/building/3.0": "/path/to/building.xsd"
+    },
     "useLod4AsLod3": false,
     "mapLod0RoofEdge": false,
     "mapLod1MultiSurfaces": false
@@ -279,6 +311,8 @@ The `"CityGML"` property is a container object for CityGML-specific format optio
 | [`"prettyPrint"`](export-citygml.md#formatting-the-output)                                | Format and indent output file.                                                                                                                                                                                                                                                                                                                                                                   | `true`         |
 | `addressMode`                                                                             | Specifies how to construct addresses based on the `ADDRESS` table: <ul><li>`columnsOnly`: Use only structured address fields.</li><li>`columnsFirst`: Prefer structured columns; fall back to `content` blob.</li><li>`xalSourceOnly`: Use only the address blob stored in the `content` column.</li><li>`xalSourceFirst`: Prefer the `content` blob; fall back to structured columns.</li></ul> | `columnsFirst` |
 | [`"xslTransforms"`](export-citygml.md#applying-xsl-transformations)                       | An array of XSLT stylesheets to transform the output, referenced by filename and path (absolute or relative). The stylesheets are applied in the specified order.                                                                                                                                                                                                                                |                |
+| `"prefixes"`                                                                              | Map namespace URIs to XML prefixes.                                                                                                                                                                                                                                                                                                                                                              |                |
+| `"schemaLocations"`                                                                       | Map namespace URIs to schema locations.                                                                                                                                                                                                                                                                                                                                                          |                |
 | [`"useLod4AsLod3"`](export-citygml.md#upgrading-citygml-20-and-10)                        | Use LoD4 as LoD3, replacing an existing LoD3.                                                                                                                                                                                                                                                                                                                                                    | `false`        |
 | [`"mapLod0RoofEdge"`](export-citygml.md#upgrading-citygml-20-and-10)                      | Map LoD0 roof edges onto roof surfaces.                                                                                                                                                                                                                                                                                                                                                          | `false`        |
 | [<code>"mapLod1Multi<br/>Surfaces"</code>](export-citygml.md#upgrading-citygml-20-and-10) | Map LoD1 multi-surfaces onto generic thematic surfaces.                                                                                                                                                                                                                                                                                                                                          | `false`        |
