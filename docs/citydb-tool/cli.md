@@ -30,6 +30,7 @@ citydb [OPTIONS] COMMAND
 | [`info`](info.md)                     | [Show database contents and summary information.](info.md)                           |
 | [`import`](import.md)                 | [Import data in a supported format.](import.md)                                      |
 | [`export`](export.md)                 | [Export data in a supported format.](export.md)                                      |
+| [`vis-export`](vis-export.md)         | [Export data in a visualization format.](vis-export.md)                              |
 | [`delete`](delete.md)                 | [Delete features from the database.](delete.md)                                      |
 | [`index`](index-command.md)           | [Perform index operations.](index-command.md)                                        |
 

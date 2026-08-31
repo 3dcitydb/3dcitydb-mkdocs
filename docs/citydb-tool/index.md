@@ -16,6 +16,7 @@ in a shell, `citydb-tool` can be automated, integrated with other software, and 
 
 - Support for CityGML 3.0, 2.0, and 1.0
 - Support for CityJSON 2.0, 1.1, and 1.0, including CityJSONSeq
+- Visualization export to OGC 3D Tiles 1.1 and OGC I3S (folder or SLPK)
 - On-the-fly upgrade and downgrade between versions
 - Import and export of datasets of any file size
 - Multiple import strategies for consistent city model updates
