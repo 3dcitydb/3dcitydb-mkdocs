@@ -21,9 +21,9 @@ We recommend checking data and database [compatibility](../compatibility.md) fir
 !!! info
     We are expanding support to include more database systems, starting with __Oracle Database__. Stay tuned!
 
-Supported PostgreSQL versions include __PostgreSQL 14__ and higher, with __PostGIS 3.1__ and higher. Make sure to check
+Supported PostgreSQL versions include __PostgreSQL 14__ and higher, with __PostGIS 3.2__ and higher. Make sure to check
 the [PostgreSQL versioning policy](https://www.postgresql.org/support/versioning/) to determine which PostgreSQL versions are actively maintained or have
-reached end-of-life. The [PostGIS support matrix](https://trac.osgeo.org/postgis/wiki/UsersWikiPostgreSQLPostGIS) provides details on which PostgreSQL versions are supported
+reached end-of-life. The [PostGIS support matrix](https://postgis.net/development/compatibility/) provides details on which PostgreSQL versions are supported
 by specific PostGIS versions and whether any particular version of PostGIS has reached end-of-life.
 
 The SQL scripts for setting up a 3D City Database schema are designed to be executed by the default command-line client

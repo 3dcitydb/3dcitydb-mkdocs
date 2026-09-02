@@ -47,9 +47,9 @@ is an example output.
 
 ```shell
 $ citydb --version
-citydb-tool version 1.0.0
+citydb-tool 1.0.0
 Supported 3DCityDB versions: 5.0.0+
-(C) 2022-2025 virtualcitysystems GmbH
+Copyright (C) 2022-2026 3DCityDB Contributors
 ```
 
 ### Help and CLI documentation
@@ -86,12 +86,11 @@ included.
 
 The available log levels, ordered from highest to lowest severity, are:
 
-- `fatal`: Critical errors causing immediate termination
-- `error`: Non-recoverable errors
+- `error`: Errors indicating that something went wrong
 - `warn`: Warnings about potential issues
 - `info`: General operational messages (default)
-- `debug`: Detailed debugging information
-- `trace`: Most detailed logs for troubleshooting
+- `debug`: Detailed information for debugging
+- `trace`: Most detailed information for troubleshooting
 
 All console log messages are written to `stderr`, regardless of the selected log level. This design ensures that
 structured output (for example, JSON returned by commands such as `info` or `connect`) written to `stdout` remains
@@ -138,13 +137,13 @@ citydb-tool provides a flexible plugin mechanism for adding custom functionality
 commands or extend existing ones. Plugins are typically distributed as a ZIP package containing the plugin's 
 Java Archive (JAR) file and any additional resources.
 
-To install a plugin, unzip it (if necessary) and place the files in the `plugins` subfolder within the citydb-tool
+To install a plugin, unzip it (if necessary) and place the files in the `extensions` subfolder within the citydb-tool
 installation directory. For better organization, it is recommended to create a separate subfolder for each plugin.
 citydb-tool will automatically detect and load the plugins from this location, logging successfully loaded plugins
-separately in the console. To uninstall a plugin, simply delete its folder from the `plugins` subfolder.
+separately in the console. To uninstall a plugin, simply delete its folder from the `extensions` subfolder.
 
-The `--plugins` option allows you to specify a different location for loading plugins. To enable or disable plugins, use
-the `--use-plugin` option followed by the fully qualified Java class name and a value of `true` (enable) or `false`
+The `--extensions` option allows you to specify a different location for loading plugins. To enable or disable plugins,
+use the `--use-plugin` option followed by the fully qualified Java class name and a value of `true` (enable) or `false`
 (disable) (default: `true`). Disabled plugins will not be loaded. Multiple plugins can be specified as a comma-separated
 list as shown below.
 

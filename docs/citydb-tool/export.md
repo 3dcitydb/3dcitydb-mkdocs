@@ -462,6 +462,12 @@ Some common examples include:
 - `%.2f`: Formats the value as a decimal number with two decimal places.
 - `%4.4s`: Formats the value as a string, but only prints exactly four characters.
 
+#### Handling empty tiles
+
+By default, citydb-tool generates output files for all tiles in the tile grid, including tiles without exported
+features. Use the `--skip-empty-tiles` option to omit empty tiles from the output. When enabled, only files for tiles
+containing exported features are retained, reducing the number of generated files and saving disk space.
+
 #### Tiled export example
 
 The following command exports all roads from the 3DCityDB, organizing them into 2x2 km tiles. The tiling extent is
