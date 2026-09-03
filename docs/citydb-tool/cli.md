@@ -48,7 +48,7 @@ is an example output.
 ```shell
 $ citydb --version
 citydb-tool 1.0.0
-Supported 3DCityDB versions: 5.0.0+
+Supports 3DCityDB versions 5.0.0+
 Copyright (C) 2022-2026 3DCityDB Contributors
 ```
 
