@@ -24,6 +24,7 @@ sections needed for a specific command.
   "importOptions": {...},
   "readOptions": {...},
   "exportOptions": {...},
+  "visExportOptions": {...},
   "writeOptions": {...},
   "deleteOptions": {...},
   ...
@@ -41,6 +42,7 @@ explained in more detail in the following chapters.
 | [`"importOptions"`](import-config.md#import-options)         | Defines options for controlling the import process.                                                                       |
 | [`"readOptions"`](import-config.md#read-options)             | Specifies settings for reading input files, including format-specific options.                                            |
 | [`"exportOptions"`](export-config.md#export-options)         | Defines options for controlling the export process.                                                                       |
+| [`"visExportOptions"`](vis-export-config.md#vis-export-options) | Defines options for controlling the vis-export process (3D Tiles, I3S).                                                |
 | [`"writeOptions"`](export-config.md#write-options)           | Specifies settings for writing output files, including format-specific options.                                           |
 | [`"deleteOptions"`](delete-config.md)                        | Defines options for controlling the delete process.                                                                       |
 | [`"reportOptions"`](report-config.md)                        | Defines options for controlling the database report generation.                                                           |
