@@ -49,7 +49,7 @@ is included for reference but is no longer recommended for production use.
     benefit from CityGML 3.0, the simplified database schema, and new features of 3DCityDB `v5`, a database
     migration to the 3DCityDB `v5` is required.
 
-    __Currently, only [citydb-tool](./citydb-tool/index.md) is compatible with 3DCityDB `v5`.__ If you want to
+    __Currently, only [citydb-tool](./citydb-tool/index.md) and [citydb-3dtiler](./citydb-3dtiler/index.md) are compatible with 3DCityDB `v5`.__ If you want to
     use legacy 3DCityDB `v4` tools such as the [Importer/Exporter](https://3dcitydb-docs.readthedocs.io/en/latest/impexp/docker.html){target="blank"},
     or the [Web Feature Service (WFS)](https://3dcitydb-docs.readthedocs.io/en/latest/wfs/docker.html){target="blank"},
     your data must first be imported into a 3DCityDB `v4`.

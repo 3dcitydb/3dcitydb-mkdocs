@@ -64,6 +64,14 @@ tools to import, export, manage, analyse, and visualize virtual 3D city models o
 
     [:octicons-arrow-right-24: citydb-tool](citydb-tool/index.md)
 
+- :material-cube-outline:{ .lg .middle } __3D visualization__
+
+    ---
+
+    Generate 3D Tiles from a 3DCityDB for web-based 3D visualization
+
+    [:octicons-arrow-right-24: citydb-3dtiler](citydb-3dtiler/index.md)
+
 - :material-file-search:{ .lg .middle } __About this documentation__
 
     ---

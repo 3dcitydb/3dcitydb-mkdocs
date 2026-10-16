@@ -1,10 +1,11 @@
 ---
 title: Get the software
-description: Download 3DCityDB and citydb-tool
+description: Download 3DCityDB, citydb-tool and citydb-3dtiler
 # icon: material/emoticon-happy
 tags:
   - 3dcitydb
   - citydb-tool
+  - citydb-3dtiler
   - download
 ---
 
@@ -53,6 +54,17 @@ more about using citydb-tool.
     scripts bundled with citydb-tool instead of downloading them separately, ensuring you have the correct version of
     3DCityDB.
 
+## `citydb-3dtiler` 3D Tiles generator
+
+`citydb-3dtiler` is a command-line tool that generates 3D Tiles from the city objects stored in a 3DCityDB `v5` for
+web-based 3D visualization. It is available as Docker image or can be run in a Python environment.
+
+- GitHub repository: [https://github.com/tum-gis/citydb-3dtiler](https://github.com/tum-gis/citydb-3dtiler){target="blank"}
+- Release download page: [https://github.com/tum-gis/citydb-3dtiler/releases](https://github.com/tum-gis/citydb-3dtiler/releases){target="blank"}
+- Issue tracker: [https://github.com/tum-gis/citydb-3dtiler/issues](https://github.com/tum-gis/citydb-3dtiler/issues){target="blank"}
+
+Check out the [complete documentation](citydb-3dtiler/index.md) to learn more about using citydb-3dtiler.
+
 ## 3DCityDB-Web-Map-Client
 
 The 3DCityDB-Web-Map-Client is a web-based viewer designed for high-performance 3D visualization and interactive
@@ -66,4 +78,6 @@ exploration of geospatial data, including 3D city models exported from the 3DCit
 The complete documentation of the 3DCityDB-Web-Map-Client is available [here](https://3dcitydb-docs.readthedocs.io/en/latest/webmap/index.html){target="blank"}. We are in the process of including it in this documentation.
 
 !!! note
-    Currently, we do not offer a tool to export city model data from the 3DCityDB `v5` in KML, COLLADA, or 3D Tiles format, which is required for visualization in the 3DCityDB-Web-Map-Client. __This feature is a work in progress, so stay tuned for future updates!__
+    3D Tiles for visualization in the 3DCityDB-Web-Map-Client can be generated from a 3DCityDB `v5` using
+    [citydb-3dtiler](citydb-3dtiler/index.md). Currently, we do not offer a tool to export city model data from the
+    3DCityDB `v5` in KML or COLLADA format.

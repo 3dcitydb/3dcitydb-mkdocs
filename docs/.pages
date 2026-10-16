@@ -8,4 +8,5 @@ nav:
   - First steps: first-steps
   - 3D City Database: 3dcitydb
   - citydb-tool: citydb-tool
+  - citydb-3dtiler: citydb-3dtiler
   - ...
