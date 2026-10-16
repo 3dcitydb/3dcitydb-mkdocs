@@ -1,10 +1,6 @@
 nav:
   - index.md
-  - cli.md
-  - database.md
-  - filter.md
-  - advise.md
-  - tile.md
-  - docker.md
-  - python.md
-  - examples.md
+  - Tutorial: tutorial.md
+  - How-to guides: how-to
+  - Reference: reference
+  - Explanation: explanation.md
