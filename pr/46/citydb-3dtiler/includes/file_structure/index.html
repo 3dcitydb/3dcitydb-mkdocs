@@ -1,0 +1,3054 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the 3D City Database v5.">
+      
+      
+        <meta name="author" content="3DCityDB Steering Group">
+      
+      
+        <link rel="canonical" href="https://docs.3dcitydb.org/pr/46/citydb-3dtiler/includes/file_structure/">
+      
+      
+        <link rel="prev" href="../citydb_infra/">
+      
+      
+        <link rel="next" href="../functionality_matrix/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/img/logos/3dcitydb-logo-transparent.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Folders &amp; Files &amp; Classes / Functions - 3D City Database v5 documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="../../../assets/mkdocs_puml/interaction.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  
+  <meta name="robots" content="noindex, nofollow">
+  
+
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#folders-files-classes-functions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  
+  <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/46" style="font-weight: 600;">
+    🔍 Preview of pull request #46 (commit 62c3a52) — not the official documentation.
+  </a>
+  
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://github.com/3dcitydb/" title="3D City Database v5 documentation" class="md-header__button md-logo" aria-label="3D City Database v5 documentation" data-md-component="logo">
+      
+  <img src="../../../assets/img/logos/3dcitydb-logo-transparent.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            3D City Database v5 documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Folders &amp; Files &amp; Classes / Functions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="cyan" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="cyan" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/3dcitydb/3dcitydb-mkdocs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    3dcitydb/3dcitydb-mkdocs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Welcome
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../first-steps/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  First steps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../3dcitydb/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  3D City Database
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../citydb-tool/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  citydb-tool
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  citydb-3dtiler
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../contributors/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Contributors
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../includes/abbreviations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Includes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://github.com/3dcitydb/" title="3D City Database v5 documentation" class="md-nav__button md-logo" aria-label="3D City Database v5 documentation" data-md-component="logo">
+      
+  <img src="../../../assets/img/logos/3dcitydb-logo-transparent.png" alt="logo">
+
+    </a>
+    3D City Database v5 documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/3dcitydb/3dcitydb-mkdocs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    3dcitydb/3dcitydb-mkdocs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Welcome
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../download/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get the software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../compatibility/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compatibility and data migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../usage-contrib/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage and contribution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../first-steps/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First steps
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    First steps
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../first-steps/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../first-steps/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setting up a 3DCityDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../first-steps/citydb-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using citydb-tool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../first-steps/docker/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.81 10.25c-.06-.04-.56-.43-1.64-.43-.28 0-.56.03-.84.08-.21-1.4-1.38-2.11-1.43-2.14l-.29-.17-.18.27c-.24.36-.43.77-.51 1.19-.2.8-.08 1.56.33 2.21-.49.28-1.29.35-1.46.35H2.62c-.34 0-.62.28-.62.63 0 1.15.18 2.3.58 3.38.45 1.19 1.13 2.07 2 2.61.98.6 2.59.94 4.42.94.79 0 1.61-.07 2.42-.22 1.12-.2 2.2-.59 3.19-1.16A8.3 8.3 0 0 0 16.78 16c1.05-1.17 1.67-2.5 2.12-3.65h.19c1.14 0 1.85-.46 2.24-.85.26-.24.45-.53.59-.87l.08-.24zm-17.96.99h1.76c.08 0 .16-.07.16-.16V9.5c0-.08-.07-.16-.16-.16H3.85c-.09 0-.16.07-.16.16v1.58c.01.09.07.16.16.16m2.43 0h1.76c.08 0 .16-.07.16-.16V9.5c0-.08-.07-.16-.16-.16H6.28c-.09 0-.16.07-.16.16v1.58c.01.09.07.16.16.16m2.47 0h1.75c.1 0 .17-.07.17-.16V9.5c0-.08-.06-.16-.17-.16H8.75c-.08 0-.15.07-.15.16v1.58c0 .09.06.16.15.16m2.44 0h1.77c.08 0 .15-.07.15-.16V9.5c0-.08-.06-.16-.15-.16h-1.77c-.08 0-.15.07-.15.16v1.58c0 .09.07.16.15.16M6.28 9h1.76c.08 0 .16-.09.16-.18V7.25c0-.09-.07-.16-.16-.16H6.28c-.09 0-.16.06-.16.16v1.57c.01.09.07.18.16.18m2.47 0h1.75c.1 0 .17-.09.17-.18V7.25c0-.09-.06-.16-.17-.16H8.75c-.08 0-.15.06-.15.16v1.57c0 .09.06.18.15.18m2.44 0h1.77c.08 0 .15-.09.15-.18V7.25c0-.09-.07-.16-.15-.16h-1.77c-.08 0-.15.06-.15.16v1.57c0 .09.07.18.15.18m0-2.28h1.77c.08 0 .15-.07.15-.16V5c0-.1-.07-.17-.15-.17h-1.77c-.08 0-.15.06-.15.17v1.56c0 .08.07.16.15.16m2.46 4.52h1.76c.09 0 .16-.07.16-.16V9.5c0-.08-.07-.16-.16-.16h-1.76c-.08 0-.15.07-.15.16v1.58c0 .09.07.16.15.16"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Using Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../first-steps/migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration from previous versions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../3dcitydb/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D City Database
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3D City Database
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relational schema
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Relational schema
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3dcitydb/relational-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3dcitydb/feature-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feature module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3dcitydb/geometry-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geometry module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3dcitydb/appearance-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appearance module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3dcitydb/metadata-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metadata module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3dcitydb/codelist-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codelist module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3dcitydb/db-scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3dcitydb/db-functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3dcitydb/db-upgrade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading a 3DCityDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3dcitydb/docker/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.81 10.25c-.06-.04-.56-.43-1.64-.43-.28 0-.56.03-.84.08-.21-1.4-1.38-2.11-1.43-2.14l-.29-.17-.18.27c-.24.36-.43.77-.51 1.19-.2.8-.08 1.56.33 2.21-.49.28-1.29.35-1.46.35H2.62c-.34 0-.62.28-.62.63 0 1.15.18 2.3.58 3.38.45 1.19 1.13 2.07 2 2.61.98.6 2.59.94 4.42.94.79 0 1.61-.07 2.42-.22 1.12-.2 2.2-.59 3.19-1.16A8.3 8.3 0 0 0 16.78 16c1.05-1.17 1.67-2.5 2.12-3.65h.19c1.14 0 1.85-.46 2.24-.85.26-.24.45-.53.59-.87l.08-.24zm-17.96.99h1.76c.08 0 .16-.07.16-.16V9.5c0-.08-.07-.16-.16-.16H3.85c-.09 0-.16.07-.16.16v1.58c.01.09.07.16.16.16m2.43 0h1.76c.08 0 .16-.07.16-.16V9.5c0-.08-.07-.16-.16-.16H6.28c-.09 0-.16.07-.16.16v1.58c.01.09.07.16.16.16m2.47 0h1.75c.1 0 .17-.07.17-.16V9.5c0-.08-.06-.16-.17-.16H8.75c-.08 0-.15.07-.15.16v1.58c0 .09.06.16.15.16m2.44 0h1.77c.08 0 .15-.07.15-.16V9.5c0-.08-.06-.16-.15-.16h-1.77c-.08 0-.15.07-.15.16v1.58c0 .09.07.16.15.16M6.28 9h1.76c.08 0 .16-.09.16-.18V7.25c0-.09-.07-.16-.16-.16H6.28c-.09 0-.16.06-.16.16v1.57c.01.09.07.18.16.18m2.47 0h1.75c.1 0 .17-.09.17-.18V7.25c0-.09-.06-.16-.17-.16H8.75c-.08 0-.15.06-.15.16v1.57c0 .09.06.18.15.18m2.44 0h1.77c.08 0 .15-.09.15-.18V7.25c0-.09-.07-.16-.15-.16h-1.77c-.08 0-.15.06-.15.16v1.57c0 .09.07.18.15.18m0-2.28h1.77c.08 0 .15-.07.15-.16V5c0-.1-.07-.17-.15-.17h-1.77c-.08 0-.15.06-.15.17v1.56c0 .08.07.16.15.16m2.46 4.52h1.76c.09 0 .16-.07.16-.16V9.5c0-.08-.07-.16-.16-.16h-1.76c-.08 0-.15.07-.15.16v1.58c0 .09.07.16.15.16"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    3DCityDB Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../citydb-tool/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    citydb-tool
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    citydb-tool
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connection details
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/connect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connect command
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/info/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Info command
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6">
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import command
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Import command
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/import-citygml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CityGML import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/import-cityjson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CityJSON import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7">
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Export command
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Export command
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/export/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Export overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/export-citygml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CityGML export
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/export-cityjson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CityJSON export
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/delete/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delete command
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/index-command/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index command
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10">
+        
+          
+          <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JSON configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JSON configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/import-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/export-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Export configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/delete-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delete configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/report-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Report configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/cql2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CQL2 query language
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../citydb-tool/docker/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.81 10.25c-.06-.04-.56-.43-1.64-.43-.28 0-.56.03-.84.08-.21-1.4-1.38-2.11-1.43-2.14l-.29-.17-.18.27c-.24.36-.43.77-.51 1.19-.2.8-.08 1.56.33 2.21-.49.28-1.29.35-1.46.35H2.62c-.34 0-.62.28-.62.63 0 1.15.18 2.3.58 3.38.45 1.19 1.13 2.07 2 2.61.98.6 2.59.94 4.42.94.79 0 1.61-.07 2.42-.22 1.12-.2 2.2-.59 3.19-1.16A8.3 8.3 0 0 0 16.78 16c1.05-1.17 1.67-2.5 2.12-3.65h.19c1.14 0 1.85-.46 2.24-.85.26-.24.45-.53.59-.87l.08-.24zm-17.96.99h1.76c.08 0 .16-.07.16-.16V9.5c0-.08-.07-.16-.16-.16H3.85c-.09 0-.16.07-.16.16v1.58c.01.09.07.16.16.16m2.43 0h1.76c.08 0 .16-.07.16-.16V9.5c0-.08-.07-.16-.16-.16H6.28c-.09 0-.16.07-.16.16v1.58c.01.09.07.16.16.16m2.47 0h1.75c.1 0 .17-.07.17-.16V9.5c0-.08-.06-.16-.17-.16H8.75c-.08 0-.15.07-.15.16v1.58c0 .09.06.16.15.16m2.44 0h1.77c.08 0 .15-.07.15-.16V9.5c0-.08-.06-.16-.15-.16h-1.77c-.08 0-.15.07-.15.16v1.58c0 .09.07.16.15.16M6.28 9h1.76c.08 0 .16-.09.16-.18V7.25c0-.09-.07-.16-.16-.16H6.28c-.09 0-.16.06-.16.16v1.57c.01.09.07.18.16.18m2.47 0h1.75c.1 0 .17-.09.17-.18V7.25c0-.09-.06-.16-.17-.16H8.75c-.08 0-.15.06-.15.16v1.57c0 .09.06.18.15.18m2.44 0h1.77c.08 0 .15-.09.15-.18V7.25c0-.09-.07-.16-.15-.16h-1.77c-.08 0-.15.06-.15.16v1.57c0 .09.07.18.15.18m0-2.28h1.77c.08 0 .15-.07.15-.16V5c0-.1-.07-.17-.15-.17h-1.77c-.08 0-.15.06-.15.17v1.56c0 .08.07.16.15.16m2.46 4.52h1.76c.09 0 .16-.07.16-.16V9.5c0-.08-.07-.16-.16-.16h-1.76c-.08 0-.15.07-.15.16v1.58c0 .09.07.16.15.16"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    citydb-tool Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    citydb-3dtiler
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    citydb-3dtiler
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../main_options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Main Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../db_con_options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Connection Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../filter_options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filter Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    advise Command
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tile Command
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../samples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Samples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.81 10.25c-.06-.04-.56-.43-1.64-.43-.28 0-.56.03-.84.08-.21-1.4-1.38-2.11-1.43-2.14l-.29-.17-.18.27c-.24.36-.43.77-.51 1.19-.2.8-.08 1.56.33 2.21-.49.28-1.29.35-1.46.35H2.62c-.34 0-.62.28-.62.63 0 1.15.18 2.3.58 3.38.45 1.19 1.13 2.07 2 2.61.98.6 2.59.94 4.42.94.79 0 1.61-.07 2.42-.22 1.12-.2 2.2-.59 3.19-1.16A8.3 8.3 0 0 0 16.78 16c1.05-1.17 1.67-2.5 2.12-3.65h.19c1.14 0 1.85-.46 2.24-.85.26-.24.45-.53.59-.87l.08-.24zm-17.96.99h1.76c.08 0 .16-.07.16-.16V9.5c0-.08-.07-.16-.16-.16H3.85c-.09 0-.16.07-.16.16v1.58c.01.09.07.16.16.16m2.43 0h1.76c.08 0 .16-.07.16-.16V9.5c0-.08-.07-.16-.16-.16H6.28c-.09 0-.16.07-.16.16v1.58c.01.09.07.16.16.16m2.47 0h1.75c.1 0 .17-.07.17-.16V9.5c0-.08-.06-.16-.17-.16H8.75c-.08 0-.15.07-.15.16v1.58c0 .09.06.16.15.16m2.44 0h1.77c.08 0 .15-.07.15-.16V9.5c0-.08-.06-.16-.15-.16h-1.77c-.08 0-.15.07-.15.16v1.58c0 .09.07.16.15.16M6.28 9h1.76c.08 0 .16-.09.16-.18V7.25c0-.09-.07-.16-.16-.16H6.28c-.09 0-.16.06-.16.16v1.57c.01.09.07.18.16.18m2.47 0h1.75c.1 0 .17-.09.17-.18V7.25c0-.09-.06-.16-.17-.16H8.75c-.08 0-.15.06-.15.16v1.57c0 .09.06.18.15.18m2.44 0h1.77c.08 0 .15-.09.15-.18V7.25c0-.09-.07-.16-.15-.16h-1.77c-.08 0-.15.06-.15.16v1.57c0 .09.07.18.15.18m0-2.28h1.77c.08 0 .15-.07.15-.16V5c0-.1-.07-.17-.15-.17h-1.77c-.08 0-.15.06-.15.17v1.56c0 .08.07.16.15.16m2.46 4.52h1.76c.09 0 .16-.07.16-.16V9.5c0-.08-.07-.16-.16-.16h-1.76c-.08 0-.15.07-.15.16v1.58c0 .09.07.16.15.16"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    How to use with Docker?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev_notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../contributors/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributors
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contributors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributors/tum-gis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chair of Geoinformatics, TUM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributors/hft-stuttgart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HFT Stuttgart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributors/list-eco/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LIST Eco
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributors/moss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M.O.S.S.
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributors/vcs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Virtual City Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributors/acknowledgements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Acknowledgements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Includes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Includes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../includes/abbreviations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abbreviations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of content">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+  <nav class="md-path" aria-label="Navigation">
+    <ol class="md-path__list">
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    citydb-3dtiler
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../advice_classes/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Includes
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="folders-files-classes-functions">Folders &amp; Files &amp; Classes / Functions<a class="headerlink" href="#folders-files-classes-functions" title="Link to this headline for referencing">¶</a></h1>
+<p>Following diagram shows which functions/classes are stored in which files &amp; folder.</p>
+<div class="puml-container"><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="MINDMAP" style="width:764px;height:1170px;background:#FFFFFF;" width="764px" height="1170px" viewBox="0 0 764 1170" zoomAndPan="magnify" preserveAspectRatio="xMidYMid meet" contentStyleType="text/css" class="diagram"><?plantuml 1.2026.9beta4?><defs/><g font-family="sans-serif" lengthAdjust="spacing"><g class="header" data-source-line="4"><text x="630.912" y="19.282" fill="#F00" font-size="10" textLength="121.753">Last Check : 22.01.2026</text></g><g class="title" data-source-line="3"><text x="290.886" y="45.636" fill="#000" font-size="14" textLength="180.893" font-weight="700">Folder &amp; File Structure</text></g><rect x="10" y="517.148" width="113.618" height="36.297" fill="#C0C0C0" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><text x="20" y="540.144" fill="#000" font-size="14" textLength="93.618">citydb-3dtiler</text><rect x="173.618" y="182.531" width="89.042" height="36.297" fill="#C0C0C0" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M184.723,195.995 C184.653,195.995 184.618,196.041 184.618,196.1 L184.618,205.211 C184.618,205.27 184.665,205.316 184.723,205.316 L192.668,205.316 C192.726,205.316 192.773,205.27 192.773,205.211 L192.773,196.1 C192.773,196.03 192.726,195.995 192.668,195.995 L184.723,195.995 M185.785,197.161 L191.618,197.161 L191.618,199.495 L185.785,199.495 L185.785,197.161 M185.785,200.661 L186.951,200.661 L186.951,201.828 L185.785,201.828 L185.785,200.661 M188.118,200.661 L189.285,200.661 L189.285,201.828 L188.118,201.828 L188.118,200.661 M190.451,200.661 L191.618,200.661 L191.618,204.161 L190.451,204.161 L190.451,200.661 M185.785,202.995 L186.951,202.995 L186.951,204.161 L185.785,204.161 L185.785,202.995 M188.118,202.995 L189.285,202.995 L189.285,204.161 L188.118,204.161 L188.118,202.995" fill="#000"/><text x="199.402" y="205.526" fill="#000" font-size="14" textLength="53.259">io_tools</text><rect x="312.66" y="69.938" width="76.423" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M323.765,83.401 C323.695,83.401 323.66,83.448 323.66,83.506 L323.66,92.618 C323.66,92.676 323.707,92.723 323.765,92.723 L331.71,92.723 C331.769,92.723 331.815,92.676 331.815,92.618 L331.815,83.506 C331.815,83.436 331.769,83.401 331.71,83.401 L323.765,83.401 M324.827,84.568 L330.66,84.568 L330.66,86.901 L324.827,86.901 L324.827,84.568 M324.827,88.068 L325.994,88.068 L325.994,89.234 L324.827,89.234 L324.827,88.068 M327.16,88.068 L328.327,88.068 L328.327,89.234 L327.16,89.234 L327.16,88.068 M329.494,88.068 L330.66,88.068 L330.66,91.568 L329.494,91.568 L329.494,88.068 M324.827,90.401 L325.994,90.401 L325.994,91.568 L324.827,91.568 L324.827,90.401 M327.16,90.401 L328.327,90.401 L328.327,91.568 L327.16,91.568 L327.16,90.401" fill="#000"/><text x="338.444" y="92.933" fill="#000" font-size="14" textLength="40.64">folder</text><text x="442.084" y="74.636" fill="#000" font-size="14" textLength="92.388">create_folder</text><path d="M389.084,88.086 L399.084,88.086 C414.084,88.086 414.084,69.789 429.084,69.789 L439.084,69.789" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="442.084" y="92.933" fill="#000" font-size="14" textLength="172.272">check_custom_materials</text><path d="M389.084,88.086 L399.084,88.086 C414.084,88.086 414.084,88.086 429.084,88.086 L439.084,88.086" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="442.084" y="111.229" fill="#000" font-size="14" textLength="89.072">check_file_in</text><path d="M389.084,88.086 L399.084,88.086 C414.084,88.086 414.084,106.383 429.084,106.383 L439.084,106.383" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M262.66,200.68 L272.66,200.68 C287.66,200.68 287.66,88.086 302.66,88.086 L312.66,88.086" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="312.66" y="126.234" width="111.177" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M323.765,139.698 C323.695,139.698 323.66,139.745 323.66,139.803 L323.66,148.915 C323.66,148.973 323.707,149.02 323.765,149.02 L331.71,149.02 C331.769,149.02 331.815,148.973 331.815,148.915 L331.815,139.803 C331.815,139.733 331.769,139.698 331.71,139.698 L323.765,139.698 M324.827,140.865 L330.66,140.865 L330.66,143.198 L324.827,143.198 L324.827,140.865 M324.827,144.365 L325.994,144.365 L325.994,145.531 L324.827,145.531 L324.827,144.365 M327.16,144.365 L328.327,144.365 L328.327,145.531 L327.16,145.531 L327.16,144.365 M329.494,144.365 L330.66,144.365 L330.66,147.865 L329.494,147.865 L329.494,144.365 M324.827,146.698 L325.994,146.698 L325.994,147.865 L324.827,147.865 L324.827,146.698 M327.16,146.698 L328.327,146.698 L328.327,147.865 L327.16,147.865 L327.16,146.698" fill="#000"/><text x="338.444" y="149.229" fill="#000" font-size="14" textLength="75.394">pg_plpgsql</text><text x="476.838" y="149.229" fill="#000" font-size="14" textLength="106.162">copy_materials</text><path d="M423.838,144.383 L433.838,144.383 C448.838,144.383 448.838,144.383 463.838,144.383 L473.838,144.383" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M262.66,200.68 L272.66,200.68 C287.66,200.68 287.66,144.383 302.66,144.383 L312.66,144.383" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="312.66" y="182.531" width="80.627" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M323.765,195.995 C323.695,195.995 323.66,196.041 323.66,196.1 L323.66,205.211 C323.66,205.27 323.707,205.316 323.765,205.316 L331.71,205.316 C331.769,205.316 331.815,205.27 331.815,205.211 L331.815,196.1 C331.815,196.03 331.769,195.995 331.71,195.995 L323.765,195.995 M324.827,197.161 L330.66,197.161 L330.66,199.495 L324.827,199.495 L324.827,197.161 M324.827,200.661 L325.994,200.661 L325.994,201.828 L324.827,201.828 L324.827,200.661 M327.16,200.661 L328.327,200.661 L328.327,201.828 L327.16,201.828 L327.16,200.661 M329.494,200.661 L330.66,200.661 L330.66,204.161 L329.494,204.161 L329.494,200.661 M324.827,202.995 L325.994,202.995 L325.994,204.161 L324.827,204.161 L324.827,202.995 M327.16,202.995 L328.327,202.995 L328.327,204.161 L327.16,204.161 L327.16,202.995" fill="#000"/><text x="338.444" y="205.526" fill="#000" font-size="14" textLength="44.844">pg_sql</text><text x="446.288" y="205.526" fill="#000" font-size="14" textLength="87.227">read_sql_file</text><path d="M393.288,200.68 L403.288,200.68 C418.288,200.68 418.288,200.68 433.288,200.68 L443.288,200.68" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M262.66,200.68 L272.66,200.68 C287.66,200.68 287.66,200.68 302.66,200.68 L312.66,200.68" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="312.66" y="238.828" width="64.959" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M323.765,252.292 C323.695,252.292 323.66,252.338 323.66,252.397 L323.66,261.508 C323.66,261.567 323.707,261.613 323.765,261.613 L331.71,261.613 C331.769,261.613 331.815,261.567 331.815,261.508 L331.815,252.397 C331.815,252.327 331.769,252.292 331.71,252.292 L323.765,252.292 M324.827,253.458 L330.66,253.458 L330.66,255.792 L324.827,255.792 L324.827,253.458 M324.827,256.958 L325.994,256.958 L325.994,258.125 L324.827,258.125 L324.827,256.958 M327.16,256.958 L328.327,256.958 L328.327,258.125 L327.16,258.125 L327.16,256.958 M329.494,256.958 L330.66,256.958 L330.66,260.458 L329.494,260.458 L329.494,256.958 M324.827,259.292 L325.994,259.292 L325.994,260.458 L324.827,260.458 L324.827,259.292 M327.16,259.292 L328.327,259.292 L328.327,260.458 L327.16,260.458 L327.16,259.292" fill="#000"/><text x="338.444" y="261.823" fill="#000" font-size="14" textLength="29.176">tiles</text><text x="430.62" y="261.823" fill="#000" font-size="14" textLength="99.6">generate_tiles</text><path d="M377.62,256.977 L387.62,256.977 C402.62,256.977 402.62,256.977 417.62,256.977 L427.62,256.977" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M262.66,200.68 L272.66,200.68 C287.66,200.68 287.66,256.977 302.66,256.977 L312.66,256.977" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="312.66" y="295.125" width="70.175" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M323.765,308.589 C323.695,308.589 323.66,308.635 323.66,308.694 L323.66,317.805 C323.66,317.864 323.707,317.91 323.765,317.91 L331.71,317.91 C331.769,317.91 331.815,317.864 331.815,317.805 L331.815,308.694 C331.815,308.624 331.769,308.589 331.71,308.589 L323.765,308.589 M324.827,309.755 L330.66,309.755 L330.66,312.089 L324.827,312.089 L324.827,309.755 M324.827,313.255 L325.994,313.255 L325.994,314.422 L324.827,314.422 L324.827,313.255 M327.16,313.255 L328.327,313.255 L328.327,314.422 L327.16,314.422 L327.16,313.255 M329.494,313.255 L330.66,313.255 L330.66,316.755 L329.494,316.755 L329.494,313.255 M324.827,315.589 L325.994,315.589 L325.994,316.755 L324.827,316.755 L324.827,315.589 M327.16,315.589 L328.327,315.589 L328.327,316.755 L327.16,316.755 L327.16,315.589" fill="#000"/><text x="338.444" y="318.12" fill="#000" font-size="14" textLength="34.392">yaml</text><text x="435.836" y="308.972" fill="#000" font-size="14" textLength="73.227">read_yaml</text><path d="M382.836,313.273 L392.836,313.273 C407.836,313.273 407.836,304.125 422.836,304.125 L432.836,304.125" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="435.836" y="327.269" fill="#000" font-size="14" textLength="76.59">write_yaml</text><path d="M382.836,313.273 L392.836,313.273 C407.836,313.273 407.836,322.422 422.836,322.422 L432.836,322.422" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M262.66,200.68 L272.66,200.68 C287.66,200.68 287.66,313.273 302.66,313.273 L312.66,313.273" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M123.618,535.297 L133.618,535.297 C148.618,535.297 148.618,200.68 163.618,200.68 L173.618,200.68" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="173.618" y="387.664" width="86.445" height="36.297" fill="#C0C0C0" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M188.118,401.128 C187.476,401.128 186.951,401.653 186.951,402.294 L186.951,403.461 L184.723,403.461 C184.653,403.461 184.618,403.508 184.618,403.566 L184.618,406.378 C184.618,406.704 184.875,406.961 185.201,406.961 L193.368,406.961 C193.695,406.961 193.951,406.704 193.951,406.378 L193.951,403.566 C193.951,403.496 193.905,403.461 193.846,403.461 L191.618,403.461 L191.618,402.294 C191.618,401.653 191.093,401.128 190.451,401.128 L188.118,401.128 M188.118,402.294 L190.451,402.294 L190.451,403.461 L188.118,403.461 L188.118,402.294 M184.618,408.023 L184.618,410.356 C184.618,410.414 184.665,410.461 184.723,410.461 L193.835,410.461 C193.893,410.461 193.94,410.414 193.94,410.356 L193.94,408.023 C193.753,408.093 193.566,408.128 193.356,408.128 L185.19,408.128 C184.98,408.128 184.793,408.081 184.606,408.023" fill="#000"/><text x="199.402" y="410.659" fill="#000" font-size="14" textLength="50.661">classes</text><rect x="310.063" y="359.867" width="117.945" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M324.563,373.331 C323.921,373.331 323.396,373.856 323.396,374.497 L323.396,375.664 L321.168,375.664 C321.098,375.664 321.063,375.711 321.063,375.769 L321.063,378.581 C321.063,378.907 321.319,379.164 321.646,379.164 L329.813,379.164 C330.139,379.164 330.396,378.907 330.396,378.581 L330.396,375.769 C330.396,375.699 330.349,375.664 330.291,375.664 L328.063,375.664 L328.063,374.497 C328.063,373.856 327.538,373.331 326.896,373.331 L324.563,373.331 M324.563,374.497 L326.896,374.497 L326.896,375.664 L324.563,375.664 L324.563,374.497 M321.063,380.226 L321.063,382.559 C321.063,382.617 321.109,382.664 321.168,382.664 L330.279,382.664 C330.338,382.664 330.384,382.617 330.384,382.559 L330.384,380.226 C330.198,380.296 330.011,380.331 329.801,380.331 L321.634,380.331 C321.424,380.331 321.238,380.284 321.051,380.226" fill="#000"/><text x="335.846" y="382.862" fill="#000" font-size="14" textLength="82.161">advisement</text><text x="481.007" y="355.417" fill="#000" font-size="14" textLength="191.44">TransformedDict (Abstract)</text><path d="M428.007,378.016 L438.007,378.016 C453.007,378.016 453.007,350.57 468.007,350.57 L478.007,350.57" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="481.007" y="373.714" fill="#000" font-size="14" textLength="83.159">Advisement</text><path d="M428.007,378.016 L438.007,378.016 C453.007,378.016 453.007,368.867 468.007,368.867 L478.007,368.867" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="481.007" y="392.011" fill="#000" font-size="14" textLength="82.428">ObjectClass</text><path d="M428.007,378.016 L438.007,378.016 C453.007,378.016 453.007,387.164 468.007,387.164 L478.007,387.164" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="481.007" y="410.308" fill="#000" font-size="14" textLength="213.37">ObjectClassRecommendations</text><path d="M428.007,378.016 L438.007,378.016 C453.007,378.016 453.007,405.461 468.007,405.461 L478.007,405.461" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M260.063,405.813 L270.063,405.813 C285.063,405.813 285.063,378.016 300.063,378.016 L310.063,378.016" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="310.063" y="423.906" width="107.294" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M324.563,437.37 C323.921,437.37 323.396,437.895 323.396,438.536 L323.396,439.703 L321.168,439.703 C321.098,439.703 321.063,439.75 321.063,439.808 L321.063,442.62 C321.063,442.946 321.319,443.203 321.646,443.203 L329.813,443.203 C330.139,443.203 330.396,442.946 330.396,442.62 L330.396,439.808 C330.396,439.738 330.349,439.703 330.291,439.703 L328.063,439.703 L328.063,438.536 C328.063,437.895 327.538,437.37 326.896,437.37 L324.563,437.37 M324.563,438.536 L326.896,438.536 L326.896,439.703 L324.563,439.703 L324.563,438.536 M321.063,444.265 L321.063,446.598 C321.063,446.656 321.109,446.703 321.168,446.703 L330.279,446.703 C330.338,446.703 330.384,446.656 330.384,446.598 L330.384,444.265 C330.198,444.335 330.011,444.37 329.801,444.37 L321.634,444.37 C321.424,444.37 321.238,444.323 321.051,444.265" fill="#000"/><text x="335.846" y="446.901" fill="#000" font-size="14" textLength="71.511">sql_blocks</text><text x="470.357" y="428.604" fill="#000" font-size="14" textLength="80.411">QueryBlock</text><path d="M417.357,442.055 L427.357,442.055 C442.357,442.055 442.357,423.758 457.357,423.758 L467.357,423.758" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="470.357" y="446.901" fill="#000" font-size="14" textLength="87.705">QueryBlocks</text><path d="M417.357,442.055 L427.357,442.055 C442.357,442.055 442.357,442.055 457.357,442.055 L467.357,442.055" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="470.357" y="465.198" fill="#000" font-size="14" textLength="223.665">and_others (see Class Diagram)</text><path d="M417.357,442.055 L427.357,442.055 C442.357,442.055 442.357,460.352 457.357,460.352 L467.357,460.352" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M260.063,405.813 L270.063,405.813 C285.063,405.813 285.063,442.055 300.063,442.055 L310.063,442.055" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M123.618,535.297 L133.618,535.297 C148.618,535.297 148.618,405.813 163.618,405.813 L173.618,405.813" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="173.618" y="525.242" width="100.691" height="36.297" fill="#C0C0C0" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M184.723,538.706 C184.653,538.706 184.618,538.752 184.618,538.811 L184.618,547.922 C184.618,547.981 184.665,548.027 184.723,548.027 L192.668,548.027 C192.726,548.027 192.773,547.981 192.773,547.922 L192.773,538.811 C192.773,538.741 192.726,538.706 192.668,538.706 L184.723,538.706 M185.785,539.872 L191.618,539.872 L191.618,542.206 L185.785,542.206 L185.785,539.872 M185.785,543.372 L186.951,543.372 L186.951,544.539 L185.785,544.539 L185.785,543.372 M188.118,543.372 L189.285,543.372 L189.285,544.539 L188.118,544.539 L188.118,543.372 M190.451,543.372 L191.618,543.372 L191.618,546.872 L190.451,546.872 L190.451,543.372 M185.785,545.706 L186.951,545.706 L186.951,546.872 L185.785,546.872 L185.785,545.706 M188.118,545.706 L189.285,545.706 L189.285,546.872 L188.118,546.872 L188.118,545.706" fill="#000"/><text x="199.402" y="548.237" fill="#000" font-size="14" textLength="64.907">database</text><rect x="324.309" y="525.242" width="137.694" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M335.414,538.706 C335.344,538.706 335.309,538.752 335.309,538.811 L335.309,547.922 C335.309,547.981 335.356,548.027 335.414,548.027 L343.359,548.027 C343.417,548.027 343.464,547.981 343.464,547.922 L343.464,538.811 C343.464,538.741 343.417,538.706 343.359,538.706 L335.414,538.706 M336.476,539.872 L342.309,539.872 L342.309,542.206 L336.476,542.206 L336.476,539.872 M336.476,543.372 L337.642,543.372 L337.642,544.539 L336.476,544.539 L336.476,543.372 M338.809,543.372 L339.976,543.372 L339.976,544.539 L338.809,544.539 L338.809,543.372 M341.142,543.372 L342.309,543.372 L342.309,546.872 L341.142,546.872 L341.142,543.372 M336.476,545.706 L337.642,545.706 L337.642,546.872 L336.476,546.872 L336.476,545.706 M338.809,545.706 L339.976,545.706 L339.976,546.872 L338.809,546.872 L338.809,545.706" fill="#000"/><text x="350.092" y="548.237" fill="#000" font-size="14" textLength="101.91">pg_connection</text><text x="515.003" y="484.198" fill="#000" font-size="14" textLength="114.598">pg_show_details</text><path d="M462.003,543.391 L472.003,543.391 C487.003,543.391 487.003,479.352 502.003,479.352 L512.003,479.352" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="515.003" y="502.495" fill="#000" font-size="14" textLength="87.582">pg_establish</text><path d="M462.003,543.391 L472.003,543.391 C487.003,543.391 487.003,497.648 502.003,497.648 L512.003,497.648" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="515.003" y="520.792" fill="#000" font-size="14" textLength="128.345">pg_create_session</text><path d="M462.003,543.391 L472.003,543.391 C487.003,543.391 487.003,515.945 502.003,515.945 L512.003,515.945" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="515.003" y="539.089" fill="#000" font-size="14" textLength="149.898">pg_check_connection</text><path d="M462.003,543.391 L472.003,543.391 C487.003,543.391 487.003,534.242 502.003,534.242 L512.003,534.242" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="515.003" y="557.386" fill="#000" font-size="14" textLength="178.158">create_materialized_view</text><path d="M462.003,543.391 L472.003,543.391 C487.003,543.391 487.003,552.539 502.003,552.539 L512.003,552.539" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="515.003" y="575.683" fill="#000" font-size="14" textLength="171.958">index_materialized_view</text><path d="M462.003,543.391 L472.003,543.391 C487.003,543.391 487.003,570.836 502.003,570.836 L512.003,570.836" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="515.003" y="593.979" fill="#000" font-size="14" textLength="124.612">get_query_results</text><path d="M462.003,543.391 L472.003,543.391 C487.003,543.391 487.003,589.133 502.003,589.133 L512.003,589.133" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="515.003" y="612.276" fill="#000" font-size="14" textLength="50.572">run_sql</text><path d="M462.003,543.391 L472.003,543.391 C487.003,543.391 487.003,607.43 502.003,607.43 L512.003,607.43" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M274.309,543.391 L284.309,543.391 C299.309,543.391 299.309,543.391 314.309,543.391 L324.309,543.391" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M123.618,535.297 L133.618,535.297 C148.618,535.297 148.618,543.391 163.618,543.391 L173.618,543.391" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="173.618" y="682.875" width="102.386" height="36.297" fill="#C0C0C0" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M189.285,696.339 L188.888,696.735 C188.76,696.864 185.785,699.874 185.785,702.429 C185.785,704.354 187.36,705.929 189.285,705.929 C191.21,705.929 192.785,704.354 192.785,702.429 C192.785,699.885 189.81,696.864 189.681,696.735 L189.285,696.339 M187.535,701.845 C187.861,701.845 188.118,702.102 188.118,702.429 C188.118,703.07 188.643,703.595 189.285,703.595 C189.611,703.595 189.868,703.852 189.868,704.179 C189.868,704.505 189.611,704.762 189.285,704.762 C188.001,704.762 186.951,703.712 186.951,702.429 C186.951,702.102 187.208,701.845 187.535,701.845" fill="#000"/><text x="199.402" y="705.87" fill="#000" font-size="14" textLength="66.603">instances</text><rect x="326.004" y="626.578" width="101.094" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M341.671,640.042 L341.274,640.438 C341.146,640.567 338.171,643.577 338.171,646.132 C338.171,648.057 339.746,649.632 341.671,649.632 C343.596,649.632 345.171,648.057 345.171,646.132 C345.171,643.588 342.196,640.567 342.068,640.438 L341.671,640.042 M339.921,645.548 C340.248,645.548 340.504,645.805 340.504,646.132 C340.504,646.773 341.029,647.298 341.671,647.298 C341.998,647.298 342.254,647.555 342.254,647.882 C342.254,648.208 341.998,648.465 341.671,648.465 C340.388,648.465 339.338,647.415 339.338,646.132 C339.338,645.805 339.594,645.548 339.921,645.548" fill="#000"/><text x="351.788" y="649.573" fill="#000" font-size="14" textLength="65.311">in_advise</text><text x="480.098" y="640.425" fill="#000" font-size="14" textLength="137.252">geometry_statistics</text><path d="M427.098,644.727 L437.098,644.727 C452.098,644.727 452.098,635.578 467.098,635.578 L477.098,635.578" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="480.098" y="658.722" fill="#000" font-size="14" textLength="263.566">recommended_max_features_per_tile</text><path d="M427.098,644.727 L437.098,644.727 C452.098,644.727 452.098,653.875 467.098,653.875 L477.098,653.875" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M276.004,701.023 L286.004,701.023 C301.004,701.023 301.004,644.727 316.004,644.727 L326.004,644.727" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="326.004" y="682.875" width="79.636" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M341.671,696.339 L341.274,696.735 C341.146,696.864 338.171,699.874 338.171,702.429 C338.171,704.354 339.746,705.929 341.671,705.929 C343.596,705.929 345.171,704.354 345.171,702.429 C345.171,699.885 342.196,696.864 342.068,696.735 L341.671,696.339 M339.921,701.845 C340.248,701.845 340.504,702.102 340.504,702.429 C340.504,703.07 341.029,703.595 341.671,703.595 C341.998,703.595 342.254,703.852 342.254,704.179 C342.254,704.505 341.998,704.762 341.671,704.762 C340.388,704.762 339.338,703.712 339.338,702.429 C339.338,702.102 339.594,701.845 339.921,701.845" fill="#000"/><text x="351.788" y="705.87" fill="#000" font-size="14" textLength="43.853">kernel</text><text x="458.64" y="705.87" fill="#000" font-size="14" textLength="74.04">krnl_query</text><path d="M405.64,701.023 L415.64,701.023 C430.64,701.023 430.64,701.023 445.64,701.023 L455.64,701.023" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M276.004,701.023 L286.004,701.023 C301.004,701.023 301.004,701.023 316.004,701.023 L326.004,701.023" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="326.004" y="739.172" width="94.217" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M341.671,752.635 L341.274,753.032 C341.146,753.16 338.171,756.17 338.171,758.725 C338.171,760.65 339.746,762.225 341.671,762.225 C343.596,762.225 345.171,760.65 345.171,758.725 C345.171,756.182 342.196,753.16 342.068,753.032 L341.671,752.635 M339.921,758.142 C340.248,758.142 340.504,758.399 340.504,758.725 C340.504,759.367 341.029,759.892 341.671,759.892 C341.998,759.892 342.254,760.149 342.254,760.475 C342.254,760.802 341.998,761.059 341.671,761.059 C340.388,761.059 339.338,760.009 339.338,758.725 C339.338,758.399 339.594,758.142 339.921,758.142" fill="#000"/><text x="351.788" y="762.167" fill="#000" font-size="14" textLength="58.434">material</text><text x="473.221" y="753.019" fill="#000" font-size="14" textLength="208.018">objectclass_falldown_addition</text><path d="M420.221,757.32 L430.221,757.32 C445.221,757.32 445.221,748.172 460.221,748.172 L470.221,748.172" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="473.221" y="771.315" fill="#000" font-size="14" textLength="201.872">properties_falldown_addition</text><path d="M420.221,757.32 L430.221,757.32 C445.221,757.32 445.221,766.469 460.221,766.469 L470.221,766.469" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M276.004,701.023 L286.004,701.023 C301.004,701.023 301.004,757.32 316.004,757.32 L326.004,757.32" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M123.618,535.297 L133.618,535.297 C148.618,535.297 148.618,701.023 163.618,701.023 L173.618,701.023" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="173.618" y="795.469" width="129.402" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M184.723,808.932 C184.653,808.932 184.618,808.979 184.618,809.037 L184.618,818.149 C184.618,818.207 184.665,818.254 184.723,818.254 L192.668,818.254 C192.726,818.254 192.773,818.207 192.773,818.149 L192.773,809.037 C192.773,808.967 192.726,808.932 192.668,808.932 L184.723,808.932 M185.785,810.099 L191.618,810.099 L191.618,812.432 L185.785,812.432 L185.785,810.099 M185.785,813.599 L186.951,813.599 L186.951,814.766 L185.785,814.766 L185.785,813.599 M188.118,813.599 L189.285,813.599 L189.285,814.766 L188.118,814.766 L188.118,813.599 M190.451,813.599 L191.618,813.599 L191.618,817.099 L190.451,817.099 L190.451,813.599 M185.785,815.932 L186.951,815.932 L186.951,817.099 L185.785,817.099 L185.785,815.932 M188.118,815.932 L189.285,815.932 L189.285,817.099 L188.118,817.099 L188.118,815.932" fill="#000"/><text x="199.402" y="818.464" fill="#000" font-size="14" textLength="93.618">citydb-3dtiler</text><path d="M123.618,535.297 L133.618,535.297 C148.618,535.297 148.618,813.617 163.618,813.617 L173.618,813.617" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="173.618" y="851.766" width="123.311" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M184.723,865.229 C184.653,865.229 184.618,865.276 184.618,865.334 L184.618,874.446 C184.618,874.504 184.665,874.551 184.723,874.551 L192.668,874.551 C192.726,874.551 192.773,874.504 192.773,874.446 L192.773,865.334 C192.773,865.264 192.726,865.229 192.668,865.229 L184.723,865.229 M185.785,866.396 L191.618,866.396 L191.618,868.729 L185.785,868.729 L185.785,866.396 M185.785,869.896 L186.951,869.896 L186.951,871.063 L185.785,871.063 L185.785,869.896 M188.118,869.896 L189.285,869.896 L189.285,871.063 L188.118,871.063 L188.118,869.896 M190.451,869.896 L191.618,869.896 L191.618,873.396 L190.451,873.396 L190.451,869.896 M185.785,872.229 L186.951,872.229 L186.951,873.396 L185.785,873.396 L185.785,872.229 M188.118,872.229 L189.285,872.229 L189.285,873.396 L188.118,873.396 L188.118,872.229" fill="#000"/><text x="199.402" y="874.761" fill="#000" font-size="14" textLength="87.527">advise_main</text><path d="M123.618,535.297 L133.618,535.297 C148.618,535.297 148.618,869.914 163.618,869.914 L173.618,869.914" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="173.618" y="908.063" width="99.645" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M184.723,921.526 C184.653,921.526 184.618,921.573 184.618,921.631 L184.618,930.743 C184.618,930.801 184.665,930.848 184.723,930.848 L192.668,930.848 C192.726,930.848 192.773,930.801 192.773,930.743 L192.773,921.631 C192.773,921.561 192.726,921.526 192.668,921.526 L184.723,921.526 M185.785,922.693 L191.618,922.693 L191.618,925.026 L185.785,925.026 L185.785,922.693 M185.785,926.193 L186.951,926.193 L186.951,927.359 L185.785,927.359 L185.785,926.193 M188.118,926.193 L189.285,926.193 L189.285,927.359 L188.118,927.359 L188.118,926.193 M190.451,926.193 L191.618,926.193 L191.618,929.693 L190.451,929.693 L190.451,926.193 M185.785,928.526 L186.951,928.526 L186.951,929.693 L185.785,929.693 L185.785,928.526 M188.118,928.526 L189.285,928.526 L189.285,929.693 L188.118,929.693 L188.118,928.526" fill="#000"/><text x="199.402" y="931.058" fill="#000" font-size="14" textLength="63.861">tile_main</text><path d="M123.618,535.297 L133.618,535.297 C148.618,535.297 148.618,926.211 163.618,926.211 L173.618,926.211" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="173.618" y="964.359" width="131.165" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M184.723,977.823 C184.653,977.823 184.618,977.87 184.618,977.928 L184.618,987.04 C184.618,987.098 184.665,987.145 184.723,987.145 L192.668,987.145 C192.726,987.145 192.773,987.098 192.773,987.04 L192.773,977.928 C192.773,977.858 192.726,977.823 192.668,977.823 L184.723,977.823 M185.785,978.99 L191.618,978.99 L191.618,981.323 L185.785,981.323 L185.785,978.99 M185.785,982.49 L186.951,982.49 L186.951,983.656 L185.785,983.656 L185.785,982.49 M188.118,982.49 L189.285,982.49 L189.285,983.656 L188.118,983.656 L188.118,982.49 M190.451,982.49 L191.618,982.49 L191.618,985.99 L190.451,985.99 L190.451,982.49 M185.785,984.823 L186.951,984.823 L186.951,985.99 L185.785,985.99 L185.785,984.823 M188.118,984.823 L189.285,984.823 L189.285,985.99 L188.118,985.99 L188.118,984.823" fill="#000"/><text x="199.402" y="987.354" fill="#000" font-size="14" textLength="95.382">default_paths</text><path d="M123.618,535.297 L133.618,535.297 C148.618,535.297 148.618,982.508 163.618,982.508 L173.618,982.508" style="stroke:#181818;stroke-width:1;" fill="none"/><g class="legend" data-source-line="55"><rect x="22" y="1022.656" width="184.357" height="124.078" fill="#DDD" style="stroke:#000;stroke-width:1;" rx="7.5" ry="7.5"/><text x="27" y="1040.651" fill="#000" font-size="14" textLength="41.275">Icons:</text><text x="44.801" y="1056.948" fill="#000" font-size="14" textLength="62.316">Main File</text><path d="M117.234,1047.417 L112.567,1050.917 L113.734,1050.917 L113.734,1055.583 L116.067,1055.583 L116.067,1053.25 L118.401,1053.25 L118.401,1055.583 L120.734,1055.583 L120.734,1050.882 L121.901,1050.917 L117.234,1047.417" fill="#000"/><text x="44.801" y="1073.245" fill="#000" font-size="14" textLength="67.607">Functions</text><path d="M117.963,1063.714 C117.893,1063.714 117.858,1063.76 117.858,1063.819 L117.858,1072.93 C117.858,1072.989 117.905,1073.035 117.963,1073.035 L125.908,1073.035 C125.967,1073.035 126.013,1072.989 126.013,1072.93 L126.013,1063.819 C126.013,1063.749 125.967,1063.714 125.908,1063.714 L117.963,1063.714 M119.025,1064.88 L124.858,1064.88 L124.858,1067.214 L119.025,1067.214 L119.025,1064.88 M119.025,1068.38 L120.192,1068.38 L120.192,1069.547 L119.025,1069.547 L119.025,1068.38 M121.358,1068.38 L122.525,1068.38 L122.525,1069.547 L121.358,1069.547 L121.358,1068.38 M123.692,1068.38 L124.858,1068.38 L124.858,1071.88 L123.692,1071.88 L123.692,1068.38 M119.025,1070.714 L120.192,1070.714 L120.192,1071.88 L119.025,1071.88 L119.025,1070.714 M121.358,1070.714 L122.525,1070.714 L122.525,1071.88 L121.358,1071.88 L121.358,1070.714" fill="#000"/><text x="44.801" y="1089.542" fill="#000" font-size="14" textLength="140.772">Classes/Dictionaries</text><path d="M194.523,1080.01 C193.882,1080.01 193.357,1080.535 193.357,1081.177 L193.357,1082.344 L191.128,1082.344 C191.058,1082.344 191.023,1082.39 191.023,1082.449 L191.023,1085.26 C191.023,1085.587 191.28,1085.844 191.607,1085.844 L199.773,1085.844 C200.1,1085.844 200.357,1085.587 200.357,1085.26 L200.357,1082.449 C200.357,1082.379 200.31,1082.344 200.252,1082.344 L198.023,1082.344 L198.023,1081.177 C198.023,1080.535 197.498,1080.01 196.857,1080.01 L194.523,1080.01 M194.523,1081.177 L196.857,1081.177 L196.857,1082.344 L194.523,1082.344 L194.523,1081.177 M191.023,1086.905 L191.023,1089.239 C191.023,1089.297 191.07,1089.344 191.128,1089.344 L200.24,1089.344 C200.298,1089.344 200.345,1089.297 200.345,1089.239 L200.345,1086.905 C200.158,1086.975 199.972,1087.01 199.762,1087.01 L191.595,1087.01 C191.385,1087.01 191.198,1086.964 191.012,1086.905" fill="#000"/><text x="27" y="1105.839" fill="#000" font-size="14" textLength="79.468">Box Colors:</text><text x="44.801" y="1122.136" fill="#000" font-size="14" textLength="105.157">Folders = Gray</text><text x="44.801" y="1138.433" fill="#000" font-size="14" textLength="93.078">Files = White</text></g><?plantuml-src ZLNRQXin47tVhn0KGX9eBcufD3WcYKDAeINq0dqeHMYbsLtLMcaZpSPnlxwZlMMTE7RsmLWpPwuwCxe8A3oMsgfIL0bgDC1kd57WsHwxqNJwWRwMM7j8lCuBP0K8qYRJp5baqXddppqe5lG_E3yzcR4l8Y2R5o0Nx8nD9aSdfqUJayc7wN4qc2LWLUVXyFUReCqz-3zCQbofzEqxXHIHD2FLT4yA8siZqFaPquwZSoOGX31vuG8k2utm59Sr9KJK8MVIWq3WwxAO89TrG5VoajHUYzRjeCme5wxjhb1LpYjJvU7EzDQkMgsxt67-Q4g9gdXiOk-oZBtgCyx1Wez53i9jbYjHhaKSdPUUyBrWV0kfrv194M36f14XR8uoGWbrhmEKOB5p_TCB6pBdIr3NMYBRlqm3UY7ne0DSFhMuJV-2n7aCzrpo7QGh2Qm4QcTtPHERcXed5xsdRpNurLMKF1Fq464LTrY03sm_0B0cBBlM8lUYFDZ2Kaf9f1Js5NSldRLK4LNG1OryADoIAq2X1qQI56XIKwD3yIZgY4rt4TOSTEH-whg3zzIaWLNyNiEoKzCEW8SNjJaWluijuXv2RR3FpDUs8_2u6ygxoW3Im5fAsyhDR1cXU4kN8PWh0IaM6QCEgEKGhhzroguK3poZacWt1Lw1RyY_DSu2l8MUwWjlJLlILfk-8PsLQnZOZ03FX37ABMFoIe_la6p1euRDa6sKsB09NmQtFQC-w5rkexVNu1HaWYwNLmABa1YWlQAOWGmJHjzdebGuQ_x6xolvQz-8wLv15pORD3UrROWNrjqF-dcxGOxZ7Y2Oe3aDQ_FQ8A_S0vl71sOKitsR0ZjddxnOFOhZsYFXhrXKV6FQr9CB-kaVjwHzY8u-fZHQx_y3?></g></svg></div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="MINDMAP" style="width:764px;height:1170px;background:#FFFFFF;" width="764px" height="1170px" viewBox="0 0 764 1170" zoomAndPan="magnify" preserveAspectRatio="xMidYMid meet" contentStyleType="text/css" class="diagram"><?plantuml 1.2026.9beta4?><defs/><g font-family="sans-serif" lengthAdjust="spacing"><g class="header" data-source-line="4"><text x="630.912" y="19.282" fill="#F00" font-size="10" textLength="121.753">Last Check : 22.01.2026</text></g><g class="title" data-source-line="3"><text x="290.886" y="45.636" fill="#000" font-size="14" textLength="180.893" font-weight="700">Folder &amp; File Structure</text></g><rect x="10" y="517.148" width="113.618" height="36.297" fill="#C0C0C0" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><text x="20" y="540.144" fill="#000" font-size="14" textLength="93.618">citydb-3dtiler</text><rect x="173.618" y="182.531" width="89.042" height="36.297" fill="#C0C0C0" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M184.723,195.995 C184.653,195.995 184.618,196.041 184.618,196.1 L184.618,205.211 C184.618,205.27 184.665,205.316 184.723,205.316 L192.668,205.316 C192.726,205.316 192.773,205.27 192.773,205.211 L192.773,196.1 C192.773,196.03 192.726,195.995 192.668,195.995 L184.723,195.995 M185.785,197.161 L191.618,197.161 L191.618,199.495 L185.785,199.495 L185.785,197.161 M185.785,200.661 L186.951,200.661 L186.951,201.828 L185.785,201.828 L185.785,200.661 M188.118,200.661 L189.285,200.661 L189.285,201.828 L188.118,201.828 L188.118,200.661 M190.451,200.661 L191.618,200.661 L191.618,204.161 L190.451,204.161 L190.451,200.661 M185.785,202.995 L186.951,202.995 L186.951,204.161 L185.785,204.161 L185.785,202.995 M188.118,202.995 L189.285,202.995 L189.285,204.161 L188.118,204.161 L188.118,202.995" fill="#000"/><text x="199.402" y="205.526" fill="#000" font-size="14" textLength="53.259">io_tools</text><rect x="312.66" y="69.938" width="76.423" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M323.765,83.401 C323.695,83.401 323.66,83.448 323.66,83.506 L323.66,92.618 C323.66,92.676 323.707,92.723 323.765,92.723 L331.71,92.723 C331.769,92.723 331.815,92.676 331.815,92.618 L331.815,83.506 C331.815,83.436 331.769,83.401 331.71,83.401 L323.765,83.401 M324.827,84.568 L330.66,84.568 L330.66,86.901 L324.827,86.901 L324.827,84.568 M324.827,88.068 L325.994,88.068 L325.994,89.234 L324.827,89.234 L324.827,88.068 M327.16,88.068 L328.327,88.068 L328.327,89.234 L327.16,89.234 L327.16,88.068 M329.494,88.068 L330.66,88.068 L330.66,91.568 L329.494,91.568 L329.494,88.068 M324.827,90.401 L325.994,90.401 L325.994,91.568 L324.827,91.568 L324.827,90.401 M327.16,90.401 L328.327,90.401 L328.327,91.568 L327.16,91.568 L327.16,90.401" fill="#000"/><text x="338.444" y="92.933" fill="#000" font-size="14" textLength="40.64">folder</text><text x="442.084" y="74.636" fill="#000" font-size="14" textLength="92.388">create_folder</text><path d="M389.084,88.086 L399.084,88.086 C414.084,88.086 414.084,69.789 429.084,69.789 L439.084,69.789" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="442.084" y="92.933" fill="#000" font-size="14" textLength="172.272">check_custom_materials</text><path d="M389.084,88.086 L399.084,88.086 C414.084,88.086 414.084,88.086 429.084,88.086 L439.084,88.086" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="442.084" y="111.229" fill="#000" font-size="14" textLength="89.072">check_file_in</text><path d="M389.084,88.086 L399.084,88.086 C414.084,88.086 414.084,106.383 429.084,106.383 L439.084,106.383" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M262.66,200.68 L272.66,200.68 C287.66,200.68 287.66,88.086 302.66,88.086 L312.66,88.086" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="312.66" y="126.234" width="111.177" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M323.765,139.698 C323.695,139.698 323.66,139.745 323.66,139.803 L323.66,148.915 C323.66,148.973 323.707,149.02 323.765,149.02 L331.71,149.02 C331.769,149.02 331.815,148.973 331.815,148.915 L331.815,139.803 C331.815,139.733 331.769,139.698 331.71,139.698 L323.765,139.698 M324.827,140.865 L330.66,140.865 L330.66,143.198 L324.827,143.198 L324.827,140.865 M324.827,144.365 L325.994,144.365 L325.994,145.531 L324.827,145.531 L324.827,144.365 M327.16,144.365 L328.327,144.365 L328.327,145.531 L327.16,145.531 L327.16,144.365 M329.494,144.365 L330.66,144.365 L330.66,147.865 L329.494,147.865 L329.494,144.365 M324.827,146.698 L325.994,146.698 L325.994,147.865 L324.827,147.865 L324.827,146.698 M327.16,146.698 L328.327,146.698 L328.327,147.865 L327.16,147.865 L327.16,146.698" fill="#000"/><text x="338.444" y="149.229" fill="#000" font-size="14" textLength="75.394">pg_plpgsql</text><text x="476.838" y="149.229" fill="#000" font-size="14" textLength="106.162">copy_materials</text><path d="M423.838,144.383 L433.838,144.383 C448.838,144.383 448.838,144.383 463.838,144.383 L473.838,144.383" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M262.66,200.68 L272.66,200.68 C287.66,200.68 287.66,144.383 302.66,144.383 L312.66,144.383" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="312.66" y="182.531" width="80.627" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M323.765,195.995 C323.695,195.995 323.66,196.041 323.66,196.1 L323.66,205.211 C323.66,205.27 323.707,205.316 323.765,205.316 L331.71,205.316 C331.769,205.316 331.815,205.27 331.815,205.211 L331.815,196.1 C331.815,196.03 331.769,195.995 331.71,195.995 L323.765,195.995 M324.827,197.161 L330.66,197.161 L330.66,199.495 L324.827,199.495 L324.827,197.161 M324.827,200.661 L325.994,200.661 L325.994,201.828 L324.827,201.828 L324.827,200.661 M327.16,200.661 L328.327,200.661 L328.327,201.828 L327.16,201.828 L327.16,200.661 M329.494,200.661 L330.66,200.661 L330.66,204.161 L329.494,204.161 L329.494,200.661 M324.827,202.995 L325.994,202.995 L325.994,204.161 L324.827,204.161 L324.827,202.995 M327.16,202.995 L328.327,202.995 L328.327,204.161 L327.16,204.161 L327.16,202.995" fill="#000"/><text x="338.444" y="205.526" fill="#000" font-size="14" textLength="44.844">pg_sql</text><text x="446.288" y="205.526" fill="#000" font-size="14" textLength="87.227">read_sql_file</text><path d="M393.288,200.68 L403.288,200.68 C418.288,200.68 418.288,200.68 433.288,200.68 L443.288,200.68" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M262.66,200.68 L272.66,200.68 C287.66,200.68 287.66,200.68 302.66,200.68 L312.66,200.68" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="312.66" y="238.828" width="64.959" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M323.765,252.292 C323.695,252.292 323.66,252.338 323.66,252.397 L323.66,261.508 C323.66,261.567 323.707,261.613 323.765,261.613 L331.71,261.613 C331.769,261.613 331.815,261.567 331.815,261.508 L331.815,252.397 C331.815,252.327 331.769,252.292 331.71,252.292 L323.765,252.292 M324.827,253.458 L330.66,253.458 L330.66,255.792 L324.827,255.792 L324.827,253.458 M324.827,256.958 L325.994,256.958 L325.994,258.125 L324.827,258.125 L324.827,256.958 M327.16,256.958 L328.327,256.958 L328.327,258.125 L327.16,258.125 L327.16,256.958 M329.494,256.958 L330.66,256.958 L330.66,260.458 L329.494,260.458 L329.494,256.958 M324.827,259.292 L325.994,259.292 L325.994,260.458 L324.827,260.458 L324.827,259.292 M327.16,259.292 L328.327,259.292 L328.327,260.458 L327.16,260.458 L327.16,259.292" fill="#000"/><text x="338.444" y="261.823" fill="#000" font-size="14" textLength="29.176">tiles</text><text x="430.62" y="261.823" fill="#000" font-size="14" textLength="99.6">generate_tiles</text><path d="M377.62,256.977 L387.62,256.977 C402.62,256.977 402.62,256.977 417.62,256.977 L427.62,256.977" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M262.66,200.68 L272.66,200.68 C287.66,200.68 287.66,256.977 302.66,256.977 L312.66,256.977" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="312.66" y="295.125" width="70.175" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M323.765,308.589 C323.695,308.589 323.66,308.635 323.66,308.694 L323.66,317.805 C323.66,317.864 323.707,317.91 323.765,317.91 L331.71,317.91 C331.769,317.91 331.815,317.864 331.815,317.805 L331.815,308.694 C331.815,308.624 331.769,308.589 331.71,308.589 L323.765,308.589 M324.827,309.755 L330.66,309.755 L330.66,312.089 L324.827,312.089 L324.827,309.755 M324.827,313.255 L325.994,313.255 L325.994,314.422 L324.827,314.422 L324.827,313.255 M327.16,313.255 L328.327,313.255 L328.327,314.422 L327.16,314.422 L327.16,313.255 M329.494,313.255 L330.66,313.255 L330.66,316.755 L329.494,316.755 L329.494,313.255 M324.827,315.589 L325.994,315.589 L325.994,316.755 L324.827,316.755 L324.827,315.589 M327.16,315.589 L328.327,315.589 L328.327,316.755 L327.16,316.755 L327.16,315.589" fill="#000"/><text x="338.444" y="318.12" fill="#000" font-size="14" textLength="34.392">yaml</text><text x="435.836" y="308.972" fill="#000" font-size="14" textLength="73.227">read_yaml</text><path d="M382.836,313.273 L392.836,313.273 C407.836,313.273 407.836,304.125 422.836,304.125 L432.836,304.125" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="435.836" y="327.269" fill="#000" font-size="14" textLength="76.59">write_yaml</text><path d="M382.836,313.273 L392.836,313.273 C407.836,313.273 407.836,322.422 422.836,322.422 L432.836,322.422" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M262.66,200.68 L272.66,200.68 C287.66,200.68 287.66,313.273 302.66,313.273 L312.66,313.273" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M123.618,535.297 L133.618,535.297 C148.618,535.297 148.618,200.68 163.618,200.68 L173.618,200.68" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="173.618" y="387.664" width="86.445" height="36.297" fill="#C0C0C0" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M188.118,401.128 C187.476,401.128 186.951,401.653 186.951,402.294 L186.951,403.461 L184.723,403.461 C184.653,403.461 184.618,403.508 184.618,403.566 L184.618,406.378 C184.618,406.704 184.875,406.961 185.201,406.961 L193.368,406.961 C193.695,406.961 193.951,406.704 193.951,406.378 L193.951,403.566 C193.951,403.496 193.905,403.461 193.846,403.461 L191.618,403.461 L191.618,402.294 C191.618,401.653 191.093,401.128 190.451,401.128 L188.118,401.128 M188.118,402.294 L190.451,402.294 L190.451,403.461 L188.118,403.461 L188.118,402.294 M184.618,408.023 L184.618,410.356 C184.618,410.414 184.665,410.461 184.723,410.461 L193.835,410.461 C193.893,410.461 193.94,410.414 193.94,410.356 L193.94,408.023 C193.753,408.093 193.566,408.128 193.356,408.128 L185.19,408.128 C184.98,408.128 184.793,408.081 184.606,408.023" fill="#000"/><text x="199.402" y="410.659" fill="#000" font-size="14" textLength="50.661">classes</text><rect x="310.063" y="359.867" width="117.945" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M324.563,373.331 C323.921,373.331 323.396,373.856 323.396,374.497 L323.396,375.664 L321.168,375.664 C321.098,375.664 321.063,375.711 321.063,375.769 L321.063,378.581 C321.063,378.907 321.319,379.164 321.646,379.164 L329.813,379.164 C330.139,379.164 330.396,378.907 330.396,378.581 L330.396,375.769 C330.396,375.699 330.349,375.664 330.291,375.664 L328.063,375.664 L328.063,374.497 C328.063,373.856 327.538,373.331 326.896,373.331 L324.563,373.331 M324.563,374.497 L326.896,374.497 L326.896,375.664 L324.563,375.664 L324.563,374.497 M321.063,380.226 L321.063,382.559 C321.063,382.617 321.109,382.664 321.168,382.664 L330.279,382.664 C330.338,382.664 330.384,382.617 330.384,382.559 L330.384,380.226 C330.198,380.296 330.011,380.331 329.801,380.331 L321.634,380.331 C321.424,380.331 321.238,380.284 321.051,380.226" fill="#000"/><text x="335.846" y="382.862" fill="#000" font-size="14" textLength="82.161">advisement</text><text x="481.007" y="355.417" fill="#000" font-size="14" textLength="191.44">TransformedDict (Abstract)</text><path d="M428.007,378.016 L438.007,378.016 C453.007,378.016 453.007,350.57 468.007,350.57 L478.007,350.57" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="481.007" y="373.714" fill="#000" font-size="14" textLength="83.159">Advisement</text><path d="M428.007,378.016 L438.007,378.016 C453.007,378.016 453.007,368.867 468.007,368.867 L478.007,368.867" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="481.007" y="392.011" fill="#000" font-size="14" textLength="82.428">ObjectClass</text><path d="M428.007,378.016 L438.007,378.016 C453.007,378.016 453.007,387.164 468.007,387.164 L478.007,387.164" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="481.007" y="410.308" fill="#000" font-size="14" textLength="213.37">ObjectClassRecommendations</text><path d="M428.007,378.016 L438.007,378.016 C453.007,378.016 453.007,405.461 468.007,405.461 L478.007,405.461" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M260.063,405.813 L270.063,405.813 C285.063,405.813 285.063,378.016 300.063,378.016 L310.063,378.016" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="310.063" y="423.906" width="107.294" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M324.563,437.37 C323.921,437.37 323.396,437.895 323.396,438.536 L323.396,439.703 L321.168,439.703 C321.098,439.703 321.063,439.75 321.063,439.808 L321.063,442.62 C321.063,442.946 321.319,443.203 321.646,443.203 L329.813,443.203 C330.139,443.203 330.396,442.946 330.396,442.62 L330.396,439.808 C330.396,439.738 330.349,439.703 330.291,439.703 L328.063,439.703 L328.063,438.536 C328.063,437.895 327.538,437.37 326.896,437.37 L324.563,437.37 M324.563,438.536 L326.896,438.536 L326.896,439.703 L324.563,439.703 L324.563,438.536 M321.063,444.265 L321.063,446.598 C321.063,446.656 321.109,446.703 321.168,446.703 L330.279,446.703 C330.338,446.703 330.384,446.656 330.384,446.598 L330.384,444.265 C330.198,444.335 330.011,444.37 329.801,444.37 L321.634,444.37 C321.424,444.37 321.238,444.323 321.051,444.265" fill="#000"/><text x="335.846" y="446.901" fill="#000" font-size="14" textLength="71.511">sql_blocks</text><text x="470.357" y="428.604" fill="#000" font-size="14" textLength="80.411">QueryBlock</text><path d="M417.357,442.055 L427.357,442.055 C442.357,442.055 442.357,423.758 457.357,423.758 L467.357,423.758" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="470.357" y="446.901" fill="#000" font-size="14" textLength="87.705">QueryBlocks</text><path d="M417.357,442.055 L427.357,442.055 C442.357,442.055 442.357,442.055 457.357,442.055 L467.357,442.055" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="470.357" y="465.198" fill="#000" font-size="14" textLength="223.665">and_others (see Class Diagram)</text><path d="M417.357,442.055 L427.357,442.055 C442.357,442.055 442.357,460.352 457.357,460.352 L467.357,460.352" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M260.063,405.813 L270.063,405.813 C285.063,405.813 285.063,442.055 300.063,442.055 L310.063,442.055" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M123.618,535.297 L133.618,535.297 C148.618,535.297 148.618,405.813 163.618,405.813 L173.618,405.813" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="173.618" y="525.242" width="100.691" height="36.297" fill="#C0C0C0" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M184.723,538.706 C184.653,538.706 184.618,538.752 184.618,538.811 L184.618,547.922 C184.618,547.981 184.665,548.027 184.723,548.027 L192.668,548.027 C192.726,548.027 192.773,547.981 192.773,547.922 L192.773,538.811 C192.773,538.741 192.726,538.706 192.668,538.706 L184.723,538.706 M185.785,539.872 L191.618,539.872 L191.618,542.206 L185.785,542.206 L185.785,539.872 M185.785,543.372 L186.951,543.372 L186.951,544.539 L185.785,544.539 L185.785,543.372 M188.118,543.372 L189.285,543.372 L189.285,544.539 L188.118,544.539 L188.118,543.372 M190.451,543.372 L191.618,543.372 L191.618,546.872 L190.451,546.872 L190.451,543.372 M185.785,545.706 L186.951,545.706 L186.951,546.872 L185.785,546.872 L185.785,545.706 M188.118,545.706 L189.285,545.706 L189.285,546.872 L188.118,546.872 L188.118,545.706" fill="#000"/><text x="199.402" y="548.237" fill="#000" font-size="14" textLength="64.907">database</text><rect x="324.309" y="525.242" width="137.694" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M335.414,538.706 C335.344,538.706 335.309,538.752 335.309,538.811 L335.309,547.922 C335.309,547.981 335.356,548.027 335.414,548.027 L343.359,548.027 C343.417,548.027 343.464,547.981 343.464,547.922 L343.464,538.811 C343.464,538.741 343.417,538.706 343.359,538.706 L335.414,538.706 M336.476,539.872 L342.309,539.872 L342.309,542.206 L336.476,542.206 L336.476,539.872 M336.476,543.372 L337.642,543.372 L337.642,544.539 L336.476,544.539 L336.476,543.372 M338.809,543.372 L339.976,543.372 L339.976,544.539 L338.809,544.539 L338.809,543.372 M341.142,543.372 L342.309,543.372 L342.309,546.872 L341.142,546.872 L341.142,543.372 M336.476,545.706 L337.642,545.706 L337.642,546.872 L336.476,546.872 L336.476,545.706 M338.809,545.706 L339.976,545.706 L339.976,546.872 L338.809,546.872 L338.809,545.706" fill="#000"/><text x="350.092" y="548.237" fill="#000" font-size="14" textLength="101.91">pg_connection</text><text x="515.003" y="484.198" fill="#000" font-size="14" textLength="114.598">pg_show_details</text><path d="M462.003,543.391 L472.003,543.391 C487.003,543.391 487.003,479.352 502.003,479.352 L512.003,479.352" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="515.003" y="502.495" fill="#000" font-size="14" textLength="87.582">pg_establish</text><path d="M462.003,543.391 L472.003,543.391 C487.003,543.391 487.003,497.648 502.003,497.648 L512.003,497.648" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="515.003" y="520.792" fill="#000" font-size="14" textLength="128.345">pg_create_session</text><path d="M462.003,543.391 L472.003,543.391 C487.003,543.391 487.003,515.945 502.003,515.945 L512.003,515.945" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="515.003" y="539.089" fill="#000" font-size="14" textLength="149.898">pg_check_connection</text><path d="M462.003,543.391 L472.003,543.391 C487.003,543.391 487.003,534.242 502.003,534.242 L512.003,534.242" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="515.003" y="557.386" fill="#000" font-size="14" textLength="178.158">create_materialized_view</text><path d="M462.003,543.391 L472.003,543.391 C487.003,543.391 487.003,552.539 502.003,552.539 L512.003,552.539" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="515.003" y="575.683" fill="#000" font-size="14" textLength="171.958">index_materialized_view</text><path d="M462.003,543.391 L472.003,543.391 C487.003,543.391 487.003,570.836 502.003,570.836 L512.003,570.836" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="515.003" y="593.979" fill="#000" font-size="14" textLength="124.612">get_query_results</text><path d="M462.003,543.391 L472.003,543.391 C487.003,543.391 487.003,589.133 502.003,589.133 L512.003,589.133" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="515.003" y="612.276" fill="#000" font-size="14" textLength="50.572">run_sql</text><path d="M462.003,543.391 L472.003,543.391 C487.003,543.391 487.003,607.43 502.003,607.43 L512.003,607.43" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M274.309,543.391 L284.309,543.391 C299.309,543.391 299.309,543.391 314.309,543.391 L324.309,543.391" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M123.618,535.297 L133.618,535.297 C148.618,535.297 148.618,543.391 163.618,543.391 L173.618,543.391" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="173.618" y="682.875" width="102.386" height="36.297" fill="#C0C0C0" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M189.285,696.339 L188.888,696.735 C188.76,696.864 185.785,699.874 185.785,702.429 C185.785,704.354 187.36,705.929 189.285,705.929 C191.21,705.929 192.785,704.354 192.785,702.429 C192.785,699.885 189.81,696.864 189.681,696.735 L189.285,696.339 M187.535,701.845 C187.861,701.845 188.118,702.102 188.118,702.429 C188.118,703.07 188.643,703.595 189.285,703.595 C189.611,703.595 189.868,703.852 189.868,704.179 C189.868,704.505 189.611,704.762 189.285,704.762 C188.001,704.762 186.951,703.712 186.951,702.429 C186.951,702.102 187.208,701.845 187.535,701.845" fill="#000"/><text x="199.402" y="705.87" fill="#000" font-size="14" textLength="66.603">instances</text><rect x="326.004" y="626.578" width="101.094" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M341.671,640.042 L341.274,640.438 C341.146,640.567 338.171,643.577 338.171,646.132 C338.171,648.057 339.746,649.632 341.671,649.632 C343.596,649.632 345.171,648.057 345.171,646.132 C345.171,643.588 342.196,640.567 342.068,640.438 L341.671,640.042 M339.921,645.548 C340.248,645.548 340.504,645.805 340.504,646.132 C340.504,646.773 341.029,647.298 341.671,647.298 C341.998,647.298 342.254,647.555 342.254,647.882 C342.254,648.208 341.998,648.465 341.671,648.465 C340.388,648.465 339.338,647.415 339.338,646.132 C339.338,645.805 339.594,645.548 339.921,645.548" fill="#000"/><text x="351.788" y="649.573" fill="#000" font-size="14" textLength="65.311">in_advise</text><text x="480.098" y="640.425" fill="#000" font-size="14" textLength="137.252">geometry_statistics</text><path d="M427.098,644.727 L437.098,644.727 C452.098,644.727 452.098,635.578 467.098,635.578 L477.098,635.578" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="480.098" y="658.722" fill="#000" font-size="14" textLength="263.566">recommended_max_features_per_tile</text><path d="M427.098,644.727 L437.098,644.727 C452.098,644.727 452.098,653.875 467.098,653.875 L477.098,653.875" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M276.004,701.023 L286.004,701.023 C301.004,701.023 301.004,644.727 316.004,644.727 L326.004,644.727" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="326.004" y="682.875" width="79.636" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M341.671,696.339 L341.274,696.735 C341.146,696.864 338.171,699.874 338.171,702.429 C338.171,704.354 339.746,705.929 341.671,705.929 C343.596,705.929 345.171,704.354 345.171,702.429 C345.171,699.885 342.196,696.864 342.068,696.735 L341.671,696.339 M339.921,701.845 C340.248,701.845 340.504,702.102 340.504,702.429 C340.504,703.07 341.029,703.595 341.671,703.595 C341.998,703.595 342.254,703.852 342.254,704.179 C342.254,704.505 341.998,704.762 341.671,704.762 C340.388,704.762 339.338,703.712 339.338,702.429 C339.338,702.102 339.594,701.845 339.921,701.845" fill="#000"/><text x="351.788" y="705.87" fill="#000" font-size="14" textLength="43.853">kernel</text><text x="458.64" y="705.87" fill="#000" font-size="14" textLength="74.04">krnl_query</text><path d="M405.64,701.023 L415.64,701.023 C430.64,701.023 430.64,701.023 445.64,701.023 L455.64,701.023" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M276.004,701.023 L286.004,701.023 C301.004,701.023 301.004,701.023 316.004,701.023 L326.004,701.023" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="326.004" y="739.172" width="94.217" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M341.671,752.635 L341.274,753.032 C341.146,753.16 338.171,756.17 338.171,758.725 C338.171,760.65 339.746,762.225 341.671,762.225 C343.596,762.225 345.171,760.65 345.171,758.725 C345.171,756.182 342.196,753.16 342.068,753.032 L341.671,752.635 M339.921,758.142 C340.248,758.142 340.504,758.399 340.504,758.725 C340.504,759.367 341.029,759.892 341.671,759.892 C341.998,759.892 342.254,760.149 342.254,760.475 C342.254,760.802 341.998,761.059 341.671,761.059 C340.388,761.059 339.338,760.009 339.338,758.725 C339.338,758.399 339.594,758.142 339.921,758.142" fill="#000"/><text x="351.788" y="762.167" fill="#000" font-size="14" textLength="58.434">material</text><text x="473.221" y="753.019" fill="#000" font-size="14" textLength="208.018">objectclass_falldown_addition</text><path d="M420.221,757.32 L430.221,757.32 C445.221,757.32 445.221,748.172 460.221,748.172 L470.221,748.172" style="stroke:#181818;stroke-width:1;" fill="none"/><text x="473.221" y="771.315" fill="#000" font-size="14" textLength="201.872">properties_falldown_addition</text><path d="M420.221,757.32 L430.221,757.32 C445.221,757.32 445.221,766.469 460.221,766.469 L470.221,766.469" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M276.004,701.023 L286.004,701.023 C301.004,701.023 301.004,757.32 316.004,757.32 L326.004,757.32" style="stroke:#181818;stroke-width:1;" fill="none"/><path d="M123.618,535.297 L133.618,535.297 C148.618,535.297 148.618,701.023 163.618,701.023 L173.618,701.023" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="173.618" y="795.469" width="129.402" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M184.723,808.932 C184.653,808.932 184.618,808.979 184.618,809.037 L184.618,818.149 C184.618,818.207 184.665,818.254 184.723,818.254 L192.668,818.254 C192.726,818.254 192.773,818.207 192.773,818.149 L192.773,809.037 C192.773,808.967 192.726,808.932 192.668,808.932 L184.723,808.932 M185.785,810.099 L191.618,810.099 L191.618,812.432 L185.785,812.432 L185.785,810.099 M185.785,813.599 L186.951,813.599 L186.951,814.766 L185.785,814.766 L185.785,813.599 M188.118,813.599 L189.285,813.599 L189.285,814.766 L188.118,814.766 L188.118,813.599 M190.451,813.599 L191.618,813.599 L191.618,817.099 L190.451,817.099 L190.451,813.599 M185.785,815.932 L186.951,815.932 L186.951,817.099 L185.785,817.099 L185.785,815.932 M188.118,815.932 L189.285,815.932 L189.285,817.099 L188.118,817.099 L188.118,815.932" fill="#000"/><text x="199.402" y="818.464" fill="#000" font-size="14" textLength="93.618">citydb-3dtiler</text><path d="M123.618,535.297 L133.618,535.297 C148.618,535.297 148.618,813.617 163.618,813.617 L173.618,813.617" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="173.618" y="851.766" width="123.311" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M184.723,865.229 C184.653,865.229 184.618,865.276 184.618,865.334 L184.618,874.446 C184.618,874.504 184.665,874.551 184.723,874.551 L192.668,874.551 C192.726,874.551 192.773,874.504 192.773,874.446 L192.773,865.334 C192.773,865.264 192.726,865.229 192.668,865.229 L184.723,865.229 M185.785,866.396 L191.618,866.396 L191.618,868.729 L185.785,868.729 L185.785,866.396 M185.785,869.896 L186.951,869.896 L186.951,871.063 L185.785,871.063 L185.785,869.896 M188.118,869.896 L189.285,869.896 L189.285,871.063 L188.118,871.063 L188.118,869.896 M190.451,869.896 L191.618,869.896 L191.618,873.396 L190.451,873.396 L190.451,869.896 M185.785,872.229 L186.951,872.229 L186.951,873.396 L185.785,873.396 L185.785,872.229 M188.118,872.229 L189.285,872.229 L189.285,873.396 L188.118,873.396 L188.118,872.229" fill="#000"/><text x="199.402" y="874.761" fill="#000" font-size="14" textLength="87.527">advise_main</text><path d="M123.618,535.297 L133.618,535.297 C148.618,535.297 148.618,869.914 163.618,869.914 L173.618,869.914" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="173.618" y="908.063" width="99.645" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M184.723,921.526 C184.653,921.526 184.618,921.573 184.618,921.631 L184.618,930.743 C184.618,930.801 184.665,930.848 184.723,930.848 L192.668,930.848 C192.726,930.848 192.773,930.801 192.773,930.743 L192.773,921.631 C192.773,921.561 192.726,921.526 192.668,921.526 L184.723,921.526 M185.785,922.693 L191.618,922.693 L191.618,925.026 L185.785,925.026 L185.785,922.693 M185.785,926.193 L186.951,926.193 L186.951,927.359 L185.785,927.359 L185.785,926.193 M188.118,926.193 L189.285,926.193 L189.285,927.359 L188.118,927.359 L188.118,926.193 M190.451,926.193 L191.618,926.193 L191.618,929.693 L190.451,929.693 L190.451,926.193 M185.785,928.526 L186.951,928.526 L186.951,929.693 L185.785,929.693 L185.785,928.526 M188.118,928.526 L189.285,928.526 L189.285,929.693 L188.118,929.693 L188.118,928.526" fill="#000"/><text x="199.402" y="931.058" fill="#000" font-size="14" textLength="63.861">tile_main</text><path d="M123.618,535.297 L133.618,535.297 C148.618,535.297 148.618,926.211 163.618,926.211 L173.618,926.211" style="stroke:#181818;stroke-width:1;" fill="none"/><rect x="173.618" y="964.359" width="131.165" height="36.297" fill="#F8F8FF" style="stroke:#181818;stroke-width:1.5;" rx="12.5" ry="12.5"/><path d="M184.723,977.823 C184.653,977.823 184.618,977.87 184.618,977.928 L184.618,987.04 C184.618,987.098 184.665,987.145 184.723,987.145 L192.668,987.145 C192.726,987.145 192.773,987.098 192.773,987.04 L192.773,977.928 C192.773,977.858 192.726,977.823 192.668,977.823 L184.723,977.823 M185.785,978.99 L191.618,978.99 L191.618,981.323 L185.785,981.323 L185.785,978.99 M185.785,982.49 L186.951,982.49 L186.951,983.656 L185.785,983.656 L185.785,982.49 M188.118,982.49 L189.285,982.49 L189.285,983.656 L188.118,983.656 L188.118,982.49 M190.451,982.49 L191.618,982.49 L191.618,985.99 L190.451,985.99 L190.451,982.49 M185.785,984.823 L186.951,984.823 L186.951,985.99 L185.785,985.99 L185.785,984.823 M188.118,984.823 L189.285,984.823 L189.285,985.99 L188.118,985.99 L188.118,984.823" fill="#000"/><text x="199.402" y="987.354" fill="#000" font-size="14" textLength="95.382">default_paths</text><path d="M123.618,535.297 L133.618,535.297 C148.618,535.297 148.618,982.508 163.618,982.508 L173.618,982.508" style="stroke:#181818;stroke-width:1;" fill="none"/><g class="legend" data-source-line="55"><rect x="22" y="1022.656" width="184.357" height="124.078" fill="#DDD" style="stroke:#000;stroke-width:1;" rx="7.5" ry="7.5"/><text x="27" y="1040.651" fill="#000" font-size="14" textLength="41.275">Icons:</text><text x="44.801" y="1056.948" fill="#000" font-size="14" textLength="62.316">Main File</text><path d="M117.234,1047.417 L112.567,1050.917 L113.734,1050.917 L113.734,1055.583 L116.067,1055.583 L116.067,1053.25 L118.401,1053.25 L118.401,1055.583 L120.734,1055.583 L120.734,1050.882 L121.901,1050.917 L117.234,1047.417" fill="#000"/><text x="44.801" y="1073.245" fill="#000" font-size="14" textLength="67.607">Functions</text><path d="M117.963,1063.714 C117.893,1063.714 117.858,1063.76 117.858,1063.819 L117.858,1072.93 C117.858,1072.989 117.905,1073.035 117.963,1073.035 L125.908,1073.035 C125.967,1073.035 126.013,1072.989 126.013,1072.93 L126.013,1063.819 C126.013,1063.749 125.967,1063.714 125.908,1063.714 L117.963,1063.714 M119.025,1064.88 L124.858,1064.88 L124.858,1067.214 L119.025,1067.214 L119.025,1064.88 M119.025,1068.38 L120.192,1068.38 L120.192,1069.547 L119.025,1069.547 L119.025,1068.38 M121.358,1068.38 L122.525,1068.38 L122.525,1069.547 L121.358,1069.547 L121.358,1068.38 M123.692,1068.38 L124.858,1068.38 L124.858,1071.88 L123.692,1071.88 L123.692,1068.38 M119.025,1070.714 L120.192,1070.714 L120.192,1071.88 L119.025,1071.88 L119.025,1070.714 M121.358,1070.714 L122.525,1070.714 L122.525,1071.88 L121.358,1071.88 L121.358,1070.714" fill="#000"/><text x="44.801" y="1089.542" fill="#000" font-size="14" textLength="140.772">Classes/Dictionaries</text><path d="M194.523,1080.01 C193.882,1080.01 193.357,1080.535 193.357,1081.177 L193.357,1082.344 L191.128,1082.344 C191.058,1082.344 191.023,1082.39 191.023,1082.449 L191.023,1085.26 C191.023,1085.587 191.28,1085.844 191.607,1085.844 L199.773,1085.844 C200.1,1085.844 200.357,1085.587 200.357,1085.26 L200.357,1082.449 C200.357,1082.379 200.31,1082.344 200.252,1082.344 L198.023,1082.344 L198.023,1081.177 C198.023,1080.535 197.498,1080.01 196.857,1080.01 L194.523,1080.01 M194.523,1081.177 L196.857,1081.177 L196.857,1082.344 L194.523,1082.344 L194.523,1081.177 M191.023,1086.905 L191.023,1089.239 C191.023,1089.297 191.07,1089.344 191.128,1089.344 L200.24,1089.344 C200.298,1089.344 200.345,1089.297 200.345,1089.239 L200.345,1086.905 C200.158,1086.975 199.972,1087.01 199.762,1087.01 L191.595,1087.01 C191.385,1087.01 191.198,1086.964 191.012,1086.905" fill="#000"/><text x="27" y="1105.839" fill="#000" font-size="14" textLength="79.468">Box Colors:</text><text x="44.801" y="1122.136" fill="#000" font-size="14" textLength="105.157">Folders = Gray</text><text x="44.801" y="1138.433" fill="#000" font-size="14" textLength="93.078">Files = White</text></g><?plantuml-src ZLNRQXin47tVhn0KGX9eBcufD3WcYKDAeINq0dqeHMYbsLtLMcaZpSPnlxwZlMMTE7RsmLWpPwuwCxe8A3oMsgfIL0bgDC1kd57WsHwxqNJwWRwMM7j8lCuBP0K8qYRJp5baqXddppqe5lG_E3yzcR4l8Y2R5o0Nx8nD9aSdfqUJayc7wN4qc2LWLUVXyFUReCqz-3zCQbofzEqxXHIHD2FLT4yA8siZqFaPquwZSoOGX31vuG8k2utm59Sr9KJK8MVIWq3WwxAO89TrG5VoajHUYzRjeCme5wxjhb1LpYjJvU7EzDQkMgsxt67-Q4g9gdXiOk-oZBtgCyx1Wez53i9jbYjHhaKSdPUUyBrWV0kfrv194M36f14XR8uoGWbrhmEKOB5p_TCB6pBdIr3NMYBRlqm3UY7ne0DSFhMuJV-2n7aCzrpo7QGh2Qm4QcTtPHERcXed5xsdRpNurLMKF1Fq464LTrY03sm_0B0cBBlM8lUYFDZ2Kaf9f1Js5NSldRLK4LNG1OryADoIAq2X1qQI56XIKwD3yIZgY4rt4TOSTEH-whg3zzIaWLNyNiEoKzCEW8SNjJaWluijuXv2RR3FpDUs8_2u6ygxoW3Im5fAsyhDR1cXU4kN8PWh0IaM6QCEgEKGhhzroguK3poZacWt1Lw1RyY_DSu2l8MUwWjlJLlILfk-8PsLQnZOZ03FX37ABMFoIe_la6p1euRDa6sKsB09NmQtFQC-w5rkexVNu1HaWYwNLmABa1YWlQAOWGmJHjzdebGuQ_x6xolvQz-8wLv15pORD3UrROWNrjqF-dcxGOxZ7Y2Oe3aDQ_FQ8A_S0vl71sOKitsR0ZjddxnOFOhZsYFXhrXKV6FQr9CB-kaVjwHzY8u-fZHQx_y3?></g></svg></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../citydb_infra/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Infrastructure of the citydb Tools">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Infrastructure of the citydb Tools
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../functionality_matrix/" class="md-footer__link md-footer__link--next" aria-label="Next: citydb-3dtiler Functionality Matrix">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                citydb-3dtiler Functionality Matrix
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      3DCityDB Steering Group, 2025
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.tracking", "toc.follow", "content.code.select", "content.code.copy", "content.code.annotate", "content.tooltips", "search.suggest", "search.highlight", "search.share", "header.autohide", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../assets/javascripts/tablesort.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../assets/javascripts/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="../../../assets/mkdocs_puml/interaction.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
