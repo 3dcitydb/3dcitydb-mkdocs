@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="776px" preserveAspectRatio="none" style="width:500px;height:776px;" version="1.1" viewBox="0 0 500 776" width="500px" zoomAndPan="magnify"><defs/><g><text fill="#005293" font-family="Helvetica" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="211" x="148" y="17.104">3DCityDB Family Members</text><!--MD5=[815249f79c2c08157ac02b3106e03757]
+cluster Database--><path d="M22,276.792 C22,266.792 91,266.792 91,266.792 C91,266.792 160,266.792 160,276.792 L160,384.792 C160,394.792 91,394.792 91,394.792 C91,394.792 22,394.792 22,384.792 L22,276.792 " fill="#FFFFFF" style="stroke: #999999; stroke-width: 1.5;"/><path d="M22,276.792 C22,286.792 91,286.792 91,286.792 C91,286.792 160,286.792 160,276.792 " fill="none" style="stroke: #999999; stroke-width: 1.5;"/><text fill="#005293" font-family="Helvetica" font-size="15" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="71" x="55.5" y="304.8272">Database</text><!--MD5=[3df2143fd129aa2177882d29a4ffb41b]
+cluster Virtualization--><polygon fill="#FFFFFF" points="133,55.792,143,45.792,314,45.792,314,223.792,304,233.792,133,233.792,133,55.792" style="stroke: #999999; stroke-width: 1.5;"/><line style="stroke: #999999; stroke-width: 1.5;" x1="304" x2="313" y1="55.792" y2="46.792"/><line style="stroke: #999999; stroke-width: 1.5;" x1="133" x2="304" y1="55.792" y2="55.792"/><line style="stroke: #999999; stroke-width: 1.5;" x1="304" x2="304" y1="55.792" y2="233.792"/><text fill="#000000" font-family="Helvetica" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="57" x="191" y="73.758">«Docker»</text><text fill="#005293" font-family="Helvetica" font-size="15" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="105" x="167" y="93.8951">Virtualization</text><!--MD5=[4ef093ad195967b811a149db257d7382]
+cluster 3D City Database --><path d="M43,445.792 L169,445.792 A10.5,10.5 0 0 1 176,452.792 L183,472.2222 L459,472.2222 A7,7 0 0 1 466,479.2222 L466,551.792 A7,7 0 0 1 459,558.792 L43,558.792 A7,7 0 0 1 36,551.792 L36,452.792 A7,7 0 0 1 43,445.792 " fill="#FFFFFF" style="stroke: #999999; stroke-width: 1.5;"/><line style="stroke: #999999; stroke-width: 1.5;" x1="36" x2="183" y1="472.2222" y2="472.2222"/><text fill="#005293" font-family="Helvetica" font-size="15" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="130" x="40" y="463.8272">3D City Database</text><path d="M114.6237,619.5498 C122.0686,605.853 132.9505,606.1736 140.7679,619.1852 C146.342,607.5809 156.2592,608.4835 162.468,618.5497 C170.7378,608.8306 179.1253,606.3655 186.2691,619.7117 C194.1019,609.8196 201.3455,609.6203 209.5873,619.2224 C216.2685,606.3154 228.3278,605.3705 235.4692,618.7696 C241.3319,605.0611 253.8965,608.0465 260.5995,617.8723 C268.6542,606.5548 278.8797,608.0219 284.4691,620.3599 C288.9111,609.5008 300.0203,608.33 306.8799,617.6786 C313.6788,605.9126 323.6862,607.4754 330.8042,617.3254 C338.8947,605.1746 348.2894,606.317 355.2104,618.4985 C362.5018,605.6683 371.7922,607.2638 379.5014,618.0691 C386.5073,608.5591 395.6525,607.7597 402.4952,618.2567 C409.7237,606.9544 419.269,609.7381 424.3258,620.4139 C436.1017,605.6069 446.7848,608.6873 454,624.792 C454.7116,624.6507 455.1504,624.8322 455.0721,625.6631 C470.7006,634.0273 473.3386,644.7294 457.9686,656.0485 C471.2978,660.5554 472.9723,672.6041 463.7673,682.1226 C473.4931,691.7537 472.1526,703.2125 459.0393,708.7951 C473.9941,724.8836 466.7329,739.6365 447,743.792 C448.6135,741.9148 450.4774,742.4398 451.4303,744.5297 C445.6335,756.2221 434.8393,760.4274 425.6053,748.2481 C419.9345,760.2106 407.2125,760.2258 399.9174,750.1406 C392.9579,759.4311 383.7146,757.6073 379.7194,747.1142 C372.884,760.0086 364.2083,760.104 353.9913,751.0842 C345.5542,761.5835 335.8699,761.8951 329.2498,749.1501 C323.4209,761.4898 315.1676,760.4676 306.6039,752.1478 C298.3499,763.707 290.4303,763.6016 282.2317,752.0892 C276.0235,761.5039 266.2742,763.2585 259.8231,752.357 C251.7893,764.8636 242.8045,763.215 235.3674,751.7482 C226.0856,763.0603 217.5872,763.0748 209.4375,750.5183 C201.6387,759.008 194.1562,759.9218 187.4729,749.2402 C180.629,760.3312 169.7623,759.3196 164.3359,747.7902 C155.3119,760.9289 143.9126,759.1767 137.9453,744.8527 C123.7801,758.5039 113.6395,752.0324 107,736.792 C108.8689,736.0467 109.6417,736.9729 109.4986,738.7697 C95.5809,733.072 94.2968,720.0286 106.9651,711.8307 C93.8974,705.0338 91.7634,695.5764 102.4133,684.7875 C87.4259,674.4182 90.3519,664.1437 103.743,655.043 C90.9865,639.6168 91.1689,623.4191 114,617.792 C115.0045,617.951 115.3769,618.7672 114.6237,619.5498 " fill="#FFFFFF" style="stroke: #999999; stroke-width: 1.5;"/><!--MD5=[05cf7738a24a8cff420af53fa2f91704]
+cluster Data Formats--><path d="M130,633.792 L224,633.792 A10.5,10.5 0 0 1 231,640.792 L238,660.2222 L431,660.2222 A7,7 0 0 1 438,667.2222 L438,720.792 A7,7 0 0 1 431,727.792 L130,727.792 A7,7 0 0 1 123,720.792 L123,640.792 A7,7 0 0 1 130,633.792 " fill="#FFFFFF" style="stroke: #999999; stroke-width: 1.5;"/><line style="stroke: #999999; stroke-width: 1.5;" x1="123" x2="238" y1="660.2222" y2="660.2222"/><text fill="#005293" font-family="Helvetica" font-size="15" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="102" x="127" y="651.8272">Data Formats</text><!--MD5=[d4f489188389023d0fd4bf77bd485e50]
+entity 3DCityDB--><rect fill="#DAD7CB" height="58.1358" rx="7" ry="7" style="stroke: #0065BD; stroke-width: 1.5;" width="106" x="38" y="320.792"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="33" y="325.792"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="33" y="368.9279"/><text fill="#000000" font-family="Helvetica" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="86" x="48" y="345.758">«PostgreSQL»</text><text fill="#005293" font-family="Helvetica" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="62" x="60" y="364.8259">3DCityDB</text><!--MD5=[6a699a515a41fa5022d80998dc7e27dc]
+entity Container--><rect fill="#DAD7CB" height="39.0679" rx="7" ry="7" style="stroke: #0065BD; stroke-width: 1.5;" width="86" x="180" y="108.792"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="175" y="113.792"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="175" y="137.86"/><text fill="#005293" font-family="Helvetica" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="66" x="190" y="133.758">Container</text><!--MD5=[f474ca078bd78d29e43d9c9138696efb]
+entity Image--><rect fill="#DAD7CB" height="39.0679" rx="7" ry="7" style="stroke: #0065BD; stroke-width: 1.5;" width="63" x="191.5" y="178.792"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="186.5" y="183.792"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="186.5" y="207.86"/><text fill="#005293" font-family="Helvetica" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="43" x="201.5" y="203.758">Image</text><!--MD5=[e67bbfa4abbb3d3ee95d365f537bc82b]
+entity citydb-tiler--><rect fill="#DAD7CB" height="58.1358" rx="7" ry="7" style="stroke: #0065BD; stroke-width: 1.5;" width="94" x="52" y="484.792"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="47" y="489.792"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="47" y="532.9279"/><text fill="#000000" font-family="Helvetica" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="74" x="62" y="509.758">«pg2b3dm»</text><text fill="#005293" font-family="Helvetica" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="73" x="62.5" y="528.8259">citydb-tiler</text><!--MD5=[de02ed7343ba2874d318d21bc88d431d]
+entity 3D-Web-Map-Client--><rect fill="#DAD7CB" height="58.1358" rx="7" ry="7" style="stroke: #0065BD; stroke-width: 1.5;" width="152" x="176" y="484.792"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="171" y="489.792"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="171" y="532.9279"/><text fill="#000000" font-family="Helvetica" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="70" x="217" y="509.758">«CesiumJS»</text><text fill="#005293" font-family="Helvetica" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="132" x="186" y="528.8259">3D-Web-Map-Client</text><!--MD5=[55cf86caadd845e2b90156f0b2858eec]
+entity citydb-tool--><rect fill="#DAD7CB" height="39.0679" rx="7" ry="7" style="stroke: #0065BD; stroke-width: 1.5;" width="91" x="358.5" y="494.292"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="353.5" y="499.292"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="353.5" y="523.36"/><text fill="#005293" font-family="Helvetica" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="71" x="368.5" y="519.258">citydb-tool</text><!--MD5=[5ce30f2cb81808dda37fd77594606e42]
+entity CityGML--><rect fill="#DAD7CB" height="39.0679" rx="7" ry="7" style="stroke: #0065BD; stroke-width: 1.5;" width="75" x="238.5" y="672.792"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="233.5" y="677.792"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="233.5" y="701.86"/><text fill="#005293" font-family="Helvetica" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="55" x="248.5" y="697.758">CityGML</text><!--MD5=[0624c7652a4ce90604f41aa9347452fe]
+entity CityJSON--><rect fill="#DAD7CB" height="39.0679" rx="7" ry="7" style="stroke: #0065BD; stroke-width: 1.5;" width="79" x="343.5" y="672.792"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="338.5" y="677.792"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="338.5" y="701.86"/><text fill="#005293" font-family="Helvetica" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="59" x="353.5" y="697.758">CityJSON</text><!--MD5=[21ffc63bd177bf05c8bb5b3ec84f7551]
+entity 3DTiles--><rect fill="#DAD7CB" height="39.0679" rx="7" ry="7" style="stroke: #0065BD; stroke-width: 1.5;" width="69" x="139.5" y="672.792"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="134.5" y="677.792"/><rect fill="#DAD7CB" height="5" style="stroke: #0065BD; stroke-width: 1.5;" width="10" x="134.5" y="701.86"/><text fill="#005293" font-family="Helvetica" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="49" x="149.5" y="697.758">3DTiles</text><!--MD5=[0c76459e5c37ee3430d5ae24cfb4e994]
+reverse link Container to Image--><path d="M223,152.982 C223,161.422 223,170.792 223,178.732 " fill="none" id="Container&lt;-Image" style="stroke: #E37222; stroke-width: 2.0;"/><polygon fill="#E37222" points="223,147.872,219,156.872,223,152.872,227,156.872,223,147.872" style="stroke: #E37222; stroke-width: 2.0;"/><!--MD5=[00c3df82332ca7d17e341e9f0d803a5a]
+link 3DCityDB to citydb-tool--><path d="M144.24,373.332 C186.64,390.622 247.84,414.102 303,429.792 C320.44,434.752 327.47,428.432 343,437.792 C363.76,450.312 380.51,472.572 391.17,489.602 " fill="none" id="3DCityDB-&gt;citydb-tool" style="stroke: #E37222; stroke-width: 2.0;"/><polygon fill="#E37222" points="394.01,494.252,392.7235,484.4876,391.3999,489.9874,385.9,488.6638,394.01,494.252" style="stroke: #E37222; stroke-width: 2.0;"/><text fill="#E37222" font-family="Helvetica" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="48" x="304" y="425.6891">connect</text><!--MD5=[6bebeb76651ff7c2ad955851c01c4550]
+link citydb-tool to 3DCityDB--><path d="M400.46,494.262 C395.04,471.122 382.39,432.002 356,410.792 C324.64,385.602 217.44,367.342 149.38,357.962 " fill="none" id="citydb-tool-&gt;3DCityDB" style="stroke: #E37222; stroke-width: 2.0;"/><polygon fill="#E37222" points="144.14,357.252,152.507,362.4475,149.0928,357.9372,153.6032,354.523,144.14,357.252" style="stroke: #E37222; stroke-width: 2.0;"/><text fill="#E37222" font-family="Helvetica" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="85" x="373" y="425.6891">Insert/Update</text><!--MD5=[a99f047e0354012c2f73946596cb8ed0]
+link citydb-tool to CityGML--><path d="M383.33,533.412 C371.39,544.742 356.49,559.862 345,574.792 C321.75,605.002 300.26,643.692 287.64,667.992 " fill="none" id="citydb-tool-&gt;CityGML" style="stroke: #E37222; stroke-width: 2.0;"/><polygon fill="#E37222" points="285.23,672.662,292.9042,666.489,287.5174,668.2159,285.7904,662.8291,285.23,672.662" style="stroke: #E37222; stroke-width: 2.0;"/><text fill="#E37222" font-family="Helvetica" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="40" x="346" y="589.6891">export</text><!--MD5=[f60d77f2ce9e7bb98adac6cf0dea893e]
+reverse link citydb-tool to CityGML--><path d="M383.91,537.132 C372.92,547.892 358.42,559.922 343,566.792 C330.71,572.272 292.16,564.942 283,574.792 C258.58,601.052 264.58,646.692 270.61,672.362 " fill="none" id="citydb-tool&lt;-CityGML" style="stroke: #E37222; stroke-width: 2.0;"/><polygon fill="#E37222" points="387.5,533.532,378.3005,537.049,383.9573,537.0604,383.9459,542.7173,387.5,533.532" style="stroke: #E37222; stroke-width: 2.0;"/><text fill="#E37222" font-family="Helvetica" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="41" x="284" y="589.6891">import</text><!--MD5=[f4df408fd4fbbe766dc9cb26bbb79992]
+link citydb-tool to CityJSON--><path d="M401.79,533.342 C397.95,565.652 390.03,632.182 385.81,667.712 " fill="none" id="citydb-tool-&gt;CityJSON" style="stroke: #E37222; stroke-width: 2.0;"/><polygon fill="#E37222" points="385.21,672.722,390.2356,664.2519,385.795,667.7564,382.2905,663.3158,385.21,672.722" style="stroke: #E37222; stroke-width: 2.0;"/><text fill="#E37222" font-family="Helvetica" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="40" x="397" y="589.6891">export</text><!--MD5=[b8db242fd0c67e6f7e059c9e9138f5fe]
+reverse link citydb-tool to CityJSON--><path d="M426.65,537.532 C439.06,552.802 450.84,573.722 445,593.792 C436.14,624.222 414.6,654.232 399.41,672.742 " fill="none" id="citydb-tool&lt;-CityJSON" style="stroke: #E37222; stroke-width: 2.0;"/><polygon fill="#E37222" points="423.15,533.382,425.8734,542.8469,426.365,537.2114,432.0004,537.7029,423.15,533.382" style="stroke: #E37222; stroke-width: 2.0;"/><text fill="#E37222" font-family="Helvetica" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="41" x="447" y="589.6891">import</text><!--MD5=[7a932e5e84976f37e44f0a10b4e63022]
+link 3DCityDB to citydb-tiler--><path d="M92.39,379.012 C93.78,407.032 95.9,449.982 97.36,479.622 " fill="none" id="3DCityDB-&gt;citydb-tiler" style="stroke: #E37222; stroke-width: 2.0;"/><polygon fill="#E37222" points="97.61,484.622,101.1425,475.4285,97.3532,479.6286,93.153,475.8394,97.61,484.622" style="stroke: #E37222; stroke-width: 2.0;"/><text fill="#E37222" font-family="Helvetica" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="48" x="96" y="425.6891">connect</text><!--MD5=[275937b1f380b1f3e70e3009f985bdd7]
+link citydb-tiler to 3DTiles--><path d="M101.34,542.912 C103.26,558.322 106.75,577.542 113,593.792 C123.6,621.342 142.29,649.582 156.2,668.532 " fill="none" id="citydb-tiler-&gt;3DTiles" style="stroke: #E37222; stroke-width: 2.0;"/><polygon fill="#E37222" points="159.27,672.672,157.1305,663.0584,156.2952,668.6532,150.7004,667.818,159.27,672.672" style="stroke: #E37222; stroke-width: 2.0;"/><text fill="#E37222" font-family="Helvetica" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="18" x="114" y="589.6891">tile</text><!--MD5=[e638d81d5ddd1739c47085250127cfdc]
+reverse link 3D-Web-Map-Client to 3DTiles--><path d="M192.76,545.912 C182.78,553.922 173.79,563.542 168,574.792 C151.88,606.122 160.44,648.682 167.58,672.732 " fill="none" id="3D-Web-Map-Client&lt;-3DTiles" style="stroke: #E37222; stroke-width: 2.0;"/><polygon fill="#E37222" points="196.78,542.802,187.2124,545.1389,192.8233,545.8589,192.1033,551.4697,196.78,542.802" style="stroke: #E37222; stroke-width: 2.0;"/><text fill="#E37222" font-family="Helvetica" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="50" x="169" y="589.6891">visualize</text><!--MD5=[2b257a872483251deed1d617f0af54e6]
+link Image to 3D-Web-Map-Client--><path d="M224.73,217.962 C229.48,269.382 242.82,413.552 248.9,479.322 " fill="none" id="Image-&gt;3D-Web-Map-Client" style="stroke: #9F5795; stroke-width: 2.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="#9F5795" points="249.4,484.682,252.5591,475.3536,248.9422,479.703,244.5927,476.0861,249.4,484.682" style="stroke: #9F5795; stroke-width: 2.0;"/><!--MD5=[bd6e1ffa88c81fbde982b474b91447f2]
+link Image to citydb-tool--><path d="M254.78,215.162 C310.03,244.792 422.08,314.332 466,410.792 C479.15,439.672 454.38,470.502 432.35,490.612 " fill="none" id="Image-&gt;citydb-tool" style="stroke: #9F5795; stroke-width: 2.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="#9F5795" points="428.57,493.992,437.9477,490.9824,432.2999,490.6622,432.6201,485.0145,428.57,493.992" style="stroke: #9F5795; stroke-width: 2.0;"/><!--MD5=[036a8d9189453680aa02f5a96d7044cd]
+link Image to 3DCityDB--><path d="M201.51,218.012 C191.31,227.232 179.16,238.732 169,249.792 C149.51,271.002 129.44,296.572 114.54,316.422 " fill="none" id="Image-&gt;3DCityDB" style="stroke: #9F5795; stroke-width: 2.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="#9F5795" points="111.44,320.562,120.029,315.7424,114.4308,316.5552,113.618,310.957,111.44,320.562" style="stroke: #9F5795; stroke-width: 2.0;"/><!--MD5=[84f28c2ab3755347a5563afd24ccc49c]
+link Image to citydb-tiler--><path d="M219.08,217.842 C210.25,257.812 186.83,354.552 152,429.792 C143.93,447.232 132.73,465.352 122.71,480.192 " fill="none" id="Image-&gt;citydb-tiler" style="stroke: #9F5795; stroke-width: 2.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="#9F5795" points="119.64,484.692,128.0266,479.5282,122.466,480.5673,121.4269,475.0066,119.64,484.692" style="stroke: #9F5795; stroke-width: 2.0;"/><!--MD5=[012151a15ef791275ac29212c27398f2]
+@startuml
+
+
+
+skinparam {
+    DefaultFontName Helvetica 
+    defaultTextAlignment center
+    RoundCorner 14
+    Shadowing false
+
+    BackgroundColor white
+
+    TitleFontSize 36
+    TitleFontStyle Bold
+
+    minClassWidth 125
+    maxClassWidth 300
+    nodesep 30
+    ranksep 30
+    CircledCharacterRadius 10
+    CircledCharacterFontSize 12
+    CircledCharacterFontColor White
+    Class {
+        FontSize 16
+        FontStyle Bold
+        FontColor black
+        BackgroundColor #FFFFFF90
+        BorderThickness 0.5
+        BorderColor Gray
+        ArrowThickness 2
+        ArrowColor Gray
+        AttributeIconSize 9
+    }
+
+}
+
+skinparam component {
+  FontSize 14
+  FontColor #005293
+  BorderColor #0065bd
+  BackgroundColor #dad7cb
+  ArrowColor #e37222
+  ArrowColor<<virt>> #9f5795
+  ArrowFontColor #e37222
+}
+
+skinparam package {
+  FontSize 15
+  FontColor #005293
+  BorderColor #999999
+}
+
+skinparam title {
+  FontSize 16
+  FontColor #005293
+}
+
+title 3DCityDB Family Members
+
+database "Database" {
+  [3DCityDB] <<PostgreSQL>>
+}
+
+node "Virtualization" <<Docker>> {
+  [Container]
+  [Image]
+}
+
+[Image] -up-> [Container]
+
+
+package "3D City Database " {
+  [citydb-tiler] <<pg2b3dm>> 
+  [3D-Web-Map-Client] <<CesiumJS>>
+  [citydb-tool]
+}
+
+cloud {
+  folder "Data Formats" {
+    [CityGML]
+    [CityJSON]
+    [3DTiles]
+  }
+
+[3DCityDB] - -> [citydb-tool] : connect
+[citydb-tool] - -> [CityGML] : export
+[citydb-tool] - -> [CityJSON] : export
+
+[citydb-tool] <- - [CityGML] : import
+[citydb-tool] <- - [CityJSON] : import
+[citydb-tool] - -> [3DCityDB] : Insert/Update
+
+[3DCityDB] - -> [citydb-tiler] : connect
+[citydb-tiler]  - -> [3DTiles] : tile
+[3DTiles] -up-> [3D-Web-Map-Client] : visualize
+
+[Image] ..> [3D-Web-Map-Client] <<virt>>
+[Image] ..> [citydb-tool] <<virt>>
+[Image] ..> [3DCityDB] <<virt>>
+[Image] ..> [citydb-tiler] <<virt>>
+
+}
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 11:22:07 CET 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 21.0.10+7-Ubuntu-124.04
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
