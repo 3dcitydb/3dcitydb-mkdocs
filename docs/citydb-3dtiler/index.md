@@ -30,6 +30,9 @@ tags:
 - supports 3DTiles v1.0 and v1.1
 - The Execution Times of the tiling mechanism depends on the given command, available dataset and the hardware. If you are curious about the execution times of some previously generated test visit [this page](https://www.3dcitydb.net/3dcitydb/fileadmin/public/kendir/bern_full_procedure/execution_times.md){:target="_blank"}.
 
+??? warning "This application requires database user credentials with read and write privileges."
+    Since the application generates 3DTiles based on the existing data in the database, additional views and tables may be created in the database. For this reason, users need **read** and **write** privileges on the database. A solution is planned for users who have read-only privileges.
+
 ## Special Thanks
 
 This application is based on two important concepts and aims to bridge the gap between the concepts 3DTiles and CityGML.
@@ -49,7 +52,7 @@ There are two different ways to use citydb-3dtiler: using Docker containers and 
     If you do not want to customize the feature colors (materials), proceed to Step 4. Otherwise, follow the next instructions.
 
 Download and customize the "materials_for_features" file with one of office software (LibreOffice, OpenOffice or OnlyOffice) by changing the color values in the first sheet (sheet name: "materials").
-[materials_for_features.ods](https://github.com/tum-gis/citydb-3dtiler/blob/main/materials_for_features/materials_for_features.ods){:target="_blank"}
+[materials_for_features.ods](https://github.com/3dcitydb/citydb-3dtiler/blob/main/materials_for_features/materials_for_features.ods){:target="_blank"}
 
 ??? tip "Activate the internal Macro if you need to see the colors immediately"
     When you open the shared ODS file (compatible with LibreOffice, OpenOffice, OnlyOffice etc.), your Office application will ask whether you want to enable the Macro contained in the file. This macro is used as a color picker and displays the entered color code (RGBA hexadecimal codes) on an additional sheet, so you can see the colors and transparency levels directly on the document.
@@ -80,7 +83,7 @@ Using your preferred CLI tool (Terminal/Shell), navigate to the same folder with
     --rm --interactive --tty `
     --name citydb-3dtiler `
     --volume ./:/home/tester/citydb-3dtiler/shared:rw `
-    ghcr.io/tum-gis/citydb-3dtiler:latest `
+    ghcr.io/3dcitydb/citydb-3dtiler:latest `
     --db-host <IP-or-COMP-NAME> --db-port <PORT-NUMBER> `
     --db-name <DATABASE-NAME> --db-schema <SCHEMA-NAME> `
     --db-username <USER-NAME> --db-password <DATABASE-PASSWORD> `
@@ -94,7 +97,7 @@ Using your preferred CLI tool (Terminal/Shell), navigate to the same folder with
     --rm --interactive --tty \
     --name citydb-3dtiler \
     --volume ./:/home/tester/citydb-3dtiler/shared:rw \
-    ghcr.io/tum-gis/citydb-3dtiler:latest \
+    ghcr.io/3dcitydb/citydb-3dtiler:latest \
     --db-host <IP-or-COMP-NAME> --db-port <PORT-NUMBER> \
     --db-name <DATABASE-NAME> --db-schema <SCHEMA-NAME> \
     --db-username <USER-NAME> --db-password <DATABASE-PASSWORD> \
@@ -108,7 +111,7 @@ Using your preferred CLI tool (Terminal/Shell), navigate to the same folder with
     --rm --interactive --tty ^
     --name citydb-3dtiler ^
     --volume ./:/home/tester/citydb-3dtiler/shared:rw ^
-    ghcr.io/tum-gis/citydb-3dtiler:latest ^
+    ghcr.io/3dcitydb/citydb-3dtiler:latest ^
     --db-host <IP-or-COMP-NAME> --db-port <PORT-NUMBER> ^
     --db-name <DATABASE-NAME> --db-schema <SCHEMA-NAME> ^
     --db-username <USER-NAME> --db-password <DATABASE-PASSWORD> ^
@@ -122,7 +125,7 @@ Using your preferred CLI tool (Terminal/Shell), navigate to the same folder with
     --rm --interactive --tty \
     --name citydb-3dtiler \
     --volume ./:/home/tester/citydb-3dtiler/shared:rw \
-    ghcr.io/tum-gis/citydb-3dtiler:latest \
+    ghcr.io/3dcitydb/citydb-3dtiler:latest \
     --db-host 10.162.246.888 --db-port 9876 \
     --db-name citydb-visualizer --db-schema citydb \
     --db-username tester2 --db-password louvre \
@@ -144,7 +147,7 @@ Generate 3DTiles using the default configuration by typing the following command
     --rm --interactive --tty `
     --name citydb-3dtiler `
     --volume ./:/home/tester/citydb-3dtiler/shared:rw `
-    ghcr.io/tum-gis/citydb-3dtiler:latest `
+    ghcr.io/3dcitydb/citydb-3dtiler:latest `
     --db-host <IP-or-COMP-NAME> --db-port <PORT-NUMBER> `
     --db-name <DATABASE-NAME> --db-schema <SCHEMA-NAME> `
     --db-username <USER-NAME> --db-password <DATABASE-PASSWORD> `
@@ -158,7 +161,7 @@ Generate 3DTiles using the default configuration by typing the following command
     --rm --interactive --tty \
     --name citydb-3dtiler \
     --volume ./:/home/tester/citydb-3dtiler/shared:rw \
-    ghcr.io/tum-gis/citydb-3dtiler:latest \
+    ghcr.io/3dcitydb/citydb-3dtiler:latest \
     --db-host <IP-or-COMP-NAME> --db-port <PORT-NUMBER> \
     --db-name <DATABASE-NAME> --db-schema <SCHEMA-NAME> \
     --db-username <USER-NAME> --db-password <DATABASE-PASSWORD> \
@@ -172,7 +175,7 @@ Generate 3DTiles using the default configuration by typing the following command
     --rm --interactive --tty ^
     --name citydb-3dtiler ^
     --volume ./:/home/tester/citydb-3dtiler/shared:rw ^
-    ghcr.io/tum-gis/citydb-3dtiler:latest ^
+    ghcr.io/3dcitydb/citydb-3dtiler:latest ^
     --db-host <IP-or-COMP-NAME> --db-port <PORT-NUMBER> ^
     --db-name <DATABASE-NAME> --db-schema <SCHEMA-NAME> ^
     --db-username <USER-NAME> --db-password <DATABASE-PASSWORD> ^
@@ -186,7 +189,7 @@ Generate 3DTiles using the default configuration by typing the following command
     --rm --interactive --tty \
     --name citydb-3dtiler \
     --volume ./:/home/tester/citydb-3dtiler/shared:rw \
-    ghcr.io/tum-gis/citydb-3dtiler:latest \
+    ghcr.io/3dcitydb/citydb-3dtiler:latest \
     --db-host 10.162.246.888 --db-port 9876 \
     --db-name citydb-visualizer --db-schema citydb \
     --db-username tester2 --db-password louvre \

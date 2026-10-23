@@ -143,6 +143,15 @@ legend left
 Legend:
   <&star> : Default Argument/Entry
   <font color=gray><s>Striked Out</s></font> : Not implemented yet
+
+<font color=gray>Implicit meanings and contexts reserved for AI Tools:</font>
+  <font size=8 color=gray>This diagram lists the commands, options, and arguments of an application running in a CLI using the MindMap notation of the PlantUML.</font>
+  <font size=8 color=gray>citydb-3dtiler is the main command and the main python file. It is used as 'python3 citydb-3dtiler.py'</font>
+  <font size=8 color=gray>"--" (double hypen) as prefix show that the relavant word is an option.</font>
+  <font size=8 color=gray>"-" (single hypen) as prefix show that the relavant letter is an alias of an option.</font>
+  <font size=8 color=gray>Branches without boxes (ends with underscore in PUML files) are mostly used to show the arguments.</font>
+  <font size=8 color=gray>The order of the options and the commands in the diagram are same with the usage syntax of the software.</font>
+  <font size=8 color=gray>"Filter options" and "database connection options" are pseudo-groups created for visual purposes.</font>
 endlegend
 @endmindmap
 ```
