@@ -153,5 +153,6 @@ Legend:
   <font size=8 color=gray>The order of the options and the commands in the diagram are same with the usage syntax of the software.</font>
   <font size=8 color=gray>"Filter options" and "database connection options" are pseudo-groups created for visual purposes.</font>
 endlegend
+
 @endmindmap
 ```
