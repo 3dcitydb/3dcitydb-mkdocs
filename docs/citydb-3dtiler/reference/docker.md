@@ -17,14 +17,13 @@ tags:
 
 ## Tags
 
-Status as of October 2026:
+Both registries provide the same images and tags.
 
-| Image and tag                            | Filter options | Status                                                                    |
-|------------------------------------------|----------------|---------------------------------------------------------------------------|
-| `tumgis/citydb-3dtiler:latest`           | no             | Works.                                                                    |
-| `ghcr.io/3dcitydb/citydb-3dtiler:0.9.3`  | no             | Works.                                                                    |
-| `ghcr.io/3dcitydb/citydb-3dtiler:0.9.4`  | yes            | Fails at startup, see [troubleshooting](../how-to/troubleshooting.md#modulenotfounderror-no-module-named-cql2). |
-| `ghcr.io/3dcitydb/citydb-3dtiler:latest` | yes            | Fails at startup, see [troubleshooting](../how-to/troubleshooting.md#modulenotfounderror-no-module-named-cql2). |
+| Tag      | Filter options | Status                                                                                                          |
+|----------|----------------|-----------------------------------------------------------------------------------------------------------------|
+| `latest` | yes            | Works. Built from the `main` branch.                                                                            |
+| `0.9.4`  | yes            | Fails at startup, see [troubleshooting](../how-to/troubleshooting.md#modulenotfounderror-no-module-named-cql2). |
+| `0.9.3`  | no             | Works.                                                                                                          |
 
 See the [releases](https://github.com/3dcitydb/citydb-3dtiler/releases){target="blank"} for the changes of each version.
 
@@ -42,7 +41,4 @@ See the [releases](https://github.com/3dcitydb/citydb-3dtiler/releases){target="
 ## Build your own image
 
 The `Dockerfile` in the [source repository](https://github.com/3dcitydb/citydb-3dtiler){target="blank"} builds the
-image with `docker build -t citydb-3dtiler:custom .`. As of October 2026, this build fails because the PostgreSQL
-package repository for its Debian base image is no longer available. To get a working image with the filter options,
-extend the published image instead, as described in
-[troubleshooting](../how-to/troubleshooting.md#modulenotfounderror-no-module-named-cql2).
+image with `docker build -t citydb-3dtiler:custom .`.

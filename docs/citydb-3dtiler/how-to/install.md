@@ -49,16 +49,11 @@ its input files from this folder and writes its results to it:
       tile
     ```
 
-!!! warning "Image versions"
-    As of October 2026, the published images differ in features:
-
-    - `tumgis/citydb-3dtiler:latest` (Docker Hub) and `0.9.3` work, but do __not__ include the
-      [filter options](filter.md).
-    - `ghcr.io/3dcitydb/citydb-3dtiler:latest` and `0.9.4` include the filter options, but fail to start with
-      `ModuleNotFoundError: No module named 'cql2'`.
-
-    If you need the filter options, [build a fixed image](troubleshooting.md#modulenotfounderror-no-module-named-cql2)
-    or use the Python setup below. See the [Docker image reference](../reference/docker.md) for all images and tags.
+!!! note "Image versions"
+    Use the `latest` image. The `0.9.4` image fails to start with
+    [`ModuleNotFoundError: No module named 'cql2'`](troubleshooting.md#modulenotfounderror-no-module-named-cql2),
+    and older images do not include the [filter options](filter.md). See the
+    [Docker image reference](../reference/docker.md) for all images and tags.
 
 ## Option 2: Use Python
 

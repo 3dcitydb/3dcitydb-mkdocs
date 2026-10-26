@@ -13,7 +13,7 @@ only buildings, a certain area, or features with specific attribute values. Like
 options come *before* the `tile` command. You can combine several of them; a feature is tiled only if it matches all.
 
 !!! note
-    The filter options require `citydb-3dtiler` `0.9.4` or newer. Check the [install guide](install.md#option-1-use-docker-recommended)
+    The filter options require `citydb-3dtiler` `0.9.4` or newer. Check the [Docker image reference](../reference/docker.md#tags)
     for which Docker images include them.
 
 In the examples below, `<connection>` stands for your [database connection options](connect.md).

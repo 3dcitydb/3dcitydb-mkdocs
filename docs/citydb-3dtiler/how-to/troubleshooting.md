@@ -8,8 +8,8 @@ tags:
 
 ## `ModuleNotFoundError: No module named 'cql2'`
 
-Some published Docker images (`ghcr.io/3dcitydb/citydb-3dtiler:latest` and `0.9.4`, as of October 2026) are missing
-a Python package and fail at startup. Until fixed images are published, build a fixed image yourself:
+The Docker image of release `0.9.4` is missing a Python package and fails at startup. Use the `latest` image
+instead. If you need to stay on `0.9.4`, build a fixed image yourself:
 
 1. Create a file named `Dockerfile` in an empty folder with the following content:
 
@@ -45,7 +45,7 @@ tumgis/citydb-3dtiler \
 ## `invalid choice` or `expected one argument`
 
 - `argument command: invalid choice: ...`: The image you use does not know the option before the value, typically a
-  [filter option](filter.md) in an older image. See the [install guide](install.md#option-1-use-docker-recommended)
+  [filter option](filter.md) in an older image. See the [Docker image reference](../reference/docker.md#tags)
   for which images support which options.
 - `argument -b/--bbox: expected one argument`: A value that starts with a minus sign is mistaken for an option. Write
   the option with an equals sign, e.g. `--bbox=-500,450,-300,600`.
