@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/img/logos/3dcitydb-logo-transparent.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -30,10 +30,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -109,7 +109,7 @@
             
   
   <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/44" style="font-weight: 600;">
-    🔍 Preview of pull request #44 (commit 97fda1a) — not the official documentation.
+    🔍 Preview of pull request #44 (commit 44325f0) — not the official documentation.
   </a>
   
 
@@ -3136,7 +3136,7 @@ PostgreSQL client and the 3D Tiles generator <a href="https://github.com/Geodan/
 <p>The <code>citydb-3dtiler</code> images are available from two registries:</p>
 <ul>
 <li>Docker Hub: <a href="https://hub.docker.com/r/tumgis/citydb-3dtiler" target="blank"><code>tumgis/citydb-3dtiler</code></a></li>
-<li>GitHub Container Registry: <a href="https://github.com/tum-gis/citydb-3dtiler/pkgs/container/citydb-3dtiler" target="blank"><code>ghcr.io/tum-gis/citydb-3dtiler</code></a></li>
+<li>GitHub Container Registry: <a href="https://github.com/3dcitydb/citydb-3dtiler/pkgs/container/citydb-3dtiler" target="blank"><code>ghcr.io/3dcitydb/citydb-3dtiler</code></a></li>
 </ul>
 <p>Both registries provide the same images, so you can use them interchangeably in all examples. The following tags are
 available:</p>
@@ -3150,16 +3150,16 @@ available:</p>
 <tbody>
 <tr>
 <td><code>latest</code></td>
-<td>Latest image built from the <code>main</code> branch of the <a href="https://github.com/tum-gis/citydb-3dtiler" target="blank">GitHub repository</a>.</td>
+<td>Latest image built from the <code>main</code> branch of the <a href="https://github.com/3dcitydb/citydb-3dtiler" target="blank">GitHub repository</a>.</td>
 </tr>
 <tr>
 <td><code>x.y.z</code></td>
-<td>Image of a specific release, e.g. <code>0.9.4</code>. See the <a href="https://github.com/tum-gis/citydb-3dtiler/releases" target="blank">releases</a> for available versions.</td>
+<td>Image of a specific release, e.g. <code>0.9.4</code>. See the <a href="https://github.com/3dcitydb/citydb-3dtiler/releases" target="blank">releases</a> for available versions.</td>
 </tr>
 </tbody>
 </table>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>tumgis/citydb-3dtiler:latest
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>docker<span class="w"> </span>pull<span class="w"> </span>ghcr.io/tum-gis/citydb-3dtiler:latest
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>docker<span class="w"> </span>pull<span class="w"> </span>ghcr.io/3dcitydb/citydb-3dtiler:latest
 </span></code></pre></div>
 <h2 id="usage-and-configuration">Usage and configuration<a class="headerlink" href="#usage-and-configuration" title="Link to this headline for referencing">¶</a></h2>
 <h3 id="help-and-cli-documentation">Help and <abbr title="Command Line Interface">CLI</abbr> documentation<a class="headerlink" href="#help-and-cli-documentation" title="Link to this headline for referencing">¶</a></h3>
@@ -3269,9 +3269,9 @@ interactive shell:</p>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>tumgis/citydb-3dtiler:latest
 </span></code></pre></div>
 <h2 id="build-your-own-images">Build your own images<a class="headerlink" href="#build-your-own-images" title="Link to this headline for referencing">¶</a></h2>
-<p>To build an image from source, clone the <a href="https://github.com/tum-gis/citydb-3dtiler" target="blank">GitHub repository</a>
+<p>To build an image from source, clone the <a href="https://github.com/3dcitydb/citydb-3dtiler" target="blank">GitHub repository</a>
 and run <code>docker build</code> in the repository root:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/tum-gis/citydb-3dtiler.git
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/3dcitydb/citydb-3dtiler.git
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nb">cd</span><span class="w"> </span>citydb-3dtiler
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>citydb-3dtiler:custom-build<span class="w"> </span>.
 </span></code></pre></div>
@@ -3406,10 +3406,10 @@ them, for example to update to the latest image:</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.tracking", "toc.follow", "content.code.select", "content.code.copy", "content.code.annotate", "content.tooltips", "search.suggest", "search.highlight", "search.share", "header.autohide", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.tracking", "toc.follow", "content.code.select", "content.code.copy", "content.code.annotate", "content.tooltips", "search.suggest", "search.highlight", "search.share", "header.autohide", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../assets/javascripts/tablesort.js"></script>
       
