@@ -12,3 +12,6 @@
 *[JDK]: Java Development Kit
 *[JVM]: Java Virtual Machine
 *[JDBC]: Java Database Connectivity
+*[PBR]: Physically Based Rendering
+*[CSV]: Comma-Separated Values
+*[YAML]: YAML Ain't Markup Language
