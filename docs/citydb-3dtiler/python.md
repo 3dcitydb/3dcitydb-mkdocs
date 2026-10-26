@@ -18,8 +18,8 @@ computer. This is useful for development or when Docker is not available.
 
 ## Setup
 
-1. Download the [latest release](https://github.com/tum-gis/citydb-3dtiler/releases){target="blank"} or the `main`
-   branch of the [GitHub repository](https://github.com/tum-gis/citydb-3dtiler){target="blank"} and extract it.
+1. Download the [latest release](https://github.com/3dcitydb/citydb-3dtiler/releases){target="blank"} or the `main`
+   branch of the [GitHub repository](https://github.com/3dcitydb/citydb-3dtiler){target="blank"} and extract it.
    Change to the extracted folder, e.g. `citydb-3dtiler-main`.
 
 2. Download pg2b3dm and extract the executable to the `tiler_app` folder of the repository. Alternatively, use the

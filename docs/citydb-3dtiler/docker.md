@@ -55,19 +55,19 @@ PostgreSQL client and the 3D Tiles generator [pg2b3dm](https://github.com/Geodan
 The `citydb-3dtiler` images are available from two registries:
 
 - Docker Hub: [`tumgis/citydb-3dtiler`](https://hub.docker.com/r/tumgis/citydb-3dtiler){target="blank"}
-- GitHub Container Registry: [`ghcr.io/tum-gis/citydb-3dtiler`](https://github.com/tum-gis/citydb-3dtiler/pkgs/container/citydb-3dtiler){target="blank"}
+- GitHub Container Registry: [`ghcr.io/3dcitydb/citydb-3dtiler`](https://github.com/3dcitydb/citydb-3dtiler/pkgs/container/citydb-3dtiler){target="blank"}
 
 Both registries provide the same images, so you can use them interchangeably in all examples. The following tags are
 available:
 
 | Tag       | Description                                                                                       |
 |-----------|---------------------------------------------------------------------------------------------------|
-| `latest`  | Latest image built from the `main` branch of the [GitHub repository](https://github.com/tum-gis/citydb-3dtiler){target="blank"}. |
-| `x.y.z`   | Image of a specific release, e.g. `0.9.4`. See the [releases](https://github.com/tum-gis/citydb-3dtiler/releases){target="blank"} for available versions. |
+| `latest`  | Latest image built from the `main` branch of the [GitHub repository](https://github.com/3dcitydb/citydb-3dtiler){target="blank"}. |
+| `x.y.z`   | Image of a specific release, e.g. `0.9.4`. See the [releases](https://github.com/3dcitydb/citydb-3dtiler/releases){target="blank"} for available versions. |
 
 ```bash
 docker pull tumgis/citydb-3dtiler:latest
-docker pull ghcr.io/tum-gis/citydb-3dtiler:latest
+docker pull ghcr.io/3dcitydb/citydb-3dtiler:latest
 ```
 
 ## Usage and configuration
@@ -200,11 +200,11 @@ tumgis/citydb-3dtiler:latest
 
 ## Build your own images
 
-To build an image from source, clone the [GitHub repository](https://github.com/tum-gis/citydb-3dtiler){target="blank"}
+To build an image from source, clone the [GitHub repository](https://github.com/3dcitydb/citydb-3dtiler){target="blank"}
 and run `docker build` in the repository root:
 
 ```bash
-git clone https://github.com/tum-gis/citydb-3dtiler.git
+git clone https://github.com/3dcitydb/citydb-3dtiler.git
 cd citydb-3dtiler
 docker build -t citydb-3dtiler:custom-build .
 ```

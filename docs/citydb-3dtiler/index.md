@@ -16,7 +16,7 @@ to create the tilesets. The resulting 3D Tiles can be streamed and visualized in
 
 !!! warning "Testing phase"
     `citydb-3dtiler` is still in the testing phase. Please be careful when using it in production. Feedback is always
-    welcome: create an [issue on GitHub](https://github.com/tum-gis/citydb-3dtiler/issues){target="blank"} or get in
+    welcome: create an [issue on GitHub](https://github.com/3dcitydb/citydb-3dtiler/issues){target="blank"} or get in
     touch with the developer at murat.kendir(at)tum.de.
 
 ![Sample 3D Tiles from Leipzig](assets/sample_3dtiles_leipzig.jpg)
@@ -76,7 +76,7 @@ set one up with Docker.
         ```bash
         docker run --rm -i -t --name citydb-3dtiler \
           -v ./:/home/tester/citydb-3dtiler/shared:rw \
-        ghcr.io/tum-gis/citydb-3dtiler:latest \
+        ghcr.io/3dcitydb/citydb-3dtiler:latest \
           --db-host my.host.de --db-port 5432 \
           --db-name citydb --db-schema citydb \
           --db-username postgres --db-password changeMe \
@@ -88,7 +88,7 @@ set one up with Docker.
         ```bat
         docker run --rm -i -t --name citydb-3dtiler ^
           -v ./:/home/tester/citydb-3dtiler/shared:rw ^
-        ghcr.io/tum-gis/citydb-3dtiler:latest ^
+        ghcr.io/3dcitydb/citydb-3dtiler:latest ^
           --db-host my.host.de --db-port 5432 ^
           --db-name citydb --db-schema citydb ^
           --db-username postgres --db-password changeMe ^
@@ -100,7 +100,7 @@ set one up with Docker.
         ```powershell
         docker run --rm -i -t --name citydb-3dtiler `
           -v ./:/home/tester/citydb-3dtiler/shared:rw `
-        ghcr.io/tum-gis/citydb-3dtiler:latest `
+        ghcr.io/3dcitydb/citydb-3dtiler:latest `
           --db-host my.host.de --db-port 5432 `
           --db-name citydb --db-schema citydb `
           --db-username postgres --db-password changeMe `
@@ -114,7 +114,7 @@ set one up with Docker.
         ```bash
         docker run --rm -i -t --name citydb-3dtiler \
           -v ./:/home/tester/citydb-3dtiler/shared:rw \
-        ghcr.io/tum-gis/citydb-3dtiler:latest \
+        ghcr.io/3dcitydb/citydb-3dtiler:latest \
           --db-host my.host.de --db-port 5432 \
           --db-name citydb --db-schema citydb \
           --db-username postgres --db-password changeMe \
@@ -126,7 +126,7 @@ set one up with Docker.
         ```bat
         docker run --rm -i -t --name citydb-3dtiler ^
           -v ./:/home/tester/citydb-3dtiler/shared:rw ^
-        ghcr.io/tum-gis/citydb-3dtiler:latest ^
+        ghcr.io/3dcitydb/citydb-3dtiler:latest ^
           --db-host my.host.de --db-port 5432 ^
           --db-name citydb --db-schema citydb ^
           --db-username postgres --db-password changeMe ^
@@ -138,7 +138,7 @@ set one up with Docker.
         ```powershell
         docker run --rm -i -t --name citydb-3dtiler `
           -v ./:/home/tester/citydb-3dtiler/shared:rw `
-        ghcr.io/tum-gis/citydb-3dtiler:latest `
+        ghcr.io/3dcitydb/citydb-3dtiler:latest `
           --db-host my.host.de --db-port 5432 `
           --db-name citydb --db-schema citydb `
           --db-username postgres --db-password changeMe `
@@ -156,4 +156,4 @@ take this opportunity to thank Bert Temme, the developer of pg2b3dm, and all 3DC
 
 `citydb-3dtiler` is developed by the [Chair of Geoinformatics](https://www.asg.ed.tum.de/en/gis/){target="blank"} at the
 Technical University of Munich (TUM). The source code is available on
-[GitHub](https://github.com/tum-gis/citydb-3dtiler){target="blank"}.
+[GitHub](https://github.com/3dcitydb/citydb-3dtiler){target="blank"}.

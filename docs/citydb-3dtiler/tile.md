@@ -130,7 +130,7 @@ The materials used for styling are defined in a CSV file. `citydb-3dtiler` looks
 tool are used. To use a CSV file with a different name, provide the file name with the `--custom-style` option.
 
 The easiest way to create your own materials is to download the
-[`materials_for_features.ods`](https://github.com/tum-gis/citydb-3dtiler/blob/main/materials_for_features/materials_for_features.ods){target="blank"}
+[`materials_for_features.ods`](https://github.com/3dcitydb/citydb-3dtiler/blob/main/materials_for_features/materials_for_features.ods){target="blank"}
 spreadsheet, adapt the colors in the first sheet `materials` using LibreOffice, OpenOffice or OnlyOffice, and save
 this sheet as CSV file.
 
