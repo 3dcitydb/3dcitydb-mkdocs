@@ -13,7 +13,7 @@ tags:
 | Registry                  | Image                                                                                                                    |
 |---------------------------|--------------------------------------------------------------------------------------------------------------------------|
 | Docker Hub                | [`tumgis/citydb-3dtiler`](https://hub.docker.com/r/tumgis/citydb-3dtiler){target="blank"}                                |
-| GitHub Container Registry | [`ghcr.io/tum-gis/citydb-3dtiler`](https://github.com/tum-gis/citydb-3dtiler/pkgs/container/citydb-3dtiler){target="blank"} |
+| GitHub Container Registry | [`ghcr.io/3dcitydb/citydb-3dtiler`](https://github.com/3dcitydb/citydb-3dtiler/pkgs/container/citydb-3dtiler){target="blank"} |
 
 ## Tags
 
@@ -22,11 +22,11 @@ Status as of October 2026:
 | Image and tag                            | Filter options | Status                                                                    |
 |------------------------------------------|----------------|---------------------------------------------------------------------------|
 | `tumgis/citydb-3dtiler:latest`           | no             | Works.                                                                    |
-| `ghcr.io/tum-gis/citydb-3dtiler:0.9.3`   | no             | Works.                                                                    |
-| `ghcr.io/tum-gis/citydb-3dtiler:0.9.4`   | yes            | Fails at startup, see [troubleshooting](../how-to/troubleshooting.md#modulenotfounderror-no-module-named-cql2). |
-| `ghcr.io/tum-gis/citydb-3dtiler:latest`  | yes            | Fails at startup, see [troubleshooting](../how-to/troubleshooting.md#modulenotfounderror-no-module-named-cql2). |
+| `ghcr.io/3dcitydb/citydb-3dtiler:0.9.3`  | no             | Works.                                                                    |
+| `ghcr.io/3dcitydb/citydb-3dtiler:0.9.4`  | yes            | Fails at startup, see [troubleshooting](../how-to/troubleshooting.md#modulenotfounderror-no-module-named-cql2). |
+| `ghcr.io/3dcitydb/citydb-3dtiler:latest` | yes            | Fails at startup, see [troubleshooting](../how-to/troubleshooting.md#modulenotfounderror-no-module-named-cql2). |
 
-See the [releases](https://github.com/tum-gis/citydb-3dtiler/releases){target="blank"} for the changes of each version.
+See the [releases](https://github.com/3dcitydb/citydb-3dtiler/releases){target="blank"} for the changes of each version.
 
 ## Image details
 
@@ -41,7 +41,7 @@ See the [releases](https://github.com/tum-gis/citydb-3dtiler/releases){target="b
 
 ## Build your own image
 
-The `Dockerfile` in the [source repository](https://github.com/tum-gis/citydb-3dtiler){target="blank"} builds the
+The `Dockerfile` in the [source repository](https://github.com/3dcitydb/citydb-3dtiler){target="blank"} builds the
 image with `docker build -t citydb-3dtiler:custom .`. As of October 2026, this build fails because the PostgreSQL
 package repository for its Debian base image is no longer available. To get a working image with the filter options,
 extend the published image instead, as described in

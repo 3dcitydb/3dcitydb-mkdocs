@@ -18,7 +18,7 @@ ready to be streamed to web viewers such as [CesiumJS](https://cesium.com/platfo
 
 !!! warning "Testing phase"
     `citydb-3dtiler` is still being tested. Use it with care in production, and please share your feedback on
-    [GitHub](https://github.com/tum-gis/citydb-3dtiler/issues){target="blank"}.
+    [GitHub](https://github.com/3dcitydb/citydb-3dtiler/issues){target="blank"}.
 
 ## What it can do
 
@@ -70,6 +70,6 @@ ready to be streamed to web viewers such as [CesiumJS](https://cesium.com/platfo
 
 `citydb-3dtiler` is developed by the [Chair of Geoinformatics](https://www.asg.ed.tum.de/en/gis/){target="blank"} at the
 Technical University of Munich (TUM). Its source code is available on
-[GitHub](https://github.com/tum-gis/citydb-3dtiler){target="blank"}. It builds on the [3DCityDB `v5`](../3dcitydb/index.md)
+[GitHub](https://github.com/3dcitydb/citydb-3dtiler){target="blank"}. It builds on the [3DCityDB `v5`](../3dcitydb/index.md)
 and on [pg2b3dm](https://github.com/Geodan/pg2b3dm){target="blank"}. Many thanks to Bert Temme, the developer of
 pg2b3dm, and to all 3DCityDB developers.

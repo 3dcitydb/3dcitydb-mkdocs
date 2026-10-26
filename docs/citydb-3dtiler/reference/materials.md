@@ -9,7 +9,7 @@ tags:
 
 The materials file defines the colors of the features. `citydb-3dtiler` uses `materials_for_features.csv` from the
 working folder, a file given with `--custom-style`, or, if neither exists, its
-[built-in default](https://github.com/tum-gis/citydb-3dtiler/blob/main/materials_for_features/materials_for_features.csv){target="blank"}.
+[built-in default](https://github.com/3dcitydb/citydb-3dtiler/blob/main/materials_for_features/materials_for_features.csv){target="blank"}.
 
 ## Format
 

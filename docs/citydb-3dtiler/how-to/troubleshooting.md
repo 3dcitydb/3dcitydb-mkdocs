@@ -8,13 +8,13 @@ tags:
 
 ## `ModuleNotFoundError: No module named 'cql2'`
 
-Some published Docker images (`ghcr.io/tum-gis/citydb-3dtiler:latest` and `0.9.4`, as of October 2026) are missing
+Some published Docker images (`ghcr.io/3dcitydb/citydb-3dtiler:latest` and `0.9.4`, as of October 2026) are missing
 a Python package and fail at startup. Until fixed images are published, build a fixed image yourself:
 
 1. Create a file named `Dockerfile` in an empty folder with the following content:
 
     ```dockerfile title="Dockerfile"
-    FROM ghcr.io/tum-gis/citydb-3dtiler:0.9.4
+    FROM ghcr.io/3dcitydb/citydb-3dtiler:0.9.4
     USER root
     RUN pip install "cql2==0.6.0"
     USER tester
@@ -69,5 +69,5 @@ When both the 3DCityDB and `citydb-3dtiler` run in Docker, `localhost` does not 
 
 ## Still stuck?
 
-Report the problem on [GitHub](https://github.com/tum-gis/citydb-3dtiler/issues){target="blank"} and include the
+Report the problem on [GitHub](https://github.com/3dcitydb/citydb-3dtiler/issues){target="blank"} and include the
 command you used (without your password) and the error message.

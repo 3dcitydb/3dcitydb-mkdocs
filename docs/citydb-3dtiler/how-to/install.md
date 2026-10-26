@@ -54,7 +54,7 @@ its input files from this folder and writes its results to it:
 
     - `tumgis/citydb-3dtiler:latest` (Docker Hub) and `0.9.3` work, but do __not__ include the
       [filter options](filter.md).
-    - `ghcr.io/tum-gis/citydb-3dtiler:latest` and `0.9.4` include the filter options, but fail to start with
+    - `ghcr.io/3dcitydb/citydb-3dtiler:latest` and `0.9.4` include the filter options, but fail to start with
       `ModuleNotFoundError: No module named 'cql2'`.
 
     If you need the filter options, [build a fixed image](troubleshooting.md#modulenotfounderror-no-module-named-cql2)
@@ -64,7 +64,7 @@ its input files from this folder and writes its results to it:
 
 1. Install [Python 3](https://www.python.org/downloads/){target="blank"} and the PostgreSQL command-line client `psql`.
    Make sure `psql` is available on your `PATH`.
-2. Download the `citydb-3dtiler` [source code](https://github.com/tum-gis/citydb-3dtiler){target="blank"} and extract
+2. Download the `citydb-3dtiler` [source code](https://github.com/3dcitydb/citydb-3dtiler){target="blank"} and extract
    it, or clone it with Git.
 3. Download [pg2b3dm](https://github.com/Geodan/pg2b3dm/releases){target="blank"} for your operating system and
    extract the `pg2b3dm` executable to the `tiler_app` folder of the source code.

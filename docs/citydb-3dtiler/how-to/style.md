@@ -12,7 +12,7 @@ change these colors, color features by an attribute value, and make features tra
 
 ## Use your own colors
 
-1. Download the [default materials file](https://github.com/tum-gis/citydb-3dtiler/blob/main/materials_for_features/materials_for_features.csv){target="blank"}
+1. Download the [default materials file](https://github.com/3dcitydb/citydb-3dtiler/blob/main/materials_for_features/materials_for_features.csv){target="blank"}
    and save it as `materials_for_features.csv` in your working folder.
 2. Open the file in a text editor or spreadsheet program and change the color in the
    `pbr_metallic_roughness_base_color` column of the object classes you want to recolor. Colors are RGBA hex codes,
@@ -31,7 +31,7 @@ con,RoofSurface,,,,,,#e37222ff,#000000,,
     To keep several color schemes, give the files different names and select one with
     `tile --custom-style my_colors.csv`. The file must be in the working folder.
 
-The [`materials_for_features.ods`](https://github.com/tum-gis/citydb-3dtiler/blob/main/materials_for_features/materials_for_features.ods){target="blank"}
+The [`materials_for_features.ods`](https://github.com/3dcitydb/citydb-3dtiler/blob/main/materials_for_features/materials_for_features.ods){target="blank"}
 spreadsheet is a convenient alternative for editing: it previews the colors and can be exported as CSV. See the
 [materials reference](../reference/materials.md) for all columns.
 
