@@ -61,9 +61,7 @@ endheader
 
 **[#skyblue] <&magnifying-glass> advise
 ***[#darkseagreen] <&medical-cross> --help / -h
-***[#burlywood] <&cog> --consider-thematic-features
-****_ False
-****_ <&star> True
+***[#burlywood] <&cog> --ignore-thematic-surfaces
 ***[#burlywood] <&cog> --output-file / -o
 ****_ <&star> advice.yml
 ****_ any-other-file-name

@@ -16,14 +16,14 @@ The advise command creates a report file in YAML format by examining the existin
 If you use the help option after the advise command, you will see the usage syntax of that command which is like below.
 
 ```bash
-advise [-h] [--ignore-thematic-features] [-o [Output File Name]]
+advise [-h] [--ignore-thematic-surfaces] [-o [Output File Name]]
 ```
 
-## --ignore-thematic-features
+## --ignore-thematic-surfaces
 
-This option used to ignore the thematic features in the advice.yaml file. So, that means only the volumetric objects will be listed and reported. Others, like WindowSurface, RoofSurface etc., will be ignored. Default value is `False`.
+This option used to ignore the thematic surfaces (all the surfaces descend from AbstractThematicSurface) in the advice.yaml file. So, that means only the volumetric objects (and some other space boundaries) will be listed and reported. Others, like WindowSurface, RoofSurface etc., will be ignored.
 
-- Example : `--ignore-thematic-features True`
+- Example : `--ignore-thematic-surfaces`
 
 ## --output-file (-o)
 

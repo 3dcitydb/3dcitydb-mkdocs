@@ -50,7 +50,7 @@ citydb-3dtiler is the main command of the application. When run with the Docker 
 | **Command** | **Description** |
 |---|---|
 | [help](#usage-syntax) | The help output shows the usage syntax and available arguments. |
-| [advise](advise.md) | Test connection to the database. Available options are as follows: `--ignore-thematic-features`, `--output-file` |
+| [advise](advise.md) | Test connection to the database. Available options are as follows: `--ignore-thematic-surfaces`, `--output-file` |
 | [tile](tile.md) | Show database contents and summary information. Tiling options are as follows : `--style-mode`, `--style-absence-behaviour`, `--output-folder`, `--transparency`, `--custom-style`, `--attributes`, `--selected-attributes`, `--attribute-structure`, `--attribute-structure`, `--vertical-offset` |
 
 ## Usage Syntax
