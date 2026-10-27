@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/img/logos/3dcitydb-logo-transparent.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -30,10 +30,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -113,7 +113,7 @@
             
   
   <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/46" style="font-weight: 600;">
-    🔍 Preview of pull request #46 (commit 1fca8ac) — not the official documentation.
+    🔍 Preview of pull request #46 (commit f258978) — not the official documentation.
   </a>
   
 
@@ -2421,10 +2421,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#-ignore-thematic-features" class="md-nav__link">
+  <a href="#-ignore-thematic-surfaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        --ignore-thematic-features
+        --ignore-thematic-surfaces
       
     </span>
   </a>
@@ -2953,10 +2953,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#-ignore-thematic-features" class="md-nav__link">
+  <a href="#-ignore-thematic-surfaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        --ignore-thematic-features
+        --ignore-thematic-surfaces
       
     </span>
   </a>
@@ -3029,12 +3029,12 @@
 <p>The advise command creates a report file in YAML format by examining the existing data in the database. This report file lists the main options used by the user in the command, the feature types in the database, the attributes of the features, and the recommended number of features per tile for conversion to the 3DTiles format. Unless otherwise specified by the user, this value is used during the tiling process.</p>
 <h2 id="-help-h">--help (-h)<a class="headerlink" href="#-help-h" title="Link to this headline for referencing">¶</a></h2>
 <p>If you use the help option after the advise command, you will see the usage syntax of that command which is like below.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>advise<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--ignore-thematic-features<span class="o">]</span><span class="w"> </span><span class="o">[</span>-o<span class="w"> </span><span class="o">[</span>Output<span class="w"> </span>File<span class="w"> </span>Name<span class="o">]]</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>advise<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--ignore-thematic-surfaces<span class="o">]</span><span class="w"> </span><span class="o">[</span>-o<span class="w"> </span><span class="o">[</span>Output<span class="w"> </span>File<span class="w"> </span>Name<span class="o">]]</span>
 </span></code></pre></div>
-<h2 id="-ignore-thematic-features">--ignore-thematic-features<a class="headerlink" href="#-ignore-thematic-features" title="Link to this headline for referencing">¶</a></h2>
-<p>This option used to ignore the thematic features in the advice.yaml file. So, that means only the volumetric objects will be listed and reported. Others, like WindowSurface, RoofSurface etc., will be ignored. Default value is <code>False</code>.</p>
+<h2 id="-ignore-thematic-surfaces">--ignore-thematic-surfaces<a class="headerlink" href="#-ignore-thematic-surfaces" title="Link to this headline for referencing">¶</a></h2>
+<p>This option used to ignore the thematic surfaces (all the surfaces descend from AbstractThematicSurface) in the advice.yaml file. So, that means only the volumetric objects (and some other space boundaries) will be listed and reported. Others, like WindowSurface, RoofSurface etc., will be ignored.</p>
 <ul>
-<li>Example : <code>--ignore-thematic-features True</code></li>
+<li>Example : <code>--ignore-thematic-surfaces</code></li>
 </ul>
 <h2 id="-output-file-o">--output-file (-o)<a class="headerlink" href="#-output-file-o" title="Link to this headline for referencing">¶</a></h2>
 <p>This option can be used if the user request to use a custom name for the advice file. Both of the file name and the file extension must be written.</p>
@@ -3147,10 +3147,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.tracking", "toc.follow", "content.code.select", "content.code.copy", "content.code.annotate", "content.tooltips", "search.suggest", "search.highlight", "search.share", "header.autohide", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.tracking", "toc.follow", "content.code.select", "content.code.copy", "content.code.annotate", "content.tooltips", "search.suggest", "search.highlight", "search.share", "header.autohide", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../assets/javascripts/tablesort.js"></script>
       
