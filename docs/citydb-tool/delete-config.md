@@ -18,7 +18,6 @@ The configuration settings for the `delete` command are shown below.
   "deleteOptions": {
     "mode": "terminate",
     "commitAfter": 1000,
-    "terminateWithSubFeatures": true,
     "indexMode": "dropCreate",
     "terminationDate": "2018-07-01T00:00:00",
     "lineage": "myLineage",
@@ -36,12 +35,11 @@ The configuration settings for the `delete` command are shown below.
 |-----------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|---------------|
 | [`"mode"`](delete.md#delete-mode)                                     | Delete mode: `delete`, `terminate`.                                                                                     | `terminate`   |
 | [`"commitAfter"`](delete.md#committing-the-deletion)                  | Specifies the number of features after which the delete operation is committed.                                         |               |
-| [<code>"terminateWithSub<br/>Features"</code>](delete.md#delete-mode) | Also terminate sub-features.                                                                                            | `true`        |
 | [`"indexMode"`](delete.md#managing-indexes-during-deletion)           | Index mode: `keep`, `drop`, `dropCreate`.                                                                               | `keep`        |
 | [`"terminationDate"`](delete.md#defining-termination-metadata)        | Time in `<YYYY-MM-DD>` or <code>&lt;YYYY-MM-DDThh&#58;mm:ss[(+&#124;-)hh:mm]></code> format to use as termination date. | `now`         |
 | [`"lineage"`](delete.md#defining-termination-metadata)                | Lineage to use for the features.                                                                                        |               |
-| [`"updatingPerson"`](delete.md#defining-termination-metadata)         | Name of the user responsible for the delete                                                                             | database user |
-| [`"reasonForUpdate"`](delete.md#defining-termination-metadata)        | Reason for importing the data.                                                                                          |               |
+| [`"updatingPerson"`](delete.md#defining-termination-metadata)         | Name of the user responsible for the delete.                                                                            | database user |
+| [`"reasonForUpdate"`](delete.md#defining-termination-metadata)        | Reason for deleting the data.                                                                                            |               |
 
 ## Query options
 

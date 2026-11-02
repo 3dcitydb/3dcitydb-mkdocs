@@ -36,7 +36,6 @@ For more details on the global options and usage hints, see [here](cli.md#option
 |------------------------------|----------------------------------------------------------------------------------------------------------|---------------|
 | `--temp-dir=<dir>`           | Store temporary files in this directory.                                                                 |               |
 | `-m`, `--delete-mode=<mode>` | Delete mode: `delete`, `terminate`.                                                                      | `terminate`   |
-| `--[no-]terminate-all`       | Also terminate sub-features.                                                                             | `true`        |
 | `--index-mode=<mode>`        | Index mode: keep, drop, drop_create. Consider dropping indexes when processing large quantities of data. | `keep`        |
 | `--preview`                  | Run in preview mode. Features will not be deleted.                                                       |               |
 | `-c`, `--commit=<number>`    | Commit changes after deleting this number of features.                                                   |               |
@@ -83,10 +82,9 @@ available modes are:
 - `terminate`: Features are not physically removed but are marked as terminated by setting their `termination_date`
   property to the timestamp of the operation, which allows retaining the feature history. This is the default mode.
 
-Both modes delete a feature along with its "contained" subfeatures, which are considered part of the feature.
-The `--no-terminate-all` option changes this default behavior for termination. Terminating all subfeatures can
-take significantly longer than just terminating the feature itself, so it is important to evaluate whether cascading
-termination is necessary based on your use cases and scenarios.
+Both modes process a feature along with its "contained" subfeatures, which are considered part of the feature. A
+subfeature that is still contained by another feature is kept (in `terminate` mode, by another active feature). In
+`terminate` mode, subfeatures that are already terminated keep their termination date.
 
 !!! note
     - The `delete` command operates on non-terminated features unless specified otherwise. See

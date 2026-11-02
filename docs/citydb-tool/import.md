@@ -261,9 +261,15 @@ shorthand for this transformation, as shown below.
 The options `--creationDate`, `--lineage`, `--updating-person`, and `--reason-for-update` allow you to capture metadata
 about the feature's creation time, origin, the person responsible for the import, and the reason for the import.
 
-By default, the creation date is taken from the corresponding CityGML attribute in the input file. If the input feature
-lacks a creation date, the current import time is used. With the `--creation-date` option, you can set a specific
+By default, the creation date is taken from the corresponding CityGML attribute in the input file. If a contained
+feature lacks a creation date, it inherits the creation date of its parent. If a top-level feature lacks a creation date,
+the current import time is used. With the `--creation-date` option, you can set a specific
 timestamp (e.g., `2023-01-01`) or use `now` to apply the current import time, overriding any value from the input file.
+
+The termination date is taken from the input file as well. Because every feature below a terminated feature is
+terminated itself, a contained feature of a terminated feature receives the termination date of its parent. Its own
+termination date is only kept if it is earlier. Only contained features inherit creation and termination dates; features
+connected through other relationships keep their own dates.
 
 !!! warning
     The creation and termination dates together define a feature's lifespan in the database (see

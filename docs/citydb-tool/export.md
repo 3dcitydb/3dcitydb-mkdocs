@@ -298,7 +298,10 @@ The example below demonstrates how to export a historical version of your city m
 !!! note
     - Exporting historical versions requires that these versions remain in the database.
     - **Database time is managed automatically:** The `creation_date` is set during import, while the `termination_date` is
-      assigned when terminating features using the [`delete`](delete.md) command.
+      assigned when terminating features using the [`delete`](delete.md) command or taken from the input file.
+    - The creation and termination dates of contained features are written only if they differ from their parent's dates.
+      When imported again, contained features without these dates inherit them from their parent. In CityJSON, thematic
+      surfaces such as walls and roofs are stored as semantic surfaces without attributes, so their own dates are not written.
     - Validity checks are strict by default. Use `--lenient-validity` to treat time intervals as valid, even if their start
       point is undefined.
 
