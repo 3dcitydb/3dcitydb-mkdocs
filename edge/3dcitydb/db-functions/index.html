@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/img/logos/3dcitydb-logo-transparent.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -30,10 +30,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -2584,11 +2584,10 @@
 
   <h1>Database functions</h1>
 
-<p>The 3DCityDB <code>v5</code> includes a set of database-side functions that are automatically installed during setup. These functions
-perform and expose various database operations, such as deleting or terminating city objects, computing their envelopes,
-and managing the Coordinate Reference System (<abbr title="Coordinate Reference System">CRS</abbr>) of the 3DCityDB instance. Additionally, they include utility and
-helper functions. The functions can be used to automate processes and workflows or be integrated into third-party
-tools for task automation.</p>
+<p>The 3DCityDB <code>v5</code> is shipped with database-side functions that are automatically installed during setup. These functions
+provide database operations such as deleting or terminating city objects, computing their envelopes, and managing the
+Coordinate Reference System (<abbr title="Coordinate Reference System">CRS</abbr>) of the 3DCityDB instance. They also provide utility and helper functions for automating
+processes and workflows and for integration with third-party tools.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>For PostgreSQL, the functions are written in <code>PL/pgSQL</code> and reside in a dedicated <code>citydb_pkg</code> schema. Since
@@ -2597,11 +2596,11 @@ specifying the schema as a prefix.</p>
 </div>
 <h2 id="delete-functions">Delete functions<a class="headerlink" href="#delete-functions" title="Link to this headline for referencing">¶</a></h2>
 <p>The delete functions enable the removal of single or multiple city objects while automatically managing integrity
-constraints between database tables. They serve as low-level APIs, providing dedicated delete functions for various
-tables — from individual geometries in the <a href="../geometry-module/#geometry_data-table"><code>GEOMETRY_DATA</code></a> table
-(<code>delete_geometry_data</code> function) to entire features in the <a href="../feature-module/#feature-table"><code>FEATURE</code></a>
-table, alongside their properties, geometries, and appearances (<code>delete_feature</code> function). These functions enable
-users to develop more complex delete operations without reimplementing their core functionality.</p>
+constraints between database tables. They provide low-level APIs for deleting data from various tables — from individual
+geometries in the <a href="../geometry-module/#geometry_data-table"><code>GEOMETRY_DATA</code></a> table (<code>delete_geometry_data</code> function) to
+entire features in the <a href="../feature-module/#feature-table"><code>FEATURE</code></a> table, alongside their properties, geometries, and
+appearances (<code>delete_feature</code> function). These functions enable users to develop more complex delete operations without
+reimplementing their core functionality.</p>
 <p>The available delete functions are listed below.</p>
 <table>
 <thead>
@@ -2653,13 +2652,13 @@ users to develop more complex delete operations without reimplementing their cor
 <td>Deletes entries from <code>TEX_IMAGE</code> table<br>based on an <code>id</code> or <code>id</code> array</td>
 </tr>
 <tr>
-<td><strong><code>delete_address</code>  </strong><br><code>(pid bigint, schema_name TEXT)</code> or <br> <code>(pid_array bigint[], schema_name TEXT)</code></td>
+<td>**<code>delete_address</code>  **<br><code>(pid bigint, schema_name TEXT)</code> or <br> <code>(pid_array bigint[], schema_name TEXT)</code></td>
 <td><code>BIGINT</code> or<br><code>SETOF BIGINT</code></td>
 <td>Deletes entries from <code>ADDRESS</code> table<br>based on an id or id array</td>
 </tr>
 </tbody>
 </table>
-<p>The delete functions are provided in two forms:</p>
+<p>Most delete functions are provided in two forms:</p>
 <ul>
 <li>
 <p><strong>Deletion of single entries:</strong> One variant accepts the primary key <code>id</code> of a single entry to be deleted and returns the <code>id</code>
@@ -2668,43 +2667,62 @@ an error occurred during the deletion process.</p>
 </li>
 <li>
 <p><strong>Deletion of multiple entries:</strong> The other variant accepts an array of <code>id</code> values, returning the <code>id</code> values of the
-successfully deleted entries as a <code>SETOF BIGINT</code>, allowing multiple entries to be deleted in a single operation.</p>
+successfully deleted entries as a <code>SETOF BIGINT</code>, allowing multiple entries to be deleted in a single call.</p>
 </li>
 </ul>
 <p>All functions offer an optional <code>schema_name</code> parameter, allowing you to apply them to different database schemas within your
 PostgreSQL database. The provided target schema must contain a 3DCityDB <code>v5</code> instance. For more information, see
 <a href="#applying-functions-to-different-schemas">below</a>.</p>
-<p>The following example demonstrates how to easily delete features based on a query result:</p>
+<p>The following example demonstrates how to delete features based on a query result:</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">-- delete a single feature by id</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">delete_feature</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">feature</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">;</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">-- delete multiple features by passing an array of ids</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">delete_feature</span><span class="p">(</span><span class="n">array_agg</span><span class="p">(</span><span class="n">id</span><span class="p">))</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">feature</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">FROM</span><span class="w"> </span><span class="n">delete_feature</span><span class="p">(</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nb">ARRAY</span><span class="p">(</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="k">FROM</span><span class="w"> </span><span class="n">feature</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="k">WHERE</span><span class="w"> </span><span class="p">...</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="p">)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">);</span>
 </span></code></pre></div>
-<p>The <code>id</code>-array based delete functions require fewer <code>DELETE</code> statements and may therefore be faster than deleting the same
+<p>You can also use <code>array_agg</code> instead of <code>ARRAY(SELECT ...)</code> to construct an <code>id</code> array from a query. Because <code>array_agg</code>
+returns <code>NULL</code> when no rows match, use <code>COALESCE</code> if you want to normalize the result to an empty array.</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">-- delete multiple features by passing an array of ids</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">delete_feature</span><span class="p">(</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">COALESCE</span><span class="p">(</span><span class="n">array_agg</span><span class="p">(</span><span class="n">id</span><span class="p">),</span><span class="w"> </span><span class="nb">ARRAY</span><span class="p">[]::</span><span class="nb">bigint</span><span class="p">[])</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">FROM</span><span class="w"> </span><span class="n">feature</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">WHERE</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">;</span>
+</span></code></pre></div>
+<p>The array-based delete functions require fewer <code>DELETE</code> statements and may therefore be faster than deleting the same
 number of entries by invoking the delete function for each individual <code>id</code>. However, this is not always the case and
 depends on the ratio between the number of entries to be deleted and the total number of objects in the database. For
 example, if the <code>id</code> array is very large and covers a significant portion of the table, it may be more efficient to use the
-single-<code>id</code> version or delete entries in smaller batches.</p>
+single-<code>id</code> version or delete entries in smaller groups.</p>
 <p>The example below demonstrates how to create a custom function to delete all buildings from the 3DCityDB
 using the single-<code>id</code> version of <code>delete_feature</code>:</p>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">-- example function for deleting all building features</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">DO</span><span class="w"> </span><span class="err">$$</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">DECLARE</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="n">rec</span><span class="w"> </span><span class="n">RECORD</span><span class="p">;</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">BEGIN</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="k">FOR</span><span class="w"> </span><span class="n">rec</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">feature</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">objectclass_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">901</span><span class="w"> </span><span class="n">LOOP</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="c1">-- call the delete_feature function for each id</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="n">PERFORM</span><span class="w"> </span><span class="n">delete_feature</span><span class="p">(</span><span class="n">rec</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="n">LOOP</span><span class="p">;</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="k">END</span><span class="w"> </span><span class="err">$$</span><span class="p">;</span>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">-- example function for deleting all building features</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">DO</span><span class="w"> </span><span class="err">$$</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">DECLARE</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="n">rec</span><span class="w"> </span><span class="n">RECORD</span><span class="p">;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">BEGIN</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="k">FOR</span><span class="w"> </span><span class="n">rec</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">feature</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">objectclass_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">901</span><span class="w"> </span><span class="n">LOOP</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="c1">-- call the delete_feature function for each id</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">PERFORM</span><span class="w"> </span><span class="n">delete_feature</span><span class="p">(</span><span class="n">rec</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="n">LOOP</span><span class="p">;</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">END</span><span class="w"> </span><span class="err">$$</span><span class="p">;</span>
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>When deleting a feature, all its "contained" subfeatures, which are considered a part of the feature, are deleted as
-well. However, features that are only "related" but not considered a part of the feature are not deleted. The
-distinction between "contained" and "related" features is determined by evaluating the <code>val_relation_type</code> column of the
-<code>PROPERTY</code> table, as described <a href="../feature-module/#relationships">here</a>.</p>
+<p>When deleting a feature, all its subfeatures connected through
+<a href="../feature-module/#relationships"><code>contains</code></a> relationships (<code>val_relation_type = 1</code>), which are considered a part
+of the feature, are deleted as well. However, features connected through other relationship types are not deleted.
+The distinction is determined by the <code>val_relation_type</code> column of the
+<a href="../feature-module/#property-table"><code>PROPERTY</code></a> table. A subfeature that is also contained by another feature is kept.
+If all its remaining parents are terminated, the subfeature is terminated with
+<a href="#terminate-functions"><code>terminate_feature</code></a>, because every feature below a terminated feature is terminated itself.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -2715,11 +2733,11 @@ this function, as it cannot be rolled back.</p>
 <h2 id="terminate-functions">Terminate functions<a class="headerlink" href="#terminate-functions" title="Link to this headline for referencing">¶</a></h2>
 <p>The delete functions physically remove city objects from the 3DCityDB instance, helping keep the database streamlined
 and focused on the most recent versions of features. However, in some cases, it may be preferable to retain the feature
-history and avoid deleting outdated versions. For such use cases, the 3DCityDB provides additional terminate functions.
-These functions do not physically delete features but instead mark them as terminated by setting their <code>terminate_date</code>
-property to the timestamp of the operation. Alongside the <code>creation_date</code> timestamp, the lifespan of the feature in the
-database can be tracked, allowing multiple historical versions of the same feature to be stored alongside its most
-recent version.</p>
+history and avoid deleting outdated versions. For such use cases, the 3DCityDB provides the <code>terminate_feature</code> function.
+Unlike the delete functions, <code>terminate_feature</code> does not physically delete features but instead marks them as terminated
+by setting their <code>termination_date</code> property to the timestamp of the operation. Alongside the <code>creation_date</code> timestamp,
+the lifespan of the feature in the database can be tracked, allowing multiple historical versions of the same feature
+to be stored alongside its most recent version.</p>
 <table>
 <thead>
 <tr>
@@ -2730,35 +2748,37 @@ recent version.</p>
 </thead>
 <tbody>
 <tr>
-<td><strong><code>terminate_feature</code></strong><br><code>(pid bigint, schema_name TEXT, metadata JSON, cascade BOOLEAN)</code> or <br> <code>(pid_array bigint[], schema_name TEXT, metadata JSON, cascade BOOLEAN)</code></td>
+<td><strong><code>terminate_feature</code></strong><br><code>(pid bigint, metadata JSONB)</code> or <br><code>(pid_array bigint[], metadata JSONB)</code> or <br>the corresponding variants with <code>schema_name TEXT</code></td>
 <td><code>BIGINT</code> or<br><code>SETOF BIGINT</code></td>
 <td>Terminates features in the <code>FEATURE</code> table based on an <code>id</code> or <code>id</code> array</td>
 </tr>
 </tbody>
 </table>
-<p>Since the <code>creation_date</code> and <code>termination_date</code> columns are exclusive to the <a href="../feature-module/#feature-table"><code>FEATURE</code></a>
-table, only the <code>terminate_feature</code> function is available for terminating features. Like the delete functions, this
-function accepts either a single <code>id</code> or an array of <code>id</code> values and returns the <code>id</code> values of successfully terminated
-features, as described above.</p>
+<p>Because the <code>creation_date</code> and <code>termination_date</code> columns exist only in the
+<a href="../feature-module/#feature-table"><code>FEATURE</code></a> table, only the <code>terminate_feature</code> function is available for terminating
+features. Like the delete functions, it accepts either a single <code>id</code> or an array of <code>id</code> values and returns the <code>id</code>
+values of successfully terminated features.</p>
 <p>The <code>FEATURE</code> table provides additional metadata columns for features, including <code>last_modification_date</code>, <code>lineage</code>,
 <code>reason_for_update</code>, and <code>updating_person</code> (see <a href="../feature-module/#feature-table">here</a> for more details).
-The terminate functions allow you to update these values by passing a JSON object as <code>metadata</code> parameter,
+The <code>terminate_feature</code> function allows you to update these values by passing a JSON object as the <code>metadata</code> parameter,
 where each property represents the column name and its corresponding value is the updated data. When omitting
-single columns in the JSON object or the entire JSON object, the values currently stored in these columns remain
-unchanged, with the only exception that <code>last_modification_date</code> will be set to the same timestamp as <code>termination_date</code>.</p>
-<p>The last parameter, <code>cascade</code>, is used to specify whether "contained" subfeatures should also be terminated (default:
-<code>true</code>). Terminating all subfeatures can take significantly longer than just terminating the feature itself, so it is
-important to evaluate whether cascading termination is necessary based on your use cases and scenarios.</p>
+individual columns in the JSON object, or omitting the JSON object entirely, the values currently stored in these columns
+remain unchanged. The only exception is <code>last_modification_date</code>, which is set to the same timestamp as <code>termination_date</code>.</p>
+<p>Subfeatures connected through <a href="../feature-module/#relationships"><code>contains</code></a> relationships (<code>val_relation_type = 1</code>) are
+always terminated together with the feature, so every feature below a terminated feature is terminated itself. This
+applies to top-level features and to subfeatures of an active feature alike: terminating a subfeature terminates its own
+subfeatures, while its parent remains active. Other relationship types are not traversed. A subfeature is terminated only
+if no active parent still references it. Features that are already terminated are left unchanged and keep their
+termination date; their subfeatures are not traversed, because they are already terminated.</p>
 <p>The following example demonstrates how to terminate a single feature based on its database <code>id</code>.</p>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">terminate_feature</span><span class="p">(</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="mi">2060316</span><span class="p">,</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="s1">'{</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="s1">        "reason_for_update": "test reason",</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="s1">        "updating_peron": "test person",</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="s1">        "lineage": "test lineage"</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s1">    }'</span><span class="p">::</span><span class="n">json</span><span class="p">,</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="k">FALSE</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">);</span>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">terminate_feature</span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="mi">2060316</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="s1">'{</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s1">        "reason_for_update": "test reason",</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s1">        "updating_person": "test person",</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="s1">        "lineage": "test lineage"</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s1">    }'</span><span class="p">::</span><span class="n">jsonb</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">);</span>
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2768,8 +2788,8 @@ feature. The <a href="../../citydb-tool/"><code>citydb-tool</code></a> included 
 <code>creation_date</code> and <code>termination_date</code> properties.</p>
 </div>
 <h2 id="envelope-functions">Envelope functions<a class="headerlink" href="#envelope-functions" title="Link to this headline for referencing">¶</a></h2>
-<p>The <code>citydb_pkg</code> package offers functions for calculating the 3D bounding box of features and implicit geometries, as well
-as additional utility functions to support these operations.</p>
+<p>The envelope functions calculate the 3D bounding box of features and implicit geometries, as well as provide utility
+functions to support these operations.</p>
 <table>
 <thead>
 <tr>
@@ -2780,17 +2800,17 @@ as additional utility functions to support these operations.</p>
 </thead>
 <tbody>
 <tr>
-<td><strong><code>get_feature_envelope</code></strong><br> <code>(fid BIGINT, schema_name TEXT, compute_envelope INTEGER, set_envelope INTEGER)</code></td>
+<td><strong><code>get_feature_envelope</code></strong><br><code>(fid BIGINT, compute_envelope INTEGER, set_envelope INTEGER)</code> or <br><code>(fid BIGINT, schema_name TEXT, compute_envelope INTEGER, set_envelope INTEGER)</code></td>
 <td><code>GEOMETRY</code></td>
 <td>Returns the envelope geometry of a given feature</td>
 </tr>
 <tr>
-<td><strong><code>get_implicit_geometry_envelope</code></strong><br> <code>(gid BIGINT, ref_pt GEOMETRY, matrix JSON, schema_name TEXT)</code></td>
+<td><strong><code>get_implicit_geometry_envelope</code></strong><br><code>(gid BIGINT, ref_pt GEOMETRY, matrix JSONB)</code> or <br><code>(gid BIGINT, ref_pt GEOMETRY, matrix JSONB, schema_name TEXT)</code></td>
 <td><code>GEOMETRY</code></td>
 <td>Returns the envelope geometry of a given implicit geometry</td>
 </tr>
 <tr>
-<td><strong><code>get_envelope</code></strong><br> <code>(geom GEOMETRY, schema_name TEXT)</code></td>
+<td><strong><code>get_envelope</code></strong><br><code>(geom GEOMETRY)</code> or <br><code>(geom GEOMETRY, schema_name TEXT)</code></td>
 <td><code>GEOMETRY</code></td>
 <td>Computes the envelope geometry for a given geometry</td>
 </tr>
@@ -2798,25 +2818,28 @@ as additional utility functions to support these operations.</p>
 </table>
 <p>The <code>get_feature_envelope</code> function returns the envelope of a feature. The feature's primary key <code>id</code> must be
 provided as input. When the <code>compute_envelope</code> parameter is set to <code>0</code> (default), the envelope currently stored in the
-<code>FEATURE</code> table is returned. When set to <code>1</code> – or in case the value in the <code>FEATURE</code> table is <code>NULL</code> – the envelope
-is computed by evaluating all the geometries of the feature and its "contained"
-subfeatures across all LoDs, including implicit geometries. The returned geometry is the minimal 3D rectangle that
+<code>FEATURE</code> table is returned. When set to <code>1</code>, or when the value in the <code>FEATURE</code> table is <code>NULL</code>, the envelope is
+computed by evaluating the geometries of the feature and its subfeatures connected through
+<a href="../feature-module/#relationships"><code>contains</code></a> relationships (<code>val_relation_type = 1</code>) across all LoDs, including implicit geometries. For an active root feature,
+terminated subfeatures and their subtrees are excluded. For a terminated root feature, the complete reachable subtree is
+included. The returned geometry is the minimal 3D rectangle that
 encloses the feature, and it can be directly used as the value for the <code>envelope</code> column of the <code>FEATURE</code> table.</p>
-<p>The <code>get_feature_envelope</code> function offers two more optional parameters: The <code>set_envelope</code> parameter specifies whether the
-computed envelopes should be used to update the <code>envelope</code> columns of the feature and its subfeatures (<code>1</code> for true, <code>0</code> for
-false; default: <code>0</code>). The <code>schema_name</code> parameter defines the target database schema to operate in, as explained
-<a href="#applying-functions-to-different-schemas">below</a>.</p>
+<p>The <code>get_feature_envelope</code> function offers another optional parameter: The <code>set_envelope</code> parameter specifies whether the
+computed envelopes should be used to update the <code>envelope</code> columns of traversed features (<code>1</code> for true, <code>0</code> for false; default:
+<code>0</code>). When the requested root is terminated, active subfeatures are included in the calculation but their stored
+envelopes are not updated.</p>
 <p>The envelope of implicit geometries can be calculated using the <code>get_implicit_geometry_envelope</code> function. It
 requires the following inputs: the primary key <code>id</code> of the template geometry from the <code>GEOMETRY_DATA</code> table, a PostGIS <code>POINT</code>
-geometry specifying the real-world coordinates where the template should be placed (<code>ref_pt</code>), and a 3x4 row-major matrix (JSON
-double array) defining the rotation, scaling, and translation for the template (<code>matrix</code>).</p>
-<p>The reference point and transformation matrix follow the format used for storing them in the <code>PROPERTY</code> table
+geometry specifying the real-world coordinates where the template should be placed (<code>ref_pt</code>), and a 3x4 row-major matrix
+(JSON double array) defining the rotation, scaling, and translation for the template (<code>matrix</code>).</p>
+<p>The reference point and transformation matrix follow the format used for storing them in the <a href="../feature-module/#property-table"><code>PROPERTY</code></a> table
 (see <a href="../feature-module/#relationships">here</a>). Therefore, the values from the <code>PROPERTY</code> table can be directly used as input parameters.</p>
 <p>The remaining <code>get_envelope</code> function is primarily used internally by the functions mentioned above. However, it
 can also be called directly to compute the envelope of a single geometry. The result is also returned in the
 format required by the <code>envelope</code> column of the <code>FEATURE</code> table.</p>
 <h2 id="crs-functions"><abbr title="Coordinate Reference System">CRS</abbr> functions<a class="headerlink" href="#crs-functions" title="Link to this headline for referencing">¶</a></h2>
-<p>The <code>citydb_pkg</code> package provides functions for performing <abbr title="Coordinate Reference System">CRS</abbr> operations on a 3DCityDB instance.</p>
+<p>The <abbr title="Coordinate Reference System">CRS</abbr> functions manage the <abbr title="Coordinate Reference System">CRS</abbr> of 3DCityDB schemas and geometry columns, including <abbr title="Coordinate Reference System">CRS</abbr> validation and information
+queries.</p>
 <table>
 <thead>
 <tr>
@@ -2839,7 +2862,7 @@ format required by the <code>envelope</code> column of the <code>FEATURE</code> 
 <tr>
 <td><strong><code>check_srid</code></strong><br><code>(srid INTEGER)</code></td>
 <td><code>INTEGER</code></td>
-<td>Checks if a given <code>SRID</code> is valid</td>
+<td>Checks whether a given <code>SRID</code> is valid</td>
 </tr>
 <tr>
 <td><strong><code>get_coord_ref_sys_info</code></strong><br><code>(srid INTEGER)</code></td>
@@ -2849,17 +2872,17 @@ format required by the <code>envelope</code> column of the <code>FEATURE</code> 
 <tr>
 <td><strong><code>is_coord_ref_sys_3d</code></strong><br><code>(srid INTEGER)</code></td>
 <td><code>INTEGER</code></td>
-<td>Checks if a <abbr title="Coordinate Reference System">CRS</abbr> is a true 3D system</td>
+<td>Checks whether a <abbr title="Coordinate Reference System">CRS</abbr> is a true 3D system</td>
 </tr>
 <tr>
 <td><strong><code>is_db_coord_ref_sys_3d</code></strong><br><code>(schema_name TEXT)</code></td>
 <td><code>INTEGER</code></td>
-<td>Checks if the <abbr title="Coordinate Reference System">CRS</abbr> of the 3DCityDB is true 3D system</td>
+<td>Checks whether the 3DCityDB uses a true 3D <abbr title="Coordinate Reference System">CRS</abbr></td>
 </tr>
 </tbody>
 </table>
 <p>The primary function is <code>change_schema_srid</code>, which changes the <abbr title="Coordinate Reference System">CRS</abbr> for all geometry columns within a 3DCityDB schema (default: <code>citydb</code>).
-It takes the database-specifc <code>SRID</code> (<strong>S</strong>patial <strong>R</strong>eference <strong>ID</strong>) of the new <abbr title="Coordinate Reference System">CRS</abbr> and its <abbr title="Open Geospatial Consortium">OGC</abbr>-compliant name as inputs.</p>
+It takes the database-specific <code>SRID</code> (<strong>S</strong>patial <strong>R</strong>eference <strong>ID</strong>) of the new <abbr title="Coordinate Reference System">CRS</abbr> and its <abbr title="Open Geospatial Consortium">OGC</abbr>-compliant name as inputs.</p>
 <p>The function operates in two modes, determined by the value of the <code>transform</code> parameter:</p>
 <ul>
 <li><strong>Update metadata only:</strong> Changes the geometry <abbr title="Spatial Reference ID">SRID</abbr> in the database metadata without transforming coordinates (<code>transform = 0</code>, default).</li>
@@ -2873,12 +2896,15 @@ be converted to another <abbr title="Coordinate Reference System">CRS</abbr>, th
 table with the new values.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Regardless of the selected operation mode, changing the <abbr title="Coordinate Reference System">CRS</abbr> of a 3DCityDB <code>v5</code> always involves dropping and re-creating
+<p>Regardless of the selected operation mode, changing the <abbr title="Coordinate Reference System">CRS</abbr> of a 3DCityDB <code>v5</code> always involves dropping and recreating
 spatial indexes on the geometry columns to maintain consistency with the new <abbr title="Coordinate Reference System">CRS</abbr>. As a result, the process can be
-time-consuming depending on the table size.</p>
+time-consuming, depending on the table size.</p>
 </div>
+<p>The remaining functions validate SRIDs and provide information about coordinate reference systems and the
+dimensionality of the 3DCityDB <abbr title="Coordinate Reference System">CRS</abbr>.</p>
 <h2 id="utility-functions">Utility functions<a class="headerlink" href="#utility-functions" title="Link to this headline for referencing">¶</a></h2>
-<p>The <code>citydb_pkg</code> package also provides various utility functions as shown below.</p>
+<p>The utility functions provide version and metadata information, look up sequence values and object-class hierarchies,
+and manage schemas.</p>
 <table>
 <thead>
 <tr>
@@ -2896,7 +2922,7 @@ time-consuming depending on the table size.</p>
 <tr>
 <td><strong><code>db_metadata</code></strong><br><code>(schema_name TEXT, OUT srid INTEGER, OUT srs_name TEXT, OUT coord_ref_sys_name TEXT, OUT coord_ref_sys_kind TEXT, OUT wktext TEXT, OUT versioning TEXT)</code></td>
 <td><code>TABLE</code></td>
-<td>Returns meta information about the 3DCityDB instance</td>
+<td>Returns metadata about the 3DCityDB instance</td>
 </tr>
 <tr>
 <td><strong><code>db_properties</code></strong>()</td>
@@ -2940,13 +2966,13 @@ includes required schemas like <code>citydb_pkg</code> and <code>public</code>.<
 <p>The 3DCityDB supports using multiple data schemas within the same PostgreSQL database. The default schema
 is named <code>citydb</code>, while additional schemas can be freely named by the user. A setup script to create additional data
 schemas is included in the 3DCityDB software package and is documented <a href="../db-scripts/#shell-scripts">here</a>.</p>
-<p>Most of the database functions described in this chapter accept an optional <code>schema_name</code> parameter to specify the
+<p>Most of the database functions accept an optional <code>schema_name</code> parameter to specify the
 target schema. If this parameter is provided, the function temporarily sets the database <code>search_path</code> to the given
 schema, making it the active schema for that operation. This change to the <code>search_path</code> applies only for the duration
 of the current transaction — not the entire session. This ensures that any change to the <code>search_path</code> remains isolated
 and does not affect other operations outside the transaction, helping to avoid unintended side effects.</p>
 <p>If <code>schema_name</code> is omitted, the function uses the schema currently set in the <code>search_path</code>. This offers
-flexibility, allowing users to configure the search path according to their needs before calling any 3DCityDB
+flexibility, allowing users to configure the <code>search_path</code> according to their needs before calling any 3DCityDB
 database functions.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2956,8 +2982,8 @@ For most users, this is the default and recommended approach for invoking the da
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>The utility functions <code>get_current_schema</code> and <code>set_current_schema</code> (see <a href="#utility-functions">above</a>) are especially useful
-for users who prefer not to manage the <code>search_path</code> manually.</p>
+<p>The utility functions <code>get_current_schema</code> and <code>set_current_schema</code> are documented <a href="#utility-functions">above</a> and are
+especially useful for users who prefer not to manage the <code>search_path</code> manually.</p>
 </div>
 
 
@@ -3065,10 +3091,10 @@ for users who prefer not to manage the <code>search_path</code> manually.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.tracking", "toc.follow", "content.code.select", "content.code.copy", "content.code.annotate", "content.tooltips", "search.suggest", "search.highlight", "search.share", "header.autohide", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.tracking", "toc.follow", "content.code.select", "content.code.copy", "content.code.annotate", "content.tooltips", "search.suggest", "search.highlight", "search.share", "header.autohide", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../assets/javascripts/tablesort.js"></script>
       
