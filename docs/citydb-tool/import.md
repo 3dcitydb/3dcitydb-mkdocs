@@ -258,7 +258,7 @@ shorthand for this transformation, as shown below.
 
 ### Defining import metadata
 
-The options `--creationDate`, `--lineage`, `--updating-person`, and `--reason-for-update` allow you to capture metadata
+The options `--creation-date`, `--lineage`, `--updating-person`, and `--reason-for-update` allow you to capture metadata
 about the feature's creation time, origin, the person responsible for the import, and the reason for the import.
 
 By default, the creation date is taken from the corresponding CityGML attribute in the input file. If a contained
