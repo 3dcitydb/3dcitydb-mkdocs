@@ -37,11 +37,13 @@ For more details on the general import options and usage hints, see [here](impor
 
 ### CityJSON import options
 
-| Option                                                                | Description                                                               | Default value |
-|-----------------------------------------------------------------------|---------------------------------------------------------------------------|---------------|
-| `--[no-]map-unknown-objects`                                          | Map city objects from unsupported extensions onto generic city objects.   | `true`        |
-| `--no-appearances`                                                    | Do not process appearances.                                               |               |
-| `-a`, <code>--appearance-theme=&lt;theme><br/>[,&lt;theme>...]</code> | Process appearances with a matching theme. Use `none` for the null theme. |               |
+| Option                                                                           | Description                                                                                  | Default value |
+|----------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|---------------|
+| `--[no-]map-unknown-objects`                                                     | Map city objects from unsupported extensions onto generic city objects.                      | `true`        |
+| <code>--lod-mapping-strategy=&lt;strategy></code>                                | Strategy for mapping multiple CityJSON LoDs onto a CityGML LoD: `maximum`, `minimum`.        | `maximum`     |
+| <code>--lod-mapping=&lt;lod=cityjson-lod><br/>[,&lt;lod=cityjson-lod>...]</code> | Map a CityGML LoD onto a specific CityJSON LoD. Overrides the mapping strategy for this LoD. |               |
+| `--no-appearances`                                                               | Do not process appearances.                                                                  |               |
+| `-a`, <code>--appearance-theme=&lt;theme><br/>[,&lt;theme>...]</code>            | Process appearances with a matching theme. Use `none` for the null theme.                    |               |
 
 ### Metadata options
 
@@ -108,6 +110,30 @@ or more themes as a comma-separated list. To filter appearances that have no the
 
 Only appearances associated with the specified themes will be imported. To exclude all appearances from the import, use
 the `--no-appearances` option.
+
+### Mapping CityJSON LoDs
+
+CityJSON supports refined LoDs such as `2.0`, `2.1`, and `2.2`, which all correspond to the CityGML LoD `2`. If a city
+object has geometry in several refined LoDs of the same CityGML LoD, only one of them is imported. With the default
+`--lod-mapping-strategy=maximum`, the highest refined LoD is used, with `minimum` the lowest one.
+
+The `--lod-mapping` option selects a specific refined LoD for a CityGML LoD, for example `2=2.1`. The refined LoD must
+belong to the CityGML LoD, so `2=1.2` is ignored with a warning. If a city object has no geometry in the given refined LoD,
+the mapping strategy is used for this city object instead.
+
+=== "Linux"
+
+    ```bash
+    ./citydb import cityjson [...] my-city.json \
+        --lod-mapping=2=2.1
+    ```
+
+=== "Windows CMD"
+
+    ```bat
+    citydb import cityjson [...] my-city.json ^
+        --lod-mapping=2=2.1
+    ```
 
 ### Handling unknown extensions
 
