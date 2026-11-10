@@ -1,0 +1,46 @@
+' This is a plantuml style file
+' To use this style include it into your plantuml diagrams, e.g.:
+' !include modern-style.plantuml
+
+' Color schema
+!$primaryColor = "#E6E6E63F"
+!$secondaryColor = "#FFFFFF90"
+
+' General settings
+'hide empty methods
+'hide empty attributes
+'hide circle
+
+skinparam {
+    DefaultFontName Helvetica 
+    defaultTextAlignment center
+    RoundCorner 14
+    Shadowing false
+
+    BackgroundColor transparent
+
+    ' Title Styling
+    TitleFontSize 24
+    TitleFontStyle Bold
+
+    ' Class Diagrams
+    minClassWidth 125
+    maxClassWidth 300
+    nodesep 30
+    ranksep 30
+    CircledCharacterRadius 10
+    CircledCharacterFontSize 12
+    CircledCharacterFontColor White
+    Class {
+        'hide circle
+        FontSize 16
+        FontStyle Bold
+        BackgroundColor $secondaryColor
+        BorderThickness 0.5
+        BorderColor Gray
+        ArrowThickness 2
+        ArrowColor Gray
+        AttributeIconSize 9
+    }
+
+}
