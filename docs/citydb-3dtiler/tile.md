@@ -29,6 +29,16 @@ tile [-h] \
     [--vertical-offset [VERTICAL_OFFSET]]
 ```
 
+## --separate-tilesets
+
+This option is used to specify the criteria for creating multiple tilesets. You can create separate tilesets by considering the objectclasses (Building, Wall, Window etc.) or namespaces (bldg, tun, brid etc.) of the features.
+
+- Example : `--separate-tilesets objectclass`
+
+[A Sample 3D Scene contains separate tilesets](https://tinyurl.com/schwabingolstadt2026){:target="_blank"}
+
+![Ingolstadt, 2026](images/sample_for_separeate_tilesets.png)
+
 ## --style-mode
 
 Style mode is used to assign material styles to features. Customizing PBR materials using the given CSV file is not the only option. There are four different style modes, and there is a mechanism (called `style-absence-behaviour`) that switches to another mode in case a style mode cannot be applied to a feature. The four style modes are like below:
@@ -130,3 +140,11 @@ Specify the vertical offset as a float number (for exp. 0.15 / -1.25) in meter u
 
 - Example : `--vertical-offset 0.15` | `--vertical-offset -0.55`
 
+## --vertical-offset-from-csv
+
+Assign the vertical offsets using the CSV file. Use the dot as the decimal separator.
+
+??? tip "Default vertical offsets for TrafficArea, AuxiliaryTrafficArea and Markings"
+    There is a predefined +10 cm vertical offset for the TrafficArea and AuxiliaryTrafficArea objects, and a +15 cm vertical offset is also defined for the Marking objects. It is recommended to preserve these values so that the markings remain visible on top of the road objects, and the area objects on top of the other ground surfaces.
+
+- Example : `--vertical-offset-from-csv`

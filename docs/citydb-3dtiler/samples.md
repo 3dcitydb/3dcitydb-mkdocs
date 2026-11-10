@@ -66,7 +66,9 @@ You can use the help command for both main commands and subcommands.
 
 ### General Filters
 
-#### Filter by IDs (citydb.feature.objectid)
+#### Filter by IDs
+
+Relevant table on the database : `citydb.feature.objectid`
 
 ```bash
 python3 citydb-3dtiler.py \
@@ -78,7 +80,11 @@ python3 citydb-3dtiler.py \
 tile
 ```
 
-#### Filter by type-name (citydb.objectclass & citydb.feature.objectclass_id)
+#### Filter by type-name
+
+`--type-name` is the same concept known as `objectclass` in 3DCityDB.
+
+Relevant table on the database : `citydb.objectclass` & `citydb.feature.objectclass_id`
 
 ```bash
 python3 citydb-3dtiler.py \
@@ -102,7 +108,9 @@ python3 citydb-3dtiler.py \
 tile
 ```
 
-#### Specify the start-index (Offset)
+#### Specify the start-index
+
+`--start-index` is the same command as `Offset` in SQL statements.
 
 ```bash
 python3 citydb-3dtiler.py \
@@ -114,34 +122,41 @@ python3 citydb-3dtiler.py \
 tile
 ```
 
-#### Use the Limitation and start-index within the same command
+#### Other Samples
 
-```bash
-python3 citydb-3dtiler.py \
---db-host 10.162.246.195 --db-port 9876 \
---db-name citydb-visualizer \
---db-schema citydb \
---db-username tester --db-password louvre \
---limit 100000 --start-index 200000 \
-tile \
---tiles-version 1.0
-```
+??? info "Other samples about filtering options"
 
-#### Use the Limitation, start-index and type-name filters together
-
-```bash
-python3 citydb-3dtiler.py \
---db-host 10.162.246.195 --db-port 9876 \
---db-name citydb-visualizer \
---db-schema citydb \
---db-username tester --db-password louvre \
---limit 100000 --start-index 200000 \
-tile
-```
+    Use the Limitation and start-index within the same command
+    
+    ```bash
+    python3 citydb-3dtiler.py \
+    --db-host 10.162.246.195 --db-port 9876 \
+    --db-name citydb-visualizer \
+    --db-schema citydb \
+    --db-username tester --db-password louvre \
+    --limit 100000 --start-index 200000 \
+    tile \
+    --tiles-version 1.0
+    ```
+    
+    Use the Limitation, start-index and type-name filters together
+    
+    ```bash
+    python3 citydb-3dtiler.py \
+    --db-host 10.162.246.195 --db-port 9876 \
+    --db-name citydb-visualizer \
+    --db-schema citydb \
+    --db-username tester --db-password louvre \
+    --type-name WallSurface,OuterFloorSurface,OuterCeilingSurface \
+    --limit 100000 --start-index 200000 \
+    tile
+    ```
 
 ### Spatial Filtering
 
-#### Use Bbox for filtering
+#### Use Bbox with CRS Code
+
+The term `CRS code` is also same term formerly known as `EPSG Code`
 
 ```bash
 python3 citydb-3dtiler.py \
@@ -156,7 +171,7 @@ tile
 ??? tip "Remember the purpose the 5th element!"
     5th argument of the bbox is an optional value that used to specify the CRS/SRS code of the given boundary box coordinates. For more information about that visit [Filter Options](filter_options.md/#-bbox-b) page.
 
-#### Use Bbox for filtering without specifying the CRS code
+#### Use Bbox without specifying the CRS code
 
 ```bash
 python3 citydb-3dtiler.py \
@@ -208,7 +223,9 @@ tile
 
 ### Query-based Filtering
 
-#### CQL2 Filter Sample using quantitative attributes
+#### Use CQL2 Filter
+
+`--filter` option uses CQL2 expressions. If you want to use SQL expressions, use `--sql-filter` option instead.
 
 ```bash
 python3 citydb-3dtiler.py \
@@ -227,7 +244,7 @@ tile \
 
 ## Advise command samples
 
-### Take an advice for the existing dataset to generate a single tileset
+### Take an advice for the existing dataset
 
 ```bash
 python3 citydb-3dtiler.py \
@@ -238,8 +255,7 @@ python3 citydb-3dtiler.py \
 advise
 ```
 
-### Take an advice for the existing dataset to generate separate tilesets
-
+### Take an advice by excluding the thematic surfaces
 
 ```bash
 python3 citydb-3dtiler.py \
@@ -247,7 +263,7 @@ python3 citydb-3dtiler.py \
 --db-name citydb-visualizer \
 --db-schema citydb \
 --db-username tester --db-password louvre \
---separate-tilesets objectclass \
+--ignore-thematic-surfaces \
 advise
 ```
 
@@ -256,7 +272,7 @@ advise
 
 ### Styling
 
-#### Generate 3DTiles using property-based styling
+#### property-based styling
 
 ??? tip "How to assign custom property values to set the materials/colors?"
 
@@ -269,7 +285,7 @@ advise
      bldg | Building | bldg | roofType | val_string | gabled | #F35FCBFC 
 
 ??? info "Style-Modes"
-    Default style-mode is objectclass-based. Check the materials_for_features.csv table to view existing objectclasses.
+    Default style-mode is objectclass-based. Check the `materials_for_features.csv` table to view existing objectclasses.
 
 ```bash
     python3 citydb-3dtiler.py \
@@ -281,20 +297,22 @@ advise
     --style-mode property-based
 ```
 
-#### Generating separated 3DTiles using objectclass-based separation and property-based styling
+??? tip "Using Objectclass-based separation and Property-based styling together"
 
-```bash
-    python3 citydb-3dtiler.py \
-    --db-host localhost --db-port 9876 \
-    --db-name citydb-visualizer \
-    --db-schema citydb \
-    --db-username tester --db-password louvre \
-    --separate-tilesets objectclass \
-    tile \
-    --style-mode property-based
-```
+    ```bash
+        python3 citydb-3dtiler.py \
+        --db-host localhost --db-port 9876 \
+        --db-name citydb-visualizer \
+        --db-schema citydb \
+        --db-username tester --db-password louvre \
+        tile \
+        --separate-tilesets objectclass \
+        --style-mode property-based
+    ```
 
-#### Change the style-absence-behaviour if needed
+#### style-absence-behaviour
+
+`citydb-3dtiler` will try to assign material based on the features' properties and if not succeeded for a specific feature, it will try to assign an existing appearance (usually stored in the `surface_data` table).
 
 ```bash
     python3 citydb-3dtiler.py \
@@ -307,7 +325,7 @@ advise
     --style-absence-behaviour rise-up
 ```
 
-#### Activate the transparency
+#### transparency
 
 ```bash
 python3 citydb-3dtiler.py \
@@ -322,7 +340,7 @@ python3 citydb-3dtiler.py \
 
 ### Attributes
 
-#### Generate a Tileset by adding all the available attributes
+#### Add all the attributes
 
 ```bash
 python3 citydb-3dtiler.py \
@@ -334,7 +352,7 @@ tile \
 --attributes all
 ```
 
-#### Generate a Tileset by selecting a subset of the attributes
+#### Select a subset of the attributes
 
 ```bash
 python3 citydb-3dtiler.py \
@@ -347,7 +365,7 @@ tile \
 --selected-attributes core_name,gen_objektart,con_height
 ```
 
-#### Generate a Tileset that shows the attributes as (JSON-like) nested objects
+#### Nested Attributes
 
 ```bash
 python3 citydb-3dtiler.py \
@@ -362,7 +380,7 @@ tile \
 
 ### Others
 
-#### Generate a Tileset in the 3DTiles v1.0 standard
+#### 3DTiles v1.0 standard
 
 ```bash
 python3 citydb-3dtiler.py \
@@ -374,7 +392,9 @@ tile \
 --tiles-version 1.0
 ```
 
-#### Add (+/-) Vertical Offset for all the features
+#### Add Vertical Offset
+
+A vertical offset might have been negative or positive. Use (-) for negative offsets.
 
 ```bash
 python3 citydb-3dtiler.py \
@@ -386,7 +406,7 @@ tile \
 --vertical-offset 3.5
 ```
 
-#### Specify a custom folder for the tileset
+#### Custom folder
 
 ```bash
 python3 citydb-3dtiler.py \

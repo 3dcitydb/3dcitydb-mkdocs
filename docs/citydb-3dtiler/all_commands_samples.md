@@ -22,7 +22,7 @@
     advise </br>
     ??? example "Advise Arguments"
         --help </br>
-        --ignore-thematic-surfaces (default: False) </br>
+        --ignore-thematic-surfaces </br>
         --output-file (default: advice.yml)
     tile
     ??? example "Tile Arguments"

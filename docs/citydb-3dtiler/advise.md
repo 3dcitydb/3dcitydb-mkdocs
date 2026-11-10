@@ -21,7 +21,7 @@ advise [-h] [--ignore-thematic-surfaces] [-o [Output File Name]]
 
 ## --ignore-thematic-surfaces
 
-This option used to ignore the thematic surfaces (all the surfaces descend from AbstractThematicSurface) in the advice.yaml file. So, that means only the volumetric objects (and some other space boundaries) will be listed and reported. Others, like WindowSurface, RoofSurface etc., will be ignored.
+This option used to ignore the thematic surfaces in the advice.yaml file. So, that means only the volumetric objects and some terrain related surfaces will be listed and reported. Others, like WindowSurface, RoofSurface etc., will be ignored. Default value is `False`.
 
 - Example : `--ignore-thematic-surfaces`
 

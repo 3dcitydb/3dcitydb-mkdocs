@@ -72,10 +72,16 @@
 - [✔] "attributes" branch created
 - [✔] Check th generate_tiles function (not seaparating multiple attributes)
 - 28.04.2026
-- [ ] Check the fetchone command and compare with fetchall. Why it returns still a tuple? Get rid off the result_oc\[0\] variables.
+- [😴] Check the "fetchone" command and compare with fetchall. Why it returns still a tuple? Get rid off the result_oc\[0\] variables.
 - 26.06.2026
-- [ ] Objectclassnames must be stored with the namespaces. After adapting the namespace aliases, the "type-name" option in the filtering arguments must support the namespaces.
+- [✔] Objectclassnames must be stored with the namespaces. After adapting the namespace aliases, the "type-name" option in the filtering arguments must support the namespaces.
 - 03.07.2026
 - [ ] the attributes referred in the CQL2 and SQL filter must be automatically recognized and added to the query. (Not necessary to expose in 3DTiles.)
 - [ ] if user specify the bbox-mode, but not specify the bbox, then a special warning must appear.
 - [ ] attributeName.pro_value usage is not explicit. Try figure out how to use it in SQL-FILTER.
+- 29.10.2026
+    - [✔] "Advisement" class's name changed as "Advice". Check the mkdocs repo for the changes.
+    - [ ] Is the "attribute_list" necessary for the "create_tileset" function? Check that with the attribute selection arguments.
+    - [ ] Check the csv-based-vertical-offsets.
+- 06.11.2026
+    - [ ] Stuck with the special characters in Japanase deataset

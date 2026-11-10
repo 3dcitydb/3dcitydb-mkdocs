@@ -37,7 +37,7 @@ citydb-3dtiler is the main command of the application. When run with the Docker 
 | [-h, --help](#usage-syntax) | shows a help message and exit the program |  |
 | [--tiler-app](main_options.md#-tiler-app) | choose one of the compatible 3D Tile Generator app | pg2b3dm |
 | [--tilers-path](main_options.md#-tilers-path) | sets the absolute/relative path of the selected 3D Tile Generator software. | tiler_app/ |
-| [--separate-tilesets](main_options.md#-separate-tilesets) | exports separate tilesets for each objectclass or namespace |  |
+| [--ignore-thematic-surfaces](main_options.md#-ignore-thematic-surfaces) | ignores the thematic surfaces that descend from AbstractThematicSurface, such as WallSurface, WindowSurface etc. | |
 | [(Database Connection Options)](db_con_options.md) | This group is expressed as a placeholder to collectively represent the options used for configuring database connections. Options are as follows: `--db-host`,`--db-port`, `--db-name`, `--db-schema`, `--db-username`, `--db-password` |  |
 | [(Filter Options)](filter_options.md) | This group is expressed as a placeholder to collectively represent the options used for filtering the existing features. Filtering options are as follows: `--limit`, `--start-index`, `--id`, `--type-name`, `--bbox`, `--bbox-mode`, `--filter` (CQL2), `--sql-filter` |  |
 
@@ -51,23 +51,25 @@ citydb-3dtiler is the main command of the application. When run with the Docker 
 |---|---|
 | [help](#usage-syntax) | The help output shows the usage syntax and available arguments. |
 | [advise](advise.md) | Test connection to the database. Available options are as follows: `--ignore-thematic-surfaces`, `--output-file` |
-| [tile](tile.md) | Show database contents and summary information. Tiling options are as follows : `--style-mode`, `--style-absence-behaviour`, `--output-folder`, `--transparency`, `--custom-style`, `--attributes`, `--selected-attributes`, `--attribute-structure`, `--attribute-structure`, `--vertical-offset` |
+| [tile](tile.md) | Show database contents and summary information. Tiling options are as follows : `--separate-tilesets`, `--style-mode`, `--style-absence-behaviour`, `--output-folder`, `--transparency`, `--custom-style`, `--attributes`, `--selected-attributes`, `--attribute-structure`, `--attribute-structure`, `--vertical-offset`, `vertical-offset-from-csv` |
 
 ## Usage Syntax
 
 The usage syntax of the main options and the subcommands `advice` and `tile` are as follows. To see this usage syntax on the command line interface (CLI), you can type `-h` or `--help` immediately after the main command (`citydb-3dtiler`) or the docker (run) command. If you want to see the options of the subcommands `advice` and `tile`, click on the relevant links in the [Commands table](#commands).
 
 ```bash
-citydb-3dtiler [-h] [--tilers-path [File Path of the 3D Tiler]] \
-    [--tiler-app {pg2b3dm,py3dtiles}] \
-    [--separate-tilesets [{objectclass,namespace}]] \
-    [-H Hostname] [-P Port Number] [-d Database Name] \
-    [-S Schema] [-u Username] [-p Password] \
-    [--limit Limit] [--start-index Start Index] [-i ID Number(s)] \
-    [-t Type Name(s) / Objectclasses] \
-    [-b Boundary Box] [--bbox-mode Boundary Box Mode] \
-    [-f CQL2 Filter] [--sql-filter SQL Filter] \
-    {advise,tile} ...
+citydb-3dtiler [-h] \
+[--tilers-path [File Path of the 3D Tiler]] \
+[--tiler-app {pg2b3dm,py3dtiles}] \
+[--ignore-thematic-surfaces | --no-ignore-thematic-surfaces] \
+[-H Hostname] [-P Port Number] [-d Database Name] [-S Schema] \
+[-u Username] [-p Password] \
+[--limit Limit] [--start-index Start Index] \
+[-i ID Number(s)] [-t Type Name(s) / Objectclasses] \
+[-b Boundary Box] [--bbox-mode Boundary Box Mode] \
+[-f CQL2 Filter] \
+[--sql-filter SQL Filter] \
+{advise,tile} ...
 ```
 
 

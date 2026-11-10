@@ -171,50 +171,6 @@ Generate 3DTiles using the default configuration by typing the following command
     ```
 
 
-
-## All available Commands, Arguments & Options
-
-??? example "citydb-3dtiler Usage"
-
-    --help </br>
-    --db-.. </br>
-    ??? example "Database Connection Arguments"
-        --db-host </br>
-        --db-port (default: 5432) </br>
-        --db-name </br>
-        --db-schema (default: citydb) </br>
-        --db-username </br>
-        --db-password </br>
-    --separate-tilesets
-    ??? info "Separate Tilesets Options"
-        None (Default) </br>
-        objectclass
-    --tiler-app (default: pg2b3dm) </br>
-    --tilers-path (default: tiler_app) </br>
-    advise </br>
-    ??? example "Advise Arguments"
-        --help </br>
-        --ignore-thematic-surfaces (default: False) </br>
-        --output-file (default: advice.yml)
-    tile
-    ??? example "Tile Arguments"
-        --help </br>
-        --custom-style (default: materials_for_features.csv) </br>
-        --style-mode
-        ??? info "Style Mode Options"
-            property-based </br>
-            objectclass-based (default) </br>
-            no-style
-        --style-absence-behavior
-        ??? info "Style Absence Behavior"
-            falldown (default) </br>
-            riseup
-        --transparency-mode
-        ??? info "Transparency Options"
-            Blend </br>
-            Opaque (default)
-        --output-folder (default: current folder in host)
-
 ## Remove the Docker Images (Optional)
 
 If you want to delete all of the downloaded Docker images, you can use the following command:

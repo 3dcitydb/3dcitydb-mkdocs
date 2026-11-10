@@ -30,12 +30,7 @@ If you want to use a specific version of pg2b3dm that you have determined, you m
 ??? Warning "Some (tile) options might not work in this scenario"
     Since the options of the pg2b3dm application may vary depending on the version, you may not be able to use every argument.
 
-### --separate-tilesets
+### --ignore-thematic-surfaces
 
-This option is used to specify the criteria for creating multiple tilesets. You can create separate tilesets by considering the objectclasses (Building, Wall, Window etc.) or namespaces (bldg, tun, brid etc.) of the features.
+This option used to ignore the thematic surfaces that descend from AbstractThematicSurface, such as WallSurface, WindowSurface etc.
 
-- Default value is "objectclass"
-
-[A Sample 3D Scene contains separate tilesets](https://tinyurl.com/schwabingolstadt2026){:target="_blank"}
-
-![Ingolstadt, 2026](images/sample_for_separeate_tilesets.png)

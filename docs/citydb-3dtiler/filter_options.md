@@ -67,7 +67,7 @@ This option can be used to specify the method of the boundary box usage as the f
 - `contains-precise` :
     - It uses both spatial indexes and geometries to query any containment case. (Slower, but more reliable results)
 
-??? warning "must always be used with `--bbox option`"
+??? warning "must always be used with `--bbox` option"
     `--bbox-mode` option must always be used together with `--bbox`.
 
 - Example : `--bbox 564822,5932935,566924,5934737,25832 --bbox-mode intersects-precise`

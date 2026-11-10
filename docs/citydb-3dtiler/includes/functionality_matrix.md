@@ -17,7 +17,7 @@ Following Diagram show the implemented and planned functionality of the citydb3d
 title citydb-3dtiler Functionality Matrix
 
 right header
-<font color=indianred size=12><b>Last Edit : 13.10.2026</b></font>
+<font color=indianred size=12><b>Last Edit : 29.10.2026</b></font>
 endheader
 
 *[#lightgray] <&terminal> citydb-3dtiler
@@ -55,19 +55,21 @@ endheader
 ***_ default: tiler_app
 ***_ any-other-directory
 
-**[#salmon] <&layers> separate-tilesets
-***_ <&star> objectclass
-***_ <font color=gray><s>namespace</s></font>
+**[#burlywood] <&cog> --ignore-thematic-surfaces
 
 **[#skyblue] <&magnifying-glass> advise
 ***[#darkseagreen] <&medical-cross> --help / -h
-***[#burlywood] <&cog> --ignore-thematic-surfaces
 ***[#burlywood] <&cog> --output-file / -o
 ****_ <&star> advice.yml
 ****_ any-other-file-name
 
 **[#skyblue] <&grid-two-up> tile
 ***[#darkseagreen] <&medical-cross> --help / -h
+
+***[#salmon] <&layers> separate-tilesets
+****_ <&star> objectclass
+****_ namespace
+
 ***[#burlywood] <&cog> --style-mode
 ****_ existing-appearances
 ****_ property-based
@@ -107,6 +109,8 @@ endheader
 ***[#application] <&elevator> --vertical-offset
 ****_ <&star> 0
 ****_ any-metric-value
+
+***[#application] <&elevator> --vertical-offset-from-csv
 
 ***[#khaki] <&beaker> --tiles-version
 ****_ <font color=gray><s>2.0</s></font>

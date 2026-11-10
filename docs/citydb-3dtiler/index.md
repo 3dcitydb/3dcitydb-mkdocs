@@ -7,14 +7,13 @@ tags:
   - features
 ---
 
-!!! warning "This application is in the testing phase"
-    This application is still in the testing phase. Please exercise caution when using it in production. Therefore, feedback is always welcome. Please feel free to create an issue on the GitHub page or contact me: murat.kendir(At)tum.de
-
-<figure style="width:100%;text-align: center;">
-  <img src="images/sample_3dtiles_leipzig.jpg" alt="Sample 3DTiles from Leipzig" style="border:3px solid #4CAE4F"/>
+<figure style="width:%100;text-align: center;">
+  <img src="images/sample_3dtiles_leipzig.jpg" alt="Sample 3DTiles from Leipzig" style="border:3px solid #4CAE4F">
   <figcaption>A 3DTiles sample represents the city objects of <a href="https://tinyurl.com/leipzig3d" target="_blank">Leipzig city</a></figcaption>
 </figure>
 
+!!! warning "This application is in the testing phase"
+    This application is still in the testing phase. Please exercise caution when using it in production. Therefore, feedback is always welcome. Please feel free to create an issue on the GitHub page or contact me: murat.kendir(At)tum.de
 
 `citydb-3dtiler` can generate 3DTiles (v 1.0 and 1.1) by reading features (formerly known as "cityobject"s) from 3DCityDB (v5.x), a database application that can import CityGML 2.0 or 3.0-based datasets. The application's key features are as follows:
 
