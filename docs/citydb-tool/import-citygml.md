@@ -21,7 +21,7 @@ citydb import citygml [OPTIONS] <file>...
 ## Options
 
 The `import citygml` command inherits global options from the main [`citydb`](cli.md) command and general import,
-metadata, and filter options from its parent [`import`](import.md) command. Additionally, it provides CityGML
+metadata, filter, and database connection options from its parent [`import`](import.md) command. Additionally, it provides CityGML
 format-specific import options.
 
 ### Global options

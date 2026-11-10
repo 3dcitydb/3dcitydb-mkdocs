@@ -20,7 +20,7 @@ citydb export [OPTIONS] COMMAND
 ## Options
 
 The `export` command inherits global options from the main [`citydb`](cli.md) command. Additionally, it defines general
-export, query and filter, and tiling options, which apply to all of its [subcommands](#commands).
+export, query and filter, time-based feature history, tiling, and database connection options, which apply to all of its [subcommands](#commands).
 
 ### Global options
 
@@ -43,6 +43,12 @@ For more details on the global options and usage hints, see [here](cli.md#option
 ### Tiling options
 
 --8<-- "docs/citydb-tool/includes/export-tiling-options.md"
+
+### Database connection options
+
+--8<-- "docs/citydb-tool/includes/db-options.md"
+
+For more details on the database connection options and usage hints, see [here](database.md#using-command-line-options).
 
 ## Commands
 

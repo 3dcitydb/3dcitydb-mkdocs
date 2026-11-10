@@ -22,7 +22,7 @@ citydb export cityjson [OPTIONS]
 ## Options
 
 The `export cityjson` command inherits global options from the main [`citydb`](cli.md) command and general export, query
-and filter, and tiling options from its parent [`export`](export.md) command. Additionally, it provides CityJSON
+and filter, time-based feature history, tiling, and database connection options from its parent [`export`](export.md) command. Additionally, it provides CityJSON
 format-specific export options.
 
 ### Global options

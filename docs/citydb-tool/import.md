@@ -20,7 +20,7 @@ citydb import [OPTIONS] COMMAND
 ## Options
 
 The `import` command inherits global options from the main [`citydb`](cli.md) command. Additionally, it defines general
-import, metadata, and filter options, which apply to all of its [subcommands](#commands).
+import, metadata, filter, and database connection options, which apply to all of its [subcommands](#commands).
 
 ### Global options
 
@@ -39,6 +39,12 @@ For more details on the global options and usage hints, see [here](cli.md#option
 ### Filter options
 
 --8<-- "docs/citydb-tool/includes/import-filter-options.md"
+
+### Database connection options
+
+--8<-- "docs/citydb-tool/includes/db-options.md"
+
+For more details on the database connection options and usage hints, see [here](database.md#using-command-line-options).
 
 ## Commands
 

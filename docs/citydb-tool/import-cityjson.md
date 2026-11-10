@@ -20,7 +20,7 @@ citydb import cityjson [OPTIONS] <file>...
 ## Options
 
 The `import cityjson` command inherits global options from the main [`citydb`](cli.md) command and general import,
-metadata, and filter options from its parent [`import`](import.md) command. Additionally, it provides CityJSON
+metadata, filter, and database connection options from its parent [`import`](import.md) command. Additionally, it provides CityJSON
 format-specific import options.
 
 ### Global options

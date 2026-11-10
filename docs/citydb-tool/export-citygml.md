@@ -20,7 +20,7 @@ citydb export citygml [OPTIONS]
 ## Options
 
 The `export citygml` command inherits global options from the main [`citydb`](cli.md) command and general export, query
-and filter, and tiling options from its parent [`export`](export.md) command. Additionally, it provides CityGML
+and filter, time-based feature history, tiling, and database connection options from its parent [`export`](export.md) command. Additionally, it provides CityGML
 format-specific export options.
 
 ### Global options
