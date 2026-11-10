@@ -1765,10 +1765,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#filtering-appearances" class="md-nav__link">
+  <a href="#mapping-cityjson-lods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Filtering appearances
+        Mapping CityJSON LoDs
       
     </span>
   </a>
@@ -1776,10 +1776,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mapping-cityjson-lods" class="md-nav__link">
+  <a href="#filtering-lods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mapping CityJSON LoDs
+        Filtering LoDs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-appearances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filtering appearances
       
     </span>
   </a>
@@ -2709,10 +2720,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#filtering-appearances" class="md-nav__link">
+  <a href="#mapping-cityjson-lods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Filtering appearances
+        Mapping CityJSON LoDs
       
     </span>
   </a>
@@ -2720,10 +2731,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mapping-cityjson-lods" class="md-nav__link">
+  <a href="#filtering-lods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mapping CityJSON LoDs
+        Filtering LoDs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-appearances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filtering appearances
       
     </span>
   </a>
@@ -3001,6 +3023,16 @@ format-specific import options.</p>
 <td></td>
 </tr>
 <tr>
+<td><code>-l</code>, <code>--lod=&lt;lod&gt;[,&lt;lod&gt;...]</code></td>
+<td>Process geometries with a matching <abbr title="Level of Detail">LoD</abbr>.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--lod-mode=&lt;mode&gt;</code></td>
+<td><abbr title="Level of Detail">LoD</abbr> filter mode: <code>keep</code>, <code>remove</code>, <code>minimum</code>, <code>maximum</code>.</td>
+<td><code>keep</code></td>
+</tr>
+<tr>
 <td><code>--no-appearances</code></td>
 <td>Do not process appearances.</td>
 <td></td>
@@ -3199,12 +3231,6 @@ command. In the context of <abbr title="OGC CityJSON">CityJSON</abbr> input file
 <p>Filters are applied to the 1st-level city objects in the input file. Matching city objects are imported, including all
 their 2nd-level city objects. Filtering 2nd-level city objects is not supported.</p>
 </div>
-<h3 id="filtering-appearances">Filtering appearances<a class="headerlink" href="#filtering-appearances" title="Link to this headline for referencing">¶</a></h3>
-<p>By default, the <code>import cityjson</code> command imports all appearance information from the input files. The
-<code>--appearance-theme</code> option restricts the import of appearances based on their <code>"theme"</code> property. You can specify one
-or more themes as a comma-separated list. To filter appearances that have no theme property, use <code>none</code> as the value.</p>
-<p>Only appearances associated with the specified themes will be imported. To exclude all appearances from the import, use
-the <code>--no-appearances</code> option.</p>
 <h3 id="mapping-cityjson-lods">Mapping <abbr title="OGC CityJSON">CityJSON</abbr> LoDs<a class="headerlink" href="#mapping-cityjson-lods" title="Link to this headline for referencing">¶</a></h3>
 <p><abbr title="OGC CityJSON">CityJSON</abbr> supports refined LoDs such as <code>2.0</code>, <code>2.1</code>, and <code>2.2</code>, which all correspond to the <abbr title="OGC City Geography Markup Language">CityGML</abbr> <abbr title="Level of Detail">LoD</abbr> <code>2</code>. If a city
 object has geometry in several refined LoDs of the same <abbr title="OGC City Geography Markup Language">CityGML</abbr> <abbr title="Level of Detail">LoD</abbr>, only one of them is imported. With the default
@@ -3226,6 +3252,64 @@ the mapping strategy is used for this city object instead.</p>
 </div>
 </div>
 </div>
+<h3 id="filtering-lods">Filtering LoDs<a class="headerlink" href="#filtering-lods" title="Link to this headline for referencing">¶</a></h3>
+<p>By default, the <code>import cityjson</code> command imports geometries in all LoDs. The <code>--lod</code> option restricts the import to
+geometries in one or more LoDs given as a comma-separated list of values between <code>0</code> and <code>4</code>. The LoDs refer to the
+<abbr title="OGC City Geography Markup Language">CityGML</abbr> <abbr title="Level of Detail">LoD</abbr> after <a href="#mapping-cityjson-lods">mapping the <abbr title="OGC CityJSON">CityJSON</abbr> LoDs</a>, so <code>--lod=2</code> matches the <abbr title="OGC CityJSON">CityJSON</abbr> <abbr title="Level of Detail">LoD</abbr> that was
+selected for the <abbr title="OGC City Geography Markup Language">CityGML</abbr> <abbr title="Level of Detail">LoD</abbr> <code>2</code>. The <code>--lod-mode</code> option defines how the LoDs are applied:</p>
+<table>
+<thead>
+<tr>
+<th><abbr title="Level of Detail">LoD</abbr> mode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>keep</code> (default)</td>
+<td>Only geometries in the given LoDs are imported.</td>
+</tr>
+<tr>
+<td><code>remove</code></td>
+<td>Geometries in the given LoDs are not imported, all other geometries are imported.</td>
+</tr>
+<tr>
+<td><code>minimum</code></td>
+<td>Only geometries in the lowest of the given LoDs available for a 1st-level city object and its 2nd-level city objects are imported.</td>
+</tr>
+<tr>
+<td><code>maximum</code></td>
+<td>Only geometries in the highest of the given LoDs available for a 1st-level city object and its 2nd-level city objects are imported.</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>--lod</code> option is required for the <code>keep</code> and <code>remove</code> modes. For <code>minimum</code> and <code>maximum</code>, it can be omitted to consider
+all LoDs.</p>
+<p>Appearances of geometries that are not imported are removed. City objects that have geometries only in LoDs that are
+not imported are skipped, while city objects without any <abbr title="Level of Detail">LoD</abbr> geometry are not affected. Existing bounding boxes of the
+imported city objects are updated to the remaining geometries.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Linux</label><label for="__tabbed_2_2">Windows CMD</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>./citydb<span class="w"> </span>import<span class="w"> </span>cityjson<span class="w"> </span><span class="o">[</span>...<span class="o">]</span><span class="w"> </span>my-city.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>--lod<span class="o">=</span><span class="m">2</span>,3<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span>--lod-mode<span class="o">=</span>maximum
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bat highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>citydb import cityjson [...] my-city.json <span class="se">^</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="se"> </span>   --lod=2,3 <span class="se">^</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="se"> </span>   --lod-mode=maximum
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="filtering-appearances">Filtering appearances<a class="headerlink" href="#filtering-appearances" title="Link to this headline for referencing">¶</a></h3>
+<p>By default, the <code>import cityjson</code> command imports all appearance information from the input files. The
+<code>--appearance-theme</code> option restricts the import of appearances based on their <code>"theme"</code> property. You can specify one
+or more themes as a comma-separated list. To filter appearances that have no theme property, use <code>none</code> as the value.</p>
+<p>Only appearances associated with the specified themes will be imported. To exclude all appearances from the import, use
+the <code>--no-appearances</code> option.</p>
 <h3 id="handling-unknown-extensions">Handling unknown extensions<a class="headerlink" href="#handling-unknown-extensions" title="Link to this headline for referencing">¶</a></h3>
 <p><abbr title="OGC CityJSON">CityJSON</abbr> provides a flexible extension mechanism similar to <abbr title="OGC City Geography Markup Language">CityGML</abbr> Application Domain Extensions (ADE). This mechanism
 allows the addition of new feature attributes and feature types not covered by the <abbr title="OGC CityJSON">CityJSON</abbr> specification. If a dataset
