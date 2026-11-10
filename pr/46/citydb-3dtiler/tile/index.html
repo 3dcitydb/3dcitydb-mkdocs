@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/img/logos/3dcitydb-logo-transparent.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -113,7 +113,7 @@
             
   
   <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/46" style="font-weight: 600;">
-    🔍 Preview of pull request #46 (commit f258978) — not the official documentation.
+    🔍 Preview of pull request #46 (commit c00ed45) — not the official documentation.
   </a>
   
 
@@ -2449,6 +2449,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#-separate-tilesets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        --separate-tilesets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#-style-mode" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2552,6 +2563,17 @@
     <span class="md-ellipsis">
       
         --vertical-offset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-vertical-offset-from-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        --vertical-offset-from-csv
       
     </span>
   </a>
@@ -3041,6 +3063,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#-separate-tilesets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        --separate-tilesets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#-style-mode" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3150,6 +3183,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#-vertical-offset-from-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        --vertical-offset-from-csv
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3217,6 +3261,13 @@
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="o">[</span>--tiles-version<span class="w"> </span><span class="o">{</span><span class="m">1</span>.0,1.1<span class="o">}]</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="o">[</span>--vertical-offset<span class="w"> </span><span class="o">[</span>VERTICAL_OFFSET<span class="o">]]</span>
 </span></code></pre></div>
+<h2 id="-separate-tilesets">--separate-tilesets<a class="headerlink" href="#-separate-tilesets" title="Link to this headline for referencing">¶</a></h2>
+<p>This option is used to specify the criteria for creating multiple tilesets. You can create separate tilesets by considering the objectclasses (Building, Wall, Window etc.) or namespaces (bldg, tun, brid etc.) of the features.</p>
+<ul>
+<li>Example : <code>--separate-tilesets objectclass</code></li>
+</ul>
+<p><a href="https://tinyurl.com/schwabingolstadt2026" target="_blank">A Sample 3D Scene contains separate tilesets</a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/sample_for_separeate_tilesets.png" data-desc-position="bottom"><img alt="Ingolstadt, 2026" src="../images/sample_for_separeate_tilesets.png"></a></p>
 <h2 id="-style-mode">--style-mode<a class="headerlink" href="#-style-mode" title="Link to this headline for referencing">¶</a></h2>
 <p>Style mode is used to assign material styles to features. Customizing PBR materials using the given CSV file is not the only option. There are four different style modes, and there is a mechanism (called <code>style-absence-behaviour</code>) that switches to another mode in case a style mode cannot be applied to a feature. The four style modes are like below:</p>
 <ul>
@@ -3334,6 +3385,15 @@
 <ul>
 <li>Example : <code>--vertical-offset 0.15</code> | <code>--vertical-offset -0.55</code></li>
 </ul>
+<h2 id="-vertical-offset-from-csv">--vertical-offset-from-csv<a class="headerlink" href="#-vertical-offset-from-csv" title="Link to this headline for referencing">¶</a></h2>
+<p>Assign the vertical offsets using the CSV file. Use the dot as the decimal separator.</p>
+<details class="tip">
+<summary>Default vertical offsets for TrafficArea, AuxiliaryTrafficArea and Markings</summary>
+<p>There is a predefined +10 cm vertical offset for the TrafficArea and AuxiliaryTrafficArea objects, and a +15 cm vertical offset is also defined for the Marking objects. It is recommended to preserve these values so that the markings remain visible on top of the road objects, and the area objects on top of the other ground surfaces.</p>
+</details>
+<ul>
+<li>Example : <code>--vertical-offset-from-csv</code></li>
+</ul>
 
 
 
@@ -3443,7 +3503,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.tracking", "toc.follow", "content.code.select", "content.code.copy", "content.code.annotate", "content.tooltips", "search.suggest", "search.highlight", "search.share", "header.autohide", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="../../assets/javascripts/tablesort.js"></script>
       

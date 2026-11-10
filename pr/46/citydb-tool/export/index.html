@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/img/logos/3dcitydb-logo-transparent.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -113,7 +113,7 @@
             
   
   <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/46" style="font-weight: 600;">
-    🔍 Preview of pull request #46 (commit f258978) — not the official documentation.
+    🔍 Preview of pull request #46 (commit c00ed45) — not the official documentation.
   </a>
   
 
@@ -1871,6 +1871,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#database-connection-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database connection options
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3176,6 +3187,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#database-connection-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database connection options
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3381,7 +3403,7 @@
 </span></code></pre></div>
 <h2 id="options">Options<a class="headerlink" href="#options" title="Link to this headline for referencing">¶</a></h2>
 <p>The <code>export</code> command inherits global options from the main <a href="../cli/"><code>citydb</code></a> command. Additionally, it defines general
-export, query and filter, and tiling options, which apply to all of its <a href="#commands">subcommands</a>.</p>
+export, query and filter, time-based feature history, tiling, and database connection options, which apply to all of its <a href="#commands">subcommands</a>.</p>
 <h3 id="global-options">Global options<a class="headerlink" href="#global-options" title="Link to this headline for referencing">¶</a></h3>
 <table>
 <thead>
@@ -3633,6 +3655,54 @@ export, query and filter, and tiling options, which apply to all of its <a href=
 </tr>
 </tbody>
 </table>
+<h3 id="database-connection-options">Database connection options<a class="headerlink" href="#database-connection-options" title="Link to this headline for referencing">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-H</code>, <code>--db-host=&lt;host&gt;</code></td>
+<td>Name of the host on which the 3DCityDB is running.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-P</code>, <code>--db-port=&lt;port&gt;</code></td>
+<td>Port of the 3DCityDB server.</td>
+<td>5432</td>
+</tr>
+<tr>
+<td><code>-d</code>, <code>--db-name=&lt;database&gt;</code></td>
+<td>Name of the 3DCityDB database to connect to.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-S</code>, <code>--db-schema=&lt;schema&gt;</code></td>
+<td>Schema to use when connecting to the 3DCityDB.</td>
+<td><code>citydb</code> or username</td>
+</tr>
+<tr>
+<td><code>-u</code>, <code>--db-username=&lt;user&gt;</code></td>
+<td>Username to use when connecting to the 3DCityDB.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-p</code>, <code>--db-password<br>[=&lt;password&gt;]</code></td>
+<td>Password to use when connecting to the 3DCityDB. Leave empty to be prompted.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--db-property=&lt;property=value&gt;<br>[,&lt;property=value&gt;...]</code></td>
+<td>Database-specific connection properties.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>For more details on the database connection options and usage hints, see <a href="../database/#using-command-line-options">here</a>.</p>
 <h2 id="commands">Commands<a class="headerlink" href="#commands" title="Link to this headline for referencing">¶</a></h2>
 <table>
 <thead>
@@ -3897,7 +3967,10 @@ exported.</p>
 <ul>
 <li>Exporting historical versions requires that these versions remain in the database.</li>
 <li><strong>Database time is managed automatically:</strong> The <code>creation_date</code> is set during import, while the <code>termination_date</code> is
-  assigned when terminating features using the <a href="../delete/"><code>delete</code></a> command.</li>
+  assigned when terminating features using the <a href="../delete/"><code>delete</code></a> command or taken from the input file.</li>
+<li>The creation and termination dates of contained features are written only if they differ from their parent's dates.
+  When imported again, contained features without these dates inherit them from their parent. In <abbr title="OGC CityJSON">CityJSON</abbr>, thematic
+  surfaces such as walls and roofs are stored as semantic surfaces without attributes, so their own dates are not written.</li>
 <li>Validity checks are strict by default. Use <code>--lenient-validity</code> to treat time intervals as valid, even if their start
   point is undefined.</li>
 </ul>
@@ -4222,7 +4295,7 @@ requires a separate database connection, so ensure your database can handle the 
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.tracking", "toc.follow", "content.code.select", "content.code.copy", "content.code.annotate", "content.tooltips", "search.suggest", "search.highlight", "search.share", "header.autohide", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="../../assets/javascripts/tablesort.js"></script>
       

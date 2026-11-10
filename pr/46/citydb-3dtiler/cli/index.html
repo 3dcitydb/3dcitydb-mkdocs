@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/img/logos/3dcitydb-logo-transparent.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -113,7 +113,7 @@
             
   
   <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/46" style="font-weight: 600;">
-    🔍 Preview of pull request #46 (commit f258978) — not the official documentation.
+    🔍 Preview of pull request #46 (commit c00ed45) — not the official documentation.
   </a>
   
 
@@ -3092,8 +3092,8 @@
 <td>tiler_app/</td>
 </tr>
 <tr>
-<td><a href="../main_options/#-separate-tilesets">--separate-tilesets</a></td>
-<td>exports separate tilesets for each objectclass or namespace</td>
+<td><a href="../main_options/#-ignore-thematic-surfaces">--ignore-thematic-surfaces</a></td>
+<td>ignores the thematic surfaces that descend from AbstractThematicSurface, such as WallSurface, WindowSurface etc.</td>
 <td></td>
 </tr>
 <tr>
@@ -3131,22 +3131,24 @@
 </tr>
 <tr>
 <td><a href="../tile/">tile</a></td>
-<td>Show database contents and summary information. Tiling options are as follows : <code>--style-mode</code>, <code>--style-absence-behaviour</code>, <code>--output-folder</code>, <code>--transparency</code>, <code>--custom-style</code>, <code>--attributes</code>, <code>--selected-attributes</code>, <code>--attribute-structure</code>, <code>--attribute-structure</code>, <code>--vertical-offset</code></td>
+<td>Show database contents and summary information. Tiling options are as follows : <code>--separate-tilesets</code>, <code>--style-mode</code>, <code>--style-absence-behaviour</code>, <code>--output-folder</code>, <code>--transparency</code>, <code>--custom-style</code>, <code>--attributes</code>, <code>--selected-attributes</code>, <code>--attribute-structure</code>, <code>--attribute-structure</code>, <code>--vertical-offset</code>, <code>vertical-offset-from-csv</code></td>
 </tr>
 </tbody>
 </table>
 <h2 id="usage-syntax">Usage Syntax<a class="headerlink" href="#usage-syntax" title="Link to this headline for referencing">¶</a></h2>
 <p>The usage syntax of the main options and the subcommands <code>advice</code> and <code>tile</code> are as follows. To see this usage syntax on the command line interface (<abbr title="Command Line Interface">CLI</abbr>), you can type <code>-h</code> or <code>--help</code> immediately after the main command (<code>citydb-3dtiler</code>) or the docker (run) command. If you want to see the options of the subcommands <code>advice</code> and <code>tile</code>, click on the relevant links in the <a href="#commands">Commands table</a>.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>citydb-3dtiler<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--tilers-path<span class="w"> </span><span class="o">[</span>File<span class="w"> </span>Path<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>3D<span class="w"> </span>Tiler<span class="o">]]</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="o">[</span>--tiler-app<span class="w"> </span><span class="o">{</span>pg2b3dm,py3dtiles<span class="o">}]</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="o">[</span>--separate-tilesets<span class="w"> </span><span class="o">[{</span>objectclass,namespace<span class="o">}]]</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="o">[</span>-H<span class="w"> </span>Hostname<span class="o">]</span><span class="w"> </span><span class="o">[</span>-P<span class="w"> </span>Port<span class="w"> </span>Number<span class="o">]</span><span class="w"> </span><span class="o">[</span>-d<span class="w"> </span>Database<span class="w"> </span>Name<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="o">[</span>-S<span class="w"> </span>Schema<span class="o">]</span><span class="w"> </span><span class="o">[</span>-u<span class="w"> </span>Username<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>Password<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="o">[</span>--limit<span class="w"> </span>Limit<span class="o">]</span><span class="w"> </span><span class="o">[</span>--start-index<span class="w"> </span>Start<span class="w"> </span>Index<span class="o">]</span><span class="w"> </span><span class="o">[</span>-i<span class="w"> </span>ID<span class="w"> </span>Number<span class="o">(</span>s<span class="o">)]</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="o">[</span>-t<span class="w"> </span>Type<span class="w"> </span>Name<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>Objectclasses<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="o">[</span>-b<span class="w"> </span>Boundary<span class="w"> </span>Box<span class="o">]</span><span class="w"> </span><span class="o">[</span>--bbox-mode<span class="w"> </span>Boundary<span class="w"> </span>Box<span class="w"> </span>Mode<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="o">[</span>-f<span class="w"> </span>CQL2<span class="w"> </span>Filter<span class="o">]</span><span class="w"> </span><span class="o">[</span>--sql-filter<span class="w"> </span>SQL<span class="w"> </span>Filter<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="o">{</span>advise,tile<span class="o">}</span><span class="w"> </span>...
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>citydb-3dtiler<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="o">[</span>--tilers-path<span class="w"> </span><span class="o">[</span>File<span class="w"> </span>Path<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>3D<span class="w"> </span>Tiler<span class="o">]]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="o">[</span>--tiler-app<span class="w"> </span><span class="o">{</span>pg2b3dm,py3dtiles<span class="o">}]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="o">[</span>--ignore-thematic-surfaces<span class="w"> </span><span class="p">|</span><span class="w"> </span>--no-ignore-thematic-surfaces<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="o">[</span>-H<span class="w"> </span>Hostname<span class="o">]</span><span class="w"> </span><span class="o">[</span>-P<span class="w"> </span>Port<span class="w"> </span>Number<span class="o">]</span><span class="w"> </span><span class="o">[</span>-d<span class="w"> </span>Database<span class="w"> </span>Name<span class="o">]</span><span class="w"> </span><span class="o">[</span>-S<span class="w"> </span>Schema<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="o">[</span>-u<span class="w"> </span>Username<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>Password<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="o">[</span>--limit<span class="w"> </span>Limit<span class="o">]</span><span class="w"> </span><span class="o">[</span>--start-index<span class="w"> </span>Start<span class="w"> </span>Index<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="o">[</span>-i<span class="w"> </span>ID<span class="w"> </span>Number<span class="o">(</span>s<span class="o">)]</span><span class="w"> </span><span class="o">[</span>-t<span class="w"> </span>Type<span class="w"> </span>Name<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>Objectclasses<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="o">[</span>-b<span class="w"> </span>Boundary<span class="w"> </span>Box<span class="o">]</span><span class="w"> </span><span class="o">[</span>--bbox-mode<span class="w"> </span>Boundary<span class="w"> </span>Box<span class="w"> </span>Mode<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="o">[</span>-f<span class="w"> </span>CQL2<span class="w"> </span>Filter<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="o">[</span>--sql-filter<span class="w"> </span>SQL<span class="w"> </span>Filter<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="o">{</span>advise,tile<span class="o">}</span><span class="w"> </span>...
 </span></code></pre></div>
 <p>Some sample commands given in the code blocks below.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">within the Docker container</label><label for="__tabbed_2_2">in the Python Env.</label></div>
@@ -3292,7 +3294,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.tracking", "toc.follow", "content.code.select", "content.code.copy", "content.code.annotate", "content.tooltips", "search.suggest", "search.highlight", "search.share", "header.autohide", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="../../assets/javascripts/tablesort.js"></script>
       

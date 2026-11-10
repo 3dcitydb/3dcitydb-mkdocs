@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/img/logos/3dcitydb-logo-transparent.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -113,7 +113,7 @@
             
   
   <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/46" style="font-weight: 600;">
-    🔍 Preview of pull request #46 (commit f258978) — not the official documentation.
+    🔍 Preview of pull request #46 (commit c00ed45) — not the official documentation.
   </a>
   
 
@@ -1822,6 +1822,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#filtering-lods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filtering LoDs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#filtering-appearances" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3249,6 +3260,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#filtering-lods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filtering LoDs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#filtering-appearances" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3388,7 +3410,7 @@ into the 3DCityDB <code>v5</code>.</p>
 </span></code></pre></div>
 <h2 id="options">Options<a class="headerlink" href="#options" title="Link to this headline for referencing">¶</a></h2>
 <p>The <code>import citygml</code> command inherits global options from the main <a href="../cli/"><code>citydb</code></a> command and general import,
-metadata, and filter options from its parent <a href="../import/"><code>import</code></a> command. Additionally, it provides <abbr title="OGC City Geography Markup Language">CityGML</abbr>
+metadata, filter, and database connection options from its parent <a href="../import/"><code>import</code></a> command. Additionally, it provides <abbr title="OGC City Geography Markup Language">CityGML</abbr>
 format-specific import options.</p>
 <h3 id="global-options">Global options<a class="headerlink" href="#global-options" title="Link to this headline for referencing">¶</a></h3>
 <table>
@@ -3537,6 +3559,16 @@ format-specific import options.</p>
 <td></td>
 </tr>
 <tr>
+<td><code>-l</code>, <code>--lod=&lt;lod&gt;[,&lt;lod&gt;...]</code></td>
+<td>Process geometries with a matching <abbr title="Level of Detail">LoD</abbr>.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--lod-mode=&lt;mode&gt;</code></td>
+<td><abbr title="Level of Detail">LoD</abbr> filter mode: <code>keep</code>, <code>remove</code>, <code>minimum</code>, <code>maximum</code>.</td>
+<td><code>keep</code></td>
+</tr>
+<tr>
 <td><code>--no-appearances</code></td>
 <td>Do not process appearances.</td>
 <td></td>
@@ -3561,7 +3593,7 @@ format-specific import options.</p>
 <tr>
 <td><code>--creation-date=&lt;time&gt;</code></td>
 <td>Time in <code>&lt;YYYY-MM-DD&gt;</code> or <code>&lt;YYYY-MM-DDThh:mm:ss[(+|-)hh:mm]&gt;</code> format or <code>now</code> to use as creation date.</td>
-<td>attribute value or <code>now</code></td>
+<td>attribute value, parent value or <code>now</code></td>
 </tr>
 <tr>
 <td><code>--lineage=&lt;lineage&gt;</code></td>
@@ -3778,6 +3810,62 @@ command. In the context of <abbr title="OGC City Geography Markup Language">City
 <p>Filters are applied to the top-level <code>&lt;cityObjectMember&gt;</code> elements in the input file. Matching features
 are imported, including all their subfeatures. Filtering subfeatures is not supported.</p>
 </div>
+<h3 id="filtering-lods">Filtering LoDs<a class="headerlink" href="#filtering-lods" title="Link to this headline for referencing">¶</a></h3>
+<p>By default, the <code>import citygml</code> command imports geometries in all LoDs. The <code>--lod</code> option restricts the import to
+geometries in one or more LoDs given as a comma-separated list of values between <code>0</code> and <code>4</code>. The <code>--lod-mode</code> option
+defines how geometries are filtered by these LoDs:</p>
+<table>
+<thead>
+<tr>
+<th><abbr title="Level of Detail">LoD</abbr> mode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>keep</code> (default)</td>
+<td>Only geometries in the given LoDs are imported.</td>
+</tr>
+<tr>
+<td><code>remove</code></td>
+<td>Geometries in the given LoDs are not imported, all other geometries are imported.</td>
+</tr>
+<tr>
+<td><code>minimum</code></td>
+<td>Only geometries in the lowest of the given LoDs available for a top-level feature and its subfeatures are imported.</td>
+</tr>
+<tr>
+<td><code>maximum</code></td>
+<td>Only geometries in the highest of the given LoDs available for a top-level feature and its subfeatures are imported.</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>--lod</code> option is required for the <code>keep</code> and <code>remove</code> modes. For <code>minimum</code> and <code>maximum</code>, it can be omitted to consider
+all LoDs.</p>
+<p>Appearances of geometries that are not imported are removed. Features and subfeatures that have geometries only in
+LoDs that are not imported are skipped, while features without any <abbr title="Level of Detail">LoD</abbr> geometry are not affected. Existing bounding
+boxes of the imported features are updated to the remaining geometries.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Linux</label><label for="__tabbed_1_2">Windows CMD</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>./citydb<span class="w"> </span>import<span class="w"> </span>citygml<span class="w"> </span><span class="o">[</span>...<span class="o">]</span><span class="w"> </span>my-city.gml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span>--lod<span class="o">=</span><span class="m">2</span>,3<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span>--lod-mode<span class="o">=</span>maximum
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bat highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>citydb import citygml [...] my-city.gml <span class="se">^</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="se"> </span>   --lod=2,3 <span class="se">^</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="se"> </span>   --lod-mode=maximum
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <abbr title="Level of Detail">LoD</abbr> filter is applied after the <a href="#upgrading-citygml-20-and-10">upgrade options</a>. When using
+<code>--use-lod4-as-lod3</code>, LoD4 geometries are therefore filtered as LoD3.</p>
+</div>
 <h3 id="filtering-appearances">Filtering appearances<a class="headerlink" href="#filtering-appearances" title="Link to this headline for referencing">¶</a></h3>
 <p>By default, the <code>import citygml</code> command imports all appearance information from the input files. The
 <code>--appearance-theme</code> option restricts the import of appearances based on their <code>&lt;theme&gt;</code> property. You can specify one
@@ -3792,16 +3880,16 @@ or removing and replacing entire GML/XML structures.</p>
 be referenced by its filename and path, which can be either absolute or relative to the current directory. Multiple XSLT
 stylesheets can be listed, separated by commas, to facilitate a multi-step transformation process. In this case, the
 stylesheets are executed in the specified order, with the output of one stylesheet serving as the input for the next.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Linux</label><label for="__tabbed_1_2">Windows CMD</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Linux</label><label for="__tabbed_2_2">Windows CMD</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>./citydb<span class="w"> </span>import<span class="w"> </span>citygml<span class="w"> </span><span class="o">[</span>...<span class="o">]</span><span class="w"> </span>my-city.gml<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span>--xsl-transform<span class="o">=</span>my-first-stylesheet.xsl,my-second-stylesheet.xsl
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>./citydb<span class="w"> </span>import<span class="w"> </span>citygml<span class="w"> </span><span class="o">[</span>...<span class="o">]</span><span class="w"> </span>my-city.gml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>--xsl-transform<span class="o">=</span>my-first-stylesheet.xsl,my-second-stylesheet.xsl
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-bat highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>citydb import citygml [...] my-city.gml <span class="se">^</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="se"> </span>   --xsl-transform=my-first-stylesheet.xsl,my-second-stylesheet.xsl
+<div class="language-bat highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>citydb import citygml [...] my-city.gml <span class="se">^</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="se"> </span>   --xsl-transform=my-first-stylesheet.xsl,my-second-stylesheet.xsl
 </span></code></pre></div>
 </div>
 </div>
@@ -3931,7 +4019,7 @@ For more details, see <a href="../../3dcitydb/feature-module/#address-table">her
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.tracking", "toc.follow", "content.code.select", "content.code.copy", "content.code.annotate", "content.tooltips", "search.suggest", "search.highlight", "search.share", "header.autohide", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="../../assets/javascripts/tablesort.js"></script>
       

@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/img/logos/3dcitydb-logo-transparent.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -113,7 +113,7 @@
             
   
   <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/46" style="font-weight: 600;">
-    🔍 Preview of pull request #46 (commit f258978) — not the official documentation.
+    🔍 Preview of pull request #46 (commit c00ed45) — not the official documentation.
   </a>
   
 
@@ -2550,10 +2550,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#take-an-advice-for-the-existing-dataset-to-generate-a-single-tileset" class="md-nav__link">
+  <a href="#take-an-advice-for-the-existing-dataset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Take an advice for the existing dataset to generate a single tileset
+        Take an advice for the existing dataset
       
     </span>
   </a>
@@ -2561,10 +2561,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#take-an-advice-for-the-existing-dataset-to-generate-separate-tilesets" class="md-nav__link">
+  <a href="#take-an-advice-by-excluding-the-thematic-surfaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Take an advice for the existing dataset to generate separate tilesets
+        Take an advice by excluding the thematic surfaces
       
     </span>
   </a>
@@ -3154,10 +3154,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#take-an-advice-for-the-existing-dataset-to-generate-a-single-tileset" class="md-nav__link">
+  <a href="#take-an-advice-for-the-existing-dataset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Take an advice for the existing dataset to generate a single tileset
+        Take an advice for the existing dataset
       
     </span>
   </a>
@@ -3165,10 +3165,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#take-an-advice-for-the-existing-dataset-to-generate-separate-tilesets" class="md-nav__link">
+  <a href="#take-an-advice-by-excluding-the-thematic-surfaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Take an advice for the existing dataset to generate separate tilesets
+        Take an advice by excluding the thematic surfaces
       
     </span>
   </a>
@@ -3338,7 +3338,8 @@
 </div>
 <h2 id="filtering-samples">Filtering Samples<a class="headerlink" href="#filtering-samples" title="Link to this headline for referencing">¶</a></h2>
 <h3 id="general-filters">General Filters<a class="headerlink" href="#general-filters" title="Link to this headline for referencing">¶</a></h3>
-<h4 id="filter-by-ids-citydbfeatureobjectid">Filter by IDs (citydb.feature.objectid)<a class="headerlink" href="#filter-by-ids-citydbfeatureobjectid" title="Link to this headline for referencing">¶</a></h4>
+<h4 id="filter-by-ids">Filter by IDs<a class="headerlink" href="#filter-by-ids" title="Link to this headline for referencing">¶</a></h4>
+<p>Relevant table on the database : <code>citydb.feature.objectid</code></p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>--db-host<span class="w"> </span><span class="m">10</span>.162.246.195<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
@@ -3347,7 +3348,9 @@
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>--id<span class="w"> </span>_20210907161723_295,_20210907161723_1,_20210907161723_220<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>tile
 </span></code></pre></div>
-<h4 id="filter-by-type-name-citydbobjectclass-citydbfeatureobjectclass_id">Filter by type-name (citydb.objectclass &amp; citydb.feature.objectclass_id)<a class="headerlink" href="#filter-by-type-name-citydbobjectclass-citydbfeatureobjectclass_id" title="Link to this headline for referencing">¶</a></h4>
+<h4 id="filter-by-type-name">Filter by type-name<a class="headerlink" href="#filter-by-type-name" title="Link to this headline for referencing">¶</a></h4>
+<p><code>--type-name</code> is the same concept known as <code>objectclass</code> in 3DCityDB.</p>
+<p>Relevant table on the database : <code>citydb.objectclass</code> &amp; <code>citydb.feature.objectclass_id</code></p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>--db-host<span class="w"> </span><span class="m">10</span>.162.246.195<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
@@ -3365,7 +3368,8 @@
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>--limit<span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>tile
 </span></code></pre></div>
-<h4 id="specify-the-start-index-offset">Specify the start-index (Offset)<a class="headerlink" href="#specify-the-start-index-offset" title="Link to this headline for referencing">¶</a></h4>
+<h4 id="specify-the-start-index">Specify the start-index<a class="headerlink" href="#specify-the-start-index" title="Link to this headline for referencing">¶</a></h4>
+<p><code>--start-index</code> is the same command as <code>Offset</code> in SQL statements.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>--db-host<span class="w"> </span><span class="m">10</span>.162.246.195<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
@@ -3374,7 +3378,10 @@
 </span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>--start-index<span class="w"> </span><span class="m">200000</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>tile
 </span></code></pre></div>
-<h4 id="use-the-limitation-and-start-index-within-the-same-command">Use the Limitation and start-index within the same command<a class="headerlink" href="#use-the-limitation-and-start-index-within-the-same-command" title="Link to this headline for referencing">¶</a></h4>
+<h4 id="other-samples">Other Samples<a class="headerlink" href="#other-samples" title="Link to this headline for referencing">¶</a></h4>
+<details class="info">
+<summary>Other samples about filtering options</summary>
+<p>Use the Limitation and start-index within the same command</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>--db-host<span class="w"> </span><span class="m">10</span>.162.246.195<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
@@ -3384,17 +3391,20 @@
 </span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>tile<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>--tiles-version<span class="w"> </span><span class="m">1</span>.0
 </span></code></pre></div>
-<h4 id="use-the-limitation-start-index-and-type-name-filters-together">Use the Limitation, start-index and type-name filters together<a class="headerlink" href="#use-the-limitation-start-index-and-type-name-filters-together" title="Link to this headline for referencing">¶</a></h4>
+<p>Use the Limitation, start-index and type-name filters together</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>--db-host<span class="w"> </span><span class="m">10</span>.162.246.195<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>--db-schema<span class="w"> </span>citydb<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>--db-username<span class="w"> </span>tester<span class="w"> </span>--db-password<span class="w"> </span>louvre<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>--limit<span class="w"> </span><span class="m">100000</span><span class="w"> </span>--start-index<span class="w"> </span><span class="m">200000</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>tile
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>--type-name<span class="w"> </span>WallSurface,OuterFloorSurface,OuterCeilingSurface<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>--limit<span class="w"> </span><span class="m">100000</span><span class="w"> </span>--start-index<span class="w"> </span><span class="m">200000</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>tile
 </span></code></pre></div>
+</details>
 <h3 id="spatial-filtering">Spatial Filtering<a class="headerlink" href="#spatial-filtering" title="Link to this headline for referencing">¶</a></h3>
-<h4 id="use-bbox-for-filtering">Use Bbox for filtering<a class="headerlink" href="#use-bbox-for-filtering" title="Link to this headline for referencing">¶</a></h4>
+<h4 id="use-bbox-with-crs-code">Use Bbox with <abbr title="Coordinate Reference System">CRS</abbr> Code<a class="headerlink" href="#use-bbox-with-crs-code" title="Link to this headline for referencing">¶</a></h4>
+<p>The term <code>CRS code</code> is also same term formerly known as <code>EPSG Code</code></p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>--db-host<span class="w"> </span><span class="m">10</span>.162.246.195<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
@@ -3407,7 +3417,7 @@
 <summary>Remember the purpose the 5th element!</summary>
 <p>5th argument of the bbox is an optional value that used to specify the <abbr title="Coordinate Reference System">CRS</abbr>/SRS code of the given boundary box coordinates. For more information about that visit <a href="../filter_options/#-bbox-b">Filter Options</a> page.</p>
 </details>
-<h4 id="use-bbox-for-filtering-without-specifying-the-crs-code">Use Bbox for filtering without specifying the <abbr title="Coordinate Reference System">CRS</abbr> code<a class="headerlink" href="#use-bbox-for-filtering-without-specifying-the-crs-code" title="Link to this headline for referencing">¶</a></h4>
+<h4 id="use-bbox-without-specifying-the-crs-code">Use Bbox without specifying the <abbr title="Coordinate Reference System">CRS</abbr> code<a class="headerlink" href="#use-bbox-without-specifying-the-crs-code" title="Link to this headline for referencing">¶</a></h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>--db-host<span class="w"> </span><span class="m">10</span>.162.246.195<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
@@ -3447,7 +3457,8 @@
 </span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>tile
 </span></code></pre></div>
 <h3 id="query-based-filtering">Query-based Filtering<a class="headerlink" href="#query-based-filtering" title="Link to this headline for referencing">¶</a></h3>
-<h4 id="cql2-filter-sample-using-quantitative-attributes"><abbr title="OGC Common Query Language">CQL2</abbr> Filter Sample using quantitative attributes<a class="headerlink" href="#cql2-filter-sample-using-quantitative-attributes" title="Link to this headline for referencing">¶</a></h4>
+<h4 id="use-cql2-filter">Use <abbr title="OGC Common Query Language">CQL2</abbr> Filter<a class="headerlink" href="#use-cql2-filter" title="Link to this headline for referencing">¶</a></h4>
+<p><code>--filter</code> option uses <abbr title="OGC Common Query Language">CQL2</abbr> expressions. If you want to use SQL expressions, use <code>--sql-filter</code> option instead.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>--db-host<span class="w"> </span><span class="m">10</span>.162.246.195<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
@@ -3463,7 +3474,7 @@
 <p>If you would like to use one or more attributes in the <abbr title="OGC Common Query Language">CQL2</abbr> filter (<code>--filter</code>) expression, than you have to add these attributes to the 3DTiles. This is a known issue in the application for the moment.</p>
 </details>
 <h2 id="advise-command-samples">Advise command samples<a class="headerlink" href="#advise-command-samples" title="Link to this headline for referencing">¶</a></h2>
-<h3 id="take-an-advice-for-the-existing-dataset-to-generate-a-single-tileset">Take an advice for the existing dataset to generate a single tileset<a class="headerlink" href="#take-an-advice-for-the-existing-dataset-to-generate-a-single-tileset" title="Link to this headline for referencing">¶</a></h3>
+<h3 id="take-an-advice-for-the-existing-dataset">Take an advice for the existing dataset<a class="headerlink" href="#take-an-advice-for-the-existing-dataset" title="Link to this headline for referencing">¶</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>--db-host<span class="w"> </span>localhost<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
@@ -3471,18 +3482,18 @@
 </span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>--db-username<span class="w"> </span>tester<span class="w"> </span>--db-password<span class="w"> </span>louvre<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>advise
 </span></code></pre></div>
-<h3 id="take-an-advice-for-the-existing-dataset-to-generate-separate-tilesets">Take an advice for the existing dataset to generate separate tilesets<a class="headerlink" href="#take-an-advice-for-the-existing-dataset-to-generate-separate-tilesets" title="Link to this headline for referencing">¶</a></h3>
+<h3 id="take-an-advice-by-excluding-the-thematic-surfaces">Take an advice by excluding the thematic surfaces<a class="headerlink" href="#take-an-advice-by-excluding-the-thematic-surfaces" title="Link to this headline for referencing">¶</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>--db-host<span class="w"> </span>localhost<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>--db-schema<span class="w"> </span>citydb<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>--db-username<span class="w"> </span>tester<span class="w"> </span>--db-password<span class="w"> </span>louvre<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>--separate-tilesets<span class="w"> </span>objectclass<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>--ignore-thematic-surfaces<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>advise
 </span></code></pre></div>
 <h2 id="tile-command-samples">Tile command samples<a class="headerlink" href="#tile-command-samples" title="Link to this headline for referencing">¶</a></h2>
 <h3 id="styling">Styling<a class="headerlink" href="#styling" title="Link to this headline for referencing">¶</a></h3>
-<h4 id="generate-3dtiles-using-property-based-styling">Generate 3DTiles using property-based styling<a class="headerlink" href="#generate-3dtiles-using-property-based-styling" title="Link to this headline for referencing">¶</a></h4>
+<h4 id="property-based-styling">property-based styling<a class="headerlink" href="#property-based-styling" title="Link to this headline for referencing">¶</a></h4>
 <details class="tip">
 <summary>How to assign custom property values to set the materials/colors?</summary>
 <p>To set such a color/material set, you have to check the existing properties in your dataset. To see the available properties, you can also check the advice document created by the advise command. However, you still need to find the value sets for the existing dataset. After that you can add the property names and the values to the materials document like below:</p>
@@ -3531,7 +3542,7 @@
 </details>
 <details class="info">
 <summary>Style-Modes</summary>
-<p>Default style-mode is objectclass-based. Check the materials_for_features.csv table to view existing objectclasses.</p>
+<p>Default style-mode is objectclass-based. Check the <code>materials_for_features.csv</code> table to view existing objectclasses.</p>
 </details>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="w">    </span>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span>--db-host<span class="w"> </span>localhost<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
@@ -3541,17 +3552,20 @@
 </span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">    </span>tile<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">    </span>--style-mode<span class="w"> </span>property-based
 </span></code></pre></div>
-<h4 id="generating-separated-3dtiles-using-objectclass-based-separation-and-property-based-styling">Generating separated 3DTiles using objectclass-based separation and property-based styling<a class="headerlink" href="#generating-separated-3dtiles-using-objectclass-based-separation-and-property-based-styling" title="Link to this headline for referencing">¶</a></h4>
+<details class="tip">
+<summary>Using Objectclass-based separation and Property-based styling together</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="w">    </span>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span>--db-host<span class="w"> </span>localhost<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">    </span>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">    </span>--db-schema<span class="w"> </span>citydb<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">    </span>--db-username<span class="w"> </span>tester<span class="w"> </span>--db-password<span class="w"> </span>louvre<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">    </span>--separate-tilesets<span class="w"> </span>objectclass<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">    </span>tile<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">    </span>tile<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">    </span>--separate-tilesets<span class="w"> </span>objectclass<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">    </span>--style-mode<span class="w"> </span>property-based
 </span></code></pre></div>
-<h4 id="change-the-style-absence-behaviour-if-needed">Change the style-absence-behaviour if needed<a class="headerlink" href="#change-the-style-absence-behaviour-if-needed" title="Link to this headline for referencing">¶</a></h4>
+</details>
+<h4 id="style-absence-behaviour">style-absence-behaviour<a class="headerlink" href="#style-absence-behaviour" title="Link to this headline for referencing">¶</a></h4>
+<p><code>citydb-3dtiler</code> will try to assign material based on the features' properties and if not succeeded for a specific feature, it will try to assign an existing appearance (usually stored in the <code>surface_data</code> table).</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="w">    </span>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span>--db-host<span class="w"> </span>localhost<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">    </span>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
@@ -3561,7 +3575,7 @@
 </span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">    </span>--style-mode<span class="w"> </span>property-based<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="w">    </span>--style-absence-behaviour<span class="w"> </span>rise-up
 </span></code></pre></div>
-<h4 id="activate-the-transparency">Activate the transparency<a class="headerlink" href="#activate-the-transparency" title="Link to this headline for referencing">¶</a></h4>
+<h4 id="transparency">transparency<a class="headerlink" href="#transparency" title="Link to this headline for referencing">¶</a></h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span>--db-host<span class="w"> </span>localhost<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
@@ -3572,7 +3586,7 @@
 </span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">    </span>--transparency<span class="w"> </span>blend
 </span></code></pre></div>
 <h3 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Link to this headline for referencing">¶</a></h3>
-<h4 id="generate-a-tileset-by-adding-all-the-available-attributes">Generate a Tileset by adding all the available attributes<a class="headerlink" href="#generate-a-tileset-by-adding-all-the-available-attributes" title="Link to this headline for referencing">¶</a></h4>
+<h4 id="add-all-the-attributes">Add all the attributes<a class="headerlink" href="#add-all-the-attributes" title="Link to this headline for referencing">¶</a></h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>--db-host<span class="w"> </span><span class="m">10</span>.162.246.195<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
@@ -3581,7 +3595,7 @@
 </span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>tile<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>--attributes<span class="w"> </span>all
 </span></code></pre></div>
-<h4 id="generate-a-tileset-by-selecting-a-subset-of-the-attributes">Generate a Tileset by selecting a subset of the attributes<a class="headerlink" href="#generate-a-tileset-by-selecting-a-subset-of-the-attributes" title="Link to this headline for referencing">¶</a></h4>
+<h4 id="select-a-subset-of-the-attributes">Select a subset of the attributes<a class="headerlink" href="#select-a-subset-of-the-attributes" title="Link to this headline for referencing">¶</a></h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>--db-host<span class="w"> </span><span class="m">10</span>.162.246.195<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
@@ -3591,7 +3605,7 @@
 </span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>--attributes<span class="w"> </span>selected<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>--selected-attributes<span class="w"> </span>core_name,gen_objektart,con_height
 </span></code></pre></div>
-<h4 id="generate-a-tileset-that-shows-the-attributes-as-json-like-nested-objects">Generate a Tileset that shows the attributes as (JSON-like) nested objects<a class="headerlink" href="#generate-a-tileset-that-shows-the-attributes-as-json-like-nested-objects" title="Link to this headline for referencing">¶</a></h4>
+<h4 id="nested-attributes">Nested Attributes<a class="headerlink" href="#nested-attributes" title="Link to this headline for referencing">¶</a></h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>--db-host<span class="w"> </span><span class="m">10</span>.162.246.195<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
@@ -3602,7 +3616,7 @@
 </span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>--attribute-structure<span class="w"> </span>nested
 </span></code></pre></div>
 <h3 id="others">Others<a class="headerlink" href="#others" title="Link to this headline for referencing">¶</a></h3>
-<h4 id="generate-a-tileset-in-the-3dtiles-v10-standard">Generate a Tileset in the 3DTiles v1.0 standard<a class="headerlink" href="#generate-a-tileset-in-the-3dtiles-v10-standard" title="Link to this headline for referencing">¶</a></h4>
+<h4 id="3dtiles-v10-standard">3DTiles v1.0 standard<a class="headerlink" href="#3dtiles-v10-standard" title="Link to this headline for referencing">¶</a></h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>--db-host<span class="w"> </span><span class="m">10</span>.162.246.195<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
@@ -3611,7 +3625,8 @@
 </span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>tile<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>--tiles-version<span class="w"> </span><span class="m">1</span>.0
 </span></code></pre></div>
-<h4 id="add-vertical-offset-for-all-the-features">Add (+/-) Vertical Offset for all the features<a class="headerlink" href="#add-vertical-offset-for-all-the-features" title="Link to this headline for referencing">¶</a></h4>
+<h4 id="add-vertical-offset">Add Vertical Offset<a class="headerlink" href="#add-vertical-offset" title="Link to this headline for referencing">¶</a></h4>
+<p>A vertical offset might have been negative or positive. Use (-) for negative offsets.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>--db-host<span class="w"> </span><span class="m">10</span>.162.246.195<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
@@ -3620,7 +3635,7 @@
 </span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>tile<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>--vertical-offset<span class="w"> </span><span class="m">3</span>.5
 </span></code></pre></div>
-<h4 id="specify-a-custom-folder-for-the-tileset">Specify a custom folder for the tileset<a class="headerlink" href="#specify-a-custom-folder-for-the-tileset" title="Link to this headline for referencing">¶</a></h4>
+<h4 id="custom-folder">Custom folder<a class="headerlink" href="#custom-folder" title="Link to this headline for referencing">¶</a></h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>python3<span class="w"> </span>citydb-3dtiler.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>--db-host<span class="w"> </span><span class="m">10</span>.162.246.195<span class="w"> </span>--db-port<span class="w"> </span><span class="m">9876</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>--db-name<span class="w"> </span>citydb-visualizer<span class="w"> </span><span class="se">\</span>
@@ -3738,7 +3753,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.tracking", "toc.follow", "content.code.select", "content.code.copy", "content.code.annotate", "content.tooltips", "search.suggest", "search.highlight", "search.share", "header.autohide", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="../../assets/javascripts/tablesort.js"></script>
       

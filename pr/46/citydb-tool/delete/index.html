@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/img/logos/3dcitydb-logo-transparent.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -113,7 +113,7 @@
             
   
   <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/46" style="font-weight: 600;">
-    🔍 Preview of pull request #46 (commit f258978) — not the official documentation.
+    🔍 Preview of pull request #46 (commit c00ed45) — not the official documentation.
   </a>
   
 
@@ -3421,11 +3421,6 @@ delete, query and filter, and metadata options.</p>
 <td><code>terminate</code></td>
 </tr>
 <tr>
-<td><code>--[no-]terminate-all</code></td>
-<td>Also terminate sub-features.</td>
-<td><code>true</code></td>
-</tr>
-<tr>
 <td><code>--index-mode=&lt;mode&gt;</code></td>
 <td>Index mode: keep, drop, drop_create. Consider dropping indexes when processing large quantities of data.</td>
 <td><code>keep</code></td>
@@ -3606,10 +3601,9 @@ available modes are:</p>
 <li><code>terminate</code>: Features are not physically removed but are marked as terminated by setting their <code>termination_date</code>
   property to the timestamp of the operation, which allows retaining the feature history. This is the default mode.</li>
 </ul>
-<p>Both modes delete a feature along with its "contained" subfeatures, which are considered part of the feature.
-The <code>--no-terminate-all</code> option changes this default behavior for termination. Terminating all subfeatures can
-take significantly longer than just terminating the feature itself, so it is important to evaluate whether cascading
-termination is necessary based on your use cases and scenarios.</p>
+<p>Both modes process a feature along with its "contained" subfeatures, which are considered part of the feature. A
+subfeature that is still contained by another feature is kept (in <code>terminate</code> mode, by another active feature). In
+<code>terminate</code> mode, subfeatures that are already terminated keep their termination date.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul>
@@ -3920,7 +3914,7 @@ should not overlap for the same real-world feature instance.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.tracking", "toc.follow", "content.code.select", "content.code.copy", "content.code.annotate", "content.tooltips", "search.suggest", "search.highlight", "search.share", "header.autohide", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="../../assets/javascripts/tablesort.js"></script>
       
