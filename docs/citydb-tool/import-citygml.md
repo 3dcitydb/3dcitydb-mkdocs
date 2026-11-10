@@ -132,7 +132,7 @@ command. In the context of CityGML input files, the filters operate as follows:
 
 By default, the `import citygml` command imports geometries in all LoDs. The `--lod` option restricts the import to
 geometries in one or more LoDs given as a comma-separated list of values between `0` and `4`. The `--lod-mode` option
-defines how the LoDs are applied:
+defines how geometries are filtered by these LoDs:
 
 | LoD mode            | Description                                                                                                                     |
 |---------------------|---------------------------------------------------------------------------------------------------------------------------------|

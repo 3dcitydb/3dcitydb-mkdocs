@@ -133,7 +133,7 @@ the mapping strategy is used for this city object instead.
 By default, the `import cityjson` command imports geometries in all LoDs. The `--lod` option restricts the import to
 geometries in one or more LoDs given as a comma-separated list of values between `0` and `4`. The LoDs refer to the
 CityGML LoD after [mapping the CityJSON LoDs](#mapping-cityjson-lods), so `--lod=2` matches the CityJSON LoD that was
-selected for the CityGML LoD `2`. The `--lod-mode` option defines how the LoDs are applied:
+selected for the CityGML LoD `2`. The `--lod-mode` option defines how geometries are filtered by these LoDs:
 
 | LoD mode            | Description                                                                                                          |
 |---------------------|----------------------------------------------------------------------------------------------------------------------|
