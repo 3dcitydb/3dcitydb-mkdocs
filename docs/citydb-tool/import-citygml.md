@@ -42,6 +42,8 @@ For more details on the general import options and usage hints, see [here](impor
 |------------------------------------------------------------------------------|---------------------------------------------------------------------------|---------------|
 | `--import-xal-source`                                                        | Import XML snippets of xAL address elements.                              |               |
 | `-x`, <code>--xsl-transform=&lt;stylesheet><br/>[,&lt;stylesheet>...]</code> | Apply XSLT stylesheets to transform input.                                |               |
+| `-l`, <code>--lod=&lt;lod>[,&lt;lod>...]</code>                              | Process geometries with a matching LoD.                                   |               |
+| <code>--lod-mode=&lt;mode></code>                                            | LoD filter mode: `keep`, `remove`, `minimum`, `maximum`.                  | `keep`        |
 | `--no-appearances`                                                           | Do not process appearances.                                               |               |
 | `-a`, <code>--appearance-theme=&lt;theme><br/>[,&lt;theme>...]</code>        | Process appearances with a matching theme. Use `none` for the null theme. |               |
 
@@ -125,6 +127,46 @@ command. In the context of CityGML input files, the filters operate as follows:
 !!! note
     Filters are applied to the top-level `<cityObjectMember>` elements in the input file. Matching features
     are imported, including all their subfeatures. Filtering subfeatures is not supported.
+
+### Filtering LoDs
+
+By default, the `import citygml` command imports geometries in all LoDs. The `--lod` option restricts the import to
+geometries in one or more LoDs given as a comma-separated list of values between `0` and `4`. The `--lod-mode` option
+defines how the LoDs are applied:
+
+| LoD mode            | Description                                                                                                                     |
+|---------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| `keep` (default)    | Only geometries in the given LoDs are imported.                                                                                 |
+| `remove`            | Geometries in the given LoDs are not imported, all other geometries are imported.                                               |
+| `minimum`           | Only geometries in the lowest of the given LoDs available for a top-level feature and its subfeatures are imported.             |
+| `maximum`           | Only geometries in the highest of the given LoDs available for a top-level feature and its subfeatures are imported.            |
+
+The `--lod` option is required for the `keep` and `remove` modes. For `minimum` and `maximum`, it can be omitted to consider
+all LoDs.
+
+Appearances of geometries that are not imported are removed. Features and subfeatures that have geometries only in
+LoDs that are not imported are skipped, while features without any LoD geometry are not affected. Existing bounding
+boxes of the imported features are updated to the remaining geometries.
+
+=== "Linux"
+
+    ```bash
+    ./citydb import citygml [...] my-city.gml \
+        --lod=2,3 \
+        --lod-mode=maximum
+    ```
+
+=== "Windows CMD"
+
+    ```bat
+    citydb import citygml [...] my-city.gml ^
+        --lod=2,3 ^
+        --lod-mode=maximum
+    ```
+
+!!! note
+    The LoD filter is applied after the [upgrade options](#upgrading-citygml-20-and-10). When using
+    `--use-lod4-as-lod3`, LoD4 geometries are therefore filtered as LoD3.
 
 ### Filtering appearances
 

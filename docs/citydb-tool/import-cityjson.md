@@ -42,6 +42,8 @@ For more details on the general import options and usage hints, see [here](impor
 | `--[no-]map-unknown-objects`                                                     | Map city objects from unsupported extensions onto generic city objects.                      | `true`        |
 | <code>--lod-mapping-strategy=&lt;strategy></code>                                | Strategy for mapping multiple CityJSON LoDs onto a CityGML LoD: `maximum`, `minimum`.        | `maximum`     |
 | <code>--lod-mapping=&lt;lod=cityjson-lod><br/>[,&lt;lod=cityjson-lod>...]</code> | Map a CityGML LoD onto a specific CityJSON LoD. Overrides the mapping strategy for this LoD. |               |
+| `-l`, <code>--lod=&lt;lod>[,&lt;lod>...]</code>                                  | Process geometries with a matching LoD.                                                      |               |
+| <code>--lod-mode=&lt;mode></code>                                                | LoD filter mode: `keep`, `remove`, `minimum`, `maximum`.                                     | `keep`        |
 | `--no-appearances`                                                               | Do not process appearances.                                                                  |               |
 | `-a`, <code>--appearance-theme=&lt;theme><br/>[,&lt;theme>...]</code>            | Process appearances with a matching theme. Use `none` for the null theme.                    |               |
 
@@ -102,15 +104,6 @@ command. In the context of CityJSON input files, the filters operate as follows:
     Filters are applied to the 1st-level city objects in the input file. Matching city objects are imported, including all
     their 2nd-level city objects. Filtering 2nd-level city objects is not supported.
 
-### Filtering appearances
-
-By default, the `import cityjson` command imports all appearance information from the input files. The
-`--appearance-theme` option restricts the import of appearances based on their `"theme"` property. You can specify one
-or more themes as a comma-separated list. To filter appearances that have no theme property, use `none` as the value.
-
-Only appearances associated with the specified themes will be imported. To exclude all appearances from the import, use
-the `--no-appearances` option.
-
 ### Mapping CityJSON LoDs
 
 CityJSON supports refined LoDs such as `2.0`, `2.1`, and `2.2`, which all correspond to the CityGML LoD `2`. If a city
@@ -134,6 +127,52 @@ the mapping strategy is used for this city object instead.
     citydb import cityjson [...] my-city.json ^
         --lod-mapping=2=2.1
     ```
+
+### Filtering LoDs
+
+By default, the `import cityjson` command imports geometries in all LoDs. The `--lod` option restricts the import to
+geometries in one or more LoDs given as a comma-separated list of values between `0` and `4`. The LoDs refer to the
+CityGML LoD after [mapping the CityJSON LoDs](#mapping-cityjson-lods), so `--lod=2` matches the CityJSON LoD that was
+selected for the CityGML LoD `2`. The `--lod-mode` option defines how the LoDs are applied:
+
+| LoD mode            | Description                                                                                                          |
+|---------------------|----------------------------------------------------------------------------------------------------------------------|
+| `keep` (default)    | Only geometries in the given LoDs are imported.                                                                      |
+| `remove`            | Geometries in the given LoDs are not imported, all other geometries are imported.                                    |
+| `minimum`           | Only geometries in the lowest of the given LoDs available for a 1st-level city object and its 2nd-level city objects are imported.  |
+| `maximum`           | Only geometries in the highest of the given LoDs available for a 1st-level city object and its 2nd-level city objects are imported. |
+
+The `--lod` option is required for the `keep` and `remove` modes. For `minimum` and `maximum`, it can be omitted to consider
+all LoDs.
+
+Appearances of geometries that are not imported are removed. City objects that have geometries only in LoDs that are
+not imported are skipped, while city objects without any LoD geometry are not affected. Existing bounding boxes of the
+imported city objects are updated to the remaining geometries.
+
+=== "Linux"
+
+    ```bash
+    ./citydb import cityjson [...] my-city.json \
+        --lod=2,3 \
+        --lod-mode=maximum
+    ```
+
+=== "Windows CMD"
+
+    ```bat
+    citydb import cityjson [...] my-city.json ^
+        --lod=2,3 ^
+        --lod-mode=maximum
+    ```
+
+### Filtering appearances
+
+By default, the `import cityjson` command imports all appearance information from the input files. The
+`--appearance-theme` option restricts the import of appearances based on their `"theme"` property. You can specify one
+or more themes as a comma-separated list. To filter appearances that have no theme property, use `none` as the value.
+
+Only appearances associated with the specified themes will be imported. To exclude all appearances from the import, use
+the `--no-appearances` option.
 
 ### Handling unknown extensions
 
