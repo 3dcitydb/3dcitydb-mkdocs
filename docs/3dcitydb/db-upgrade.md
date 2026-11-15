@@ -83,6 +83,9 @@ upgrade manually.
 The upgrade process updates the default `citydb` schema, all additional data schemas added by the user, and the `citydb_pkg`
 schema, which contains the predefined database functions and procedures.
 
+The entire upgrade runs in a single transaction. If an error occurs, all changes are rolled back and the database
+remains unchanged at its previous version. You can fix the cause of the error and simply run the upgrade again.
+
 During the upgrade process, carefully monitor the log messages printed to the console. Look out for any errors or
 warnings, and take appropriate action if any issues are reported. A successful upgrade will conclude with a
 confirmation message similar to:
