@@ -236,6 +236,10 @@ past. You can provide this time as either a date (`<YYYY-MM-DD>`) or a date-time
 (`<YYYY-MM-DDThh:mm:ss[(+|-)hh:mm]>`). Only features that were either `valid` or `invalid` at the specified time will be
 deleted.
 
+If a [CQL2 filter](#cql2-based-filtering) references properties of nested features, such as
+`core:boundary.con:RoofSurface.objectId`, the `valid` mode also applies to these nested features. In `invalid` mode,
+only the top-level features are checked.
+
 The example below demonstrates how to physically remove all features that were terminated before 2018-07-01, and are
 thus `invalid` at that date:
 
@@ -243,25 +247,27 @@ thus `invalid` at that date:
 
     ```bash
     ./citydb delete [...] \
-        --mode=delete \
+        --delete-mode=delete \
         --validity=invalid \
         --validity-at=2018-07-01 \
-        --validity-referene=database
+        --validity-reference=database
     ```
 
 === "Windows CMD"
 
     ```bat
     citydb delete [...] ^
-        --mode=delete ^
+        --delete-mode=delete ^
         --validity=invalid ^
         --validity-at=2018-07-01 ^
-        --validity-referene=database
+        --validity-reference=database
     ```
 
 !!! note
-    Validity checks are strict by default. Use `--lenient-validity` to treat time intervals as valid, even if their start
-    point is undefined.
+    - Validity checks are strict by default. Use `--lenient-validity` to treat time intervals as valid, even if their
+      start point is undefined.
+    - The validity options override the `"validity"` setting of the query in a
+      [configuration file](delete-config.md#validity-options).
 
 ### Managing indexes during deletion
 

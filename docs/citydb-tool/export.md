@@ -281,6 +281,12 @@ past. You can provide this time as either a date (`<YYYY-MM-DD>`) or a date-time
 (`<YYYY-MM-DDThh:mm:ss[(+|-)hh:mm]>`). Only features that were either `valid` or `invalid` at the specified time will be
 exported.
 
+If a [CQL2 filter](#cql2-based-filtering) references properties of nested features, such as
+`core:boundary.con:RoofSurface.objectId`, the `valid` mode also applies to these nested features. In `invalid` mode,
+only the top-level features are checked.
+
+In `invalid` mode, features are exported with the subfeatures they had at their termination.
+
 The example below demonstrates how to export a historical version of your city model that was valid on 2018-07-01:
 
 === "Linux"
@@ -289,7 +295,7 @@ The example below demonstrates how to export a historical version of your city m
     ./citydb export citygml [...] -o my-city.gml \
         --validity=valid \
         --validity-at=2018-07-01 \
-        --validity-referene=database
+        --validity-reference=database
     ```
 
 === "Windows CMD"
@@ -298,7 +304,7 @@ The example below demonstrates how to export a historical version of your city m
     citydb export citygml [...] -o my-city.gml ^
         --validity=valid ^
         --validity-at=2018-07-01 ^
-        --validity-referene=database
+        --validity-reference=database
     ```
 
 !!! note
@@ -310,6 +316,8 @@ The example below demonstrates how to export a historical version of your city m
       surfaces such as walls and roofs are stored as semantic surfaces without attributes, so their own dates are not written.
     - Validity checks are strict by default. Use `--lenient-validity` to treat time intervals as valid, even if their start
       point is undefined.
+    - The validity options override the `"validity"` setting of the query in a
+      [configuration file](export-config.md#validity-options).
 
 ### Reprojecting geometries
 

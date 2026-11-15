@@ -38,7 +38,6 @@ The example below illustrates the JSON structure for the export options.
       "numberOfTextureBuckets": 10
     },
     "query": {...},
-    "validityOptions": {...},
     "tiling": {...}
   }
 }
@@ -104,7 +103,8 @@ The `"query"` property is a container object for the following query and filteri
           "sortOrder": "desc"
         }
       ]
-    }
+    },
+    "validity": {...}
   }
 }
 ```
@@ -121,18 +121,21 @@ The `"query"` property is a container object for the following query and filteri
 | [`"countLimit"`](export.md#count-filter)              | The `"limit"` property sets the maximum number of features to export, and the `"startIndex"` property defines the `0`-based index within the result set to export from.                                                                                                  |               |
 | [`"lodFilter"`](export.md#lod-filter)                 | Defines an `"lods"` array and a `"mode"` to filter features based on LoD: `"or"` (default) requires any matching LoD, while `"and"` requires all. The `"searchDepth"` sets the number of subfeature levels to search for a matching LoD (default: `0`).                  |               |
 | [`"sorting"`](export.md#sorting-features-by-property) | Array of `"sortBy"` objects to sort the output by a `"property"` (specified as a JSON path) in the given `"sortOrder"`: `"asc"` (default) or `"desc"`.                                                                                                                   |               |
+| [`"validity"`](export.md#exporting-historical-versions) | Filters features based on their validity. See [validity options](#validity-options).                                                                                                                                                                                     |               |
 
-### Validity options
+#### Validity options
 
-The `"validityOptions"` property is a container object for filtering features based on their validity.
+The `"validity"` property of the `"query"` object filters features based on their validity.
 
 ```json
 {
-  "validityOptions": {
-    "mode": "valid",
-    "reference": "database",
-    "at": "2018-07-01",
-    "lenient": false
+  "query": {
+    "validity": {
+      "mode": "valid",
+      "reference": "database",
+      "at": "2018-07-01",
+      "lenient": false
+    }
   }
 }
 ```

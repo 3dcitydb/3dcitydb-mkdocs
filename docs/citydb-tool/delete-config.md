@@ -23,8 +23,7 @@ The configuration settings for the `delete` command are shown below.
     "lineage": "myLineage",
     "updatingPerson": "myUpdatingPerson",
     "reasonForUpdate": "myReasonForUpdate",
-    "query": {...},
-    "validityOptions": {...}
+    "query": {...}
   }
 }
 ```
@@ -75,7 +74,8 @@ The `"query"` property is a container object for the following query and filteri
     "countLimit": {
       "limit": 1000,
       "startIndex": 20
-    }
+    },
+    "validity": {...}
   }
 }
 ```
@@ -90,18 +90,21 @@ The `"query"` property is a container object for the following query and filteri
 | [`"filter"`](delete.md#cql2-based-filtering)          | A CQL2 filter expression, encoded as [CQL2 text or JSON](cql2.md).                                                                                                                                                                                             |               |
 | [`"filterSrs"`](delete.md#cql2-based-filtering)       | Specifies a CRS for filter geometries that differs from the 3DCityDB CRS. Use the `"srid"` or `"identifier"` property to define the filter CRS.                                                                                                                |               |
 | [`"countLimit"`](delete.md#count-filter)              | The `"limit"` property sets the maximum number of features to delete, and the `"startIndex"` property defines the `0`-based index within the result set to delete from.                                                                                        |               |
+| [`"validity"`](delete.md#deleting-historical-versions) | Filters features based on their validity. See [validity options](#validity-options).                                                                                                                                                                           |               |
 
-## Validity options
+### Validity options
 
-The `"validityOptions"` property is a container object for filtering features based on their validity.
+The `"validity"` property of the `"query"` object filters features based on their validity.
 
 ```json
 {
-  "validityOptions": {
-    "mode": "valid",
-    "reference": "database",
-    "at": "2018-07-01",
-    "lenient": false
+  "query": {
+    "validity": {
+      "mode": "valid",
+      "reference": "database",
+      "at": "2018-07-01",
+      "lenient": false
+    }
   }
 }
 ```
