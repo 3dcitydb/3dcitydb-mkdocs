@@ -2920,7 +2920,7 @@ and manage schemas.</p>
 <td>Returns the version of the 3DCityDB instance</td>
 </tr>
 <tr>
-<td><strong><code>db_metadata</code></strong><br><code>(schema_name TEXT, OUT srid INTEGER, OUT srs_name TEXT, OUT coord_ref_sys_name TEXT, OUT coord_ref_sys_kind TEXT, OUT wktext TEXT, OUT versioning TEXT)</code></td>
+<td><strong><code>db_metadata</code></strong><br><code>(schema_name TEXT, OUT srid INTEGER, OUT srs_name TEXT, OUT coord_ref_sys_name TEXT, OUT coord_ref_sys_kind TEXT, OUT wktext TEXT)</code></td>
 <td><code>TABLE</code></td>
 <td>Returns metadata about the 3DCityDB instance</td>
 </tr>
@@ -2930,7 +2930,7 @@ and manage schemas.</p>
 <td>Lists database properties such as enabled extensions or options relevant for the 3DCityDB as name-value pairs.</td>
 </tr>
 <tr>
-<td><strong><code>get_seq_values</code></strong><br><code>(seq_name TEXT, seq_count BIGINT)</code></td>
+<td><strong><code>get_seq_values</code></strong><br><code>(seq_name TEXT, seq_count BIGINT, schema_name TEXT)</code></td>
 <td><code>SETOF BIGINT</code></td>
 <td>Returns <code>n</code> sequence values from the given sequence</td>
 </tr>
