@@ -238,7 +238,7 @@ deleted.
 
 If a [CQL2 filter](#cql2-based-filtering) references properties of nested features, such as
 `core:boundary.con:RoofSurface.objectId`, the `valid` mode also applies to these nested features. In `invalid` mode,
-only the top-level features are checked.
+they must have been valid when the top-level feature was terminated.
 
 The example below demonstrates how to physically remove all features that were terminated before 2018-07-01, and are
 thus `invalid` at that date:
