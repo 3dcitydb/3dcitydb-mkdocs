@@ -3447,6 +3447,10 @@ default) or real-world time (<code>real_world</code>).</p>
 past. You can provide this time as either a date (<code>&lt;YYYY-MM-DD&gt;</code>) or a date-time with an optional UTC offset
 (<code>&lt;YYYY-MM-DDThh:mm:ss[(+|-)hh:mm]&gt;</code>). Only features that were either <code>valid</code> or <code>invalid</code> at the specified time will be
 exported.</p>
+<p>If a <a href="#cql2-based-filtering"><abbr title="OGC Common Query Language">CQL2</abbr> filter</a> references properties of nested features, such as
+<code>core:boundary.con:RoofSurface.objectId</code>, the <code>valid</code> mode also applies to these nested features. In <code>invalid</code> mode,
+they must have been valid when the exported feature was terminated.</p>
+<p>In <code>invalid</code> mode, features are exported with the subfeatures they had at their termination.</p>
 <p>The example below demonstrates how to export a historical version of your city model that was valid on 2018-07-01:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Linux</label><label for="__tabbed_6_2">Windows CMD</label></div>
 <div class="tabbed-content">
@@ -3454,14 +3458,14 @@ exported.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>./citydb<span class="w"> </span><span class="nb">export</span><span class="w"> </span>citygml<span class="w"> </span><span class="o">[</span>...<span class="o">]</span><span class="w"> </span>-o<span class="w"> </span>my-city.gml<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span>--validity<span class="o">=</span>valid<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span>--validity-at<span class="o">=</span><span class="m">2018</span>-07-01<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span>--validity-referene<span class="o">=</span>database
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span>--validity-reference<span class="o">=</span>database
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="language-bat highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>citydb export citygml [...] -o my-city.gml <span class="se">^</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="se"> </span>   --validity=valid <span class="se">^</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="se"> </span>   --validity-at=2018-07-01 <span class="se">^</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="se"> </span>   --validity-referene=database
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="se"> </span>   --validity-reference=database
 </span></code></pre></div>
 </div>
 </div>
@@ -3477,6 +3481,8 @@ exported.</p>
   surfaces such as walls and roofs are stored as semantic surfaces without attributes, so their own dates are not written.</li>
 <li>Validity checks are strict by default. Use <code>--lenient-validity</code> to treat time intervals as valid, even if their start
   point is undefined.</li>
+<li>The validity options override the <code>"validity"</code> setting of the query in a
+  <a href="../export-config/#validity-options">configuration file</a>.</li>
 </ul>
 </div>
 <h3 id="reprojecting-geometries">Reprojecting geometries<a class="headerlink" href="#reprojecting-geometries" title="Link to this headline for referencing">¶</a></h3>
