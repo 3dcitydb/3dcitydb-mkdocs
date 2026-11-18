@@ -424,7 +424,7 @@ The configuration of the PostgreSQL database has significant impact on performan
     === "Linux"
 
         ``` bash hl_lines="4-20"
-        docker run -d -i -t --name citydb -p 5432:5342 \
+        docker run -d -i -t --name citydb -p 5432:5432 \
         -e SRID=25832 \
         -e POSTGRES_PASSWORD=changeMe \
         3dcitydb/3dcitydb-pg postgres \
@@ -449,7 +449,7 @@ The configuration of the PostgreSQL database has significant impact on performan
     === "Windows CMD"
 
         ``` bat hl_lines="4-20"
-        docker run -d -i -t --name citydb -p 5432:5342 ^
+        docker run -d -i -t --name citydb -p 5432:5432 ^
         -e SRID=25832 ^
         -e POSTGRES_PASSWORD=changeMe ^
         3dcitydb/3dcitydb-pg postgres ^
@@ -508,7 +508,7 @@ max_parallel_maintenance_workers = 4
 === "Linux"
 
     ``` bash hl_lines="2 7 23"
-    docker run -d -i -t --name citydb -p 5432:5342 \
+    docker run -d -i -t --name citydb -p 5432:5432 \
         --shm-size=8g \
         -e SRID=25832 \
         -e POSTGRES_PASSWORD=changeMe \
@@ -536,7 +536,7 @@ max_parallel_maintenance_workers = 4
 === "Windows CMD"
 
     ``` bash hl_lines="2 7 23"
-    docker run -d -i -t --name citydb -p 5432:5342 ^
+    docker run -d -i -t --name citydb -p 5432:5432 ^
         --shm-size=8g ^
         -e SRID=25832 ^
         -e POSTGRES_PASSWORD=changeMe ^
