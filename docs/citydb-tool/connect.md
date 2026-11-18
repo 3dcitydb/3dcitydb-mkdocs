@@ -108,6 +108,7 @@ The JSON output contains information about the connection parameters along with 
 ```bash
 {
   "connection": {
+    "databaseType": "PostgreSQL",
     "host": "localhost",
     "port": 5432,
     "database": "citydb",

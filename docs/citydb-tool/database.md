@@ -14,7 +14,12 @@ command-line options, argument files, JSON configuration files, or environment v
 
 --8<-- "docs/citydb-tool/includes/db-options.md"
 
-Use `--db-host` to specify the network name or IP address of the database server. The `--db-name` option
+The `--db-type` option selects the database system that hosts the 3DCityDB. The value is case-insensitive and must
+match one of the database adapters available in your citydb-tool installation. If the option is omitted, `PostgreSQL`
+is used, which is the database system supported out of the box.
+
+Use `--db-host` to specify the network name or IP address of the database server. If `--db-port` is omitted, the
+default port of the selected database system is used (`5432` for PostgreSQL). The `--db-name` option
 defines the name of the 3DCityDB `v5` instance, while `--db-schema` sets the database schema to connect to. For
 PostgreSQL, the default schema is `citydb`. Additional schemas can be created using
 the [database scripts](../3dcitydb/db-scripts.md) included in the 3DCityDB `v5` software package.
@@ -67,6 +72,7 @@ citydb-tool supports loading options and settings from a JSON-encoded configurat
   "databaseOptions": {
     "connections": {
       "myFirstConnection": {
+        "databaseType": "PostgreSQL",
         "host": "localhost",
         "port": 5432,
         "database": "citydb",
@@ -101,16 +107,17 @@ is defined.
 Each connection can include the following properties, closely aligned with the corresponding command-line
 options:
 
-| Property        | Description                                                          | Default value        |
-|-----------------|----------------------------------------------------------------------|----------------------|
-| `"host"`        | Name of the host on which the 3DCityDB is running.                   |                      |
-| `"port"`        | Port of the 3DCityDB server.                                         | 5432                 |
-| `"database"`    | Name of the 3DCityDB database to connect to.                         |                      |
-| `"schema"`      | Schema to use when connecting to the 3DCityDB                        | `citydb` or username |
-| `"user"`        | Username to use when connecting to the 3DCityDB.                     |                      |
-| `"password"`    | Password to use when connecting to the 3DCityDB                      |                      |
-| `"properties"`  | Database-specific connection properties provided as key-value pairs. |                      |
-| `"poolOptions"` | Connection pool options provided as key-value pairs.                 |                      |
+| Property         | Description                                                          | Default value        |
+|------------------|----------------------------------------------------------------------|----------------------|
+| `"databaseType"` | Database system of the 3DCityDB.                                     | PostgreSQL           |
+| `"host"`         | Name of the host on which the 3DCityDB is running.                   |                      |
+| `"port"`         | Port of the 3DCityDB server.                                         | database default     |
+| `"database"`     | Name of the 3DCityDB database to connect to.                         |                      |
+| `"schema"`       | Schema to use when connecting to the 3DCityDB                        | `citydb` or username |
+| `"user"`         | Username to use when connecting to the 3DCityDB.                     |                      |
+| `"password"`     | Password to use when connecting to the 3DCityDB                      |                      |
+| `"properties"`   | Database-specific connection properties provided as key-value pairs. |                      |
+| `"poolOptions"`  | Connection pool options provided as key-value pairs.                 |                      |
 
 The `"poolOptions"` property is available only in the JSON configuration and is not exposed as a command-line option. It
 configures internal connection pool behavior. Currently, the only supported option is `"loginTimeout"`, which sets the
@@ -170,6 +177,7 @@ closely align with the command-line options:
 
 | Environment variable | Description                                                                                         |
 |----------------------|-----------------------------------------------------------------------------------------------------|
+| `CITYDB_TYPE`        | Database system of the 3DCityDB.                                                                    |
 | `CITYDB_HOST`        | Name of the host on which the 3DCityDB is running.                                                  |
 | `CITYDB_PORT`        | Port of the 3DCityDB server.                                                                        |
 | `CITYDB_NAME`        | Name of the 3DCityDB database to connect to.                                                        |
