@@ -12,12 +12,17 @@ nav:
     - Export overview: export.md
     - CityGML export: export-citygml.md
     - CityJSON export: export-cityjson.md
+  - Vis-export command:
+    - Vis-export overview: vis-export.md
+    - 3D Tiles export: vis-export-3dtiles.md
+    - I3S export: vis-export-i3s.md
   - delete.md
   - index-command.md
   - JSON configuration:
     - Configuration overview: config.md
     - Import configuration: import-config.md
     - Export configuration: export-config.md
+    - Vis-export configuration: vis-export-config.md
     - Delete configuration: delete-config.md
     - Report configuration: report-config.md
   - cql2.md
