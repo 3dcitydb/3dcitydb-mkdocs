@@ -102,7 +102,7 @@ Docker images are available for the following tools of the 3DCityDB software sui
 
     3DCityDB `v5` introduces a substantially changed database schema, that requires a new set of tools.
 
-    __Currently, only [citydb-tool](../citydb-tool/index.md) is compatible with 3DCityDB `v5`__. Usage of legacy 3DCityDB `v4` tools such as the [Importer/Exporter](https://3dcitydb-docs.readthedocs.io/en/latest/impexp/docker.html) or the [Web Feature Service (WFS)](https://3dcitydb-docs.readthedocs.io/en/latest/wfs/docker.html){target="blank"} is still possible by migrating data to a 3DCityDB `v4`. See [here](../compatibility.md) for more details on compatibility of CityGML versions and 3DCityDB tools, and how to migrate data between versions.
+    __Currently, only [citydb-tool](../citydb-tool/index.md) and [citydb-3dtiler](../citydb-3dtiler/index.md) are compatible with 3DCityDB `v5`__. Usage of legacy 3DCityDB `v4` tools such as the [Importer/Exporter](https://3dcitydb-docs.readthedocs.io/en/latest/impexp/docker.html) or the [Web Feature Service (WFS)](https://3dcitydb-docs.readthedocs.io/en/latest/wfs/docker.html){target="blank"} is still possible by migrating data to a 3DCityDB `v4`. See [here](../compatibility.md) for more details on compatibility of CityGML versions and 3DCityDB tools, and how to migrate data between versions.
 
 ### Get 3DCityDB Docker images
 
