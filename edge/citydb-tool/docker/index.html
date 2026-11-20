@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/img/logos/3dcitydb-logo-transparent.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
     
       
@@ -2849,26 +2849,28 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>citydb-tool<span class="w"> </span><span class="o">[</span>-i<span class="w"> </span>-t<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="o">[</span>-e<span class="w"> </span><span class="nv">CITYDB_HOST</span><span class="o">=</span>the.host.de<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="o">[</span>-e<span class="w"> </span><span class="nv">CITYDB_PORT</span><span class="o">=</span><span class="m">5432</span><span class="o">]</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="o">[</span>-e<span class="w"> </span><span class="nv">CITYDB_NAME</span><span class="o">=</span>theDBName<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="o">[</span>-e<span class="w"> </span><span class="nv">CITYDB_SCHEMA</span><span class="o">=</span>theCityDBSchemaName<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="o">[</span>-e<span class="w"> </span><span class="nv">CITYDB_USERNAME</span><span class="o">=</span>theUsername<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="o">[</span>-e<span class="w"> </span><span class="nv">CITYDB_PASSWORD</span><span class="o">=</span>theSecretPass<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="o">[</span>-v<span class="w"> </span>/my/data/:/data<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>3dcitydb/citydb-tool<span class="o">[</span>:TAG<span class="o">]</span><span class="w"> </span>COMMAND
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="o">[</span>-e<span class="w"> </span><span class="nv">CITYDB_TYPE</span><span class="o">=</span>theDBType<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="o">[</span>-e<span class="w"> </span><span class="nv">CITYDB_HOST</span><span class="o">=</span>the.host.de<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="o">[</span>-e<span class="w"> </span><span class="nv">CITYDB_PORT</span><span class="o">=</span><span class="m">5432</span><span class="o">]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="o">[</span>-e<span class="w"> </span><span class="nv">CITYDB_NAME</span><span class="o">=</span>theDBName<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="o">[</span>-e<span class="w"> </span><span class="nv">CITYDB_SCHEMA</span><span class="o">=</span>theCityDBSchemaName<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="o">[</span>-e<span class="w"> </span><span class="nv">CITYDB_USERNAME</span><span class="o">=</span>theUsername<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="o">[</span>-e<span class="w"> </span><span class="nv">CITYDB_PASSWORD</span><span class="o">=</span>theSecretPass<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="o">[</span>-v<span class="w"> </span>/my/data/:/data<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>3dcitydb/citydb-tool<span class="o">[</span>:TAG<span class="o">]</span><span class="w"> </span>COMMAND
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="language-bat highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker run --rm --name citydb-tool [-i -t] <span class="se">^</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="se"> </span> [-e CITYDB_HOST=the.host.de] <span class="se">^</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="se"> </span> [-e CITYDB_PORT=5432] <span class="se">^</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="se"> </span> [-e CITYDB_NAME=theDBName] <span class="se">^</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="se"> </span> [-e CITYDB_SCHEMA=theCityDBSchemaName] <span class="se">^</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="se"> </span> [-e CITYDB_USERNAME=theUsername] <span class="se">^</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="se"> </span> [-e CITYDB_PASSWORD=theSecretPass] <span class="se">^</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="se"> </span> [-v <span class="s2">"c:\users\me\mydata:/data"</span> ] <span class="se">^</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="se">3</span>dcitydb/citydb-tool[:TAG] COMMAND
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="se"> </span> [-e CITYDB_TYPE=theDBType] <span class="se">^</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="se"> </span> [-e CITYDB_HOST=the.host.de] <span class="se">^</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="se"> </span> [-e CITYDB_PORT=5432] <span class="se">^</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="se"> </span> [-e CITYDB_NAME=theDBName] <span class="se">^</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="se"> </span> [-e CITYDB_SCHEMA=theCityDBSchemaName] <span class="se">^</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="se"> </span> [-e CITYDB_USERNAME=theUsername] <span class="se">^</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="se"> </span> [-e CITYDB_PASSWORD=theSecretPass] <span class="se">^</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="se"> </span> [-v <span class="s2">"c:\users\me\mydata:/data"</span> ] <span class="se">^</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="se">3</span>dcitydb/citydb-tool[:TAG] COMMAND
 </span></code></pre></div>
 </div>
 </div>
@@ -3061,13 +3063,17 @@ The tags composed of <code>&lt;major&gt;.&lt;minor&gt;</code> and <code>&lt;majo
 <p>When running the citydb-tool on the command line, the values of these variables will be used as input if a corresponding <abbr title="Command Line Interface">CLI</abbr> option is <strong>not</strong> available. The <abbr title="Command Line Interface">CLI</abbr> options always take precedence over the environmental variables.</p>
 </div>
 <dl>
+<dt><code>CITYDB_TYPE=database type</code></dt>
+<dd>
+<p>Database system of the 3DCityDB to connect to. Default is <code>PostgreSQL</code>.</p>
+</dd>
 <dt><code>CITYDB_HOST=hostname or ip</code></dt>
 <dd>
 <p>Name of the host or IP address on which the 3DCityDB is running.</p>
 </dd>
 <dt><code>CITYDB_PORT=port</code></dt>
 <dd>
-<p>Port of the 3DCityDB to connect to. Default is <em>5432</em>, the default PostgreSQL port.</p>
+<p>Port of the 3DCityDB to connect to. Default is the default port of the database system, e.g. <em>5432</em> for PostgreSQL.</p>
 </dd>
 <dt><code>CITYDB_NAME=DB name</code></dt>
 <dd>
