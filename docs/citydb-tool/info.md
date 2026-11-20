@@ -167,6 +167,7 @@ of the report printed to the console contains the same information in a more con
     },
     "hasChangelogEnabled": false,
     "connection": {
+      "databaseType": "PostgreSQL",
       "host": "localhost",
       "port": 5432,
       "database": "citydb",

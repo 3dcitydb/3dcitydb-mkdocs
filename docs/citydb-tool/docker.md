@@ -25,6 +25,7 @@ The citydb-tool Docker images expose the capabilities of the [citydb-tool](../ci
 
     ``` bash
     docker run --rm --name citydb-tool [-i -t] \
+      [-e CITYDB_TYPE=theDBType] \
       [-e CITYDB_HOST=the.host.de] \
       [-e CITYDB_PORT=5432] \
       [-e CITYDB_NAME=theDBName] \
@@ -39,6 +40,7 @@ The citydb-tool Docker images expose the capabilities of the [citydb-tool](../ci
 
     ``` bat
     docker run --rm --name citydb-tool [-i -t] ^
+      [-e CITYDB_TYPE=theDBType] ^
       [-e CITYDB_HOST=the.host.de] ^
       [-e CITYDB_PORT=5432] ^
       [-e CITYDB_NAME=theDBName] ^
@@ -241,13 +243,17 @@ The citydb-tool Docker images support the following environment variables to set
 
     When running the citydb-tool on the command line, the values of these variables will be used as input if a corresponding CLI option is __not__ available. The CLI options always take precedence over the environmental variables.
 
+`CITYDB_TYPE=database type`
+
+:   Database system of the 3DCityDB to connect to. Default is `PostgreSQL`.
+
 `CITYDB_HOST=hostname or ip`
 
 :   Name of the host or IP address on which the 3DCityDB is running.
 
 `CITYDB_PORT=port`
 
-:   Port of the 3DCityDB to connect to. Default is _5432_, the default PostgreSQL port.
+:   Port of the 3DCityDB to connect to. Default is the default port of the database system, e.g. _5432_ for PostgreSQL.
 
 `CITYDB_NAME=DB name`
 
