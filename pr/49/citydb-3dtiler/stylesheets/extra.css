@@ -1,0 +1,12 @@
+body .puml:fullscreen {
+  background: var(--md-default-bg-color);
+}
+
+body .puml:fullscreen .diagram {
+  width: 100% !important;
+  height: 100vh !important;
+}
+
+body .puml .diagram {
+  height: auto !important;
+}
