@@ -3079,11 +3079,6 @@ export, query and filter, time-based feature history, tiling, and database conne
 <td><code>or</code></td>
 </tr>
 <tr>
-<td><code>--lod-search-depth=&lt;0..n|all&gt;</code></td>
-<td>Levels of sub-features to search for matching LoDs</td>
-<td>0</td>
-</tr>
-<tr>
 <td><code>--no-appearances</code></td>
 <td>Do not process appearances.</td>
 <td></td>
@@ -3371,9 +3366,8 @@ depending on the <abbr title="OGC City Geography Markup Language">CityGML</abbr>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>The <code>--lod-search-depth</code> option defines the number of subfeature levels to search for a matching <abbr title="Level of Detail">LoD</abbr>. With the default
-value <code>0</code>, only the feature and its space boundaries are considered. The <abbr title="Level of Detail">LoD</abbr> filter is satisfied if at least one
-subfeature has a matching <abbr title="Level of Detail">LoD</abbr> representation.</p>
+<p>The <abbr title="Level of Detail">LoD</abbr> filter searches the feature and all its nested subfeatures at any level. A feature is exported if it or
+at least one of its subfeatures has a matching <abbr title="Level of Detail">LoD</abbr> representation.</p>
 </div>
 <p>The following command exports features represented in LoD2 or LoD3, retaining only their highest <abbr title="Level of Detail">LoD</abbr>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Linux</label><label for="__tabbed_4_2">Windows CMD</label></div>
