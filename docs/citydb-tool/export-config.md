@@ -93,8 +93,7 @@ The `"query"` property is a container object for the following query and filteri
     },
     "lodFilter": {
       "lods": ["2","3"],
-      "mode": "or",
-      "searchDepth": 1
+      "mode": "or"
     },
     "sorting": {
       "sortBy": [
@@ -119,7 +118,7 @@ The `"query"` property is a container object for the following query and filteri
 | [`"filter"`](export.md#cql2-based-filtering)          | A CQL2 filter expression, encoded as [CQL2 text or JSON](cql2.md).                                                                                                                                                                                                       |               |
 | [`"filterSrs"`](export.md#cql2-based-filtering)       | Specifies a CRS for filter geometries that differs from the 3DCityDB CRS. Use the `"srid"` or `"identifier"` property to define the filter CRS.                                                                                                                          |               |
 | [`"countLimit"`](export.md#count-filter)              | The `"limit"` property sets the maximum number of features to export, and the `"startIndex"` property defines the `0`-based index within the result set to export from.                                                                                                  |               |
-| [`"lodFilter"`](export.md#lod-filter)                 | Defines an `"lods"` array and a `"mode"` to filter features based on LoD: `"or"` (default) requires any matching LoD, while `"and"` requires all. The `"searchDepth"` sets the number of subfeature levels to search for a matching LoD (default: `0`).                  |               |
+| [`"lodFilter"`](export.md#lod-filter)                 | Defines an `"lods"` array and a `"mode"` to filter features based on LoD: `"or"` (default) requires any matching LoD, while `"and"` requires all.                                                                                                                        |               |
 | [`"sorting"`](export.md#sorting-features-by-property) | Array of `"sortBy"` objects to sort the output by a `"property"` (specified as a JSON path) in the given `"sortOrder"`: `"asc"` (default) or `"desc"`.                                                                                                                   |               |
 | [`"validity"`](export.md#exporting-historical-versions) | Filters features based on their validity. See [validity options](#validity-options).                                                                                                                                                                                     |               |
 

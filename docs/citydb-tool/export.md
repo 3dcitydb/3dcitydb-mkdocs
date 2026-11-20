@@ -193,9 +193,8 @@ depending on the CityGML version, but any string value is allowed.
     - `maximum`: Similar to `or`, but only the geometry with the highest LoD is exported.
 
 !!! tip
-    The `--lod-search-depth` option defines the number of subfeature levels to search for a matching LoD. With the default
-    value `0`, only the feature and its space boundaries are considered. The LoD filter is satisfied if at least one
-    subfeature has a matching LoD representation.
+    The LoD filter searches the feature and all its nested subfeatures at any level. A feature is exported if it or
+    at least one of its subfeatures has a matching LoD representation.
 
 The following command exports features represented in LoD2 or LoD3, retaining only their highest LoD.
 
