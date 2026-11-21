@@ -1,0 +1,8 @@
+@page {
+  margin: 2cm;
+  size: A4 portrait;
+}
+
+figure { page-break-inside: avoid; }
+
+table {page-break-inside: avoid;}
