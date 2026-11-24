@@ -3002,6 +3002,11 @@ export, query and filter, time-based feature history, tiling, and database conne
 <td></td>
 </tr>
 <tr>
+<td><code>--texture-buckets=&lt;number&gt;</code></td>
+<td>Distribute texture files over this number of subfolders.</td>
+<td>0</td>
+</tr>
+<tr>
 <td><code>--threads=&lt;threads&gt;</code></td>
 <td>Number of threads to use for parallel processing.</td>
 <td></td>
@@ -3267,6 +3272,15 @@ encoding name (e.g., <code>UTF-8</code>).</p>
 <p>If the export includes texture files, a subfolder named <code>appearance</code> will be created relative to the output file, where
 all textures will be stored. Likewise, a subfolder named <code>library-objects</code> will be created to store library objects
 used by implicit geometries. When exporting as a ZIP archive, these folders are included within the archive.</p>
+<p>By default, all texture files are written to the same <code>appearance</code> folder. Use the <code>--texture-buckets</code> option to
+distribute them over the given number of subfolders instead. The subfolders are named <code>1</code> to <code>&lt;number&gt;</code> and are created
+inside the <code>appearance</code> folder. A value of <code>0</code> disables this behavior.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Writing a very large number of texture files to a single folder can slow down the export considerably, especially
+on Windows. For large exports, use <code>--texture-buckets</code> so that each subfolder holds no more than about 100,000
+files (e.g., <code>--texture-buckets=10</code> for one million textures).</p>
+</div>
 <h3 id="querying-and-filtering">Querying and filtering<a class="headerlink" href="#querying-and-filtering" title="Link to this headline for referencing">¶</a></h3>
 <p>citydb-tool allows exporting all features stored in a 3DCityDB <code>v5</code> instance into a single file. However, in most
 cases, only a specific subset of features is needed. The <code>export</code> command provides various querying and filtering
