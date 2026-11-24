@@ -20,5 +20,10 @@ nav:
     - Export configuration: export-config.md
     - Delete configuration: delete-config.md
     - Report configuration: report-config.md
-  - cql2.md
+  - CQL2 query language:
+    - CQL2 overview: cql2.md
+    - Property references: cql2-properties.md
+    - Literals and predicates: cql2-predicates.md
+    - CQL2 JSON: cql2-json.md
+    - Examples: cql2-examples.md
   - docker.md

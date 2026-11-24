@@ -1,265 +1,212 @@
 ---
 title: CQL2 query language
-description: Filter and query data using CQL2 query language
+description: Filter features from the 3DCityDB v5 using the CQL2 query language
 tags:
+  - citydb-tool
   - cql2
   - query
   - filter
-  - spatial filter
-  - attribute filter
 ---
 
-**CQL2** (Common Query Language 2) is an advanced query language used to filter and query spatial and attribute
-data within the **citydb-tool**. It allows users to define precise queries for exporting or deleting features
-based on attribute values, spatial properties, or logical conditions.
+# CQL2 query language
 
-CQL2 is a standard maintained by the **OGC (Open Geospatial Consortium)** and serves as an evolution of the
-original CQL language, providing better expressiveness and flexibility for data filtering.
+citydb-tool uses the [OGC Common Query Language (CQL2)](https://docs.ogc.org/is/21-065r2/21-065r2.html){target="blank"} to
+select the city objects to process from the 3DCityDB `v5`. CQL2 is a filter language for attribute-based and spatial
+queries on feature data. citydb-tool implements large parts of the standard and supports the 3DCityDB extensions to CQL2,
+which are needed to query the 3DCityDB `v5` data model, such as property paths to complex attributes and nested
+subfeatures, conditions on path steps, type casts for generic attributes, and SQL subqueries.
 
-Key Features of CQL2
+This chapter explains how to write CQL2 filter expressions for the 3DCityDB `v5`. Filters are expressed on the
+[3DCityDB `v5` data model](../3dcitydb/index.md). The chapter assumes basic knowledge of this data model and of query
+languages. For the general CQL2 concepts, it refers to the standard where appropriate.
 
-- Expressive Syntax: Combines logical operators with a rich set of functions for building complex queries.
-- Spatial Filtering: Supports geospatial functions to filter data based on spatial relationships.
-- Ease of Use: Simple, human-readable expressions that are easy to construct and interpret.
+!!! note
+    The feature types, properties, and namespaces available in filters are defined by the schema mapping of the
+    3DCityDB `v5`. The 3DCityDB `v5` data model implements the CityGML 3.0 Conceptual Model but is not identical to it.
 
----
+## Overview
 
-## Using CQL2 with citydb-tool
+### Where filters are used
 
-citydb-tool allows the use of the `-f` or `--filter` option followed by a CQL2 expression to filter data when exporting or
-deleting records. This enables users to select only the relevant subset of data based on attribute values,
-spatial conditions, or both.
+CQL2 filter expressions are supported by all citydb-tool commands that select features from the 3DCityDB `v5`, such as
+the [`export`](export.md#cql2-based-filtering) and [`delete`](delete.md#cql2-based-filtering) commands. They
+are passed with the following command-line options and configuration settings:
 
-- Text-based (string) encoding
-- JSON-based encoding
+| Usage                     | Description                                                                                                                                                                                                                                                       |
+|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `--filter=<cql2-text>`    | CQL2 filter in text encoding. Only features matching the filter are processed.                                                                                                                                                                                    |
+| `--filter-crs=<crs>`      | SRID or identifier of the CRS of the geometry literals used in the filter. If omitted, the CRS of the 3DCityDB instance is assumed. See [here](cql2-predicates.md#coordinate-reference-system).                                                                    |
+| `"filter"`, `"filterSrs"` | Filter and filter CRS in the query settings of the JSON configuration, for example of the [export](export-config.md) and [delete](delete-config.md) commands. The `"filter"` property accepts both CQL2 text and CQL2 JSON. See [here](#cql2-text-and-cql2-json). |
 
-Both encodings are supported by citydb-tool, giving you flexibility in how you structure your filters.
+The filter is always combined with the feature types selected with the `--type-name` option. This is important for
+[resolving property names](cql2-properties.md#names-and-namespace-prefixes).
 
-## Syntax
+!!! tip
+    SQL queries can be embedded in CQL2 filters using the 3DCityDB extension [`SQL`](cql2-predicates.md#sql-predicates).
+    Alternatively, the `--sql-filter` option accepts a plain SQL query outside of CQL2.
 
-The general syntax for using CQL2 with citydb-tool is:
+### CQL2 text and CQL2 JSON
 
-```bash
-citydb [command] -f "<CQL2 Expression>"
+CQL2 defines two encodings for filter expressions. CQL2 text is a compact, human-readable notation similar to the
+`WHERE` clause of SQL. CQL2 JSON represents the same expression as a JSON object, which is easier to generate and
+process by software. Both encodings support the same language constructs, including all 3DCityDB extensions.
+
+The following filter is shown in both encodings:
+
+```text
+con:height > 20 AND bldg:roofType = '1000'
 ```
 
-Where `<CQL2 Expression>` is a valid CQL2 query that defines the filtering conditions for the data export.
-
-## Writing CQL2 expressions
-
-A CQL2 expression consists of attribute names, operators, and values. It can also include spatial functions to handle geospatial conditions.
-
-### Understanding literals
-
-In CQL2, literals are direct values that appear in your filter expressions. Common types of literals include:
-
-- Strings: Enclosed in single quotes in text-based queries (e.g., `'Forest tree 3'`), or as JSON strings in JSON-based queries (e.g., `'Forest tree 3'`).
-- Numbers: Used without quotes in both text-based and JSON-based queries (e.g., `> 10` or `10` in JSON).
-- Booleans: Typically represented as `true` or `false`.
-- Dates/Times: Represented in ISO-8601 format (e.g., `'2023-01-31'` or `'2023-01-31'` in JSON), if your data or schema supports date/time attributes.
-
-### Attribute references
-
-#### Implicit vs. explicit attribute references
-
-When writing CQL2 queries, it's important to correctly reference attributes by their full property names rather than
-relying on implicit assumptions. While some query tools allow shorthand notations for convenience,
-the proper CQL2 syntax requires explicit attribute references.
-
-For example, in some cases, a query like:
-
-```bash
-citydb export citygml --filter="height > 1"
+```json
+{
+  "op": "and",
+  "args": [
+    {"op": ">", "args": [{"property": "con:height"}, 20]},
+    {"op": "=", "args": [{"property": "bldg:roofType"}, "1000"]}
+  ]
+}
 ```
 
-might work as expected, but it is a simplified form. The correct way is to specify the full property path. For instance,
-if the attribute height belongs to the bldg (building) namespace, the correct query should be:
+The `--filter` option accepts CQL2 text. In the JSON configuration, the `"filter"` property accepts both encodings.
+This chapter uses CQL2 text for all explanations. The [CQL2 JSON](cql2-json.md) page shows how each
+language construct is written in CQL2 JSON, and the [examples](cql2-examples.md) are given in both
+encodings.
 
-```bash
-citydb export citygml --filter="bldg.height > 1"
-```
+### Supported parts of the CQL2 standard
 
-#### Advanced handling of namespaces and complex attributes
+The following table lists the conformance classes of the CQL2 standard and their support in citydb-tool.
 
-In 3D CityDB, attributes may be defined with namespaces or at nested (child) levels.
-This advanced scenario requires careful handling:
+| Conformance class                                        | Supported | Remarks                                                                                                                                                      |
+|----------------------------------------------------------|:---------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Basic CQL2                                               |    Yes    | Comparisons, `AND`, `OR`, `NOT`, `IS [NOT] NULL`, string, numeric, boolean, and temporal literals.                                                           |
+| Advanced Comparison Operators                            |    Yes    | `LIKE`, `BETWEEN`, and `IN`, each also negated with `NOT`. `BETWEEN` only accepts numeric values.                                                            |
+| Case-insensitive Comparison                              |    Yes    | `CASEI` function.                                                                                                                                            |
+| Accent-insensitive Comparison                            |    Yes    | `ACCENTI` function. Requires the PostgreSQL `unaccent` extension, see [here](cql2-predicates.md#case-and-accent-insensitive-comparisons).                    |
+| Basic Spatial Functions                                  |    Yes    | `S_INTERSECTS` with point and bounding box literals.                                                                                                         |
+| Basic Spatial Functions with additional Spatial Literals |    Yes    | All WKT geometry types except `GEOMETRYCOLLECTION`.                                                                                                          |
+| Spatial Functions                                        |    Yes    | `S_INTERSECTS`, `S_EQUALS`, `S_DISJOINT`, `S_TOUCHES`, `S_WITHIN`, `S_OVERLAPS`, `S_CROSSES`, `S_CONTAINS`.                                                  |
+| Temporal Functions                                       |    No     | Temporal operators such as `T_AFTER` and time intervals are not supported. Use comparison operators with date and timestamp literals instead.                |
+| Array Functions                                          |    No     | Array operators such as `A_CONTAINS` are not supported. Multi-valued properties are handled as described [here](cql2-properties.md#multi-valued-properties). |
+| Property-Property Comparisons                            |    Yes    | Both operands of a predicate may be property references.                                                                                                     |
+| Custom Functions                                         |    No     | Only the built-in functions `CASEI`, `ACCENTI`, and `INDEX` are available.                                                                                   |
+| Arithmetic Expressions                                   |    Yes    | `+`, `-`, `*`, `/`, `%`, `^`, and `DIV`.                                                                                                                     |
+| CQL2 Text                                                |    Yes    | Used by the `--filter` option and in configuration files.                                                                                                    |
+| CQL2 JSON                                                |    Yes    | Used in configuration files.                                                                                                                                 |
 
-__Namespaces & Object Classes:__
-Use a colon (:) to separate namespace prefixes from attribute names. For example, the object class Building might be
-referenced as bldg:Building. citydb-tool recognizes alias names for object classes, but incorrect casing or namespace
-mismatches can lead to errors since the system is extremely case sensitive.
+### 3DCityDB extensions to CQL2
 
-__Property Paths:__
-Use dot (.) notation to define paths to nested attributes (e.g., bldg.details.height). While top-level attributes
-can be referenced with a simple name, lower-level or child attributes require explicit, fully qualified paths.
+The 3DCityDB adds the following features to CQL2 that are not part of the standard. Filters using them cannot be
+exchanged with other CQL2 implementations.
 
-__Multi-occurring Values:__
-For attributes that occur multiple times (arrays), reference specific occurrences using list notation (e.g., property[1]
-for the first occurrence). Note: Indexing starts at 1 rather than 0.
+| Extension                                                             | Description                                                                                                                     |
+|-----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| [Property paths](cql2-properties.md#property-paths)                   | Dot-separated paths to nested properties, complex attributes, addresses, and subfeatures, for example `bldg:address.core:city`. |
+| [Conditions on path steps](cql2-properties.md#conditions-on-path-steps) | Conditions in square brackets that restrict the values of a path step, for example `bldg:buildingPart[con:height > 40]`.      |
+| [`INDEX()` function](cql2-properties.md#selecting-values-by-position) | Position of a value of a multi-valued property. `bldg:function[2]` is short for `bldg:function[INDEX() = 2]`.                   |
+| [Type casts](cql2-properties.md#type-casts)                           | Data type of a generic attribute, for example `gen:storeys::int`.                                                               |
+| [`S_DWITHIN` and `S_BEYOND`](cql2-predicates.md#distance-predicates)  | Distance-based spatial predicates with an optional unit of measurement.                                                         |
+| [`SQL` predicate](cql2-predicates.md#sql-predicates)                  | SQL subquery returning the IDs of the matching features.                                                                        |
 
-__Generic Attributes and Datatype Specification:__
-When dealing with generic attributes (such as those in a property table) where the database does not infer the data type
-automatically, you may need to explicitly specify the expected datatype using a cast-like syntax (e.g., ::datatype similar
-to PostgreSQL conventions).
+## Quick start
 
-For example, using the -t option to specify the feature type along with -f for the filter:
+The following examples give a first impression of CQL2 filters. All commands export buildings to a CityGML file. The
+connection options of the `export` command are omitted for better readability (`[...]`).
 
-```bash
-citydb export citygml -t Building -f "bldg:height < 15"
-```
+All examples in this chapter use property names with namespace prefixes, such as `con:height`, because this makes
+filters unambiguous. The prefix can also be omitted, for example `height > 20`. citydb-tool then searches for the best
+matching property or treats the name as generic attribute, see [here](cql2-properties.md#names-and-namespace-prefixes).
 
-Here, Building is the target object class (with its associated namespace alias), and bldg:height is the explicitly
-referenced attribute. This explicit approach minimizes ambiguity—especially important when attributes are defined on
-child levels or in complex structures.
+Export buildings that are taller than 20 meters:
 
-### Attribute filtering
-
-Filter based on attribute values using comparison operators such as =, !=, <, <=, >, and >=. Logical operators
-AND, OR, and NOT can be used to combine conditions.
-
-#### Basic example
-
-=== "Text-based Filter"
+=== "Linux"
 
     ```bash
-    citydb export citygml --filter="name = 'Forest tree 3'" -o filtered_tree.gml
+    ./citydb export citygml [...] -o buildings.gml \
+        --type-name=bldg:Building \
+        --filter="con:height > 20"
     ```
 
-=== "JSON-based filter"
+=== "Windows CMD"
 
-    ```json
-    {
-      "op": "=",
-      "args": [
-        { "property": "name" },
-        "Forest tree 3"
-      ]
-    }
+    ```bat
+    citydb export citygml [...] -o buildings.gml ^
+        --type-name=bldg:Building ^
+        --filter="con:height > 20"
     ```
 
-#### Combining with logical operators
+Export buildings with a flat roof (roof type `1000`) and at least four storeys:
 
-=== "Text-based filter"
+```bash
+--filter="bldg:roofType = '1000' AND bldg:storeysAboveGround >= 4"
+```
 
-    === "Linux"
-        ```bash
-        citydb export citygml \
-              --filter="name = 'Forest tree 3' AND height > '1'" \
-              -o filtered_tree.gml
-        ```
+Export buildings whose name starts with `Town hall`, ignoring upper and lower case:
 
-    === "Windows CMD"
+```bash
+--filter="CASEI(core:name) LIKE CASEI('town hall%')"
+```
 
-        ```bash
-        citydb export citygml ^
-              --filter="name = 'Forest tree 3' AND height > '1'" ^
-              -o filtered_tree.gml
-        ```
+Export buildings located in Karlsruhe according to their address:
 
-=== "JSON-based filter"
+```bash
+--filter="bldg:address.core:city = 'Karlsruhe'"
+```
 
-    ```json
-    {
-      "op": "AND",
-      "args": [
-        {
-          "op": "=",
-          "args": [
-            { "property": "name" },
-            "Forest tree 3"
-          ]
-        },
-        {
-          "op": ">",
-          "args": [
-            { "property": "height" },
-            "1"
-          ]
-        }
-      ]
-    }
+Export buildings with a generic attribute `district` of value `Nord` or `Sued`:
+
+```bash
+--filter="gen:district IN ('Nord', 'Sued')"
+```
+
+Export all features whose envelope intersects a bounding box given in WGS84 coordinates:
+
+=== "Linux"
+
+    ```bash
+    ./citydb export citygml [...] -o features.gml \
+        --filter="S_INTERSECTS(core:envelope, BBOX(13.369, 52.506, 13.405, 52.520))" \
+        --filter-crs=4326
     ```
 
-#### Filtering with lists
+=== "Windows CMD"
 
-=== "Text-based filter"
-
-    === "Linux"
-
-        ```bash
-        citydb export citygml \
-              --filter="name IN ('Forest tree 1', 'Forest tree 2', 'Forest tree 3')" \
-              -o filtered_trees.gml
-        ```
-
-    === "Windows CMD"
-
-        ```bash
-        citydb export citygml ^
-              --filter="name IN ('Forest tree 1', 'Forest tree 2', 'Forest tree 3')" ^
-              -o filtered_trees.gml
-        ```
-
-=== "JSON-based filter"
-
-    ```json
-    {
-      "op": "IN",
-      "args": [
-        { "property": "name" },
-        ["Forest tree 1", "Forest tree 2", "Forest tree 3"]
-      ]
-    }
+    ```bat
+    citydb export citygml [...] -o features.gml ^
+        --filter="S_INTERSECTS(core:envelope, BBOX(13.369, 52.506, 13.405, 52.520))" ^
+        --filter-crs=4326
     ```
 
-### Spatial filtering
+The building blocks of these filters are explained in detail on the following pages:
 
-Use spatial functions to filter based on the spatial relationship of geometries. Commonly used functions include:
+- [Property references](cql2-properties.md): names, paths, generic attributes, and multi-valued properties.
+- [Literals and predicates](cql2-predicates.md): literals, comparison, logical, arithmetic, spatial, and
+  SQL predicates.
+- [CQL2 JSON](cql2-json.md): the JSON encoding of filter expressions.
+- [Examples](cql2-examples.md): complete filters for typical tasks.
 
-- `intersects`: Returns true if two geometries intersect.
-- `contains`: Returns true if one geometry contains another.
-- `within`: Returns true if one geometry is within another.
+## Using filters on the command line
 
-#### Example
+On the command line, enclose the filter in double quotes so that it is passed as a single argument and string
+literals can use single quotes. Some characters may additionally be interpreted by the shell:
 
-=== "Text-based filter"
+- In Linux shells such as `bash`, the dollar sign and the backtick are special within double quotes. A backslash is
+  only special in front of these characters, a double quote, or another backslash, so LIKE escapes such as `\_` are
+  passed unchanged.
+- In Windows CMD, `%` introduces environment variables in batch files. In batch files, write `%%` for every `%` of a
+  LIKE pattern.
 
-    === "Linux"
+!!! tip
+    For complex filters, consider storing the filter in the [configuration file](config.md). This
+    avoids shell escaping and makes filters reusable.
 
-        ```bash
-        citydb export citygml \
-              --filter="S_INTERSECTS(Envelope, \
-              BBOX(-560.8678155819734, 604.1012795512906, \
-              -553.8099297783192, 627.1318523068805))" \
-              @options.txt -o=output.gml
-        ```
-    === "Windows CMD"
+## Limitations
 
-        ```bash
-        citydb export citygml ^
-              --filter="S_INTERSECTS(Envelope, ^
-              BBOX(-560.8678155819734, 604.1012795512906, ^
-              -553.8099297783192, 627.1318523068805))" ^
-              @options.txt -o=output.gml
-        ```
-=== "JSON-based filter"
+The following parts of CQL2 are not supported by citydb-tool:
 
-    ```json
-    {
-      "op": "func",
-      "function": "S_INTERSECTS",
-      "args": [
-        { "property": "Envelope" },
-        {
-          "op": "func",
-          "function": "BBOX",
-          "args": [
-            -560.8678155819734,
-            604.1012795512906,
-            -553.8099297783192,
-            627.1318523068805
-          ]
-        }
-      ]
-    }
-    ```
+- Temporal operators (`T_AFTER`, `T_BEFORE`, `T_INTERSECTS`, ...) and time interval literals (`INTERVAL`). Compare
+  dates and timestamps with the comparison operators instead.
+- Array operators (`A_EQUALS`, `A_CONTAINS`, `A_CONTAINEDBY`, `A_OVERLAPS`) and array literals outside of `IN` lists.
+- Custom functions other than `CASEI`, `ACCENTI`, and `INDEX`.
+- `GEOMETRYCOLLECTION` and empty geometries as literals.
+
+Filters using an unsupported part fail with an error message before the database is queried.
