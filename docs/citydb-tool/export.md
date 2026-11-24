@@ -83,6 +83,15 @@ If the export includes texture files, a subfolder named `appearance` will be cre
 all textures will be stored. Likewise, a subfolder named `library-objects` will be created to store library objects
 used by implicit geometries. When exporting as a ZIP archive, these folders are included within the archive.
 
+By default, all texture files are written to the same `appearance` folder. Use the `--texture-buckets` option to
+distribute them over the given number of subfolders instead. The subfolders are named `1` to `<number>` and are created
+inside the `appearance` folder. A value of `0` disables this behavior.
+
+!!! warning
+    Writing a very large number of texture files to a single folder can slow down the export considerably, especially
+    on Windows. For large exports, use `--texture-buckets` so that each subfolder holds no more than about 100,000
+    files (e.g., `--texture-buckets=10` for one million textures).
+
 ### Querying and filtering
 
 citydb-tool allows exporting all features stored in a 3DCityDB `v5` instance into a single file. However, in most

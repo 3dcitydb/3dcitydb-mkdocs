@@ -4,6 +4,7 @@
 | `--output-encoding=<encoding>`                           | Encoding to use for the output file.                                                      |               |
 | `--fail-fast`                                            | Fail fast on errors.                                                                      |               |
 | `--temp-dir=<dir>`                                       | Store temporary files in this directory.                                                  |               |
+| `--texture-buckets=<number>`                             | Distribute texture files over this number of subfolders.                                  | 0             |
 | `--threads=<threads>`                                    | Number of threads to use for parallel processing.                                         |               |
 | `--crs=<crs>`                                            | SRID or identifier of the CRS to use for the coordinates of geometries.                   | 3DCityDB CRS  |
 | `--crs-name=<name>`                                      | Name of the CRS to use in the output file.                                                |               |
