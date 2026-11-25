@@ -21,10 +21,13 @@ We recommend checking data and database [compatibility](../compatibility.md) fir
 !!! info
     We are expanding support to include more database systems, starting with __Oracle Database__. Stay tuned!
 
-Supported PostgreSQL versions include __PostgreSQL 14__ and higher, with __PostGIS 3.2__ and higher. Make sure to check
+Supported PostgreSQL versions include __PostgreSQL 15__ and higher, with __PostGIS 3.3__ and higher. Make sure to check
 the [PostgreSQL versioning policy](https://www.postgresql.org/support/versioning/) to determine which PostgreSQL versions are actively maintained or have
 reached end-of-life. The [PostGIS support matrix](https://postgis.net/development/compatibility/) provides details on which PostgreSQL versions are supported
 by specific PostGIS versions and whether any particular version of PostGIS has reached end-of-life.
+
+The setup and upgrade scripts check the PostgreSQL and PostGIS versions of the database and abort with an error
+message if one of them is older than the minimum supported version.
 
 The SQL scripts for setting up a 3D City Database schema are designed to be executed by the default command-line client
 of the respective database system – specifically, `psql` for PostgreSQL. These scripts include meta-commands specific to
@@ -39,7 +42,7 @@ machine from which you plan to set up the 3D City Database before proceeding wit
 
 `citydb-tool` is the default command-line client for the 3D City Database, used to import and export city model data
 as well as perform data and database operations. It is implemented as a Java application and can be run on any platform
-that supports __Java 17__ and higher.
+that supports __Java 21__ and higher.
 
 To use `citydb-tool` on your machine, ensure that a matching Java Runtime Environment (JRE) is installed. Java
 installation packages are available from various vendors and for different platforms. The following is a non-exhaustive

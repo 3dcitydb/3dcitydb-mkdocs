@@ -65,7 +65,7 @@ The images are available in various _variants_ and _versions_. The PostgreSQL/Po
 !!! info
     Depending on the base image variant and version, different versions of PostGIS dependencies (e.g. geos, gdal, proj, sfcgal) are shipped in the base images. Make sure to check the [official PostGIS Docker](https://hub.docker.com/r/postgis/postgis){target="blank"} page for details, if you have specific version requirements.
 
-    As of 2025-01 the __recommended version__ with latest dependencies (geos=3.12.2, gdal=3.9.2, proj=9.4, and sfcgal=1.5.1) is: `latest-alpine` :material-arrow-right: `5.0.0-alpine`, `17-3.5-5.0.0-alpine` or `17-3.5-4.4.0-alpine` for 3DCityDB `v4`.
+    The `latest` tag always points to the most recent PostgreSQL and PostGIS versions (currently `18-3.7`), e.g. `latest-alpine` :material-arrow-right: `18-3.7-5.2.0-alpine`. For 3DCityDB `v4`, the most recent image is `17-3.5-4.4.0-alpine`.
 
 The `edge` images are automatically built and published on every push to the _master_ branch of the [3DCityDB Github repository](https://github.com/3dcitydb/3dcitydb){target="blank"} using the latest stable version of the base images. The `latest` and _release_ image versions are only built when a new release is published on Github. The `latest` tag will point to the most recent release version using the latest base image version.
 
@@ -167,13 +167,13 @@ Besides the shorthand tags listed above, version specific tags including the bas
 The image tags are compose of the _base image version_, the _3DCityDB version_ and the _image variant_, `<base image version>-<3DCityDB version>-<image variant>`. The base image version is inherited from the [PostGIS Docker
 images](https://hub.docker.com/r/postgis/postgis/tags), e.g. `16-3.4`. Debian is the default image variant, where no image variant is appended to the tag. For the Alpine Linux images `-alpine` is appended. Currently supported base image versions are listed in in the table below.
 
-| PSQL version :material-arrow-down: <br> PostGIS version :material-arrow-right:  |   3.0  |   3.1  |   3.2  |   3.3  |   3.4  | 3.5    |
-|:--:|:------:|:------:|:------:|:------:|:------:|--------|
-| 13 | 13-3.0 | 13-3.1 | 13-3.2 | 13-3.3 | 13-3.4 | 13-3.5 |
-| 14 |        | 14-3.1 | 14-3.2 | 14-3.3 | 14-3.4 | 14-3.5 |
-| 15 |        |        |        | 15-3.3 | 15-3.4 | 15.3.5 |
-| 16 |        |        |        | 16-3.3 | 16-3.4 | 16-3.5 |
-| 17 |        |        |        |        | 17-3.4 | 17-3.5 |
+| PSQL version :material-arrow-down: <br> PostGIS version :material-arrow-right:  |   3.3  |   3.4  |   3.5  |   3.6  |   3.7  |
+|:--:|:------:|:------:|:------:|:------:|:------:|
+| 15 | 15-3.3 | 15-3.4 | 15-3.5 | 15-3.6 | 15-3.7 |
+| 16 |        | 16-3.4 | 16-3.5 | 16-3.6 | 16-3.7 |
+| 17 |        | 17-3.4 | 17-3.5 | 17-3.6 | 17-3.7 |
+| 18 |        |        |        | 18-3.6 | 18-3.7 |
+| 19 |        |        |        |        | 19-3.7 |
 
 /// table-caption
 Overview on supported PostgreSQL/PostGIS versions.
@@ -186,19 +186,19 @@ Here are some examples for full image tags:
 === "Dockerhub"
 
     ``` bash
-    docker pull 3dcitydb/3dcitydb-pg:9.5-2.5-4.4.0
-    docker pull 3dcitydb/3dcitydb-pg:13-3.2-4.4.0
-    docker pull 3dcitydb/3dcitydb-pg:13-3.2-4.4.0-alpine
-    docker pull 3dcitydb/3dcitydb-pg:17-3.5-4.4.0-alpine
+    docker pull 3dcitydb/3dcitydb-pg:18-3.7-5.2.0
+    docker pull 3dcitydb/3dcitydb-pg:18-3.7-5.2.0-alpine
+    docker pull 3dcitydb/3dcitydb-pg:19-3.7-5.2.0
+    docker pull 3dcitydb/3dcitydb-pg:15-3.4-5.2.0-alpine
     ```
 
 === "ghcr.io"
 
     ``` bash
-    docker pull ghcr.io/3dcitydb/3dcitydb-pg:9.5-2.5-4.4.0
-    docker pull ghcr.io/3dcitydb/3dcitydb-pg:13-3.2-4.4.0
-    docker pull ghcr.io/3dcitydb/3dcitydb-pg:13-3.2-4.4.0-alpine
-    docker pull ghcr.io/3dcitydb/3dcitydb-pg:17-3.5-4.4.0-alpine
+    docker pull ghcr.io/3dcitydb/3dcitydb-pg:18-3.7-5.2.0
+    docker pull ghcr.io/3dcitydb/3dcitydb-pg:18-3.7-5.2.0-alpine
+    docker pull ghcr.io/3dcitydb/3dcitydb-pg:19-3.7-5.2.0
+    docker pull ghcr.io/3dcitydb/3dcitydb-pg:15-3.4-5.2.0-alpine
     ```
 
 ## Usage and configuration

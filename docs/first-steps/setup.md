@@ -182,6 +182,7 @@ The setup process will terminate immediately if any errors occur. Possible reaso
 - The user executing `create-db` is neither a superuser nor the owner of the specified database (or does
   not have the privileges to create objects in that database).
 - The PostGIS extension has not been installed.
+- The PostgreSQL or PostGIS version is older than the minimum supported version.
 - Parts of the 3DCityDB already exist because of a previous setup attempt. To prevent this, ensure that the schemas
   `citydb` and `citydb_pkg` do not exist in the database before starting the setup process.
 
