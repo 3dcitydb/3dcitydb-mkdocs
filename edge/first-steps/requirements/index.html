@@ -2712,10 +2712,12 @@ We recommend checking data and database <a href="../../compatibility/">compatibi
 <p class="admonition-title">Info</p>
 <p>We are expanding support to include more database systems, starting with <strong>Oracle Database</strong>. Stay tuned!</p>
 </div>
-<p>Supported PostgreSQL versions include <strong>PostgreSQL 14</strong> and higher, with <strong>PostGIS 3.2</strong> and higher. Make sure to check
+<p>Supported PostgreSQL versions include <strong>PostgreSQL 15</strong> and higher, with <strong>PostGIS 3.3</strong> and higher. Make sure to check
 the <a href="https://www.postgresql.org/support/versioning/">PostgreSQL versioning policy</a> to determine which PostgreSQL versions are actively maintained or have
 reached end-of-life. The <a href="https://postgis.net/development/compatibility/">PostGIS support matrix</a> provides details on which PostgreSQL versions are supported
 by specific PostGIS versions and whether any particular version of PostGIS has reached end-of-life.</p>
+<p>The setup and upgrade scripts check the PostgreSQL and PostGIS versions of the database and abort with an error
+message if one of them is older than the minimum supported version.</p>
 <p>The SQL scripts for setting up a 3D City Database schema are designed to be executed by the default command-line client
 of the respective database system – specifically, <code>psql</code> for PostgreSQL. These scripts include meta-commands specific to
 these clients and may not work properly with other client software. Therefore, ensure that <code>psql</code> is installed on the
@@ -2728,7 +2730,7 @@ system. The 3D City Database does not support database versions that have reache
 <h2 id="citydb-tool-database-client"><code>citydb-tool</code> database client<a class="headerlink" href="#citydb-tool-database-client" title="Link to this headline for referencing">¶</a></h2>
 <p><code>citydb-tool</code> is the default command-line client for the 3D City Database, used to import and export city model data
 as well as perform data and database operations. It is implemented as a Java application and can be run on any platform
-that supports <strong>Java 17</strong> and higher.</p>
+that supports <strong>Java 21</strong> and higher.</p>
 <p>To use <code>citydb-tool</code> on your machine, ensure that a matching Java Runtime Environment (<abbr title="Java Runtime Environment">JRE</abbr>) is installed. Java
 installation packages are available from various vendors and for different platforms. The following is a non-exhaustive
 list of Java distributions that are free to download and use:</p>

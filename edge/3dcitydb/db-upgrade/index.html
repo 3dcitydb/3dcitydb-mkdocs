@@ -2751,6 +2751,8 @@ available <a href="../db-scripts/#shell-scripts">here</a>.</p>
 <li>The upgrade scripts are intended <strong>only</strong> for minor and patch version updates within the same major version.</li>
 <li>The upgrade may involve schema changes. Because these changes affect the stored city model data,
   we <strong>strongly recommend backing up your 3DCityDB instance before upgrading</strong>.</li>
+<li>The upgrade aborts without changes if the PostgreSQL or PostGIS version of the database is older than the
+  <a href="../../first-steps/requirements/">minimum supported version</a>. Upgrade PostgreSQL or PostGIS first in this case.</li>
 </ul>
 </div>
 <h2 id="3dcitydb-upgrade-steps">3DCityDB upgrade steps<a class="headerlink" href="#3dcitydb-upgrade-steps" title="Link to this headline for referencing">¶</a></h2>
