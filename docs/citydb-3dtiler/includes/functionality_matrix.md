@@ -11,8 +11,9 @@ tags:
 
 Following Diagram show the implemented and planned functionality of the citydb3dtiler application.
 
+<!--
 ```plantuml source="docs/includes/puml/functionality_matrix.puml"
 ```
-
-<!-- ![Functionality Matrix](puml/functionality_matrix.png)
 -->
+
+![Functionality Matrix](puml/functionality_matrix.png)

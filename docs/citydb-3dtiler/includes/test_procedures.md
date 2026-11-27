@@ -4,11 +4,13 @@
 
 This diagram shows the list of test procedures to be carried out in order to perform an internal quality check or to prevent function loss during developments.
 
+<!--
 ```plantuml source="docs/includes/puml/test_procedures.puml"
 ```
-
-<!--![Test Procedures](puml/test_procedures.png)
 -->
+
+![Test Procedures](puml/test_procedures.png)
+
 
 
 ## Previous Tests
