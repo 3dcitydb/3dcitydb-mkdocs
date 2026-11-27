@@ -83,8 +83,6 @@ plugins:
       javascript_dir: assets/javascripts
       # # deploy_prefix: /3dcitydb-mkdocs
       # version_selector: true
-  - plantuml:
-      puml_url: https://www.plantuml.com/plantuml/
 
 # Extra #######################################################################
 extra:

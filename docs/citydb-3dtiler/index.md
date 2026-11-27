@@ -15,9 +15,9 @@ tags:
 !!! warning "This application is in the testing phase"
     This application is still in the testing phase. Please exercise caution when using it in production. Therefore, feedback is always welcome. Please feel free to create an issue on the GitHub page or contact me: murat.kendir(At)tum.de
 
-GitHub Repository : [github.com/3dcitydb/citydb-3dtiler](https://github.com/3dcitydb/citydb-3dtiler){:target="_blank"}
-
 `citydb-3dtiler` can generate 3DTiles (v 1.0 and 1.1) by reading features (formerly known as "cityobject"s) from 3DCityDB (v5.x), a database application that can import CityGML 2.0 or 3.0-based datasets. The application's key features are as follows:
+
+GitHub Repository : [github.com/3dcitydb/citydb-3dtiler](https://github.com/3dcitydb/citydb-3dtiler){:target="_blank"}
 
 ## Key features
 

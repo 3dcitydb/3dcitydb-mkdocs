@@ -1,11 +1,11 @@
 nav:
-  - index.md
-  - cli.md
-  - main_options.md
-  - db_con_options.md
-  - filter_options.md
-  - advise.md
-  - tile.md
-  - samples.md
-  - docker.md
-  - dev_notes.md
+  - "citydb-3dtiler": index.md
+  - "CLI Overview": cli.md
+  - "Main Options": main_options.md
+  - "Database Con. Options" : db_con_options.md
+  - "Filter Options" : filter_options.md
+  - "advise Command" : advise.md
+  - "tile Command" : tile.md
+  - "Sample Commands" : samples.md
+  - "citydb-3dtiler Docker": docker.md
+  - "Developer Notes" : dev_notes.md
