@@ -5,3 +5,4 @@ mike
 
 # Plugins
 mkdocs-awesome-pages-plugin
+selectolax>=0.3.29,<1.0
