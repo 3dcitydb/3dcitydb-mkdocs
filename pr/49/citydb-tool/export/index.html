@@ -56,10 +56,6 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../assets/mkdocs_puml/puml.css">
-    
-      <link rel="stylesheet" href="../../assets/mkdocs_puml/interaction.css">
-    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -113,7 +109,7 @@
             
   
   <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/49" style="font-weight: 600;">
-    🔍 Preview of pull request #49 (commit 6627e8c) — not the official documentation.
+    🔍 Preview of pull request #49 (commit 2103690) — not the official documentation.
   </a>
   
 
@@ -2315,9 +2311,35 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../cql2/" class="md-nav__link">
+    
+    
+      
         
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11">
+        
+          
+          <label class="md-nav__link" for="__nav_4_11" id="__nav_4_11_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -2331,7 +2353,163 @@
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CQL2 query language
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CQL2 overview
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2-properties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Property references
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2-predicates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Literals and predicates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2-json/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CQL2 JSON
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2527,7 +2705,7 @@
   <span class="md-ellipsis">
     
   
-    Database Connection Options
+    Database Con. Options
   
 
     
@@ -2639,7 +2817,7 @@
   <span class="md-ellipsis">
     
   
-    Samples
+    Sample Commands
   
 
     
@@ -2669,7 +2847,7 @@
   <span class="md-ellipsis">
     
   
-    How to use with Docker?
+    citydb-3dtiler Docker
   
 
     
@@ -3387,6 +3565,11 @@ export, query and filter, time-based feature history, tiling, and database conne
 <td></td>
 </tr>
 <tr>
+<td><code>--texture-buckets=&lt;number&gt;</code></td>
+<td>Distribute texture files over this number of subfolders.</td>
+<td>0</td>
+</tr>
+<tr>
 <td><code>--threads=&lt;threads&gt;</code></td>
 <td>Number of threads to use for parallel processing.</td>
 <td></td>
@@ -3462,11 +3645,6 @@ export, query and filter, time-based feature history, tiling, and database conne
 <td><code>--lod-mode=&lt;mode&gt;</code></td>
 <td><abbr title="Level of Detail">LoD</abbr> filter mode: <code>or</code>, <code>and</code>, <code>minimum</code>, <code>maximum</code>.</td>
 <td><code>or</code></td>
-</tr>
-<tr>
-<td><code>--lod-search-depth=&lt;0..n|all&gt;</code></td>
-<td>Levels of sub-features to search for matching LoDs</td>
-<td>0</td>
 </tr>
 <tr>
 <td><code>--no-appearances</code></td>
@@ -3657,6 +3835,15 @@ encoding name (e.g., <code>UTF-8</code>).</p>
 <p>If the export includes texture files, a subfolder named <code>appearance</code> will be created relative to the output file, where
 all textures will be stored. Likewise, a subfolder named <code>library-objects</code> will be created to store library objects
 used by implicit geometries. When exporting as a ZIP archive, these folders are included within the archive.</p>
+<p>By default, all texture files are written to the same <code>appearance</code> folder. Use the <code>--texture-buckets</code> option to
+distribute them over the given number of subfolders instead. The subfolders are named <code>1</code> to <code>&lt;number&gt;</code> and are created
+inside the <code>appearance</code> folder. A value of <code>0</code> disables this behavior.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Writing a very large number of texture files to a single folder can slow down the export considerably, especially
+on Windows. For large exports, use <code>--texture-buckets</code> so that each subfolder holds no more than about 100,000
+files (e.g., <code>--texture-buckets=10</code> for one million textures).</p>
+</div>
 <h3 id="querying-and-filtering">Querying and filtering<a class="headerlink" href="#querying-and-filtering" title="Link to this headline for referencing">¶</a></h3>
 <p>citydb-tool allows exporting all features stored in a 3DCityDB <code>v5</code> instance into a single file. However, in most
 cases, only a specific subset of features is needed. The <code>export</code> command provides various querying and filtering
@@ -3756,9 +3943,8 @@ depending on the <abbr title="OGC City Geography Markup Language">CityGML</abbr>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>The <code>--lod-search-depth</code> option defines the number of subfeature levels to search for a matching <abbr title="Level of Detail">LoD</abbr>. With the default
-value <code>0</code>, only the feature and its space boundaries are considered. The <abbr title="Level of Detail">LoD</abbr> filter is satisfied if at least one
-subfeature has a matching <abbr title="Level of Detail">LoD</abbr> representation.</p>
+<p>The <abbr title="Level of Detail">LoD</abbr> filter searches the feature and all its nested subfeatures at any level. A feature is exported if it or
+at least one of its subfeatures has a matching <abbr title="Level of Detail">LoD</abbr> representation.</p>
 </div>
 <p>The following command exports features represented in LoD2 or LoD3, retaining only their highest <abbr title="Level of Detail">LoD</abbr>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Linux</label><label for="__tabbed_4_2">Windows CMD</label></div>
@@ -4206,12 +4392,6 @@ requires a separate database connection, so ensure your database can handle the 
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="../../assets/mkdocs_puml/puml.js"></script>
-      
-        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
-      
-        <script src="../../assets/mkdocs_puml/interaction.js"></script>
       
     
   

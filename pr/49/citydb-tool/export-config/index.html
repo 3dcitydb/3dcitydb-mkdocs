@@ -56,10 +56,6 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../assets/mkdocs_puml/puml.css">
-    
-      <link rel="stylesheet" href="../../assets/mkdocs_puml/interaction.css">
-    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -113,7 +109,7 @@
             
   
   <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/49" style="font-weight: 600;">
-    🔍 Preview of pull request #49 (commit 6627e8c) — not the official documentation.
+    🔍 Preview of pull request #49 (commit 2103690) — not the official documentation.
   </a>
   
 
@@ -2223,9 +2219,35 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../cql2/" class="md-nav__link">
+    
+    
+      
         
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11">
+        
+          
+          <label class="md-nav__link" for="__nav_4_11" id="__nav_4_11_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -2239,7 +2261,163 @@
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CQL2 query language
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CQL2 overview
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2-properties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Property references
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2-predicates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Literals and predicates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2-json/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CQL2 JSON
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2435,7 +2613,7 @@
   <span class="md-ellipsis">
     
   
-    Database Connection Options
+    Database Con. Options
   
 
     
@@ -2547,7 +2725,7 @@
   <span class="md-ellipsis">
     
   
-    Samples
+    Sample Commands
   
 
     
@@ -2577,7 +2755,7 @@
   <span class="md-ellipsis">
     
   
-    How to use with Docker?
+    citydb-3dtiler Docker
   
 
     
@@ -3183,7 +3361,7 @@ applicable, the description of each JSON property links to the command-line opti
 </tr>
 <tr>
 <td><a href="../export/#appearance-filter"><code>"appearanceOptions"</code></a></td>
-<td>The <code>"themes"</code> array restricts the export of appearances based on their <code>theme</code> property. To exclude all appearances, set the <code>"exportAppearances"</code> property to <code>false</code> (default: <code>true</code>).  Use the <code>"numberOfTextureBuckets"</code> property to organize exported texture images into subfolders (default: <code>0</code>).</td>
+<td>The <code>"themes"</code> array restricts the export of appearances based on their <code>theme</code> property. To exclude all appearances, set the <code>"exportAppearances"</code> property to <code>false</code> (default: <code>true</code>).  Use the <a href="../export/#specifying-the-output-file"><code>"numberOfTextureBuckets"</code></a> property to organize exported texture images into subfolders (default: <code>0</code>).</td>
 <td></td>
 </tr>
 </tbody>
@@ -3222,20 +3400,19 @@ applicable, the description of each JSON property links to the command-line opti
 </span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">    </span><span class="p">},</span>
 </span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">    </span><span class="nt">"lodFilter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">      </span><span class="nt">"lods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"2"</span><span class="p">,</span><span class="s2">"3"</span><span class="p">],</span>
-</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">      </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"or"</span><span class="p">,</span>
-</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">      </span><span class="nt">"searchDepth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">    </span><span class="nt">"sorting"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">      </span><span class="nt">"sortBy"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">        </span><span class="p">{</span>
-</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">          </span><span class="nt">"property"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core:objectId"</span><span class="p">,</span>
-</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">          </span><span class="nt">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"desc"</span>
-</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">      </span><span class="p">]</span>
-</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">    </span><span class="nt">"validity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span>
-</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="p">}</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">      </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"or"</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">    </span><span class="nt">"sorting"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">      </span><span class="nt">"sortBy"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">          </span><span class="nt">"property"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core:objectId"</span><span class="p">,</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">          </span><span class="nt">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"desc"</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">      </span><span class="p">]</span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">    </span><span class="nt">"validity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="p">}</span>
 </span></code></pre></div>
 <ol>
 <li>The <code>"name"</code> property is mandatory. To avoid ambiguity, use the format <code>"prefix:name"</code> with a namespace alias as prefix or
@@ -3273,7 +3450,7 @@ applicable, the description of each JSON property links to the command-line opti
 </tr>
 <tr>
 <td><a href="../export/#lod-filter"><code>"lodFilter"</code></a></td>
-<td>Defines an <code>"lods"</code> array and a <code>"mode"</code> to filter features based on <abbr title="Level of Detail">LoD</abbr>: <code>"or"</code> (default) requires any matching <abbr title="Level of Detail">LoD</abbr>, while <code>"and"</code> requires all. The <code>"searchDepth"</code> sets the number of subfeature levels to search for a matching <abbr title="Level of Detail">LoD</abbr> (default: <code>0</code>).</td>
+<td>Defines an <code>"lods"</code> array and a <code>"mode"</code> to filter features based on <abbr title="Level of Detail">LoD</abbr>: <code>"or"</code> (default) requires any matching <abbr title="Level of Detail">LoD</abbr>, while <code>"and"</code> requires all.</td>
 <td></td>
 </tr>
 <tr>
@@ -3861,12 +4038,6 @@ computed from all features exported to the respective output file.</p>
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="../../assets/mkdocs_puml/puml.js"></script>
-      
-        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
-      
-        <script src="../../assets/mkdocs_puml/interaction.js"></script>
       
     
   

@@ -56,10 +56,6 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../assets/mkdocs_puml/puml.css">
-    
-      <link rel="stylesheet" href="../../assets/mkdocs_puml/interaction.css">
-    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -113,7 +109,7 @@
             
   
   <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/49" style="font-weight: 600;">
-    🔍 Preview of pull request #49 (commit 6627e8c) — not the official documentation.
+    🔍 Preview of pull request #49 (commit 2103690) — not the official documentation.
   </a>
   
 
@@ -2262,9 +2258,35 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../citydb-tool/cql2/" class="md-nav__link">
+    
+    
+      
         
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11">
+        
+          
+          <label class="md-nav__link" for="__nav_4_11" id="__nav_4_11_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -2278,7 +2300,163 @@
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CQL2 query language
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../citydb-tool/cql2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CQL2 overview
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../citydb-tool/cql2-properties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Property references
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../citydb-tool/cql2-predicates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Literals and predicates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../citydb-tool/cql2-json/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CQL2 JSON
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../citydb-tool/cql2-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2474,7 +2652,7 @@
   <span class="md-ellipsis">
     
   
-    Database Connection Options
+    Database Con. Options
   
 
     
@@ -2586,7 +2764,7 @@
   <span class="md-ellipsis">
     
   
-    Samples
+    Sample Commands
   
 
     
@@ -2616,7 +2794,7 @@
   <span class="md-ellipsis">
     
   
-    How to use with Docker?
+    citydb-3dtiler Docker
   
 
     
@@ -3217,7 +3395,7 @@ the <a href="../../citydb-tool/docker/">citydb-tool</a> images, as of writing th
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Depending on the base image variant and version, different versions of PostGIS dependencies (e.g. geos, gdal, proj, sfcgal) are shipped in the base images. Make sure to check the <a href="https://hub.docker.com/r/postgis/postgis" target="blank">official PostGIS Docker</a> page for details, if you have specific version requirements.</p>
-<p>As of 2025-01 the <strong>recommended version</strong> with latest dependencies (geos=3.12.2, gdal=3.9.2, proj=9.4, and sfcgal=1.5.1) is: <code>latest-alpine</code> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg></span> <code>5.0.0-alpine</code>, <code>17-3.5-5.0.0-alpine</code> or <code>17-3.5-4.4.0-alpine</code> for 3DCityDB <code>v4</code>.</p>
+<p>The <code>latest</code> tag always points to the most recent PostgreSQL and PostGIS versions (currently <code>18-3.7</code>), e.g. <code>latest-alpine</code> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg></span> <code>18-3.7-5.2.0-alpine</code>. For 3DCityDB <code>v4</code>, the most recent image is <code>17-3.5-4.4.0-alpine</code>.</p>
 </div>
 <p>The <code>edge</code> images are automatically built and published on every push to the <em>master</em> branch of the <a href="https://github.com/3dcitydb/3dcitydb" target="blank">3DCityDB Github repository</a> using the latest stable version of the base images. The <code>latest</code> and <em>release</em> image versions are only built when a new release is published on Github. The <code>latest</code> tag will point to the most recent release version using the latest base image version.</p>
 <figure id="__table-caption_1">
@@ -3335,59 +3513,53 @@ images</a>, e.g. <code>16-3.4</code>. Debian is the default image variant, where
 <thead>
 <tr>
 <th style="text-align: center;">PSQL version <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 4h2v12l5.5-5.5 1.42 1.42L12 19.84l-7.92-7.92L5.5 10.5 11 16z"></path></svg></span> <br> PostGIS version <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg></span></th>
-<th style="text-align: center;">3.0</th>
-<th style="text-align: center;">3.1</th>
-<th style="text-align: center;">3.2</th>
 <th style="text-align: center;">3.3</th>
 <th style="text-align: center;">3.4</th>
-<th>3.5</th>
+<th style="text-align: center;">3.5</th>
+<th style="text-align: center;">3.6</th>
+<th style="text-align: center;">3.7</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">13</td>
-<td style="text-align: center;">13-3.0</td>
-<td style="text-align: center;">13-3.1</td>
-<td style="text-align: center;">13-3.2</td>
-<td style="text-align: center;">13-3.3</td>
-<td style="text-align: center;">13-3.4</td>
-<td>13-3.5</td>
-</tr>
-<tr>
-<td style="text-align: center;">14</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">14-3.1</td>
-<td style="text-align: center;">14-3.2</td>
-<td style="text-align: center;">14-3.3</td>
-<td style="text-align: center;">14-3.4</td>
-<td>14-3.5</td>
-</tr>
-<tr>
 <td style="text-align: center;">15</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 <td style="text-align: center;">15-3.3</td>
 <td style="text-align: center;">15-3.4</td>
-<td>15.3.5</td>
+<td style="text-align: center;">15-3.5</td>
+<td style="text-align: center;">15-3.6</td>
+<td style="text-align: center;">15-3.7</td>
 </tr>
 <tr>
 <td style="text-align: center;">16</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">16-3.3</td>
 <td style="text-align: center;">16-3.4</td>
-<td>16-3.5</td>
+<td style="text-align: center;">16-3.5</td>
+<td style="text-align: center;">16-3.6</td>
+<td style="text-align: center;">16-3.7</td>
 </tr>
 <tr>
 <td style="text-align: center;">17</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 <td style="text-align: center;">17-3.4</td>
-<td>17-3.5</td>
+<td style="text-align: center;">17-3.5</td>
+<td style="text-align: center;">17-3.6</td>
+<td style="text-align: center;">17-3.7</td>
+</tr>
+<tr>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">18-3.6</td>
+<td style="text-align: center;">18-3.7</td>
+</tr>
+<tr>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">19-3.7</td>
 </tr>
 </tbody>
 </table>
@@ -3400,17 +3572,17 @@ images</a>, e.g. <code>16-3.4</code>. Debian is the default image variant, where
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Dockerhub</label><label for="__tabbed_5_2">ghcr.io</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>3dcitydb/3dcitydb-pg:9.5-2.5-4.4.0
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>docker<span class="w"> </span>pull<span class="w"> </span>3dcitydb/3dcitydb-pg:13-3.2-4.4.0
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>docker<span class="w"> </span>pull<span class="w"> </span>3dcitydb/3dcitydb-pg:13-3.2-4.4.0-alpine
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>docker<span class="w"> </span>pull<span class="w"> </span>3dcitydb/3dcitydb-pg:17-3.5-4.4.0-alpine
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>3dcitydb/3dcitydb-pg:18-3.7-5.2.0
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>docker<span class="w"> </span>pull<span class="w"> </span>3dcitydb/3dcitydb-pg:18-3.7-5.2.0-alpine
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>docker<span class="w"> </span>pull<span class="w"> </span>3dcitydb/3dcitydb-pg:19-3.7-5.2.0
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>docker<span class="w"> </span>pull<span class="w"> </span>3dcitydb/3dcitydb-pg:15-3.4-5.2.0-alpine
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>ghcr.io/3dcitydb/3dcitydb-pg:9.5-2.5-4.4.0
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>docker<span class="w"> </span>pull<span class="w"> </span>ghcr.io/3dcitydb/3dcitydb-pg:13-3.2-4.4.0
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>docker<span class="w"> </span>pull<span class="w"> </span>ghcr.io/3dcitydb/3dcitydb-pg:13-3.2-4.4.0-alpine
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>docker<span class="w"> </span>pull<span class="w"> </span>ghcr.io/3dcitydb/3dcitydb-pg:17-3.5-4.4.0-alpine
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>ghcr.io/3dcitydb/3dcitydb-pg:18-3.7-5.2.0
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>docker<span class="w"> </span>pull<span class="w"> </span>ghcr.io/3dcitydb/3dcitydb-pg:18-3.7-5.2.0-alpine
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>docker<span class="w"> </span>pull<span class="w"> </span>ghcr.io/3dcitydb/3dcitydb-pg:19-3.7-5.2.0
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>docker<span class="w"> </span>pull<span class="w"> </span>ghcr.io/3dcitydb/3dcitydb-pg:15-3.4-5.2.0-alpine
 </span></code></pre></div>
 </div>
 </div>
@@ -3919,12 +4091,6 @@ using <code>psql</code>.</p>
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="../../assets/mkdocs_puml/puml.js"></script>
-      
-        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
-      
-        <script src="../../assets/mkdocs_puml/interaction.js"></script>
       
     
   

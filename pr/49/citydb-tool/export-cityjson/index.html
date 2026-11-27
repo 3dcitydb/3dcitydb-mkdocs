@@ -56,10 +56,6 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../assets/mkdocs_puml/puml.css">
-    
-      <link rel="stylesheet" href="../../assets/mkdocs_puml/interaction.css">
-    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -113,7 +109,7 @@
             
   
   <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/49" style="font-weight: 600;">
-    🔍 Preview of pull request #49 (commit 6627e8c) — not the official documentation.
+    🔍 Preview of pull request #49 (commit 2103690) — not the official documentation.
   </a>
   
 
@@ -2326,9 +2322,35 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../cql2/" class="md-nav__link">
+    
+    
+      
         
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11">
+        
+          
+          <label class="md-nav__link" for="__nav_4_11" id="__nav_4_11_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -2342,7 +2364,163 @@
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CQL2 query language
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CQL2 overview
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2-properties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Property references
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2-predicates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Literals and predicates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2-json/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CQL2 JSON
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2538,7 +2716,7 @@
   <span class="md-ellipsis">
     
   
-    Database Connection Options
+    Database Con. Options
   
 
     
@@ -2650,7 +2828,7 @@
   <span class="md-ellipsis">
     
   
-    Samples
+    Sample Commands
   
 
     
@@ -2680,7 +2858,7 @@
   <span class="md-ellipsis">
     
   
-    How to use with Docker?
+    citydb-3dtiler Docker
   
 
     
@@ -3418,6 +3596,11 @@ format-specific export options.</p>
 <td></td>
 </tr>
 <tr>
+<td><code>--texture-buckets=&lt;number&gt;</code></td>
+<td>Distribute texture files over this number of subfolders.</td>
+<td>0</td>
+</tr>
+<tr>
 <td><code>--threads=&lt;threads&gt;</code></td>
 <td>Number of threads to use for parallel processing.</td>
 <td></td>
@@ -3573,11 +3756,6 @@ format-specific export options.</p>
 <td><code>--lod-mode=&lt;mode&gt;</code></td>
 <td><abbr title="Level of Detail">LoD</abbr> filter mode: <code>or</code>, <code>and</code>, <code>minimum</code>, <code>maximum</code>.</td>
 <td><code>or</code></td>
-</tr>
-<tr>
-<td><code>--lod-search-depth=&lt;0..n|all&gt;</code></td>
-<td>Levels of sub-features to search for matching LoDs</td>
-<td>0</td>
 </tr>
 <tr>
 <td><code>--no-appearances</code></td>
@@ -3908,12 +4086,6 @@ which also reduces the file size.</p>
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="../../assets/mkdocs_puml/puml.js"></script>
-      
-        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
-      
-        <script src="../../assets/mkdocs_puml/interaction.js"></script>
       
     
   

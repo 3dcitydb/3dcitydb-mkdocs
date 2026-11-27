@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Filter and query data using CQL2 query language">
+        <meta name="description" content="Filter features from the 3DCityDB v5 using the CQL2 query language">
       
       
         <meta name="author" content="3DCityDB Steering Group">
@@ -15,7 +15,7 @@
         <link rel="prev" href="../report-config/">
       
       
-        <link rel="next" href="../docker/">
+        <link rel="next" href="../cql2-properties/">
       
       
         
@@ -55,10 +55,6 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css">
     
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../assets/mkdocs_puml/puml.css">
-    
-      <link rel="stylesheet" href="../../assets/mkdocs_puml/interaction.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -100,7 +96,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#using-cql2-with-citydb-tool" class="md-skip">
+        <a href="#cql2-query-language" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +109,7 @@
             
   
   <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/49" style="font-weight: 600;">
-    🔍 Preview of pull request #49 (commit 6627e8c) — not the official documentation.
+    🔍 Preview of pull request #49 (commit 2103690) — not the official documentation.
   </a>
   
 
@@ -2067,10 +2063,76 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_4_11" id="__nav_4_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CQL2 query language
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CQL2 query language
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
+      
+        
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
@@ -2080,7 +2142,7 @@
   <span class="md-ellipsis">
     
   
-    CQL2 query language
+    CQL2 overview
   
 
     
@@ -2098,7 +2160,7 @@
   <span class="md-ellipsis">
     
   
-    CQL2 query language
+    CQL2 overview
   
 
     
@@ -2116,6 +2178,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2124,44 +2188,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#using-cql2-with-citydb-tool" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Using CQL2 with citydb-tool
+        Overview
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#syntax" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Syntax
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#writing-cql2-expressions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Writing CQL2 expressions
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Writing CQL2 expressions">
+    <nav class="md-nav" aria-label="Overview">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#understanding-literals" class="md-nav__link">
+  <a href="#where-filters-are-used" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Understanding literals
+        Where filters are used
       
     </span>
   </a>
@@ -2169,10 +2211,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#attribute-references" class="md-nav__link">
+  <a href="#cql2-text-and-cql2-json" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Attribute references
+        CQL2 text and CQL2 JSON
       
     </span>
   </a>
@@ -2180,10 +2222,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#attribute-filtering" class="md-nav__link">
+  <a href="#supported-parts-of-the-cql2-standard" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Attribute filtering
+        Supported parts of the CQL2 standard
       
     </span>
   </a>
@@ -2191,10 +2233,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#spatial-filtering" class="md-nav__link">
+  <a href="#3dcitydb-extensions-to-cql2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Spatial filtering
+        3DCityDB extensions to CQL2
       
     </span>
   </a>
@@ -2206,9 +2248,162 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-filters-on-the-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using filters on the command line
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitations
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2-properties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Property references
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2-predicates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Literals and predicates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2-json/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CQL2 JSON
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cql2-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -2405,7 +2600,7 @@
   <span class="md-ellipsis">
     
   
-    Database Connection Options
+    Database Con. Options
   
 
     
@@ -2517,7 +2712,7 @@
   <span class="md-ellipsis">
     
   
-    Samples
+    Sample Commands
   
 
     
@@ -2547,7 +2742,7 @@
   <span class="md-ellipsis">
     
   
-    How to use with Docker?
+    citydb-3dtiler Docker
   
 
     
@@ -2867,6 +3062,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2875,44 +3072,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#using-cql2-with-citydb-tool" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Using CQL2 with citydb-tool
+        Overview
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#syntax" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Syntax
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#writing-cql2-expressions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Writing CQL2 expressions
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Writing CQL2 expressions">
+    <nav class="md-nav" aria-label="Overview">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#understanding-literals" class="md-nav__link">
+  <a href="#where-filters-are-used" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Understanding literals
+        Where filters are used
       
     </span>
   </a>
@@ -2920,10 +3095,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#attribute-references" class="md-nav__link">
+  <a href="#cql2-text-and-cql2-json" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Attribute references
+        CQL2 text and CQL2 JSON
       
     </span>
   </a>
@@ -2931,10 +3106,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#attribute-filtering" class="md-nav__link">
+  <a href="#supported-parts-of-the-cql2-standard" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Attribute filtering
+        Supported parts of the CQL2 standard
       
     </span>
   </a>
@@ -2942,10 +3117,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#spatial-filtering" class="md-nav__link">
+  <a href="#3dcitydb-extensions-to-cql2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Spatial filtering
+        3DCityDB extensions to CQL2
       
     </span>
   </a>
@@ -2954,6 +3129,39 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-filters-on-the-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using filters on the command line
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitations
+      
+    </span>
+  </a>
   
 </li>
       
@@ -2973,6 +3181,49 @@
 
 
 
+  <nav class="md-path" aria-label="Navigation">
+    <ol class="md-path__list">
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    citydb-tool
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    CQL2 query language
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
               
               <article class="md-content__inner md-typeset">
                 
@@ -2984,7 +3235,7 @@
       
       
       
-        <a href="../../tags/#tag:attribute-filter" class="md-tag">attribute filter</a>
+        <a href="../../tags/#tag:citydb-tool" class="md-tag">citydb-tool</a>
       
     
       
@@ -3008,13 +3259,6 @@
         <a href="../../tags/#tag:query" class="md-tag">query</a>
       
     
-      
-      
-      
-      
-        <a href="../../tags/#tag:spatial-filter" class="md-tag">spatial filter</a>
-      
-    
   </nav>
 
 
@@ -3022,233 +3266,278 @@
   
 
 
-  <h1>CQL2 query language</h1>
-
-<p><strong><abbr title="OGC Common Query Language">CQL2</abbr></strong> (Common Query Language 2) is an advanced query language used to filter and query spatial and attribute
-data within the <strong>citydb-tool</strong>. It allows users to define precise queries for exporting or deleting features
-based on attribute values, spatial properties, or logical conditions.</p>
-<p><abbr title="OGC Common Query Language">CQL2</abbr> is a standard maintained by the <strong><abbr title="Open Geospatial Consortium">OGC</abbr> (Open Geospatial Consortium)</strong> and serves as an evolution of the
-original CQL language, providing better expressiveness and flexibility for data filtering.</p>
-<p>Key Features of <abbr title="OGC Common Query Language">CQL2</abbr></p>
+<h1 id="cql2-query-language"><abbr title="OGC Common Query Language">CQL2</abbr> query language<a class="headerlink" href="#cql2-query-language" title="Link to this headline for referencing">¶</a></h1>
+<p>citydb-tool uses the <a href="https://docs.ogc.org/is/21-065r2/21-065r2.html" target="blank"><abbr title="Open Geospatial Consortium">OGC</abbr> Common Query Language (<abbr title="OGC Common Query Language">CQL2</abbr>)</a> to
+select the city objects to process from the 3DCityDB <code>v5</code>. <abbr title="OGC Common Query Language">CQL2</abbr> is a filter language for attribute-based and spatial
+queries on feature data. citydb-tool implements large parts of the standard and supports the 3DCityDB extensions to <abbr title="OGC Common Query Language">CQL2</abbr>,
+which are needed to query the 3DCityDB <code>v5</code> data model, such as property paths to complex attributes and nested
+subfeatures, conditions on path steps, type casts for generic attributes, and SQL subqueries.</p>
+<p>This chapter explains how to write <abbr title="OGC Common Query Language">CQL2</abbr> filter expressions for the 3DCityDB <code>v5</code>. Filters are expressed on the
+<a href="../../3dcitydb/">3DCityDB <code>v5</code> data model</a>. The chapter assumes basic knowledge of this data model and of query
+languages. For the general <abbr title="OGC Common Query Language">CQL2</abbr> concepts, it refers to the standard where appropriate.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The feature types, properties, and namespaces available in filters are defined by the schema mapping of the
+3DCityDB <code>v5</code>. The 3DCityDB <code>v5</code> data model implements the <abbr title="OGC City Geography Markup Language">CityGML</abbr> 3.0 Conceptual Model but is not identical to it.</p>
+</div>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Link to this headline for referencing">¶</a></h2>
+<h3 id="where-filters-are-used">Where filters are used<a class="headerlink" href="#where-filters-are-used" title="Link to this headline for referencing">¶</a></h3>
+<p><abbr title="OGC Common Query Language">CQL2</abbr> filter expressions are supported by all citydb-tool commands that select features from the 3DCityDB <code>v5</code>, such as
+the <a href="../export/#cql2-based-filtering"><code>export</code></a> and <a href="../delete/#cql2-based-filtering"><code>delete</code></a> commands. They
+are passed with the following command-line options and configuration settings:</p>
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--filter=&lt;cql2-text&gt;</code></td>
+<td><abbr title="OGC Common Query Language">CQL2</abbr> filter in text encoding. Only features matching the filter are processed.</td>
+</tr>
+<tr>
+<td><code>--filter-crs=&lt;crs&gt;</code></td>
+<td><abbr title="Spatial Reference ID">SRID</abbr> or identifier of the <abbr title="Coordinate Reference System">CRS</abbr> of the geometry literals used in the filter. If omitted, the <abbr title="Coordinate Reference System">CRS</abbr> of the 3DCityDB instance is assumed. See <a href="../cql2-predicates/#coordinate-reference-system">here</a>.</td>
+</tr>
+<tr>
+<td><code>"filter"</code>, <code>"filterSrs"</code></td>
+<td>Filter and filter <abbr title="Coordinate Reference System">CRS</abbr> in the query settings of the JSON configuration, for example of the <a href="../export-config/">export</a> and <a href="../delete-config/">delete</a> commands. The <code>"filter"</code> property accepts both <abbr title="OGC Common Query Language">CQL2</abbr> text and <abbr title="OGC Common Query Language">CQL2</abbr> JSON. See <a href="#cql2-text-and-cql2-json">here</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>The filter is always combined with the feature types selected with the <code>--type-name</code> option. This is important for
+<a href="../cql2-properties/#names-and-namespace-prefixes">resolving property names</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>SQL queries can be embedded in <abbr title="OGC Common Query Language">CQL2</abbr> filters using the 3DCityDB extension <a href="../cql2-predicates/#sql-predicates"><code>SQL</code></a>.
+Alternatively, the <code>--sql-filter</code> option accepts a plain SQL query outside of <abbr title="OGC Common Query Language">CQL2</abbr>.</p>
+</div>
+<h3 id="cql2-text-and-cql2-json"><abbr title="OGC Common Query Language">CQL2</abbr> text and <abbr title="OGC Common Query Language">CQL2</abbr> JSON<a class="headerlink" href="#cql2-text-and-cql2-json" title="Link to this headline for referencing">¶</a></h3>
+<p><abbr title="OGC Common Query Language">CQL2</abbr> defines two encodings for filter expressions. <abbr title="OGC Common Query Language">CQL2</abbr> text is a compact, human-readable notation similar to the
+<code>WHERE</code> clause of SQL. <abbr title="OGC Common Query Language">CQL2</abbr> JSON represents the same expression as a JSON object, which is easier to generate and
+process by software. Both encodings support the same language constructs, including all 3DCityDB extensions.</p>
+<p>The following filter is shown in both encodings:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>con:height &gt; 20 AND bldg:roofType = '1000'
+</span></code></pre></div>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"and"</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="p">{</span><span class="nt">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;"</span><span class="p">,</span><span class="w"> </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"property"</span><span class="p">:</span><span class="w"> </span><span class="s2">"con:height"</span><span class="p">},</span><span class="w"> </span><span class="mi">20</span><span class="p">]},</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="p">{</span><span class="nt">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"="</span><span class="p">,</span><span class="w"> </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"property"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bldg:roofType"</span><span class="p">},</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">]}</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="p">]</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>The <code>--filter</code> option accepts <abbr title="OGC Common Query Language">CQL2</abbr> text. In the JSON configuration, the <code>"filter"</code> property accepts both encodings.
+This chapter uses <abbr title="OGC Common Query Language">CQL2</abbr> text for all explanations. The <a href="../cql2-json/"><abbr title="OGC Common Query Language">CQL2</abbr> JSON</a> page shows how each
+language construct is written in <abbr title="OGC Common Query Language">CQL2</abbr> JSON, and the <a href="../cql2-examples/">examples</a> are given in both
+encodings.</p>
+<h3 id="supported-parts-of-the-cql2-standard">Supported parts of the <abbr title="OGC Common Query Language">CQL2</abbr> standard<a class="headerlink" href="#supported-parts-of-the-cql2-standard" title="Link to this headline for referencing">¶</a></h3>
+<p>The following table lists the conformance classes of the <abbr title="OGC Common Query Language">CQL2</abbr> standard and their support in citydb-tool.</p>
+<table>
+<thead>
+<tr>
+<th>Conformance class</th>
+<th style="text-align: center;">Supported</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Basic <abbr title="OGC Common Query Language">CQL2</abbr></td>
+<td style="text-align: center;">Yes</td>
+<td>Comparisons, <code>AND</code>, <code>OR</code>, <code>NOT</code>, <code>IS [NOT] NULL</code>, string, numeric, boolean, and temporal literals.</td>
+</tr>
+<tr>
+<td>Advanced Comparison Operators</td>
+<td style="text-align: center;">Yes</td>
+<td><code>LIKE</code>, <code>BETWEEN</code>, and <code>IN</code>, each also negated with <code>NOT</code>. <code>BETWEEN</code> only accepts numeric values.</td>
+</tr>
+<tr>
+<td>Case-insensitive Comparison</td>
+<td style="text-align: center;">Yes</td>
+<td><code>CASEI</code> function.</td>
+</tr>
+<tr>
+<td>Accent-insensitive Comparison</td>
+<td style="text-align: center;">Yes</td>
+<td><code>ACCENTI</code> function. Requires the PostgreSQL <code>unaccent</code> extension, see <a href="../cql2-predicates/#case-and-accent-insensitive-comparisons">here</a>.</td>
+</tr>
+<tr>
+<td>Basic Spatial Functions</td>
+<td style="text-align: center;">Yes</td>
+<td><code>S_INTERSECTS</code> with point and bounding box literals.</td>
+</tr>
+<tr>
+<td>Basic Spatial Functions with additional Spatial Literals</td>
+<td style="text-align: center;">Yes</td>
+<td>All WKT geometry types except <code>GEOMETRYCOLLECTION</code>.</td>
+</tr>
+<tr>
+<td>Spatial Functions</td>
+<td style="text-align: center;">Yes</td>
+<td><code>S_INTERSECTS</code>, <code>S_EQUALS</code>, <code>S_DISJOINT</code>, <code>S_TOUCHES</code>, <code>S_WITHIN</code>, <code>S_OVERLAPS</code>, <code>S_CROSSES</code>, <code>S_CONTAINS</code>.</td>
+</tr>
+<tr>
+<td>Temporal Functions</td>
+<td style="text-align: center;">No</td>
+<td>Temporal operators such as <code>T_AFTER</code> and time intervals are not supported. Use comparison operators with date and timestamp literals instead.</td>
+</tr>
+<tr>
+<td>Array Functions</td>
+<td style="text-align: center;">No</td>
+<td>Array operators such as <code>A_CONTAINS</code> are not supported. Multi-valued properties are handled as described <a href="../cql2-properties/#multi-valued-properties">here</a>.</td>
+</tr>
+<tr>
+<td>Property-Property Comparisons</td>
+<td style="text-align: center;">Yes</td>
+<td>Both operands of a predicate may be property references.</td>
+</tr>
+<tr>
+<td>Custom Functions</td>
+<td style="text-align: center;">No</td>
+<td>Only the built-in functions <code>CASEI</code>, <code>ACCENTI</code>, and <code>INDEX</code> are available.</td>
+</tr>
+<tr>
+<td>Arithmetic Expressions</td>
+<td style="text-align: center;">Yes</td>
+<td><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>^</code>, and <code>DIV</code>.</td>
+</tr>
+<tr>
+<td><abbr title="OGC Common Query Language">CQL2</abbr> Text</td>
+<td style="text-align: center;">Yes</td>
+<td>Used by the <code>--filter</code> option and in configuration files.</td>
+</tr>
+<tr>
+<td><abbr title="OGC Common Query Language">CQL2</abbr> JSON</td>
+<td style="text-align: center;">Yes</td>
+<td>Used in configuration files.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3dcitydb-extensions-to-cql2">3DCityDB extensions to <abbr title="OGC Common Query Language">CQL2</abbr><a class="headerlink" href="#3dcitydb-extensions-to-cql2" title="Link to this headline for referencing">¶</a></h3>
+<p>The 3DCityDB adds the following features to <abbr title="OGC Common Query Language">CQL2</abbr> that are not part of the standard. Filters using them cannot be
+exchanged with other <abbr title="OGC Common Query Language">CQL2</abbr> implementations.</p>
+<table>
+<thead>
+<tr>
+<th>Extension</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../cql2-properties/#property-paths">Property paths</a></td>
+<td>Dot-separated paths to nested properties, complex attributes, addresses, and subfeatures, for example <code>bldg:address.core:city</code>.</td>
+</tr>
+<tr>
+<td><a href="../cql2-properties/#conditions-on-path-steps">Conditions on path steps</a></td>
+<td>Conditions in square brackets that restrict the values of a path step, for example <code>bldg:buildingPart[con:height &gt; 40]</code>.</td>
+</tr>
+<tr>
+<td><a href="../cql2-properties/#selecting-values-by-position"><code>INDEX()</code> function</a></td>
+<td>Position of a value of a multi-valued property. <code>bldg:function[2]</code> is short for <code>bldg:function[INDEX() = 2]</code>.</td>
+</tr>
+<tr>
+<td><a href="../cql2-properties/#type-casts">Type casts</a></td>
+<td>Data type of a generic attribute, for example <code>gen:storeys::int</code>.</td>
+</tr>
+<tr>
+<td><a href="../cql2-predicates/#distance-predicates"><code>S_DWITHIN</code> and <code>S_BEYOND</code></a></td>
+<td>Distance-based spatial predicates with an optional unit of measurement.</td>
+</tr>
+<tr>
+<td><a href="../cql2-predicates/#sql-predicates"><code>SQL</code> predicate</a></td>
+<td>SQL subquery returning the IDs of the matching features.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="quick-start">Quick start<a class="headerlink" href="#quick-start" title="Link to this headline for referencing">¶</a></h2>
+<p>The following examples give a first impression of <abbr title="OGC Common Query Language">CQL2</abbr> filters. All commands export buildings to a <abbr title="OGC City Geography Markup Language">CityGML</abbr> file. The
+connection options of the <code>export</code> command are omitted for better readability (<code>[...]</code>).</p>
+<p>All examples in this chapter use property names with namespace prefixes, such as <code>con:height</code>, because this makes
+filters unambiguous. The prefix can also be omitted, for example <code>height &gt; 20</code>. citydb-tool then searches for the best
+matching property or treats the name as generic attribute, see <a href="../cql2-properties/#names-and-namespace-prefixes">here</a>.</p>
+<p>Export buildings that are taller than 20 meters:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Linux</label><label for="__tabbed_1_2">Windows CMD</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./citydb<span class="w"> </span><span class="nb">export</span><span class="w"> </span>citygml<span class="w"> </span><span class="o">[</span>...<span class="o">]</span><span class="w"> </span>-o<span class="w"> </span>buildings.gml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>--type-name<span class="o">=</span>bldg:Building<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>--filter<span class="o">=</span><span class="s2">"con:height &gt; 20"</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bat highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>citydb export citygml [...] -o buildings.gml <span class="se">^</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="se"> </span>   --type-name=bldg:Building <span class="se">^</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="se"> </span>   --filter=<span class="s2">"con:height &gt; 20"</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>Export buildings with a flat roof (roof type <code>1000</code>) and at least four storeys:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>--filter<span class="o">=</span><span class="s2">"bldg:roofType = '1000' AND bldg:storeysAboveGround &gt;= 4"</span>
+</span></code></pre></div>
+<p>Export buildings whose name starts with <code>Town hall</code>, ignoring upper and lower case:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>--filter<span class="o">=</span><span class="s2">"CASEI(core:name) LIKE CASEI('town hall%')"</span>
+</span></code></pre></div>
+<p>Export buildings located in Karlsruhe according to their address:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>--filter<span class="o">=</span><span class="s2">"bldg:address.core:city = 'Karlsruhe'"</span>
+</span></code></pre></div>
+<p>Export buildings with a generic attribute <code>district</code> of value <code>Nord</code> or <code>Sued</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>--filter<span class="o">=</span><span class="s2">"gen:district IN ('Nord', 'Sued')"</span>
+</span></code></pre></div>
+<p>Export all features whose envelope intersects a bounding box given in WGS84 coordinates:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Linux</label><label for="__tabbed_2_2">Windows CMD</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>./citydb<span class="w"> </span><span class="nb">export</span><span class="w"> </span>citygml<span class="w"> </span><span class="o">[</span>...<span class="o">]</span><span class="w"> </span>-o<span class="w"> </span>features.gml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span>--filter<span class="o">=</span><span class="s2">"S_INTERSECTS(core:envelope, BBOX(13.369, 52.506, 13.405, 52.520))"</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span>--filter-crs<span class="o">=</span><span class="m">4326</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bat highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>citydb export citygml [...] -o features.gml <span class="se">^</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="se"> </span>   --filter=<span class="s2">"S_INTERSECTS(core:envelope, BBOX(13.369, 52.506, 13.405, 52.520))"</span> <span class="se">^</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="se"> </span>   --filter-crs=4326
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>The building blocks of these filters are explained in detail on the following pages:</p>
 <ul>
-<li>Expressive Syntax: Combines logical operators with a rich set of functions for building complex queries.</li>
-<li>Spatial Filtering: Supports geospatial functions to filter data based on spatial relationships.</li>
-<li>Ease of Use: Simple, human-readable expressions that are easy to construct and interpret.</li>
+<li><a href="../cql2-properties/">Property references</a>: names, paths, generic attributes, and multi-valued properties.</li>
+<li><a href="../cql2-predicates/">Literals and predicates</a>: literals, comparison, logical, arithmetic, spatial, and
+  SQL predicates.</li>
+<li><a href="../cql2-json/"><abbr title="OGC Common Query Language">CQL2</abbr> JSON</a>: the JSON encoding of filter expressions.</li>
+<li><a href="../cql2-examples/">Examples</a>: complete filters for typical tasks.</li>
 </ul>
-<hr>
-<h2 id="using-cql2-with-citydb-tool">Using <abbr title="OGC Common Query Language">CQL2</abbr> with citydb-tool<a class="headerlink" href="#using-cql2-with-citydb-tool" title="Link to this headline for referencing">¶</a></h2>
-<p>citydb-tool allows the use of the <code>-f</code> or <code>--filter</code> option followed by a <abbr title="OGC Common Query Language">CQL2</abbr> expression to filter data when exporting or
-deleting records. This enables users to select only the relevant subset of data based on attribute values,
-spatial conditions, or both.</p>
+<h2 id="using-filters-on-the-command-line">Using filters on the command line<a class="headerlink" href="#using-filters-on-the-command-line" title="Link to this headline for referencing">¶</a></h2>
+<p>On the command line, enclose the filter in double quotes so that it is passed as a single argument and string
+literals can use single quotes. Some characters may additionally be interpreted by the shell:</p>
 <ul>
-<li>Text-based (string) encoding</li>
-<li>JSON-based encoding</li>
+<li>In Linux shells such as <code>bash</code>, the dollar sign and the backtick are special within double quotes. A backslash is
+  only special in front of these characters, a double quote, or another backslash, so LIKE escapes such as <code>\_</code> are
+  passed unchanged.</li>
+<li>In Windows CMD, <code>%</code> introduces environment variables in batch files. In batch files, write <code>%%</code> for every <code>%</code> of a
+  LIKE pattern.</li>
 </ul>
-<p>Both encodings are supported by citydb-tool, giving you flexibility in how you structure your filters.</p>
-<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Link to this headline for referencing">¶</a></h2>
-<p>The general syntax for using <abbr title="OGC Common Query Language">CQL2</abbr> with citydb-tool is:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>citydb<span class="w"> </span><span class="o">[</span>command<span class="o">]</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">"&lt;CQL2 Expression&gt;"</span>
-</span></code></pre></div>
-<p>Where <code>&lt;CQL2 Expression&gt;</code> is a valid <abbr title="OGC Common Query Language">CQL2</abbr> query that defines the filtering conditions for the data export.</p>
-<h2 id="writing-cql2-expressions">Writing <abbr title="OGC Common Query Language">CQL2</abbr> expressions<a class="headerlink" href="#writing-cql2-expressions" title="Link to this headline for referencing">¶</a></h2>
-<p>A <abbr title="OGC Common Query Language">CQL2</abbr> expression consists of attribute names, operators, and values. It can also include spatial functions to handle geospatial conditions.</p>
-<h3 id="understanding-literals">Understanding literals<a class="headerlink" href="#understanding-literals" title="Link to this headline for referencing">¶</a></h3>
-<p>In <abbr title="OGC Common Query Language">CQL2</abbr>, literals are direct values that appear in your filter expressions. Common types of literals include:</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For complex filters, consider storing the filter in the <a href="../config/">configuration file</a>. This
+avoids shell escaping and makes filters reusable.</p>
+</div>
+<h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Link to this headline for referencing">¶</a></h2>
+<p>The following parts of <abbr title="OGC Common Query Language">CQL2</abbr> are not supported by citydb-tool:</p>
 <ul>
-<li>Strings: Enclosed in single quotes in text-based queries (e.g., <code>'Forest tree 3'</code>), or as JSON strings in JSON-based queries (e.g., <code>'Forest tree 3'</code>).</li>
-<li>Numbers: Used without quotes in both text-based and JSON-based queries (e.g., <code>&gt; 10</code> or <code>10</code> in JSON).</li>
-<li>Booleans: Typically represented as <code>true</code> or <code>false</code>.</li>
-<li>Dates/Times: Represented in ISO-8601 format (e.g., <code>'2023-01-31'</code> or <code>'2023-01-31'</code> in JSON), if your data or schema supports date/time attributes.</li>
+<li>Temporal operators (<code>T_AFTER</code>, <code>T_BEFORE</code>, <code>T_INTERSECTS</code>, ...) and time interval literals (<code>INTERVAL</code>). Compare
+  dates and timestamps with the comparison operators instead.</li>
+<li>Array operators (<code>A_EQUALS</code>, <code>A_CONTAINS</code>, <code>A_CONTAINEDBY</code>, <code>A_OVERLAPS</code>) and array literals outside of <code>IN</code> lists.</li>
+<li>Custom functions other than <code>CASEI</code>, <code>ACCENTI</code>, and <code>INDEX</code>.</li>
+<li><code>GEOMETRYCOLLECTION</code> and empty geometries as literals.</li>
 </ul>
-<h3 id="attribute-references">Attribute references<a class="headerlink" href="#attribute-references" title="Link to this headline for referencing">¶</a></h3>
-<h4 id="implicit-vs-explicit-attribute-references">Implicit vs. explicit attribute references<a class="headerlink" href="#implicit-vs-explicit-attribute-references" title="Link to this headline for referencing">¶</a></h4>
-<p>When writing <abbr title="OGC Common Query Language">CQL2</abbr> queries, it's important to correctly reference attributes by their full property names rather than
-relying on implicit assumptions. While some query tools allow shorthand notations for convenience,
-the proper <abbr title="OGC Common Query Language">CQL2</abbr> syntax requires explicit attribute references.</p>
-<p>For example, in some cases, a query like:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>citydb<span class="w"> </span><span class="nb">export</span><span class="w"> </span>citygml<span class="w"> </span>--filter<span class="o">=</span><span class="s2">"height &gt; 1"</span>
-</span></code></pre></div>
-<p>might work as expected, but it is a simplified form. The correct way is to specify the full property path. For instance,
-if the attribute height belongs to the bldg (building) namespace, the correct query should be:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>citydb<span class="w"> </span><span class="nb">export</span><span class="w"> </span>citygml<span class="w"> </span>--filter<span class="o">=</span><span class="s2">"bldg.height &gt; 1"</span>
-</span></code></pre></div>
-<h4 id="advanced-handling-of-namespaces-and-complex-attributes">Advanced handling of namespaces and complex attributes<a class="headerlink" href="#advanced-handling-of-namespaces-and-complex-attributes" title="Link to this headline for referencing">¶</a></h4>
-<p>In 3D CityDB, attributes may be defined with namespaces or at nested (child) levels.
-This advanced scenario requires careful handling:</p>
-<p><strong>Namespaces &amp; Object Classes:</strong>
-Use a colon (:) to separate namespace prefixes from attribute names. For example, the object class Building might be
-referenced as bldg:Building. citydb-tool recognizes alias names for object classes, but incorrect casing or namespace
-mismatches can lead to errors since the system is extremely case sensitive.</p>
-<p><strong>Property Paths:</strong>
-Use dot (.) notation to define paths to nested attributes (e.g., bldg.details.height). While top-level attributes
-can be referenced with a simple name, lower-level or child attributes require explicit, fully qualified paths.</p>
-<p><strong>Multi-occurring Values:</strong>
-For attributes that occur multiple times (arrays), reference specific occurrences using list notation (e.g., property[1]
-for the first occurrence). Note: Indexing starts at 1 rather than 0.</p>
-<p><strong>Generic Attributes and Datatype Specification:</strong>
-When dealing with generic attributes (such as those in a property table) where the database does not infer the data type
-automatically, you may need to explicitly specify the expected datatype using a cast-like syntax (e.g., ::datatype similar
-to PostgreSQL conventions).</p>
-<p>For example, using the -t option to specify the feature type along with -f for the filter:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>citydb<span class="w"> </span><span class="nb">export</span><span class="w"> </span>citygml<span class="w"> </span>-t<span class="w"> </span>Building<span class="w"> </span>-f<span class="w"> </span><span class="s2">"bldg:height &lt; 15"</span>
-</span></code></pre></div>
-<p>Here, Building is the target object class (with its associated namespace alias), and bldg:height is the explicitly
-referenced attribute. This explicit approach minimizes ambiguity—especially important when attributes are defined on
-child levels or in complex structures.</p>
-<h3 id="attribute-filtering">Attribute filtering<a class="headerlink" href="#attribute-filtering" title="Link to this headline for referencing">¶</a></h3>
-<p>Filter based on attribute values using comparison operators such as =, !=, &lt;, &lt;=, &gt;, and &gt;=. Logical operators
-AND, OR, and NOT can be used to combine conditions.</p>
-<h4 id="basic-example">Basic example<a class="headerlink" href="#basic-example" title="Link to this headline for referencing">¶</a></h4>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Text-based Filter</label><label for="__tabbed_1_2">JSON-based filter</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>citydb<span class="w"> </span><span class="nb">export</span><span class="w"> </span>citygml<span class="w"> </span>--filter<span class="o">=</span><span class="s2">"name = 'Forest tree 3'"</span><span class="w"> </span>-o<span class="w"> </span>filtered_tree.gml
-</span></code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="language-json highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">{</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"="</span><span class="p">,</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"property"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="s2">"Forest tree 3"</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="p">]</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="p">}</span>
-</span></code></pre></div>
-</div>
-</div>
-</div>
-<h4 id="combining-with-logical-operators">Combining with logical operators<a class="headerlink" href="#combining-with-logical-operators" title="Link to this headline for referencing">¶</a></h4>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Text-based filter</label><label for="__tabbed_2_2">JSON-based filter</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Linux</label><label for="__tabbed_3_2">Windows CMD</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>citydb<span class="w"> </span><span class="nb">export</span><span class="w"> </span>citygml<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">      </span>--filter<span class="o">=</span><span class="s2">"name = 'Forest tree 3' AND height &gt; '1'"</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">      </span>-o<span class="w"> </span>filtered_tree.gml
-</span></code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>citydb<span class="w"> </span><span class="nb">export</span><span class="w"> </span>citygml<span class="w"> </span>^
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">      </span>--filter<span class="o">=</span><span class="s2">"name = 'Forest tree 3' AND height &gt; '1'"</span><span class="w"> </span>^
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">      </span>-o<span class="w"> </span>filtered_tree.gml
-</span></code></pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="tabbed-block">
-<div class="language-json highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AND"</span><span class="p">,</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">      </span><span class="nt">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"="</span><span class="p">,</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">      </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">"property"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">        </span><span class="s2">"Forest tree 3"</span>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">      </span><span class="p">]</span>
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">      </span><span class="nt">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;"</span><span class="p">,</span>
-</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">      </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">"property"</span><span class="p">:</span><span class="w"> </span><span class="s2">"height"</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">        </span><span class="s2">"1"</span>
-</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">      </span><span class="p">]</span>
-</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">  </span><span class="p">]</span>
-</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="p">}</span>
-</span></code></pre></div>
-</div>
-</div>
-</div>
-<h4 id="filtering-with-lists">Filtering with lists<a class="headerlink" href="#filtering-with-lists" title="Link to this headline for referencing">¶</a></h4>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Text-based filter</label><label for="__tabbed_4_2">JSON-based filter</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Linux</label><label for="__tabbed_5_2">Windows CMD</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>citydb<span class="w"> </span><span class="nb">export</span><span class="w"> </span>citygml<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">      </span>--filter<span class="o">=</span><span class="s2">"name IN ('Forest tree 1', 'Forest tree 2', 'Forest tree 3')"</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">      </span>-o<span class="w"> </span>filtered_trees.gml
-</span></code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>citydb<span class="w"> </span><span class="nb">export</span><span class="w"> </span>citygml<span class="w"> </span>^
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">      </span>--filter<span class="o">=</span><span class="s2">"name IN ('Forest tree 1', 'Forest tree 2', 'Forest tree 3')"</span><span class="w"> </span>^
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">      </span>-o<span class="w"> </span>filtered_trees.gml
-</span></code></pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="tabbed-block">
-<div class="language-json highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">{</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nt">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN"</span><span class="p">,</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"property"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="p">[</span><span class="s2">"Forest tree 1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Forest tree 2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Forest tree 3"</span><span class="p">]</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">  </span><span class="p">]</span>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="p">}</span>
-</span></code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="spatial-filtering">Spatial filtering<a class="headerlink" href="#spatial-filtering" title="Link to this headline for referencing">¶</a></h3>
-<p>Use spatial functions to filter based on the spatial relationship of geometries. Commonly used functions include:</p>
-<ul>
-<li><code>intersects</code>: Returns true if two geometries intersect.</li>
-<li><code>contains</code>: Returns true if one geometry contains another.</li>
-<li><code>within</code>: Returns true if one geometry is within another.</li>
-</ul>
-<h4 id="example">Example<a class="headerlink" href="#example" title="Link to this headline for referencing">¶</a></h4>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Text-based filter</label><label for="__tabbed_6_2">JSON-based filter</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio"><input id="__tabbed_7_2" name="__tabbed_7" type="radio"><div class="tabbed-labels"><label for="__tabbed_7_1">Linux</label><label for="__tabbed_7_2">Windows CMD</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>citydb<span class="w"> </span><span class="nb">export</span><span class="w"> </span>citygml<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">      </span>--filter<span class="o">=</span><span class="s2">"S_INTERSECTS(Envelope, \</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="s2">      BBOX(-560.8678155819734, 604.1012795512906, \</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="s2">      -553.8099297783192, 627.1318523068805))"</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">      </span>@options.txt<span class="w"> </span>-o<span class="o">=</span>output.gml
-</span></code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>citydb<span class="w"> </span><span class="nb">export</span><span class="w"> </span>citygml<span class="w"> </span>^
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">      </span>--filter<span class="o">=</span><span class="s2">"S_INTERSECTS(Envelope, ^</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="s2">      BBOX(-560.8678155819734, 604.1012795512906, ^</span>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="s2">      -553.8099297783192, 627.1318523068805))"</span><span class="w"> </span>^
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">      </span>@options.txt<span class="w"> </span>-o<span class="o">=</span>output.gml
-</span></code></pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="tabbed-block">
-<div class="language-json highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="p">{</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span><span class="nt">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"func"</span><span class="p">,</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span><span class="nt">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S_INTERSECTS"</span><span class="p">,</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">  </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"property"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Envelope"</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">      </span><span class="nt">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"func"</span><span class="p">,</span>
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">      </span><span class="nt">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BBOX"</span><span class="p">,</span>
-</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">      </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">        </span><span class="mf">-560.8678155819734</span><span class="p">,</span>
-</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">        </span><span class="mf">604.1012795512906</span><span class="p">,</span>
-</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">        </span><span class="mf">-553.8099297783192</span><span class="p">,</span>
-</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">        </span><span class="mf">627.1318523068805</span>
-</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">      </span><span class="p">]</span>
-</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">  </span><span class="p">]</span>
-</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="p">}</span>
-</span></code></pre></div>
-</div>
-</div>
-</div>
+<p>Filters using an unsupported part fail with an error message before the database is queried.</p>
 
 
 
@@ -3306,13 +3595,13 @@ AND, OR, and NOT can be used to combine conditions.</p>
         
         
           
-          <a href="../docker/" class="md-footer__link md-footer__link--next" aria-label="Next: citydb-tool Docker">
+          <a href="../cql2-properties/" class="md-footer__link md-footer__link--next" aria-label="Next: Property references">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                citydb-tool Docker
+                Property references
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -3369,12 +3658,6 @@ AND, OR, and NOT can be used to combine conditions.</p>
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="../../assets/mkdocs_puml/puml.js"></script>
-      
-        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
-      
-        <script src="../../assets/mkdocs_puml/interaction.js"></script>
       
     
   

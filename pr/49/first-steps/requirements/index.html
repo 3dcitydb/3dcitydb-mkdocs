@@ -56,10 +56,6 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../assets/mkdocs_puml/puml.css">
-    
-      <link rel="stylesheet" href="../../assets/mkdocs_puml/interaction.css">
-    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -113,7 +109,7 @@
             
   
   <a href="https://github.com/3dcitydb/3dcitydb-mkdocs/pull/49" style="font-weight: 600;">
-    🔍 Preview of pull request #49 (commit 6627e8c) — not the official documentation.
+    🔍 Preview of pull request #49 (commit 2103690) — not the official documentation.
   </a>
   
 
@@ -2136,9 +2132,35 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../citydb-tool/cql2/" class="md-nav__link">
+    
+    
+      
         
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11">
+        
+          
+          <label class="md-nav__link" for="__nav_4_11" id="__nav_4_11_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -2152,7 +2174,163 @@
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CQL2 query language
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../citydb-tool/cql2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CQL2 overview
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../citydb-tool/cql2-properties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Property references
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../citydb-tool/cql2-predicates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Literals and predicates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../citydb-tool/cql2-json/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CQL2 JSON
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../citydb-tool/cql2-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2348,7 +2526,7 @@
   <span class="md-ellipsis">
     
   
-    Database Connection Options
+    Database Con. Options
   
 
     
@@ -2460,7 +2638,7 @@
   <span class="md-ellipsis">
     
   
-    Samples
+    Sample Commands
   
 
     
@@ -2490,7 +2668,7 @@
   <span class="md-ellipsis">
     
   
-    How to use with Docker?
+    citydb-3dtiler Docker
   
 
     
@@ -2915,10 +3093,12 @@ We recommend checking data and database <a href="../../compatibility/">compatibi
 <p class="admonition-title">Info</p>
 <p>We are expanding support to include more database systems, starting with <strong>Oracle Database</strong>. Stay tuned!</p>
 </div>
-<p>Supported PostgreSQL versions include <strong>PostgreSQL 14</strong> and higher, with <strong>PostGIS 3.2</strong> and higher. Make sure to check
+<p>Supported PostgreSQL versions include <strong>PostgreSQL 15</strong> and higher, with <strong>PostGIS 3.3</strong> and higher. Make sure to check
 the <a href="https://www.postgresql.org/support/versioning/">PostgreSQL versioning policy</a> to determine which PostgreSQL versions are actively maintained or have
 reached end-of-life. The <a href="https://postgis.net/development/compatibility/">PostGIS support matrix</a> provides details on which PostgreSQL versions are supported
 by specific PostGIS versions and whether any particular version of PostGIS has reached end-of-life.</p>
+<p>The setup and upgrade scripts check the PostgreSQL and PostGIS versions of the database and abort with an error
+message if one of them is older than the minimum supported version.</p>
 <p>The SQL scripts for setting up a 3D City Database schema are designed to be executed by the default command-line client
 of the respective database system – specifically, <code>psql</code> for PostgreSQL. These scripts include meta-commands specific to
 these clients and may not work properly with other client software. Therefore, ensure that <code>psql</code> is installed on the
@@ -2931,7 +3111,7 @@ system. The 3D City Database does not support database versions that have reache
 <h2 id="citydb-tool-database-client"><code>citydb-tool</code> database client<a class="headerlink" href="#citydb-tool-database-client" title="Link to this headline for referencing">¶</a></h2>
 <p><code>citydb-tool</code> is the default command-line client for the 3D City Database, used to import and export city model data
 as well as perform data and database operations. It is implemented as a Java application and can be run on any platform
-that supports <strong>Java 17</strong> and higher.</p>
+that supports <strong>Java 21</strong> and higher.</p>
 <p>To use <code>citydb-tool</code> on your machine, ensure that a matching Java Runtime Environment (<abbr title="Java Runtime Environment">JRE</abbr>) is installed. Java
 installation packages are available from various vendors and for different platforms. The following is a non-exhaustive
 list of Java distributions that are free to download and use:</p>
@@ -3066,12 +3246,6 @@ carefully.</p>
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="../../assets/mkdocs_puml/puml.js"></script>
-      
-        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
-      
-        <script src="../../assets/mkdocs_puml/interaction.js"></script>
       
     
   
